@@ -2,6 +2,7 @@ const OTP=require('../models/OTP');
 const Profile = require('../models/Profile');
 const User = require('../models/User');
 const bcrypt=requrie('bcrypt');
+const jwt=require('jsonwebtoken');
 //signup
 const signup=async(req,res)=>{
     
@@ -90,7 +91,62 @@ const signup=async(req,res)=>{
     }
 }
 //login
-
+const login=async (req,res)=>{
+    try {
+            //fetch data
+    const {email,password}=req.body;
+    //validation
+    if(!email||!password){
+         return res.status(400).json({
+             success:false,
+             message:"email or password is missing"
+        });
+    }
+    //check if user exist
+    const checkUser=User.findOne({email});
+    if(!checkUser){
+         return res.status(404).json({
+             success:false,
+             message:"user is not registered"
+        });
+    }
+    //password match
+    const passMatch=bcrypt.compare(password,checkUser.password);
+    if(!passMatch){
+         return res.status(400).json({
+             success:false,
+             message:"password not matched"
+        });
+    }
+    //create token
+    checkUser.password=undefined;
+    checkUser.token=token;
+    const jwtPayload={
+        email,
+        id:checkUser._id,
+        role:checkUser.accountType
+    }
+    const token=jwt.sign(jwtPayload,process.env.JWT_SECRET,{
+        exporiesIn:'2h'
+    })
+    //send cookie and token
+    return res.cookie('token',token,{
+        expires:new Date(Date.now()+3*24*60*60*1000),
+        httpOnly:true
+    }).json({
+        success:true,
+        token,
+        user:checkUser,
+        message:"user logged in successfully"
+    })  
+    } catch (error) {
+        console.log("error while login",error);
+         return res.status(500).json({
+             success:false,
+             message:"error while login"
+        });
+    }
+}  
 //otp generate
 
 //change password
