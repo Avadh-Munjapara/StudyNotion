@@ -43,7 +43,13 @@ const userSchema=mongoose.Schema({
             type:mongoose.Schema.ObjectId,
             ref:"CourseProgress"
         }
-    ]
+    ],
+    token:{
+        type:String
+    },
+    resetPasswordExpires:{
+        type:Date
+    }
 
 });
 

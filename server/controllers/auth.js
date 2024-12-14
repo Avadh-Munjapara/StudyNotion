@@ -4,6 +4,7 @@ const Profile = require('../models/Profile');
 const User = require('../models/User');
 const bcrypt=requrie('bcrypt');
 const jwt=require('jsonwebtoken');
+const mailSender = require('../utils/mailSender');
 //signup
 exports.signup=async(req,res)=>{
     
@@ -198,5 +199,42 @@ exports.sendOTP=async (req,res)=>{
     }
 }
 //change password
-
+exports.changePassword=async(req,res)=>{
+    try {
+        //data fetch
+        const{email,password,confirmPassword}=req.body;
+        //validation
+        if(!email||!password||!confirmPassword){
+             return res.status(400).json({
+                 success:false,
+                 message:"all fields are required"
+            });
+        }
+        //password check
+        if(password!=confirmPassword){
+             return res.status(400).json({
+                 success:false,
+                 message:"passwords not matched"
+            });
+        }
+        //password hash
+        const hashedPassword=await bcrypt.hash(password,10);
+        //update password in db
+        const user=await User.findOneAndUpdate({email},{password:hashedPassword},{new:true})
+        //send mail to user
+        const passUpdateMail=await mailSender(email,"your password has changed",
+            "your password has been changed");
+        //return response
+        return res.status(200).json({
+             success:true,
+             message:"password changed successfully"
+        });
+    } catch (error) {
+        console.log('error in changing password', error);
+        return res.status(500).json({
+            success: false,
+            message: 'failure in changing password'
+        });
+    }
+}
 
