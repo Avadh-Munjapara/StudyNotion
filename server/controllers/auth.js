@@ -1,10 +1,11 @@
+const { generate } = require('otp-generator');
 const OTP=require('../models/OTP');
 const Profile = require('../models/Profile');
 const User = require('../models/User');
 const bcrypt=requrie('bcrypt');
 const jwt=require('jsonwebtoken');
 //signup
-const signup=async(req,res)=>{
+exports.signup=async(req,res)=>{
     
     try {
        //fetch detailes
@@ -32,7 +33,7 @@ const signup=async(req,res)=>{
             })
         }
     //check if user exist
-        const checkUser=User.findOne({email});
+        const checkUser=await User.findOne({email});
         if(checkUser){
              return res.status(400).json({
                  success:false,
@@ -41,7 +42,7 @@ const signup=async(req,res)=>{
         }
         
     //check for otp
-        const recentOTP=OTP.find({email}).sort({createdAt:-1}).limit(1);
+        const recentOTP=await OTP.find({email}).sort({createdAt:-1}).limit(1);
         if(recentOtp.length == 0) {
             //OTP not found
             return res.status(400).json({
@@ -67,7 +68,7 @@ const signup=async(req,res)=>{
     }
     const ProfileDetails=await Profile.create(pd);
 
-    const user=User.create({
+    const user=await User.create({
         firstName,
         lastName,
         email,
@@ -91,9 +92,9 @@ const signup=async(req,res)=>{
     }
 }
 //login
-const login=async (req,res)=>{
+exports.login=async (req,res)=>{
     try {
-            //fetch data
+    //fetch data
     const {email,password}=req.body;
     //validation
     if(!email||!password){
@@ -103,7 +104,7 @@ const login=async (req,res)=>{
         });
     }
     //check if user exist
-    const checkUser=User.findOne({email});
+    const checkUser=await User.findOne({email});
     if(!checkUser){
          return res.status(404).json({
              success:false,
@@ -111,7 +112,7 @@ const login=async (req,res)=>{
         });
     }
     //password match
-    const passMatch=bcrypt.compare(password,checkUser.password);
+    const passMatch=await bcrypt.compare(password,checkUser.password);
     if(!passMatch){
          return res.status(400).json({
              success:false,
@@ -147,6 +148,55 @@ const login=async (req,res)=>{
         });
     }
 }  
-//otp generate
-
+//send otp
+exports.sendOTP=async (req,res)=>{
+    try {
+     //fetch email
+        const{email}=req.body;
+        if(!email){
+             return res.status(400).json({
+                 success:false,
+                 message:"email is not provided"
+            });
+        }
+    //checkUser
+        const user=await User.findOne({email});
+        if(user){
+             return res.status(401).json({
+                 success:false,
+                 message:"user is already registered"
+            });
+        }
+    //otp create
+        let otp=generate(6,{
+            upperCaseAlphabets:false,
+            lowerCaseAlphabets:false,
+            specialChar:false,
+        });
+        while(otp===await OTP.findOne({OTP:otp}).OTP){
+            let otp=generate(6,{
+                upperCaseAlphabets:false,
+                lowerCaseAlphabets:false,
+                specialChar:false,
+            });
+        }
+    //create dbentry
+        const otpDoc=await OTP.create({
+            email,
+            OTP:otp
+        });
+         return res.status(200).json({
+             success:true,
+             message:"otp set successfully"
+        });
+    } catch (error) {
+        console.log('error while generating otp', error);
+        return res.status(500).json({
+            success: false,
+            message: 'error while generating otp'
+        });
+    }
+}
 //change password
+
+
