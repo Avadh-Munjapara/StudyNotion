@@ -44,10 +44,10 @@ const userSchema=mongoose.Schema({
             ref:"CourseProgress"
         }
     ],
-    token:{
+    resetToken:{
         type:String
     },
-    resetPasswordExpires:{
+    tokenExpires:{
         type:Date
     }
 
