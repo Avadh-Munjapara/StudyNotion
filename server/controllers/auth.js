@@ -202,9 +202,9 @@ exports.sendOTP=async (req,res)=>{
 exports.changePassword=async(req,res)=>{
     try {
         //data fetch
-        const{email,password,confirmPassword}=req.body;
+        const{email,oldPassword,password,confirmPassword}=req.body;
         //validation
-        if(!email||!password||!confirmPassword){
+        if(!email||!password||!confirmPassword||!oldPassword){
              return res.status(400).json({
                  success:false,
                  message:"all fields are required"
@@ -217,10 +217,25 @@ exports.changePassword=async(req,res)=>{
                  message:"passwords not matched"
             });
         }
+        //old password check
+        let user=await User.findOne({email});
+        if(!user){
+             return res.status(400).json({
+                 success:false,
+                 message:"user is not registered"
+            });
+        }
+        const oldPassCheck=await bcrypt.compare(password,user.password);
+        if(!oldPassCheck){
+             return res.status(401).json({
+                 success:false,
+                 message:"old password is not correct"
+            });
+        }
         //password hash
         const hashedPassword=await bcrypt.hash(password,10);
         //update password in db
-        const user=await User.findOneAndUpdate({email},{password:hashedPassword},{new:true})
+        user=await User.findOneAndUpdate({email},{password:hashedPassword},{new:true})
         //send mail to user
         const passUpdateMail=await mailSender(email,"your password has changed",
             "your password has been changed");
