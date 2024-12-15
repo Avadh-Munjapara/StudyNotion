@@ -12,13 +12,6 @@ exports.createSection=async (req,res)=>{
         const section=await Section.create({
             name
         });
-        const course=await Course.findById(courseId);
-        if(!course){
-             return res.status(404).json({
-                 success:false,
-                 message:"no course found"
-            });
-        }
         const updatedCourse=await User.findByIdAndUpdate(courseId,{
             $push:{courseContent:section._id}
         },{new:true}).populate("courseContent");
