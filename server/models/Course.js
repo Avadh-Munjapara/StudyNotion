@@ -35,10 +35,9 @@ const courseSchema = mongoose.Schema({
   thumbnail: {
     type: String,
   },
-  tag: {
-    type: mongoose.Schema.ObjectId,
-    ref: "Tag",
-  },
+  tag: [{
+    type: String,
+  }],
   studentsEnrolled: [
     {
       type: mongoose.Schema.Types.ObjectId,

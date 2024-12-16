@@ -1,6 +1,6 @@
-const Tag=require('../models/Tag')
+const Category=require('../models/Category')
 
-exports.createTag=async (req,res)=>{
+exports.createCategory=async (req,res)=>{
     try {
         const {name,description}=req.body;
         if(!name||!description){
@@ -9,44 +9,44 @@ exports.createTag=async (req,res)=>{
                  message:"all fields are required"
             });
         }
-        const tag=await Tag.create({
+        const category=await Category.create({
             name,
             description
         });
         return res.status(201).json({
             success:true,
             message:"tag created successfully",
-            tag
+            category
         })
 
     } catch (error) {
-        console.log('error while creating tag', error);
+        console.log('error while creating category', error);
         return res.status(500).json({
             success: false,
-            message: 'something went wrong while creating tag'
+            message: 'something went wrong while creating category'
         });
     }
 }
 
-exports.getAllTags=async(req,res)=>{
+exports.getAllCategory=async(req,res)=>{
     try {
-        const tags=await Tag.find({},{name:true,description:true});
-        if(!tags){
+        const categories=await Category.find({},{name:true,description:true});
+        if(!categories){
              return res.status(404).json({
                  success:false,
-                 message:"no tags found"
+                 message:"no category found"
             });
         }
         return res.status(200).json({
             success:true,
             message:"all tags retrieved successfully",
-            tags
+            categories
         });
     } catch (error) {
-        console.log('error while fetching all tags', error);
+        console.log('error while fetching all categories', error);
         return res.status(500).json({
             success: false,
-            message: 'something went wrong while fetching tags'
+            message: 'something went wrong while fetching categories'
         });
     }
 }

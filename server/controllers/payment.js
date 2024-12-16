@@ -30,6 +30,7 @@ exports.capturePayment=async (req,res)=>{
                  message:"no user found"
             });
         };
+        //check for user and is student alreay purchased course
         const uid=mongoose.Schema.Types.ObjectId(userId);
         if(Course.studentsEnrolled.includes(uid)){
              return res.status(400).json({
@@ -45,7 +46,6 @@ exports.capturePayment=async (req,res)=>{
         });
     }
 
-    //check for user and is student alreay purchased course
   
     //create order, intitate razorpay payment
     const options={
