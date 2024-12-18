@@ -50,3 +50,4 @@ exports.getAllCategory=async(req,res)=>{
         });
     }
 }
+

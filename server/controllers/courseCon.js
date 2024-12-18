@@ -51,6 +51,44 @@ exports.createCourse=async(req,res)=>{
     }
 }
 
+exports.getCourseDetails=async (req,res)=>{
+    const courseId=req.body.courseId;
+    if(!courseId){
+         return res.status(400).json({
+             success:false,
+             message:"courseId not found"
+        });
+    }
+    try {
+        const course=await Course.find({_id:courseId}).populate("ratingAndReviews").populate({
+                                                                                    path:"instructor",
+                                                                                    populate:{
+                                                                                        path:"additinoalDetails",
+                                                                                    }}).populate({
+                                                                                        path:"courseContent",
+                                                                                        populate:{
+                                                                                            path:"subSections"
+                                                                                        }
+                                                                                    }).populate("Category");
+        if(!course){
+             return res.status(400).json({
+                 success:false,
+                 message:"no course found with that courseid"
+            });
+        }
+        return res.status(200).json({
+             success:true,
+             course
+        });
+    } catch (error) {
+        console.log('error while fetching details of course', error);
+        return res.status(500).json({
+            success: false,
+            message: error.message
+        });
+    }
+}
+
 exports.getAllCourses=async (req,res)=>{
     try {
         const allCourses=await Course.find({});
