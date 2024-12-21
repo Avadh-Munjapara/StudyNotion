@@ -15,3 +15,5 @@ const cloudinaryConnection=async ()=>{
         });
     }
 }
+
+module.exports=cloudinaryConnection;
