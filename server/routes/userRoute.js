@@ -1,29 +1,16 @@
 const express=require('express');
-const { signup, login, changePassword } = require('../controllers/auth');
-const {auth,isAdmin, isStudent}=require('../middlewares/auth');
-const { getCourseDetails } = require('../controllers/courseCon');
-const { getCategoryPageDetails,createCategory } = require('../controllers/categoryCon');
+const { signup, login, changePassword, sendOTP } = require('../controllers/auth');
+const {auth}=require('../middlewares/auth');
 const { contactUs } = require('../controllers/contactUs');
-const {createSection, updateSection, deleteSection}=require('../controllers/sectionCon');
-const { createSubSection, updateSubSection, deleteSubSection } = require('../controllers/subSection');
+const { resetPasswordToken, resetPassword } = require('../controllers/resetPassword');
 const router=express.Router;
+exports.router = router;
 
-router.post("/sign-up",signup);
+router.post("/signUp",signup);
 router.post("/login",login);
-router.post("/change-password",changePassword);
-
-router.get("/course",auth,isStudent,getCourseDetails);
-router.get("/category-courses",auth,isStudent,getCategoryPageDetails);
-router.post('/contact-us',contactUs);
-
-router.post("/create-course",auth,isInstructor,createCourse);
-router.post("/create-section",auth,isInstructor,createSection);
-router.update("/update-section",auth,isInstructor,updateSection);
-router.delete("/delete-section",auth,isInstructor,deleteSection);
- 
-router.post("/create-subSection",auth,isInstructor,createSubSection);
-router.update("/update-subSection",auth,isInstructor,updateSubSectionSubSection);
-router.delete("/delete-subSection",auth,isInstructor,deleteSubSection);
-
-router.post("/create-category",auth,isAdmin,createCategory);
+router.post("/changePassword",auth,changePassword);
+router.post('/sendOTP',auth,sendOTP);
+router.post('/contactUs',auth,contactUs);
+router.post('/resetPasswordToken',resetPasswordToken);
+router.post('/resetPassword',resetPassword);
 exports.module=router;
