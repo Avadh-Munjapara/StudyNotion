@@ -1,7 +1,8 @@
 const { getUserDetails, updateProfile, deleteAccount, updateDisplayPicture, getEnrolledCourses } = require('../controllers/profileCon');
-
-const router=require('express').Router;
-
+const { auth } = require('../middlewares/auth');
+    
+const  express  = require('express');
+const router=express.Router();
 router.get('/getUserDetails',auth,getUserDetails);
 router.put('/updateProfile',auth,updateProfile);
 router.delete('/deleteAccount',auth,deleteAccount);

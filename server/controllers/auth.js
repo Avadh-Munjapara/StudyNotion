@@ -2,7 +2,7 @@ const { generate } = require('otp-generator');
 const OTP=require('../models/OTP');
 const Profile = require('../models/Profile');
 const User = require('../models/User');
-const bcrypt=requrie('bcrypt');
+const bcrypt=require('bcrypt');
 const jwt=require('jsonwebtoken');
 const mailSender = require('../utils/mailSender');
 //signup

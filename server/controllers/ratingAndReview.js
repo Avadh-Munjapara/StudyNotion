@@ -99,7 +99,7 @@ exports.getAllReviews=async(req,res)=>{
     }
 }
 
-expoers.getCourseReviews=async(req,res)=>{
+exports.getCourseReviews=async(req,res)=>{
     try {
         const{courseId}=req.body;
         const cid=new mongoose.Schema.Types.ObjectId(courseId);
