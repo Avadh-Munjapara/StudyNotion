@@ -124,15 +124,15 @@ exports.login=async (req,res)=>{
     }
     //create token
     checkUser.password=undefined;
-    checkUser.token=token;
     const jwtPayload={
         email,
         id:checkUser._id,
         role:checkUser.accountType
     }
     const token=jwt.sign(jwtPayload,process.env.JWT_SECRET,{
-        exporiesIn:'2h'
+        expiresIn:"2h"
     })
+    checkUser.token=token;
     //send cookie and token
     return res.cookie('token',token,{
         expires:new Date(Date.now()+3*24*60*60*1000),
