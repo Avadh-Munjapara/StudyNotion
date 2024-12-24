@@ -5,21 +5,29 @@ require('dotenv').config();
 exports.updateProfile=async(req,res)=>{
     try {
        const{dob="",about="",phoneNumber,gender}=req.body; 
-       if(!gender||!phoneNumber){
-         return res.status(400).json({
-             success:false,
-             message:"gender and phoneNumber fields are required"
-        });
-       }
+    //    if(!gender||!phoneNumber){
+    //      return res.status(400).json({
+    //          success:false,
+    //          message:"gender and phoneNumber fields are required"
+    //     });
+    //    }
        const userId=req.user.id;
        const user=await User.findById(userId);
        const profileId=user.additionalDetails;
-       const profile=await Profile.findByIdAndUpdate(profileId,{
-        gender,
-        dob,
-        about,
-        phoneNumber
-       });
+       const profile=await Profile.findById(profileId);
+       if(about){
+        profile.about=about;
+       }
+       if(dob){
+        profile.dob=dob;
+       }
+       if(phoneNumber){
+        profile.phoneNumber=phoneNumber;
+       }
+       if(gender){
+        profile.gender=gender;
+       }
+       await profile.save();
         return res.status(200).json({
             success:true,
             message:"profile updated successfully",
