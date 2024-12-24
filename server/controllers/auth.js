@@ -44,6 +44,7 @@ exports.signup=async(req,res)=>{
         
     //check for otp
         const recentOTP=await OTP.find({email}).sort({createdAt:-1}).limit(1);
+
         if(recentOTP.length == 0) {
             //OTP not found
             return res.status(400).json({
@@ -51,7 +52,7 @@ exports.signup=async(req,res)=>{
                 message:'OTP not Found',
             });
         }
-        else if(recentOTP.OTP!=otp){
+        else if(recentOTP[0].otp!==otp){
              return res.status(400).json({
                  success:false,
                  message:"otp is not valid"
@@ -75,8 +76,8 @@ exports.signup=async(req,res)=>{
         email,
         accountType,
         password:hashedPassword,
-        additionDetaile:ProfileDetails._id,
-        image:`https://api.dicebear.com/5.x/initials/svg?seed=${firstname} ${lastName}`
+        additionalDetails:ProfileDetails._id,
+        image:`https://api.dicebear.com/5.x/initials/svg?seed=${firstName} ${lastName}`
     })
 
      return res.status(201).json({
