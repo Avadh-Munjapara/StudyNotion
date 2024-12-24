@@ -44,7 +44,7 @@ exports.signup=async(req,res)=>{
         
     //check for otp
         const recentOTP=await OTP.find({email}).sort({createdAt:-1}).limit(1);
-        if(recentOtp.length == 0) {
+        if(recentOTP.length == 0) {
             //OTP not found
             return res.status(400).json({
                 success:false,
@@ -81,7 +81,8 @@ exports.signup=async(req,res)=>{
 
      return res.status(201).json({
          success:true,
-         message:"USer created successfully"
+         message:"USer created successfully",
+         user
     });
  
     } catch (error) {
@@ -161,31 +162,33 @@ exports.sendOTP=async (req,res)=>{
             });
         }
     //checkUser
-        const user=await User.findOne({email});
-        if(user){
+        const user=await User.find({email:email});
+        if(user.length>0){
              return res.status(401).json({
                  success:false,
                  message:"user is already registered"
             });
         }
     //otp create
-        let otp=generate(6,{
+        let otpp=generate(6,{
             upperCaseAlphabets:false,
             lowerCaseAlphabets:false,
-            specialChar:false,
+            specialChars:false,
         });
-        while(otp===await OTP.findOne({OTP:otp}).OTP){
+        console.log("otp in process",otpp);
+        while(otpp===await OTP.findOne({otp:otpp}).otp){
             let otp=generate(6,{
                 upperCaseAlphabets:false,
                 lowerCaseAlphabets:false,
-                specialChar:false,
+                specialChars:false,
             });
         }
     //create dbentry
         const otpDoc=await OTP.create({
-            email,
-            OTP:otp
+            email:email,
+            otp:otpp
         });
+        console.log("otpdoc",otpDoc);
          return res.status(200).json({
              success:true,
              message:"otp set successfully"

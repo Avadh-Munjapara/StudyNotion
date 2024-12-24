@@ -7,9 +7,9 @@ const router=express.Router();
 router.post("/signUp",signup);
 router.post("/login",login);
 router.post("/changePassword",auth,changePassword);
-router.post('/sendOTP',auth,sendOTP);
+router.post('/sendotp',sendOTP);
 router.post('/contactUs',auth,contactUs);
-router.post('/resetPasswordToken',resetPasswordToken);
-router.post('/resetPassword',resetPassword);
+router.post('/resetPasswordToken',auth,resetPasswordToken);
+router.post('/resetPassword',auth,resetPassword);
 
 module.exports=router;
