@@ -2,17 +2,18 @@ const jwt=require('jsonwebtoken');
 require('dotenv').config();
 exports.auth=async (req,res,next)=>{
     try {
-        const token=req.body.token||req.cookie.token||req.header("Authorization").replace("bearer ","");
+        const token=req.body.token||req.cookies.token||req.header("Authorization").replace("bearer ","");
         if(!token){
              return res.status(401).json({
-                 success:false,
+                 success:false, 
                  message:"missing authentication token"
             });
         }
         //token check
         try {
             const decode=jwt.verify(token,process.env.JWT_SECRET);
-            req.token=decode;
+            console.log("decoded token",decode);
+            req.user=decode;
         } catch (error) {
             console.log("invalid token",error);
             return res.status(400).json({
