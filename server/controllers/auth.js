@@ -206,9 +206,9 @@ exports.sendOTP=async (req,res)=>{
 exports.changePassword=async(req,res)=>{
     try {
         //data fetch
-        const{email,oldPassword,password,confirmPassword}=req.body;
+        const{oldPassword,password,confirmPassword}=req.body;
         //validation
-        if(!email||!password||!confirmPassword||!oldPassword){
+        if(!password||!confirmPassword||!oldPassword){
              return res.status(400).json({
                  success:false,
                  message:"all fields are required"
@@ -222,14 +222,14 @@ exports.changePassword=async(req,res)=>{
             });
         }
         //old password check
-        let user=await User.findOne({email});
+        let user=await User.findById(req.user.id);
         if(!user){
              return res.status(400).json({
                  success:false,
                  message:"user is not registered"
             });
         }
-        const oldPassCheck=await bcrypt.compare(password,user.password);
+        const oldPassCheck=await bcrypt.compare(oldPassword,user.password);
         if(!oldPassCheck){
              return res.status(401).json({
                  success:false,
@@ -239,10 +239,10 @@ exports.changePassword=async(req,res)=>{
         //password hash
         const hashedPassword=await bcrypt.hash(password,10);
         //update password in db
-        user=await User.findOneAndUpdate({email},{password:hashedPassword},{new:true})
+        user=await User.findByIdAndUpdate(req.user.id,{password:hashedPassword},{new:true})
         //send mail to user
-        const passUpdateMail=await mailSender(email,"your password has changed",
-            "your password has been changed");
+        const passUpdateMail=await mailSender(req.user.email,"your password has changed",
+           "your password has been changed"); 
         //return response
         return res.status(200).json({
              success:true,

@@ -1,7 +1,6 @@
 const nodeMailer=require('nodemailer');
 require('dotenv').config();
 const mailSender=async (email,title,body)=>{
-    console.log("otp in mailesender",body);
     try{
         // const transporter=nodeMailer.createTransport({
         //     service: "Outlook365",

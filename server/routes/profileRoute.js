@@ -1,3 +1,4 @@
+const { changePassword } = require('../controllers/auth');
 const { getUserDetails, updateProfile, deleteAccount, updateDisplayPicture, getEnrolledCourses } = require('../controllers/profileCon');
 const { auth } = require('../middlewares/auth');
     
@@ -8,5 +9,6 @@ router.put('/updateProfile',auth,updateProfile);
 router.delete('/deleteAccount',auth,deleteAccount);
 router.put('/updateDP',auth,updateDisplayPicture);
 router.get('/getEnrolledCourses',auth,getEnrolledCourses);
+router.post('/changePassword',auth,changePassword);
 
 module.exports=router;
