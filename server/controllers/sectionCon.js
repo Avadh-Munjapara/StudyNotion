@@ -9,6 +9,13 @@ exports.createSection=async (req,res)=>{
                  message:"all fields are required"
             });
         }
+        const course=await Course.findById(courseId);
+        if(!course){
+             return res.status(400).json({
+                 success:false,
+                 message:"the course does not exist"
+            });
+        }
         const section=await Section.create({
             name
         });

@@ -12,7 +12,9 @@ exports.createSubSection=async (req,res)=>{
             });
         }
         const{videoFile}=req.files;
-        const video=await videoUpload(videoFile.tempFilePath,process.env.FOLDERNAME);
+        console.log("videoFile",videoFile);
+        const video=await videoUpload(videoFile,process.env.FOLDERNAME);
+        console.log("video",video);
         const subSection=await SubSection.create({
             title,timeDuration,description,videoUrl:video.secure_url
         });
@@ -22,7 +24,8 @@ exports.createSubSection=async (req,res)=>{
 
          return res.status(201).json({
              success:true,
-             message:"section created successfully",
+             message:"subSection created successfully",
+             subSection,
              updatedSection
         });
     
@@ -38,14 +41,19 @@ exports.createSubSection=async (req,res)=>{
 
 exports.updateSubSection=async (req,res)=>{
     try {
-        const{subectionId,name,title,timeDuration}=req.body;
-        if(!subectionId||(!name||!title||!timeDuration)){
+        const{subSectionId,name,title,timeDuration}=req.body;
+        const {video}=req.files;
+        if(!subSectionId||(!name && !title && !timeDuration && !video)){
             return res.status(400).json({
                 success:false,
                 message:"subsectionid and of the field are required"
            });
        }
-       let updateObject; 
+       let updateObject={}; 
+       if(video){
+        const videoUploaded=await videoUpload(video,process.env.FOLDERNAME);
+        updateObject.videoUrl=videoUploaded.secure_url;
+       }
        if(name){
         updateObject.name=name
        }
@@ -55,7 +63,9 @@ exports.updateSubSection=async (req,res)=>{
        if(timeDuration){
         updateObject.timeDuration=timeDuration
        }
-        const updatedSubSection=await SubSection.findByIdAndUpdate(subectionId,updateObject);
+       console.log("update object",updateObject);
+        const updatedSubSection=await SubSection.findByIdAndUpdate(subSectionId,updateObject,{new:true});
+        console.log("updated subsection",updatedSubSection);
         return res.status(200).json({
         success:true,
         message:"subsection updated successfully",
@@ -72,14 +82,19 @@ exports.updateSubSection=async (req,res)=>{
 
 exports.deleteSubSection=async (req,res)=>{
     try {
-        const{subSectionId}=req.params;
-     
+        const{sectionId,subSectionId}=req.body;
         const deletedSubSection=await SubSection.findByIdAndDelete(subSectionId);
         //should i write code delete subsection from the section?
+        const updatedSection=await Section.findByIdAndUpdate(sectionId,{
+            $pull:{
+                subSections:subSectionId
+            }
+        })
          return res.status(200).json({
              success:true,
              message:"subsection deleted successfully",
-             deletedSubSection
+             deletedSubSection,
+             updatedSection
         });
     } catch (error) {
         console.log('error while deleting subsection', error);

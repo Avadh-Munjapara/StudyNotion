@@ -31,8 +31,9 @@ exports.videoUpload=async(file,folder,height,quality)=>{
         options.quality=quality;
     }
     const upload=await cloudinary.uploader.upload(file.tempFilePath,options);
+    console.log("uploaded video",upload);
     return upload;
   } catch (error) {
-      console.log('something went wrong while uploading image', error);
+      console.log('something went wrong while uploading video', error);
   }
 }

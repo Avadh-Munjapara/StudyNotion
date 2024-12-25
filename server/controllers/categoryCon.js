@@ -62,19 +62,21 @@ exports.getCategoryPageDetails=async (req,res)=>{
                  message:"no category found"
             });
         }
-        if(categoryCourses.length==0){
+        if(categoryCourses.courses.length==0){
              return res.status(404).json({
                  success:false,
                  message:"no courses found for the selected category"
         })
     }
-    const diffCategoryCourses=await Category.find({name:{
+    const diffCategoryCourses=await Category.find({_id:{
         $ne:categoryId 
-    }}).populate("courses").select("courses");
+    }}).select("courses").populate("courses");
     const topSellingCourses=await Course.find({}).sort({studentsEnrolled:"desc"}).limit(10);
      return res.status(200).json({
          success:true,
-         data:[categoryCourses,diffCategoryCourses,topSellingCourses]
+         categoryCourses,
+         diffCategoryCourses,
+         topSellingCourses
     }); 
  } catch (error) {
         console.log('error while fetching category page details', error);
