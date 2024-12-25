@@ -33,7 +33,7 @@ exports.auth=async (req,res,next)=>{
 
 exports.isStudent=async (req,res,next)=>{
     try {
-        if(req.token.role!=="Student"){
+        if(req.user.role!=="Student"){
             return res.status(403).json({
                 success:false,
                 message:"user is not authrized for student route"
@@ -51,7 +51,7 @@ exports.isStudent=async (req,res,next)=>{
 
 exports.isInstructor=async (req,res,next)=>{
     try {
-        if(req.token.role!=="Instructor"){
+        if(req.user.role!=="Instructor"){
             return res.status(403).json({
                 success:false,
                 message:"user is not authrized for Instructor route"
@@ -69,7 +69,7 @@ exports.isInstructor=async (req,res,next)=>{
 
 exports.isAdmin=async (req,res,next)=>{
     try {
-        if(req.token.role!=="Admin"){
+        if(req.user.role!=="Admin"){
             return res.status(403).json({
                 success:false,
                 message:"user is not authrized for Admin route"

@@ -1,6 +1,6 @@
-const course=require('../models/Course');
+const Course=require('../models/Course');
 const Section=require('../models/Section');
-exports.createSection=async (req,res)=>{
+exports.createSection=async (req,res)=>{    
     try {
         const{name,courseId}=req.body;
         if(!name || !courseId){
@@ -12,13 +12,14 @@ exports.createSection=async (req,res)=>{
         const section=await Section.create({
             name
         });
-        const updatedCourse=await User.findByIdAndUpdate(courseId,{
+        const updatedCourse=await Course.findByIdAndUpdate(courseId,{
             $push:{courseContent:section._id}
         },{new:true}).populate("courseContent");
 
          return res.status(201).json({
              success:true,
              message:"section created successfully",
+             section,
              updatedCourse
         });
     
@@ -41,7 +42,7 @@ exports.updateSection=async (req,res)=>{
                 message:"all fields are required"
            });
        }
-        const updatedSection=await Section.findByIdAndUpdate(sectionId,{name:name});
+        const updatedSection=await Section.findByIdAndUpdate(sectionId,{name:name},{new:true});
         return res.status(200).json({
         success:true,
         message:"section updated successfully",
@@ -58,14 +59,23 @@ exports.updateSection=async (req,res)=>{
 
 exports.deleteSection=async (req,res)=>{
     try {
-        const{sectionId}=req.params;
-     
+        const{sectionId,courseId}=req.body;
+        if(!sectionId||!courseId){
+             return res.status(400).json({
+                 success:false,
+                 message:"provide sectionid and courseid both"
+            });
+        }
         const deletedSection=await Section.findByIdAndDelete(sectionId);
         //should i write code delete section from the course
+        const updatedCourse=await Course.findByIdAndUpdate(courseId,{$pull:{
+            courseContent:sectionId
+        }},{new:true});
          return res.status(200).json({
              success:true,
              message:"section deleted successfully",
-             deletedSection
+             deletedSection,
+             updatedCourse
         });
     } catch (error) {
         console.log('error while deleting section', error);

@@ -1,12 +1,13 @@
 const Course = require("../models/Course");
 const User=require("../models/User");
-const category=require("../models/Category");
+const Category=require("../models/Category");
 const { imageUpload } = require("../utils/cloudinaryUpload");
+const { default: mongoose } = require("mongoose");
 exports.createCourse=async(req,res)=>{
     try {
         const{name,description,whatYouWillLearn,price,category}=req.body;
         const {thumbnail}=req.files;
-        if(!name||!description||!whatYouWillLearn||!price||!category||!image){
+        if(!name||!description||!whatYouWillLearn||!price||!category||!thumbnail){
              return res.status(400).json({
                  success:false,
                  message:"all fields are required, somthing is missing"
@@ -26,7 +27,7 @@ exports.createCourse=async(req,res)=>{
                  message:"no category found"
             });
         }
-        const thumbUpload=await imageUpload(thumbnail,process.env.FOLDERNAME)
+        const thumbUpload=await imageUpload(thumbnail,process.env.FOLDERNAME);
         const course=await Course.create({
             name,
             description,
@@ -36,11 +37,12 @@ exports.createCourse=async(req,res)=>{
             instructor:instructor._id,
             thumbnail:thumbUpload.secure_url
         });
-        const updatedCategory=await Category.findByIdAndUpdate(category,{$push:{course:categoryDoc._id}},{new:true});
+        const updatedCategory=await Category.findByIdAndUpdate(category,{$push:{courses:course._id}},{new:true});
         const updatedInstructor=await User.findByIdAndUpdate(instructor._id,{$push:{courses:course._id}},{new:true});
         return res.status(201).json({
              success:true,
-             message:"the course created successfully"
+             message:"the course created successfully",
+             course
         });
     } catch (error) {
         console.log('error while creating course', error);

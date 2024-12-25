@@ -16,7 +16,7 @@ exports.createCategory=async (req,res)=>{
         });
         return res.status(201).json({
             success:true,
-            message:"tag created successfully",
+            message:"category created successfully",
             category
         })
 
@@ -40,7 +40,7 @@ exports.getAllCategory=async(req,res)=>{
         }
         return res.status(200).json({
             success:true,
-            message:"all tags retrieved successfully",
+            message:"all categories retrieved successfully",
             categories
         });
     } catch (error) {
