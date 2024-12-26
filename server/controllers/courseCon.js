@@ -62,16 +62,25 @@ exports.getCourseDetails=async (req,res)=>{
         });
     }
     try {
-        const course=await Course.find({_id:courseId}).populate("ratingAndReviews").populate({
-                                                                                    path:"instructor",
-                                                                                    populate:{
-                                                                                        path:"additinoalDetails",
-                                                                                    }}).populate({
-                                                                                        path:"courseContent",
-                                                                                        populate:{
-                                                                                            path:"subSections"
-                                                                                        }
-                                                                                    }).populate("Category");
+        const course = await Course.find({ _id: courseId })
+          .populate(
+            {
+              path: "instructor",
+              populate: {
+                path: "additionalDetails",
+              },
+            },
+            { strictPopulate: false }
+          ).populate("category")
+          .populate(
+            {
+              path: "courseContent",
+              populate: {
+                path: "subSections",
+              },
+            },
+            { strictPopulate: false }
+        );
         if(!course){
              return res.status(400).json({
                  success:false,
@@ -93,7 +102,13 @@ exports.getCourseDetails=async (req,res)=>{
 
 exports.getAllCourses=async (req,res)=>{
     try {
-        const allCourses=await Course.find({});
+        const allCourses=await Course.find({}).populate({
+            path:'instructor',
+            select:'firstName lastName'
+        }).populate({
+            path:'category',
+            select:'name description'
+        });
          return res.status(200).json({
              success:true,
              message:"query successfull",
