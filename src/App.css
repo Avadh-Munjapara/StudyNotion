@@ -1,1 +1,20 @@
 /* write your css here */
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.sh{
+    box-shadow: -1px -1px white inset;
+}
+
+/* .glass{
+background: rgba(92, 107, 239, 0.2);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(5px);
+-webkit-backdrop-filter: blur(5px);
+border: 1px solid rgba(92, 107, 239, 0.3);
+} */
+
