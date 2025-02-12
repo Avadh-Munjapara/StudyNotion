@@ -1,3 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
 /* write your css here */
 *{
     box-sizing: border-box;
@@ -9,6 +14,15 @@
     box-shadow: -1px -1px white inset;
 }
 
+.glass{
+/* From https://css.glass */
+background: rgba(71, 80, 107, 0.29);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(11px);
+-webkit-backdrop-filter: blur(11px);
+border: 1px solid rgba(71, 80, 107, 0.3);
+}
 /* .glass{
 background: rgba(92, 107, 239, 0.2);
 border-radius: 16px;
