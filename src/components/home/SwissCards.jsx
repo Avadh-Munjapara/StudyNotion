@@ -6,7 +6,7 @@ import card3 from '../../assets/Images/Plan_your_lessons.png';
 import HighlightedText from './HighlightedText';
 const SwissCards = () => {
     return (
-        <div className='w-11/12 flex flex-col mx-auto items-center justify-center gap-8 my-20'>
+        <div className='w-11/12 flex flex-col mx-auto items-center justify-center gap-8 py-20'>
             <div className='flex flex-col items-center '>
                 <h3 className='text-4xl font-semibold'>Your swiss knife for <HighlightedText text={'learning any language'}/></h3>
                 <p className='text-center max-w-[700px] font-medium'>Using spin making learning multiple languages easy. with 20+ languages realistic voice-over, progress tracking, custom schedule and more.</p>
