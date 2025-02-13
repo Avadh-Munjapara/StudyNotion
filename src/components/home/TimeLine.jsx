@@ -73,7 +73,7 @@ const TimeLine = () => {
           />
         </div>
         <div className="absolute h-full w-[calc(100%+10px)] top-[1%] left-[-1%] opacity-60 blur-lg rounded-full bg-gradient-to-r from-[#9CECFB] via-[#65C7F7] to-[#0052D4]"></div>
-        <div className="absolute z-20 flex gap-9 bg-[#014A32] -bottom-10 left-20 py-9 px-12">
+        <div className="absolute z-20 flex gap-9 bg-[#014A32] -bottom-10 left-[5.5rem] py-9 px-12">
             <div className=" flex items-center  gap-5 pr-3"> 
                 <p className="text-4xl font-[700] text-white">10</p>
                 <div className="text-sm text-[#05A77B]"> 

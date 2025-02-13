@@ -6,6 +6,7 @@ import HighlightedText from "../components/home/HighlightedText";
 import banner from "../assets/Images/homeVideo.mp4";
 import CodeSection from "../components/home/CodeSection";
 import TimeLine from "../components/home/TimeLine";
+import SwissCards from "../components/home/SwissCards";
 const Home = () => {
   return (
     <div className="">
@@ -111,7 +112,10 @@ const Home = () => {
 
             </div>
             </div>
+
             <TimeLine/>
+
+            <SwissCards/>
 
       </div>
       {/* section3 */}
