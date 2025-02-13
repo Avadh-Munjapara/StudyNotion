@@ -3,13 +3,14 @@ import { IoMdArrowRoundForward } from "react-icons/io";
 import CustomButton from "../components/home/CustomButton";
 import { Link } from "react-router-dom";
 import HighlightedText from "../components/home/HighlightedText";
-import banner from "../assets/Images/banner.mp4";
+import banner from "../assets/Images/homeVideo.mp4";
 import CodeSection from "../components/home/CodeSection";
+import TimeLine from "../components/home/TimeLine";
 const Home = () => {
   return (
-    <div className="w-full flex flex-col items-center">
+    <div className="">
       {/* section1 */}
-      <div className="w-11/12 flex flex-col gap-20">
+      <div className="w-11/12 flex flex-col gap-20 items-center mx-auto">
         <div className=" flex flex-col pt-[124px] gap-4 items-center ">
           <Link
             to={"/signUp"}
@@ -84,7 +85,35 @@ const Home = () => {
         </div>
       </div>
       {/* section2 */}
+      <div className=" bg-pure-greys-5 text-richblack-700">
+            <div className="chex h-72 flex items-center justify-center">
+              <div className="flex gap-6">
+                <CustomButton active={true} linkTo={"/courses"}>
+                  Explore full catalog
+                  <IoMdArrowRoundForward />
+                </CustomButton>
 
+                <CustomButton active={false} linkTo={"/"}>
+                  Learn more
+                  <IoMdArrowRoundForward />
+                </CustomButton>
+              </div>
+            </div>
+            <div className="w-11/12 mx-auto flex justify-center">
+            <div className="h-[300px] flex flex-col justify-center"> 
+                <div className="flex gap-12 h-fit"> 
+                    <p className="text-4xl font-bold w-[51%]">Get the skills you need for a <HighlightedText text={"job that is in demand."}/></p>
+                    <div className="flex flex-col gap-14 w-[49%]">
+                      <p className="font-[500]">The modern StudyNotion is the dictates its own terms. Today, to be a competitive specialist requires more than professional skills.</p>
+                      <CustomButton active={true} linkTo={"/"}>Learn More</CustomButton>
+                    </div>
+                </div>
+
+            </div>
+            </div>
+            <TimeLine/>
+
+      </div>
       {/* section3 */}
 
       {/* footersection */}
