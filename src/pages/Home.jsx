@@ -8,6 +8,7 @@ import CodeSection from "../components/home/CodeSection";
 import TimeLine from "../components/home/TimeLine";
 import SwissCards from "../components/home/SwissCards";
 import instructor from "../assets/Images/Instructor.png";
+import Footer from "../components/comman/Footer";
 const Home = () => {
   return (
     <div className="">
@@ -101,7 +102,7 @@ const Home = () => {
             </CustomButton>
           </div>
         </div>
-        <div className="w-11/12 mx-auto flex justify-center">
+        <div className="w-11/12 mx-auto flex justify-center ">
           <div className="h-[300px] flex flex-col justify-center">
             <div className="flex gap-12 h-fit">
               <p className="text-4xl font-bold w-[51%]">
@@ -148,6 +149,7 @@ const Home = () => {
       </div>
 
       {/* footersection */}
+      <Footer/>
     </div>
   );
 };
