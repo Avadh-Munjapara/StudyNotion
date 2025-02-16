@@ -9,6 +9,7 @@ import TimeLine from "../components/home/TimeLine";
 import SwissCards from "../components/home/SwissCards";
 import instructor from "../assets/Images/Instructor.png";
 import Footer from "../components/comman/Footer";
+import CardsWindow from "../components/home/CardsWindow";
 const Home = () => {
   return (
     <div className="">
@@ -86,6 +87,8 @@ const Home = () => {
             }
           />
         </div>
+
+        <CardsWindow/>
       </div>
       {/* section2 */}
       <div className=" bg-pure-greys-5 text-richblack-700">
