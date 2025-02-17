@@ -34,10 +34,10 @@ const Home = () => {
             instructors.{" "}
           </p>
           <div className="flex gap-4 mt-5">
-            <CustomButton linkTo={"/"} active={true}>
+            <CustomButton linkTo={"/login"} active={true}>
               Learn More <IoMdArrowRoundForward />
             </CustomButton>
-            <CustomButton linkTo={"/"} active={false}>
+            <CustomButton linkTo={"/signUp"} active={false}>
               Book a Demo
             </CustomButton>
           </div>
