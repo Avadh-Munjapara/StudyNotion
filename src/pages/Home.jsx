@@ -10,9 +10,11 @@ import SwissCards from "../components/home/SwissCards";
 import instructor from "../assets/Images/Instructor.png";
 import Footer from "../components/comman/Footer";
 import CardsWindow from "../components/home/CardsWindow";
+import NavBar from "../components/comman/NavBar";
 const Home = () => {
   return (
     <div className="">
+      <NavBar/>
       {/* section1 */}
       <div className="w-11/12 flex flex-col gap-20 items-center mx-auto">
         <div className=" flex flex-col pt-[124px] gap-4 items-center ">

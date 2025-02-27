@@ -3,8 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@reduxjs/toolkit": "^2.5.1",
+    "@reduxjs/toolkit": "^2.6.0",
+    "axios": "^1.8.1",
     "concurrently": "^9.1.1",
+    "dotenv": "^16.4.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hot-toast": "^2.5.2",
@@ -25,8 +27,9 @@
     "url": "https://github.com/thepranaygupta/react-tailwind-css-starter-pack/issues"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test",
     "eject": "react-scripts eject",
     "server": "cd server && npm run dev",
     "dev": "concurrently -n \"client,server\" -c \"bgBlue,bgYellow\" \"npm start\" \"npm run server\""
@@ -50,6 +53,14 @@
     ]
   },
   "devDependencies": {
-    "tailwindcss": "^3.2.7"
+    "buffer": "^6.0.3",
+    "crypto-browserify": "^3.12.1",
+    "customize-cra": "^1.0.0",
+    "process": "^0.11.10",
+    "react-app-rewired": "^2.2.1",
+    "stream-browserify": "^3.0.0",
+    "tailwindcss": "^3.2.7",
+    "vm-browserify": "^1.1.2",
+    "webpack": "^5.98.0"
   }
 }

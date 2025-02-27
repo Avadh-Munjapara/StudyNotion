@@ -8,7 +8,13 @@ import { rootReducer } from "./reducer";
 import { Provider } from "react-redux";
 import { Toaster } from "react-hot-toast";
 const root = ReactDOM.createRoot(document.getElementById("root"));
-
+if (typeof window !== 'undefined') {
+  window.process = {
+    env: {
+      NODE_ENV: process.env.NODE_ENV || 'development',
+    },
+  };
+}
 const store = configureStore({
   reducer: rootReducer,
 });

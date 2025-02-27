@@ -8,10 +8,10 @@ const authSclie=createSlice({
     initialState,
     reducers:{
         setToken(state,action){
-            state.token=action.payload.token
+            state.token=action.payload.token;
         },
         removeToken(state,action){
-            state.token=null
+            state.token=null;
         }
     }
 })
