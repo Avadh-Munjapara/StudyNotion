@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import { IoCartOutline } from "react-icons/io5";
 import { FaRegCircleUser } from "react-icons/fa6";
 import apiConnector from "../../services/apiConnector";
+import { IoIosArrowDropdown } from "react-icons/io";
 import { courses } from "../../services/apis";
 import { useState } from "react";
 import axios from "axios";
@@ -15,8 +16,8 @@ const NavBar = () => {
   useEffect(() => {
     apiConnector(courses.totalCourses,"get")
       .then((response) => {
-        setCategories(response.data);
-        console.log(response.data.categories.length);
+        setCategories(response.data.categories);
+        console.log(response.data.categories);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
@@ -38,7 +39,29 @@ const NavBar = () => {
             NavbarLinks.map((item,index)=>{
                 return <li key={index}>    
                     {item.title === 'Catalog'
-                    ? (console.log("catalog"))
+                    ? <div className="text-richblack-200 relative group cursor-pointer">
+                     <div className="flex gap-1 items-center">
+                     Catalog<IoIosArrowDropdown />
+                     </div>
+                      <div className="group-hover:visible invisible absolute px-5 left-0 top-8 rounded-xl py-3 text-black bg-richblack-25">
+                        <div className="z-10 relative">
+
+                      {
+                        categories.length===0
+                        ?('No Categroies have been created')
+                        :(
+                        categories.map((category, index) => {
+                          return <li key={index}>{category.name}</li>
+                        })
+                      )
+                      }
+                        </div>
+                          
+                      <div className="bg-richblack-25 h-10 w-10 absolute top-0 left-12 rotate-45">
+
+                      </div>
+                      </div>
+                    </div>
                     : <Link className={`${location.pathname===`${item.path}`?"text-yellow-5":"text-richblack-200"}`} to={item.path}>{item.title}</Link>}
                 </li>
             })

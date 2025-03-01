@@ -12,10 +12,3 @@ const apiConnector = async (url, method, data = null, headers = null, params = n
 
 export default apiConnector;
 
-// Example usage with courses
-console.log("Base URL:", process.env.REACT_APP_BASE_URL); // Should log "http://localhost:3000"
-console.log("Total Courses URL:", courses.totalCourses); // Should log "http://localhost:3000/allCategory"
-
-apiConnector(courses.totalCourses, "GET")
-  .then((response) => console.log(response.data))
-  .catch((error) => console.error(error));
