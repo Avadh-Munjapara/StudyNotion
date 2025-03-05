@@ -30,7 +30,7 @@ exports.resetPasswordToken=async(req,res)=>{
                     {new:true})
         
                 //create link
-                const url=`http://localhost:3000/reset-password/${resetToken}`;
+                const url=`http://localhost:3000/forgot-password/${resetToken}`;
         
                 //send link to email
                 const resetPasswordMail=await mailSender(email,"link for reseting password",
@@ -83,7 +83,7 @@ exports.resetPassword=async(req,res)=>{
         //hash password
         const hashedPass=await bcrypt.hash(password,10);
         //update password in db
-        const updatedUser=await User.findOneAndUpdate({token},
+        const updatedUser=await User.findOneAndUpdate({resetToken:token},
             {password:hashedPass,resetToken:'',tokenExpires:''},{new:true});
         
          return res.status(200).json({

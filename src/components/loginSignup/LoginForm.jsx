@@ -1,16 +1,18 @@
-import React, { useState } from 'react';
+import React, { useDebugValue, useState } from 'react';
 import toast from 'react-hot-toast';
 import { FaEye,FaEyeSlash } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
 import UserToggleTab from './UserToggleTab';
 import apiConnector from "../../services/apiConnector";
 import { auth } from '../../services/apis';
+import { login } from '../../services/operations/authApi';
+import { useDispatch } from 'react-redux';
 
 const LoginForm = ({setIsLoggedIn,changeTab}) => {
     const[user,setUser]=useState('Student');
     const [showPass, setshowPass] = useState(false);
     const navigate=useNavigate();
-
+    const dispatch=useDispatch();
     const userHandler=(e)=>{ 
         if(e.target.value!=user){user==='Student'?setUser('Instructor'):setUser('Student');
         changeTab();    }
@@ -37,14 +39,7 @@ const LoginForm = ({setIsLoggedIn,changeTab}) => {
     function submitHandler(event){
         event.preventDefault();
         setIsLoggedIn(true);
-        console.log(formData);
-        const response=apiConnector(auth.login,'post',formData).then((response)=>{
-            console.log("user login successful",response);
-        }).catch((error)=>{
-            console.log("user login failed",error);
-        });
-        toast.success('Logged in successfully');
-        navigate("/dashboard")
+        login(formData.email,formData.password,dispatch,navigate);      
     }
 
     return (

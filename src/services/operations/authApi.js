@@ -1,9 +1,8 @@
 import toast from "react-hot-toast";
-import { setLoading } from "../../slices/authSlice";
+import { setLoading, setToken } from "../../slices/authSlice";
 import apiConnector from "../apiConnector";
 import {auth} from '../apis';
-import { useDispatch } from "react-redux";
-const {SENDOTPAPI,SIGNUPAPI}= auth;
+const {SENDOTPAPI,SIGNUPAPI,LOGINAPI}= auth;
 export async function sendOTP(email,dispatch){
     try{
 
@@ -28,5 +27,18 @@ export async function signup(data,navigate){
     catch(error){
         console.log("error in signup operation",error);
         toast.error("failed to signup");
+    }
+}
+
+export async function login(email,password,dispatch,navigate){
+    try{
+      const response=await apiConnector(LOGINAPI,"POST",{email,password});
+      console.log("login resposne",response);
+      toast.success("login successfull");
+      dispatch(setToken(response.data.token));
+       navigate('/dashboard');
+    }catch(error){
+        console.log("error in login operation",error);
+        toast.error("failed to login");
     }
 }

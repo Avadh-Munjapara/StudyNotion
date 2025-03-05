@@ -9,20 +9,20 @@ const Verify = () => {
     const dispatch=useDispatch();
   const [otp, setOtp] = useState("");
   const navigate = useNavigate();
-  const resendOTP=()=>{
-        sendOTP(signupData.email,dispatch);
-  }
-  const submitHandler = (event) => {
-    event.preventDefault();
-    const data = {
-      ...signupData,
-      otp: otp,
-    };
-    console.log("signup data", data);
-    signup(data,navigate);
-  };
   const signupData = useSelector((state) => state.auth.signupData);
   const loading = useSelector((state) => state.auth.loading);
+  const resendOTP=()=>{
+    sendOTP(signupData.email,dispatch);
+}
+const submitHandler = (event) => {
+event.preventDefault();
+const data = {
+  ...signupData,
+  otp: otp,
+};
+console.log("signup data", data);
+signup(data,navigate);
+};
   return (
     <>
       {loading ? (
