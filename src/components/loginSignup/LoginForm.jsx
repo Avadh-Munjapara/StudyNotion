@@ -3,14 +3,16 @@ import toast from 'react-hot-toast';
 import { FaEye,FaEyeSlash } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
 import UserToggleTab from './UserToggleTab';
-const LoginForm = ({setIsLoggedIn,changeTab}) => {
+import apiConnector from "../../services/apiConnector";
+import { auth } from '../../services/apis';
 
-    const[user,setUser]=useState('student');
+const LoginForm = ({setIsLoggedIn,changeTab}) => {
+    const[user,setUser]=useState('Student');
     const [showPass, setshowPass] = useState(false);
     const navigate=useNavigate();
 
     const userHandler=(e)=>{ 
-        if(e.target.value!=user){user==='student'?setUser('instructor'):setUser('student');
+        if(e.target.value!=user){user==='Student'?setUser('Instructor'):setUser('Student');
         changeTab();    }
     }
 
@@ -36,6 +38,11 @@ const LoginForm = ({setIsLoggedIn,changeTab}) => {
         event.preventDefault();
         setIsLoggedIn(true);
         console.log(formData);
+        const response=apiConnector(auth.login,'post',formData).then((response)=>{
+            console.log("user login successful",response);
+        }).catch((error)=>{
+            console.log("user login failed",error);
+        });
         toast.success('Logged in successfully');
         navigate("/dashboard")
     }

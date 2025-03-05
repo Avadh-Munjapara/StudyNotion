@@ -5,12 +5,16 @@ import { useNavigate } from 'react-router-dom';
 import {useState} from 'react';
 import UserToggleTab from "./UserToggleTab";
 import { countrycode } from "../../data/countrycode";
+import { useDispatch } from "react-redux";
+import {setLoading, setSignupData} from '../../slices/authSlice'
+import { sendOTP } from "../../services/operations/authApi";
 const SignupForm = ({setIsLoggedIn,changeTab}) => {
 
-    const [user, setUser] = useState("student");
+    const [user, setUser] = useState("Student");
     const [showPass, setshowPass] = useState(false);
     const [showConPass, setshowConPass] = useState(false);
     const navigate=useNavigate();
+    const dispatch=useDispatch();
     function passHandler(){
         setshowPass(!showPass);
     }
@@ -44,13 +48,24 @@ const SignupForm = ({setIsLoggedIn,changeTab}) => {
             return;
         } 
         console.log(formData);
-        setIsLoggedIn(true);
-        toast.success('Accout Created successfully');
-        navigate("/dashboard");
+        // setIsLoggedIn(true);
+        // toast.success('Account Created successfully');
+        const data={
+          "firstName":formData.fName,
+          "lastName":formData.lName,
+          "email":formData.email,
+          "password":formData.password,
+          "confirmPassword":formData.cpassword,
+          "accountType":user,
+        }
+        dispatch(setSignupData(data));
+        dispatch(setLoading(true));
+        sendOTP(formData.email,dispatch);
+        navigate("/verify-email");
     }
 
     function userHandler(e){
-      if(e.target.value!=user){user==='student'?setUser('instructor'):setUser('student');
+      if(e.target.value!=user){user==='Student'?setUser('Instructor'):setUser('Student');
         changeTab();    }
     }
 
@@ -108,7 +123,7 @@ const SignupForm = ({setIsLoggedIn,changeTab}) => {
           />
         </div>
 
-        <div className="flex flex-col gap-1">
+        {/* <div className="flex flex-col gap-1">
           <label htmlFor="phoneNumber">Phone Number<span className='text-red-500 text-sm absolute'>*</span></label>
           <div className="flex gap-3">
             <select className="text-white w-2/5 rounded-md px-3 py-2 outline-none bg-[#161D29]" name="code" id="code">
@@ -132,7 +147,7 @@ const SignupForm = ({setIsLoggedIn,changeTab}) => {
           />
           </div>
           
-        </div>
+        </div> */}
 
         <fieldset className="flex gap-3">
 

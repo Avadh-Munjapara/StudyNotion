@@ -4,6 +4,7 @@ import "./App.css";
 import Home from "./pages/Home";
 import Signup from "./pages/SignUp";
 import Login from "./pages/Login";
+import Verify from "./pages/Verify";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Route path="/" element={<Home/>}></Route>
       <Route path="/signUp" element={<Signup/>}></Route>
       <Route path="/login" element={<Login/>}></Route>
+      <Route path="/verify-email" element={<Verify/>}></Route>
     </Routes>
    </div>
    
