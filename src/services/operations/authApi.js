@@ -36,7 +36,7 @@ export async function login(email,password,dispatch,navigate){
       console.log("login resposne",response);
       toast.success("login successfull");
       dispatch(setToken(response.data.token));
-       navigate('/dashboard');
+       navigate('/');
     }catch(error){
         console.log("error in login operation",error);
         toast.error("failed to login");

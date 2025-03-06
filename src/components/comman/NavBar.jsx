@@ -1,18 +1,21 @@
-import React, { use, useEffect } from "react";
+import React, { use, useEffect, useRef } from "react";
 import logo from "../../assets/Logo/Logo-Full-Light.png";
 import { NavbarLinks } from "../../data/navbar-links";
-import { Link, matchRoutes, useLocation } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { Link, matchRoutes, Navigate, useLocation, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { IoCartOutline } from "react-icons/io5";
 import { FaRegCircleUser } from "react-icons/fa6";
 import apiConnector from "../../services/apiConnector";
 import { IoIosArrowDropdown } from "react-icons/io";
 import { courses } from "../../services/apis";
 import { useState } from "react";
-import axios from "axios";
+import { MdLogout } from "react-icons/md";
+import { removeToken } from "../../slices/authSlice";
 const NavBar = () => {
+  const boxRef=useRef(null);
   const [categories, setCategories] = useState([]);
-
+  const navigate=useNavigate();
+const dispatch=useDispatch();
   useEffect(() => {
     apiConnector(courses.totalCourses,"get")
       .then((response) => {
@@ -25,6 +28,21 @@ const NavBar = () => {
   }, []);
   const token=useSelector((state)=> state.auth.token);
   const totalItems=useSelector((state)=> state.cart.totalItems);
+  const showBox=()=>{
+    if(boxRef.current.classList.contains('invisible')){
+      boxRef.current.classList.remove("invisible");
+      boxRef.current.classList.add("visible");
+    }else{
+      boxRef.current.classList.add("invisible");
+      boxRef.current.classList.remove("visible");
+    }
+  }
+
+  const logoutHandler=(e)=>{
+    dispatch(removeToken());
+    console.log("token",token);
+    navigate('/');
+  }
   console.log("token",token);
   const location=useLocation();
   return (
@@ -82,8 +100,8 @@ const NavBar = () => {
               </div>
             ):(
               <div className="flex gap-4">
-                <div className="relative">
-                <IoCartOutline className="text-white h-8 w-8"/>
+                <div className="relative ">
+                <IoCartOutline className="text-white cursor-pointer h-8 w-8"/>
                 {
                   totalItems===0
                   ?("")
@@ -92,7 +110,13 @@ const NavBar = () => {
                     )
                 }
               </div>
+              <div className="relative cursor-pointer" onClick={showBox}>
               <FaRegCircleUser className="text-white h-8 w-8" />
+              <div ref={boxRef} onClick={logoutHandler} className="flex gap-1 items-center  right-0 -bottom-14 invisible  text-richblack-200 absolute bg-richblack-700 px-3 py-2 ">
+              <MdLogout />
+              Logout
+              </div>
+              </div>
               </div>
             )
           }
