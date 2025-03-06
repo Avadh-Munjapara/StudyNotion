@@ -1,10 +1,8 @@
 import React, { useDebugValue, useState } from 'react';
-import toast from 'react-hot-toast';
 import { FaEye,FaEyeSlash } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
 import UserToggleTab from './UserToggleTab';
-import apiConnector from "../../services/apiConnector";
-import { auth } from '../../services/apis';
+import { Link } from 'react-router-dom';
 import { login } from '../../services/operations/authApi';
 import { useDispatch } from 'react-redux';
 
@@ -61,7 +59,7 @@ const LoginForm = ({setIsLoggedIn,changeTab}) => {
             }
             </div>
             </div>
-            <a href='#' className='absolute -bottom-5 right-0 text-[12px] text-[#47A5C5]'>Forgot Password</a>
+            <Link to='/forgot-password' className='absolute -bottom-5 right-0 text-[12px] text-[#47A5C5]'>Forgot Password</Link>
             </div>
             <button className='w-full mt-5 py-2 bg-[#FFD60A] text-black rounded-md'>Sign In</button>
 

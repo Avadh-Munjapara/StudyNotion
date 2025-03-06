@@ -43,7 +43,6 @@ const dispatch=useDispatch();
     console.log("token",token);
     navigate('/');
   }
-  console.log("token",token);
   const location=useLocation();
   return (
     <div className="w-full bg-richblack-900 border-b-[0.5px] flex  border-richblack-500 h-14">

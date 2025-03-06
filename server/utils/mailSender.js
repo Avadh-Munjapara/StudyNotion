@@ -25,7 +25,7 @@ const mailSender=async (email,title,body)=>{
             from:"StudyNotion",
             to:`${email}`,
             subject:`${title}`,
-            text:`one time password for studynotion signup is ${body}`,
+            text:`${body}`,
         })    
         console.log(mailInfo);
         return mailInfo;

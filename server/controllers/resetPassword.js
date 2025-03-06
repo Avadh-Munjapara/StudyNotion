@@ -85,7 +85,8 @@ exports.resetPassword=async(req,res)=>{
         //update password in db
         const updatedUser=await User.findOneAndUpdate({resetToken:token},
             {password:hashedPass,resetToken:'',tokenExpires:''},{new:true});
-        
+        const sentMail=await mailSender(updatedUser.email,"Your password has reset",
+            "your studyNotion password has successfully changed!")
          return res.status(200).json({
              success:true,
              message:"password reseted successfully"

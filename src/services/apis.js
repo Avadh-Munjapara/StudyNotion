@@ -8,6 +8,7 @@ export const auth={
   login:`${baseUrl}/auth/login`,
   SENDOTPAPI:`${baseUrl}/auth/sendotp`,
   SIGNUPAPI:`${baseUrl}/auth/signup`,
-  LOGINAPI:`${baseUrl}/auth/login`
+  LOGINAPI:`${baseUrl}/auth/login`,
+  PASSWORDTOKENAPI:`${baseUrl}/auth/resetPasswordToken`,
+  FORGOTPASSWORDAPI:`${baseUrl}/auth/resetPassword`,
 };
-

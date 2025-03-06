@@ -2,7 +2,7 @@ import toast from "react-hot-toast";
 import { setLoading, setToken } from "../../slices/authSlice";
 import apiConnector from "../apiConnector";
 import {auth} from '../apis';
-const {SENDOTPAPI,SIGNUPAPI,LOGINAPI}= auth;
+const {SENDOTPAPI,SIGNUPAPI,LOGINAPI,FORGOTPASSWORDAPI,PASSWORDTOKENAPI}= auth;
 export async function sendOTP(email,dispatch){
     try{
 
@@ -35,10 +35,30 @@ export async function login(email,password,dispatch,navigate){
       const response=await apiConnector(LOGINAPI,"POST",{email,password});
       console.log("login resposne",response);
       toast.success("login successfull");
-      dispatch(setToken(response.data.token));
+      dispatch(setToken({token:response.data.token}));
        navigate('/');
     }catch(error){
         console.log("error in login operation",error);
         toast.error("failed to login");
+    }
+}
+
+export async function resetPasswordToken(payLoad,setEmailSent){
+    try{
+        const response=await apiConnector(PASSWORDTOKENAPI,"POST",payLoad);
+        toast.success("mail sent successfully")
+        setEmailSent(true);
+    }catch(error){
+        console.log("error in operation resetpasswordtoken",error);
+    }
+}
+
+export async function forgotPassword(payload,setPassChanged){
+    try {
+        const response=await apiConnector(FORGOTPASSWORDAPI,"POST",payload);
+        toast.success("password updated successfully");
+        setPassChanged(true);
+    } catch (error) {
+        console.log("error in forgotPassword operation",error);
     }
 }
