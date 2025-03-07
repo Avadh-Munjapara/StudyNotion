@@ -15,6 +15,7 @@ const NavBar = () => {
   const boxRef=useRef(null);
   const [categories, setCategories] = useState([]);
   const navigate=useNavigate();
+  const user=useSelector((state)=>state.profile.user);
 const dispatch=useDispatch();
   useEffect(() => {
     apiConnector(courses.totalCourses,"get")
@@ -96,6 +97,7 @@ const dispatch=useDispatch();
               </div>
             ):(
               <div className="flex gap-4">
+              
                 <div className="relative ">
                 <IoCartOutline className="text-white cursor-pointer h-8 w-8"/>
                 {
@@ -107,7 +109,11 @@ const dispatch=useDispatch();
                 }
               </div>
               <div className="relative cursor-pointer" onClick={showBox}>
-              <FaRegCircleUser className="text-white h-8 w-8" />
+              <div className="text-white rounded-full h-8 w-8 "style={{backgroundImage: `url(${user?.image})`}} >
+                {
+                  user?(""):(<FaRegCircleUser/>)
+                }
+              </div>
               <div ref={boxRef} onClick={logoutHandler} className="flex gap-1 items-center  right-0 -bottom-14 invisible  text-richblack-200 absolute bg-richblack-700 px-3 py-2 ">
               <MdLogout />
               Logout

@@ -6,4 +6,4 @@ export const rootReducer=combineReducers({
     auth:authReducer,
     cart:cartReducer,
     profile:profileReducer
-})
+})  

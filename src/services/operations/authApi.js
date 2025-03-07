@@ -40,7 +40,7 @@ export function signup(data, navigate) {
 }
 
 export function login(email, password, navigate) {
-  return async (dispatch) => {
+  return async (dispatch,getState) => {
     const toastId = toast.loading("loading...");
     dispatch(setLoading(true));
     try {
@@ -51,7 +51,14 @@ export function login(email, password, navigate) {
       if (response.data.success) {
         localStorage.setItem("user", JSON.stringify(response.data.user));
         localStorage.setItem("token", JSON.stringify(response.data.token));
-        dispatch(setUser(response.data.user));
+        const user=response.data.user;
+        const image=user.image.split(' ').join("?");
+        console.log(image);
+        const userData={
+          ...user,
+          image
+        }
+        dispatch(setUser(userData));
         dispatch(setToken(response.data.token));
         toast.success("login successfull");
         navigate("/");
