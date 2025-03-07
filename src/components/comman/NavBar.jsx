@@ -10,7 +10,7 @@ import { IoIosArrowDropdown } from "react-icons/io";
 import { courses } from "../../services/apis";
 import { useState } from "react";
 import { MdLogout } from "react-icons/md";
-import { removeToken } from "../../slices/authSlice";
+import { logout } from "../../services/operations/authApi";
 const NavBar = () => {
   const boxRef=useRef(null);
   const [categories, setCategories] = useState([]);
@@ -20,7 +20,6 @@ const dispatch=useDispatch();
     apiConnector(courses.totalCourses,"get")
       .then((response) => {
         setCategories(response.data.categories);
-        console.log(response.data.categories);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
@@ -39,9 +38,7 @@ const dispatch=useDispatch();
   }
 
   const logoutHandler=(e)=>{
-    dispatch(removeToken());
-    console.log("token",token);
-    navigate('/');
+    dispatch(logout(navigate));
   }
   const location=useLocation();
   return (
@@ -68,7 +65,7 @@ const dispatch=useDispatch();
                         ?('No Categroies have been created')
                         :(
                         categories.map((category, index) => {
-                          return <li key={index}>{category.name}</li>
+                          return <div key={index}>{category.name}</div>
                         })
                       )
                       }

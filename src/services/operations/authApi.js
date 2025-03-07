@@ -1,64 +1,112 @@
 import toast from "react-hot-toast";
 import { setLoading, setToken } from "../../slices/authSlice";
 import apiConnector from "../apiConnector";
-import {auth} from '../apis';
-const {SENDOTPAPI,SIGNUPAPI,LOGINAPI,FORGOTPASSWORDAPI,PASSWORDTOKENAPI}= auth;
-export async function sendOTP(email,dispatch){
-    try{
-
-        const response=await apiConnector(SENDOTPAPI,"POST",{email});
-        if(response.data.success){
-            dispatch(setLoading(false));
-            toast.success("otp sent successfully");
-        }
-
-    }
-    catch(error){
-        toast.error("failed to send otp");
-    }
-}
-
-export async function signup(data,navigate){
-    try{
-        const response =await apiConnector(SIGNUPAPI,"POST",data);
-        toast.success("signup successfull");
-        navigate('/login');
-    }
-    catch(error){
-        console.log("error in signup operation",error);
-        toast.error("failed to signup");
-    }
-}
-
-export async function login(email,password,dispatch,navigate){
-    try{
-      const response=await apiConnector(LOGINAPI,"POST",{email,password});
-      console.log("login resposne",response);
-      toast.success("login successfull");
-      dispatch(setToken({token:response.data.token}));
-       navigate('/');
-    }catch(error){
-        console.log("error in login operation",error);
-        toast.error("failed to login");
-    }
-}
-
-export async function resetPasswordToken(payLoad,setEmailSent){
-    try{
-        const response=await apiConnector(PASSWORDTOKENAPI,"POST",payLoad);
-        toast.success("mail sent successfully")
-        setEmailSent(true);
-    }catch(error){
-        console.log("error in operation resetpasswordtoken",error);
-    }
-}
-
-export async function forgotPassword(payload,setPassChanged){
+import { auth } from "../apis";
+import { resetCart } from "../../slices/cartSlice";
+import { setUser } from "../../slices/profileSlice";
+const { SENDOTPAPI, SIGNUPAPI, LOGINAPI, FORGOTPASSWORDAPI, PASSWORDTOKENAPI } = auth;
+export function sendOTP(email, navigate) {
+  return async (dispatch) => {
+    dispatch(setLoading(true));
     try {
-        const response=await apiConnector(FORGOTPASSWORDAPI,"POST",payload);
+      const response = await apiConnector(SENDOTPAPI, "POST", { email });
+      if (response.data.success) {
+        toast.success("otp sent");
+        navigate('/verify-email');
+      }
+    } catch (error) {
+      toast.error("failed to send otp");
+    }
+    dispatch(setLoading(false));
+  };
+}
+
+export function signup(data, navigate) {
+  return async (dispatch) => {
+    setLoading(true);
+    try {
+      const response = await apiConnector(SIGNUPAPI, "POST", data);
+      if(response.data.success){
+          toast.success("signed up ");
+          navigate("/login");
+      }
+    } catch (error) {
+      // console.log("error in signup operation",error);
+      toast.error("failed to signup");
+      navigate('/signup');
+    }
+    setLoading(false);
+  };
+}
+
+export function login(email, password, navigate) {
+  return async (dispatch) => {
+    const toastId = toast.loading("loading...");
+    dispatch(setLoading(true));
+    try {
+      const response = await apiConnector(LOGINAPI, "POST", {
+        email,
+        password,
+      });
+      if (response.data.success) {
+        localStorage.setItem("user", JSON.stringify(response.data.user));
+        localStorage.setItem("token", JSON.stringify(response.data.token));
+        dispatch(setUser(response.data.user));
+        dispatch(setToken(response.data.token));
+        toast.success("login successfull");
+        navigate("/");
+      } else {
+        throw new Error(response.data.message);
+      }
+    } catch (error) {
+      // console.log("error in login operation",error);
+      toast.error("failed to login");
+    }
+    dispatch(setLoading(false));
+    toast.dismiss(toastId);
+  };
+}
+
+export function logout(navigate) {
+  return async (dispatch) => {
+    dispatch(setToken(null));
+    dispatch(setUser(null));
+    dispatch(resetCart());
+    localStorage.removeItem("user");
+    localStorage.removeItem("token");
+    toast.success("logged out");
+    navigate("/");
+  };
+}
+
+export function sendResetPasswordToken(payLoad, setEmailSent) {
+  return async (dispatch) => {
+    dispatch(setLoading(true));
+    try {
+      const response = await apiConnector(PASSWORDTOKENAPI, "POST", payLoad);
+      if(response.data.success){
+        toast.success("mail sent successfully");
+        setEmailSent(true);
+      }
+    } catch (error) {
+      console.log("error in operation resetpasswordtoken", error);
+    }
+    dispatch(setLoading(false));
+  };
+}
+
+export function setForgotPassword(payload, setPassChanged) {
+  return async (dispatch) => {
+    dispatch(setLoading(true));
+    try {
+      const response = await apiConnector(FORGOTPASSWORDAPI, "POST", payload);
+      if(response.data.success){
         toast.success("password updated successfully");
         setPassChanged(true);
+      }
     } catch (error) {
-        console.log("error in forgotPassword operation",error);
+      console.log("error in forgotPassword operation", error);
     }
+    dispatch(setLoading(false));
+  };
 }

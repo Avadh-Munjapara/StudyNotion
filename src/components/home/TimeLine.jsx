@@ -32,10 +32,9 @@ const TimeLine = () => {
       <div className="flex flex-col w-[45%] h-fit">
         {data.map((item, index) => {
           return (
-            <div>
+            <div key={index}>
               <div
                 className="flex flex-row gap-8 items-center text-richblack-700"
-                key={index}
               >
                 <div className="">
                   <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center">

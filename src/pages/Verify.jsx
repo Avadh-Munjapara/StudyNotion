@@ -1,41 +1,39 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import OtpInput from "react-otp-input";
 import { FaLongArrowAltLeft } from "react-icons/fa";
 import { FaClockRotateLeft } from "react-icons/fa6";
 import { sendOTP, signup } from "../services/operations/authApi";
+import Spinner from "../components/comman/Spinner";
 const Verify = () => {
-    const dispatch=useDispatch();
+  const dispatch = useDispatch();
   const [otp, setOtp] = useState("");
   const navigate = useNavigate();
   const signupData = useSelector((state) => state.auth.signupData);
   const loading = useSelector((state) => state.auth.loading);
-  const resendOTP=()=>{
-    sendOTP(signupData.email,dispatch);
-}
-const submitHandler = (event) => {
-event.preventDefault();
-const data = {
-  ...signupData,
-  otp: otp,
-};
-console.log("signup data", data);
-signup(data,navigate);
-};
+  useEffect(()=>{
+    if(!signupData){
+      navigate('/signup');
+    }
+  },[]);  
+  const resendOTP = () => {
+    sendOTP(signupData.email, dispatch);
+  };
+  const submitHandler = (event) => {
+    event.preventDefault();
+    const data = {
+      ...signupData,
+      otp: otp,
+    };
+    dispatch(signup(data,navigate));
+  };
   return (
-    <>
+    <div className="text-white flex justify-center items-center w-screen h-screen">
       {loading ? (
-        <div
-          className="w-full h-screen flex mx-auto justify-center
-    items-center"
-        >
-          <div className="loader"></div>
-        </div>
+        <Spinner></Spinner>
       ) : (
-        <div className="text-white flex justify-center items-center w-screen h-screen">
-
-            <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-3">
           <form onSubmit={submitHandler} className="flex flex-col gap-3">
             <h3 className="text-3xl font-bold">Verify email</h3>
             <p className="text-lg text-[#AFB2BF]">
@@ -76,23 +74,24 @@ signup(data,navigate);
             >
               Verify and Register
             </button>
-            </form>
+          </form>
 
-            <div className="flex justify-between">
-              <Link to="/login" className="flex items-center gap-1">
-                <FaLongArrowAltLeft /> Back to login
-              </Link>
-              <button onClick={resendOTP} className="flex gap-1 text-[#47A5C5] items-center">
-                {" "}
-                <FaClockRotateLeft />
-                Resend it
-              </button>
-            </div>
-
-            </div>
+          <div className="flex justify-between">
+            <Link to="/login" className="flex items-center gap-1">
+              <FaLongArrowAltLeft /> Back to login
+            </Link>
+            <button
+              onClick={resendOTP}
+              className="flex gap-1 text-[#47A5C5] items-center"
+            >
+              {" "}
+              <FaClockRotateLeft />
+              Resend it
+            </button>
+          </div>
         </div>
       )}
-    </>
+    </div>
   );
 };
 

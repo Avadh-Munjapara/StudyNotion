@@ -1,11 +1,11 @@
 import React from "react";
 import toast from 'react-hot-toast';
 import { FaEye,FaEyeSlash } from "react-icons/fa";
-import { useNavigate } from 'react-router-dom'; 
+import { useNavigate, useSearchParams } from 'react-router-dom'; 
 import {useState} from 'react';
 import UserToggleTab from "./UserToggleTab";
 import { countrycode } from "../../data/countrycode";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {setLoading, setSignupData} from '../../slices/authSlice'
 import { sendOTP } from "../../services/operations/authApi";
 const SignupForm = ({setIsLoggedIn,changeTab}) => {
@@ -47,7 +47,6 @@ const SignupForm = ({setIsLoggedIn,changeTab}) => {
             toast.error("password didn't match");
             return;
         } 
-        console.log(formData);
         // setIsLoggedIn(true);
         // toast.success('Account Created successfully');
         const data={
@@ -59,9 +58,7 @@ const SignupForm = ({setIsLoggedIn,changeTab}) => {
           "accountType":user,
         }
         dispatch(setSignupData(data));
-        dispatch(setLoading(true));
-        sendOTP(formData.email,dispatch);
-        navigate("/verify-email");
+        dispatch(sendOTP(formData.email,navigate));
     }
 
     function userHandler(e){
@@ -70,8 +67,8 @@ const SignupForm = ({setIsLoggedIn,changeTab}) => {
     }
 
   return (
-    <div>
-        <div className="flex flex-col gap-4">
+    <div className="flex justify-center mx-auto items-cneter w-full">
+        <div className="flex flex-col h-fit gap-4">
 
         <UserToggleTab user={user} clickHandler={userHandler}/>
 

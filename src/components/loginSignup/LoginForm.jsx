@@ -37,7 +37,7 @@ const LoginForm = ({setIsLoggedIn,changeTab}) => {
     function submitHandler(event){
         event.preventDefault();
         setIsLoggedIn(true);
-        login(formData.email,formData.password,dispatch,navigate);      
+        dispatch(login(formData.email,formData.password,navigate));
     }
 
     return (

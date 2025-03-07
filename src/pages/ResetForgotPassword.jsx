@@ -3,7 +3,9 @@ import { Link, useLocation } from "react-router-dom";
 import { FaLongArrowAltLeft } from "react-icons/fa";
 import { useState } from "react";
 import PassCheck from "../components/passwords/PassCheck";
-import { forgotPassword } from "../services/operations/authApi";
+import { setForgotPassword } from "../services/operations/authApi";
+import { useDispatch, useSelector } from "react-redux";
+import Spinner from "../components/comman/Spinner";
 const ResetForgotPassword = () => {
   const location = useLocation();
   const [match, setMatch] = useState(false);
@@ -22,6 +24,8 @@ const ResetForgotPassword = () => {
     cPassword: "",
   });
   const [passChanged, setPassChanged] = useState(false);
+  const loading = useSelector((state) => state.auth.loading);
+  const dispatch=useDispatch();  
   const changeHandler = (e) => {
     setFormData({
       ...formData,
@@ -51,22 +55,26 @@ const ResetForgotPassword = () => {
     });
   }
 
-  function isFlgasTrue() {
+  function isFlagsTrue() {
     return Object.values(flags).every((flag) => flag === true);
   }
   const submitHandler = (e) => {
     e.preventDefault();
     const token = location.pathname.split("/").at(-1);
-    forgotPassword({
+    dispatch(setForgotPassword({
       token,
       password: formData.password,
       confirmPassword: formData.cPassword,
-    },setPassChanged);
+    },setPassChanged));
+    
   };
 
   return (
     <div className="flex justify-center items-center mx-auto h-screen w-full">
-      {passChanged ? (
+      {
+        loading?(<Spinner/>)
+        :(<>
+         {passChanged ? (
           <div className="flex flex-col w-[400px] gap-2">
             <h2 className="font-bold text-xl text-[#F1F2FF]">
               Reset Completet!
@@ -141,8 +149,9 @@ const ResetForgotPassword = () => {
               </div>
               <button
                 type="submit"
+                disabled={!match || !isFlagsTrue }
                 className={`${
-                  match && isFlgasTrue() ? " " : "cursor-not-allowed"
+                  match && isFlagsTrue() ? " " : "cursor-not-allowed opacity-50 "
                 } bg-[#FFD60A] p-2  mt-3 rounded-lg`}
               >
                 Reset Password
@@ -154,6 +163,9 @@ const ResetForgotPassword = () => {
           </div>
         </>
       )}
+        </>)
+      }
+     
     </div>
   );
 };
