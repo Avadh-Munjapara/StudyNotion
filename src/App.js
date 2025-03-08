@@ -7,6 +7,7 @@ import Login from "./pages/Login";
 import Verify from "./pages/Verify";
 import ForgotPassword from "./pages/ForgotPassword";
 import ResetForgotPassword from "./pages/ResetForgotPassword";
+import About from "./pages/About";
 function App() {
   return (
    <div className="font-inter w-screen overflow-x-hidden min-h-screen bg-richblack-900">
@@ -17,6 +18,7 @@ function App() {
       <Route path="/verify-email" element={<Verify/>}></Route>
       <Route path='/forgot-password' element={<ForgotPassword/>}></Route>
       <Route path='/forgot-password/:id' element={<ResetForgotPassword/>}></Route>
+      <Route path='/about' element={<About/>}></Route>
     </Routes>
    </div>
    

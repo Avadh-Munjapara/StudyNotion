@@ -1,9 +1,22 @@
-import React from 'react';
+import React from "react";
 
-const HighlightedText = ({text}) => {
-    return (
-        <span className={`font-bold bg-gradient-to-r text-transparent bg-clip-text from-[#1FA2FF] via-[#12D8FA] to-[#A6FFCB] text-4xl`}>{text}</span>
-    );
-}
+const HighlightedText = ({
+  text,
+  color1 = "#1FA2FF",
+  color2 = "#12D8FA",
+  color3 = "#A6FFCB",
+}) => {
+  return (
+    <span
+      className={`font-bold  text-transparent
+             bg-clip-text text-4xl`}
+      style={{
+        backgroundImage: `linear-gradient(to bottom right, ${color1}, ${color2}, ${color3})`,
+      }}
+    >
+      {text}
+    </span>
+  );
+};
 
 export default HighlightedText;

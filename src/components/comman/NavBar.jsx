@@ -77,7 +77,7 @@ const dispatch=useDispatch();
                       </div>
                       </div>
                     </div>
-                    : <Link className={`${location.pathname===`${item.path}`?"text-yellow-5":"text-richblack-200"}`} to={item.path}>{item.title}</Link>}
+                    : <Link className={`${location.pathname===`${item.path}`?"text-[#FFD60A] font-bold":"text-richblack-200"}`} to={item.path}>{item.title}</Link>}
                 </li>
             })
           }
@@ -110,9 +110,6 @@ const dispatch=useDispatch();
               </div>
               <div className="relative cursor-pointer" onClick={showBox}>
               <div className="text-white rounded-full h-8 w-8 "style={{backgroundImage: `url(${user?.image})`}} >
-                {
-                  user?(""):(<FaRegCircleUser/>)
-                }
               </div>
               <div ref={boxRef} onClick={logoutHandler} className="flex gap-1 items-center  right-0 -bottom-14 invisible  text-richblack-200 absolute bg-richblack-700 px-3 py-2 ">
               <MdLogout />

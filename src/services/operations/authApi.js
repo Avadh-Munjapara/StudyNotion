@@ -49,8 +49,6 @@ export function login(email, password, navigate) {
         password,
       });
       if (response.data.success) {
-        localStorage.setItem("user", JSON.stringify(response.data.user));
-        localStorage.setItem("token", JSON.stringify(response.data.token));
         const user=response.data.user;
         const image=user.image.split(' ').join("?");
         console.log(image);
@@ -58,6 +56,8 @@ export function login(email, password, navigate) {
           ...user,
           image
         }
+        localStorage.setItem("user", JSON.stringify(userData));
+        localStorage.setItem("token", JSON.stringify(response.data.token));
         dispatch(setUser(userData));
         dispatch(setToken(response.data.token));
         toast.success("login successfull");
