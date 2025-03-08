@@ -12,3 +12,7 @@ export const auth={
   PASSWORDTOKENAPI:`${baseUrl}/auth/resetPasswordToken`,
   FORGOTPASSWORDAPI:`${baseUrl}/auth/resetPassword`,
 };
+
+export const contactEndpoint={
+    SENDMESSAGEAPI:`${baseUrl}/auth/contactUs`,
+}

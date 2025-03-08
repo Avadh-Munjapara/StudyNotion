@@ -8,6 +8,7 @@ exports.contactUs=async(req,res)=>{
              message:"all fields are required"
         });
     }
+
     try {
         const contactAdmin=mailSender(process.env.USEREMAIL,"we have been contaced",
             `the user${email} with name ${firstName} ${lastName} have reached us , and 
@@ -33,5 +34,10 @@ exports.contactUs=async(req,res)=>{
             message: error.message
         });
     }
+
+    return res.json({
+        success:true,
+        message:"message sent successfully!"
+    })
     
 }

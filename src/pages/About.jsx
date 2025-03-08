@@ -7,6 +7,9 @@ import about3img from "../assets/Images/aboutus3.webp";
 import foundingImg from '../assets/Images/FoundingStory.png';
 import BluredSphere from "../components/comman/BluredSphere";
 import NumberInfo from "../components/about/NumberInfo";
+import LearningGrid from "../components/about/LearningGrid";
+import ContactForm from "../components/about/ContactForm";
+import Footer from '../components/comman/Footer';
 const About = () => {
   return (
     <div>
@@ -98,6 +101,22 @@ const About = () => {
           <NumberInfo number={"50+"} info={"Awards"}/>
         </div>
       </div>
+          
+
+      <LearningGrid/>
+
+      <div className="flex flex-col gap-5 items-center">
+        <div className="flex flex-col items-center gap-2">
+        <h2 className="text-richblack-5 text-4xl font-semibold">Get in Touch</h2>
+        <p className="text-richblack-300 font-medium">We’d love to here for you, Please fill out this form.</p>
+        </div>
+        <ContactForm/>
+      </div>
+      
+      {/* review slider */}
+
+
+      <Footer/>
     </div>
   );
 };
