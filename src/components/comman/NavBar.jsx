@@ -44,11 +44,11 @@ const dispatch=useDispatch();
   const location=useLocation();
   return (
     <div className="w-full bg-richblack-900 border-b-[0.5px] flex  border-richblack-500 h-14">
-      <div className="w-11/12 mx-auto flex justify-between items-center">
-        <div>
-          <img src={logo} alt="" />
+      <div className="w-11/12 mx-auto flex justify-between max-w-maxContent items-center">
+        <div className="">
+          <img className="w-40 h-8" src={logo} alt="" />
         </div>
-        <nav className="">
+        <nav className="invisible md:visible">
         <ul className="flex gap-5">
           {
             NavbarLinks.map((item,index)=>{
