@@ -105,7 +105,7 @@ const About = () => {
 
       <LearningGrid/>
 
-      <div className="flex flex-col gap-5 items-center">
+      <div className="flex flex-col gap-5 pb-40 items-center">
         <div className="flex flex-col items-center gap-2">
         <h2 className="text-richblack-5 text-4xl font-semibold">Get in Touch</h2>
         <p className="text-richblack-300 font-medium">We’d love to here for you, Please fill out this form.</p>

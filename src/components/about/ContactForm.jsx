@@ -25,7 +25,7 @@ const ContactForm = () => {
 
   };
   return (
-    <form onSubmit={handleSubmit(submitHandler)} className="pb-60 w-[600px] flex flex-col gap-5">
+    <form onSubmit={handleSubmit(submitHandler)} className=" w-[600px] flex flex-col gap-5">
       <div className="flex gap-5">
         <div className="flex gap-[6px] w-1/2 flex-col">
           <label htmlFor="fName" className="text-richblack-5">
