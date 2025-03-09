@@ -17,7 +17,7 @@ const Home = () => {
       <NavBar/>
       {/* section1 */}
       <div className="w-11/12 flex flex-col gap-20 items-center mx-auto">
-        <div className=" flex flex-col pt-[124px] gap-4 items-center ">
+        <div className=" flex flex-col pt-[124px] gap-4 md:items-center ">
           <Link
             to={"/signUp"}
             className="hover:bg-richblack-900 bg-richblack-800 rounded-full w-fit self-center
