@@ -25,9 +25,9 @@ const ContactForm = () => {
 
   };
   return (
-    <form onSubmit={handleSubmit(submitHandler)} className=" w-[600px] flex flex-col gap-5">
-      <div className="flex gap-5">
-        <div className="flex gap-[6px] w-1/2 flex-col">
+    <form onSubmit={handleSubmit(submitHandler)} className=" max-w-[600px] flex flex-col gap-5">
+      <div className="flex flex-col sm:flex-row gap-5">
+        <div className="flex gap-[6px] sm:w-1/2 flex-col">
           <label htmlFor="fName" className="text-richblack-5">
             First Name
           </label>
@@ -46,7 +46,7 @@ const ContactForm = () => {
           )}
         </div>
 
-        <div className="flex gap-[6px] w-1/2 flex-col">
+        <div className="flex gap-[6px] sm:w-1/2 flex-col">
           <label htmlFor="lName" className="text-richblack-5">
             Last Name
           </label>

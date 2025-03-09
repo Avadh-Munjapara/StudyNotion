@@ -46,9 +46,9 @@ const dispatch=useDispatch();
     <div className="w-full bg-richblack-900 border-b-[0.5px] flex  border-richblack-500 h-14">
       <div className="w-11/12 mx-auto flex justify-between max-w-maxContent items-center">
         <div className="">
-          <img className="w-40 h-8" src={logo} alt="" />
+          <img className="w-[160px] h-[32px]" src={logo} alt="" />
         </div>
-        <nav className="invisible md:visible">
+        <nav className="hidden md:block">
         <ul className="flex gap-5">
           {
             NavbarLinks.map((item,index)=>{
