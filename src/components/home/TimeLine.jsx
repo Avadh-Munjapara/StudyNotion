@@ -28,7 +28,7 @@ const data = [
 ];
 const TimeLine = () => {
   return (
-    <div className="w-11/12 flex justify-center gap-20 items-center mx-auto  pb-14">
+    <div className="w-11/12 flex flex-col items-start sm:items-center lg:flex-row sm:justify-center gap-20 mx-auto  pb-14">
       <div className="flex flex-col w-[45%] h-fit">
         {data.map((item, index) => {
           return (
@@ -72,20 +72,20 @@ const TimeLine = () => {
           />
         </div>
         <div className="absolute h-full w-[calc(100%+10px)] top-[1%] left-[-1%] opacity-60 blur-lg rounded-full bg-gradient-to-r from-[#9CECFB] via-[#65C7F7] to-[#0052D4]"></div>
-        <div className="absolute z-20 flex gap-9 bg-[#014A32] -bottom-10 left-[5.5rem] py-9 px-12">
-            <div className=" flex items-center  gap-5 pr-3"> 
+        <div className="absolute z-20 flex flex-col sm:flex-row gap-9 bg-[#014A32] -bottom-10 left-1 lg:left-[5.5rem] sm:left-[5.5rem] py-9 px-12">
+            <div className=" flex flex-col sm:flex-row items-center  gap-5 "> 
                 <p className="text-4xl font-[700] text-white">10</p>
                 <div className="text-sm text-[#05A77B]"> 
-                <p className="">Years</p>
-                <p className="">Experiencs</p>
+                <p className="text-center sm:text-start">Years</p>
+                <p className="text-center sm:text-start">Experiencs</p>
                 </div>
             </div>
-            <div className="bg-[#037957] h-[50px] w-[1.7px]"></div>
-            <div className="flex items-center  gap-5 ">
+            <div className="bg-[#037957] h-[1.7px] w-[full] sm:h-[50px] sm:w-[1.7px]"></div>
+            <div className="flex flex-col sm:flex-row items-center  gap-5 ">
             <p className="text-4xl font-[700]  text-white">250</p>
             <div className="text-sm font-normal text-[#05A77B]">
-            <p className="">Types</p>
-            <p className="">of courses</p>
+            <p className="text-center sm:text-start">Types</p>
+            <p className="text-center sm:text-start">of courses</p>
             </div>
             </div>
         </div>

@@ -22,17 +22,17 @@ const CardsWindow = () => {
     setCurrentCard(result.courses[0].heading);
   };
   return (  
-    <div className="w-11/12 mx-auto flex flex-col items-center gap-10 relative pb-72">
-      <div className="text-center">
-        <h3 className="text-[#F1F2FF] font-semibold text-4xl">
+    <div className="w-11/12 mx-auto flex flex-col items-center gap-10 relative pb-[760px] sm:pb-[900px] lg:pb-72">
+      <div className="sm:text-center">
+        <h3 className="text-[#F1F2FF] text-center font-semibold text-4xl">
           Unlock the <HighlightedText text={"Power of Code"} />
         </h3>
-        <p className="capitalize text-richblack-300">
+        <p className="capitalize text-center text-richblack-300">
           learn to build anything you can imagine
         </p>
       </div>
 
-      <div className="flex gap-5 bg-richblack-800 px-2 py-2 rounded-full  w-fit">
+      <div className="flex flex-row gap-5 invisible sm:visible bg-richblack-800 px-2 py-2 rounded-3xl sm:rounded-full  w-fit">
         {tabs.map((tab, index) => {
           return (
             <button
@@ -50,7 +50,7 @@ const CardsWindow = () => {
         })}
       </div>
 
-      <div className="flex flex-row gap-8 absolute -bottom-20">
+      <div className="flex flex-col   lg:flex-row gap-8 absolute -bottom-16 sm:-bottom-[80px]">
             {
                 courses.map((course,index)=>{
                     return (

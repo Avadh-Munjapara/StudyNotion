@@ -3,7 +3,7 @@ import { TypeAnimation } from 'react-type-animation';
 const CodeBlock = ({ codeBlock, codeColor }) => {
     return (
         
-        <div className='flex relative p-7 '>
+        <div className='flex relative sm:p-7 '>
             <div className={`box1 backdrop-blur-2xl shadow-[1px_1px_300px_90px_rgba(71,165,197,1)] absolute top-24 left-24 h-1 w-1 rounded-full`}>
             </div>
             <div className='flex bg- flex-row w-full glass p-3 max-h-max'> 

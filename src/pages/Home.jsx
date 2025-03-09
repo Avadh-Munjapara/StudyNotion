@@ -13,23 +13,23 @@ import CardsWindow from "../components/home/CardsWindow";
 import NavBar from "../components/comman/NavBar";
 const Home = () => {
   return (
-    <div className="">
+    <div className="w-full">
       <NavBar/>
       {/* section1 */}
-      <div className="w-11/12 flex flex-col gap-20 items-center mx-auto">
-        <div className=" flex flex-col pt-[124px] gap-4 md:items-center ">
+      <div className="w-11/12 flex flex-col gap-20 items-center max-w-maxContent mx-auto">
+        <div className=" flex flex-col pt-[124px] gap-4 items-start sm:items-center ">
           <Link
             to={"/signUp"}
-            className="hover:bg-richblack-900 bg-richblack-800 rounded-full w-fit self-center
+            className="hover:bg-richblack-900 bg-richblack-800 rounded-full w-fit sm:self-center
                          flex items-center gap-2 text-bold mb-4 border-b-2 text-richblack-200 transition hover:scale-95  py-3 px-6 "
           >
             Become An Instructor
             <IoMdArrowRoundForward />
           </Link>
-          <h2 className="text-white text-3xl">
+          <h2 className="text-white sm:text-center text-3xl">
             Empower Your Future with <HighlightedText text={"Coding Skills"} />
           </h2>
-          <p className="text-richblack-300 font-semibold text-center w-5/6">
+          <p className="text-richblack-300 font-semibold sm:text-center sm:w-5/6">
             With our online coding courses, you can learn at your own pace, from
             anywhere in the world, and get access to a wealth of resources,
             including hands-on projects, quizzes, and personalized feedback from
@@ -45,20 +45,20 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="w-[75%] self-center shadow-[19px_19px_#FFFFFF] relative">
+        <div className="sm:w-[75%] self-center relative">
           <div
             className={`box1 backdrop-blur-2xl  shadow-[1px_1px_300px_90px_#61b3fa] absolute top-20 left-[50%] h-1 w-1 rounded-full`}
           ></div>
-          <div className="z-10 relative">
-            <video muted autoPlay className="bg-blue">
+          <div className="z-10  relative">
+            <video muted autoPlay className="shadow-[19px_19px_#FFFFFF] bg-blue">
               <source src={banner} type="video/mp4" />
             </video>
           </div>
         </div>
 
-        <div className="w-[85%] mx-auto flex flex-col gap-14">
+        <div className="sm:w-[85%] mx-auto flex flex-col gap-14">
           <CodeSection
-            flex={"flex-row"}
+            flex={"flex-col lg:flex-row"}
             heading={{
               text1: "Unlock your",
               text2: "coding potential",
@@ -76,7 +76,7 @@ const Home = () => {
           />
 
           <CodeSection
-            flex={"flex-row-reverse"}
+            flex={"flex-col lg:flex-row-reverse"}
             heading={{ text1: "Start", text2: "coding in seconds" }}
             para="Go ahead, give it a try. Our hands-on learning environment means you'll be writing real code from your very first lesson."
             btn1={"Continue Lesson"}
@@ -93,7 +93,8 @@ const Home = () => {
         <CardsWindow/>
       </div>
       {/* section2 */}
-      <div className=" bg-pure-greys-5 text-richblack-700">
+      <div className=" bg-pure-greys-5 ">
+        <div className="mx-auto text-richblack-700 max-w-maxContent ">
         <div className="chex h-72 flex items-center justify-center">
           <div className="flex gap-6">
             <CustomButton active={true} linkTo={"/courses"}>
@@ -107,15 +108,14 @@ const Home = () => {
             </CustomButton>
           </div>
         </div>
-        <div className="w-11/12 mx-auto flex justify-center ">
-          <div className="h-[300px] flex flex-col justify-center">
-            <div className="flex gap-12 h-fit">
-              <p className="text-4xl font-bold w-[51%]">
+        <div className="w-11/12 mx-auto flex justify-center py-20">
+            <div className="flex flex-col lg:flex-row gap-5 lg:gap-12 h-fit">
+              <p className="text-4xl text-start sm:text-center lg:text-start font-bold lg:w-[51%]">
                 Get the skills you need for a{" "}
                 <HighlightedText text={"job that is in demand."} />
               </p>
-              <div className="flex flex-col gap-14 w-[49%]">
-                <p className="font-[500]">
+              <div className="flex flex-col sm:items-center lg:items-start lg:gap-14 gap-5 lg:w-[49%]">
+                <p className="font-[500] text-start sm:text-center lg:text-start">
                   The modern StudyNotion is the dictates its own terms. Today,
                   to be a competitive specialist requires more than professional
                   skills.
@@ -124,23 +124,24 @@ const Home = () => {
                   Learn More
                 </CustomButton>
               </div>
-            </div>
           </div>
         </div>
 
         <TimeLine />
 
         <SwissCards />
+        </div>
+       
       </div>
       {/* section3 */}
-      <div className="mx-auto py-20 w-11/12">
-        <div className="flex gap-20 "> 
-          <div className="w-[50%]">
+      <div className="mx-auto py-20 w-11/12 max-w-maxContent">
+        <div className="flex flex-col-reverse md:flex-row gap-20 "> 
+          <div className="md:w-[50%] ">
             <div className="shadow-[-15px_-15px_rgb(255,255,255)]">
-            <img src={instructor}  alt="" />
+            <img className="" src={instructor}  alt="" />
             </div>
           </div>
-          <div className="flex flex-col w-[40%] gap-16 justify-center">
+          <div className="flex flex-col  md:w-[40%] gap-16 justify-center">
             <div>
             <p className="text-4xl font-semibold text-[#F1F2FF]">Become an</p>
             <HighlightedText text={"Instructor"} />

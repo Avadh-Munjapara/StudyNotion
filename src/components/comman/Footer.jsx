@@ -25,8 +25,8 @@ const Footer = () => {
   return (
     <div className="bg-[#161D29]  mx-auto py-12 text-white">
       <div className="w-11/12 flex flex-col gap-9 mx-auto  max-w-maxContent">
-        <div className="flex gap-16 justify-between">
-          <div className="flex gap-12">
+        <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 justify-between">
+          <div className="flex justify-around gap-12">
             <div className="flex flex-col gap-4">
               <img src={logo} className="w-40 text-[#AFB2BF]" alt="logo" />
               <div className="flex flex-col gap-2">
@@ -136,7 +136,7 @@ const Footer = () => {
             </div>
           </div>
           <div className="w-[1px] bg-[#2C333F]"></div>
-          <div className="flex gap-14">
+          <div className="flex justify-around gap-14">
             {FooterLink2.map((item, index) => {
               return (
                 <div key={index}>
@@ -164,7 +164,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="h-[1px] bg-[#2C333F] "></div>
-        <div className="flex justify-between ">
+        <div className="flex flex-col md:flex-row items-center gap-5 justify-between ">
           <div className="flex gap-5">
             {BottomFooter.map((item, index) => {
               return (
