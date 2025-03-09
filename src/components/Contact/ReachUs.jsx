@@ -21,7 +21,7 @@ const data = [
 
 const ReachUs = () => {
   return ( 
-    <div className="flex p-8 w-[35%] rounded-xl flex-col h-fit bg-richblack-800 gap-8 ">
+    <div className="flex p-8 lg:w-[35%] rounded-xl flex-col h-fit bg-richblack-800 gap-8 ">
       <div className="flex  gap-2 ">
       <IoChatbubblesSharp className="text-xl text-richblack-100"/>
         <div className="flex flex-col gap-[2px]">
