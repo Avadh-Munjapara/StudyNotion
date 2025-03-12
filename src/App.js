@@ -9,6 +9,10 @@ import ForgotPassword from "./pages/ForgotPassword";
 import ResetForgotPassword from "./pages/ResetForgotPassword";
 import About from "./pages/About";
 import ContactPage from "./pages/ContactPage";
+import NotFound from "./pages/NotFound";
+import DashBoard from "./pages/dashboardPages/DashBoard";
+import Profile from "./pages/dashboardPages/Profile";
+import Settings from "./pages/dashboardPages/Settings";
 function App() {
   return (
    <div className="font-inter w-screen overflow-x-hidden min-h-screen bg-richblack-900">
@@ -21,6 +25,11 @@ function App() {
       <Route path='/forgot-password/:id' element={<ResetForgotPassword/>}></Route>
       <Route path='/about' element={<About/>}></Route>
       <Route path='/contact' element={<ContactPage/>}></Route>
+      <Route path="*" element={<NotFound/>}></Route>
+      <Route path='/dashboard' element={<DashBoard/>}>
+        <Route path="my-profile" element={<Profile/>}/>
+        <Route path="settings" element={<Settings/>}/> 
+      </Route>
     </Routes>
    </div>
    

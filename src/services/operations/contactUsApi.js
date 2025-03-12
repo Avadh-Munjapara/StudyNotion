@@ -5,11 +5,8 @@ import { contactEndpoint } from "../apis"
 const {SENDMESSAGEAPI}=contactEndpoint;
 export async function sendContactReq (payLoad){
     const tId=toast.loading("Sending message...");
-    const token=localStorage.getItem("token")&&JSON.parse(localStorage.getItem("token"));
     try {
-        const response= await apiConnector(SENDMESSAGEAPI,"POST",payLoad,{
-            Authorization:`bearer ${token}`
-        });
+        const response= await apiConnector(SENDMESSAGEAPI,"POST",payLoad);
         if(response.data.success){
             toast.success("message sent!")
         }

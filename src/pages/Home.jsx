@@ -36,7 +36,7 @@ const Home = () => {
             instructors.{" "}
           </p>
           <div className="flex gap-4 mt-5">
-            <CustomButton linkTo={"/login"} active={true}>
+            <CustomButton linkTo={"/dashboard/my-profile"} active={true}>
               Learn More <IoMdArrowRoundForward />
             </CustomButton>
             <CustomButton linkTo={"/signUp"} active={false}>

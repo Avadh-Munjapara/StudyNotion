@@ -75,3 +75,7 @@ border: 1px solid rgba(71, 80, 107, 0.3);
     100%{transform: rotate(1turn)}
   }
 
+.active{
+    background-color: #3D2A01;
+    color: #FFD60A;
+}

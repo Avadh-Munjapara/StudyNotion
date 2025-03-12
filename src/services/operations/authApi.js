@@ -61,7 +61,7 @@ export function login(email, password, navigate) {
         dispatch(setUser(userData));
         dispatch(setToken(response.data.token));
         toast.success("login successfull");
-        navigate("/");
+        navigate("/dashboard/my-profile");
       } else {
         throw new Error(response.data.message);
       }
