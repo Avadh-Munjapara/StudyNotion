@@ -4,7 +4,7 @@ import Sidebar from '../../components/dashboard/Sidebar';
 import NavBar from '../../components/comman/NavBar';
 const DashBoard = () => {
     return (
-        <div>
+        <div className=''>
             <NavBar/>
             <Sidebar/>
             <Outlet/>

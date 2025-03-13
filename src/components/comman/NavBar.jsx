@@ -16,6 +16,7 @@ const NavBar = () => {
   const [categories, setCategories] = useState([]);
   const navigate=useNavigate();
   const user=useSelector((state)=>state.profile.user);
+  const location=useLocation();
 const dispatch=useDispatch();
   useEffect(() => {
     apiConnector(courses.totalCourses,"get")
@@ -41,9 +42,9 @@ const dispatch=useDispatch();
   const logoutHandler=(e)=>{
     dispatch(logout(navigate));
   }
-  const location=useLocation();
+
   return (
-    <div className="w-full bg-richblack-900 border-b-[0.5px] flex  border-richblack-500 h-14">
+    <div className={`w-full ${location.pathname.split('/').at(1)==='dashboard'?'bg-richblack-800':'bg-richblack-900'} border-b-[0.5px] flex  border-richblack-500 h-14`}>
       <div className="w-11/12 mx-auto flex justify-between max-w-maxContent items-center">
         <div className="">
           <img className="w-[160px] h-[32px]" src={logo} alt="" />
