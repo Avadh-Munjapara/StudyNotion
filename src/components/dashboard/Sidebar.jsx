@@ -26,7 +26,7 @@ const Sidebar = () => {
   }
   return (
     <>
-     <div className=" relative pt-8 bg-richblack-800 flex h-screen  flex-col gap-2">
+     <div className=" relative pt-8 bg-richblack-800 flex h-full  flex-col gap-2">
         <div className="w-full">
           {sidebarLinks.map((item, index) => {
             return item.type===role || item.path==="/dashboard/my-profile" || item.path === "/dashboard/settings"

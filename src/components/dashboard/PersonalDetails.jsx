@@ -9,9 +9,9 @@ const PersonalDetails = ({userDetails}) => {
     }
 
     return (
-        <div className="text-white">
+        <div className="pb-10">
         <div className="flex p-6 ml-20 mt-10 w-fit mx-auto rounded-xl items-center  bg-richblack-800 justify-between gap-52">
-          <div className="flex gap-5">
+          <div className="flex text-richblack-5 gap-5">
             <img
               src={userDetails?.image.split(" ").join("?")}
               className="rounded-full w-14 h-14"
@@ -23,6 +23,17 @@ const PersonalDetails = ({userDetails}) => {
             </div>
           </div>
           <EditBtn clickHandler={clickHandler} />
+        </div>
+
+
+        <div className="flex flex-col p-6 ml-20 mt-10 w-[641.75px]  mx-auto rounded-xl   bg-richblack-800 gap-5">
+          <div className="flex justify-between w-full items-center">
+            <h2 className="text-lg font-semibold text-richblack-5">
+              About
+            </h2>
+            <EditBtn clickHandler={clickHandler}/>
+          </div>
+          <p className='text-sm text-richblack-300'>{userDetails?.about||'Write something about your self'}</p>
         </div>
 
         <div className="flex flex-col p-6 ml-20 mt-10 w-[641.75px]  mx-auto rounded-xl   bg-richblack-800 gap-5">
@@ -52,11 +63,6 @@ const PersonalDetails = ({userDetails}) => {
               label="Phone Number"
               info={userDetails?.additionalDetails?.phoneNumber}
               text="Enter Phone Number"
-            />
-            <ShowInfo
-              label="About"
-              info={userDetails?.additionalDetails?.about}
-              text="Write about your self"
             />
             <ShowInfo
               label="Date of Birth"
