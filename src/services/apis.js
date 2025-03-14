@@ -16,3 +16,7 @@ export const auth={
 export const contactEndpoint={
     SENDMESSAGEAPI:`${baseUrl}/auth/contactUs`,
 }
+
+export const profileEndpoint={
+  GETUSERDETAILS:`${baseUrl}/profile/getUserDetails`,
+}

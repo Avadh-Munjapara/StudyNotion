@@ -18,7 +18,6 @@ const Sidebar = () => {
     return location.pathname === path;
   };
   const modalHandler =()=>{
-    console.log("current",modalRef.current);
     modalRef.current.classList.toggle("invisible");
     screenRef.current.classList.toggle("invisible");
   }
@@ -27,8 +26,8 @@ const Sidebar = () => {
   }
   return (
     <>
-     <div className="max-w-[222px]  relative pt-8 bg-richblack-800 flex h-screen  flex-col gap-2">
-        <div className="">
+     <div className=" relative pt-8 bg-richblack-800 flex h-screen  flex-col gap-2">
+        <div className="w-full">
           {sidebarLinks.map((item, index) => {
             return item.type===role || item.path==="/dashboard/my-profile" || item.path === "/dashboard/settings"
                 ?  <SideBarLink link={item} key={item.id} />:null;
