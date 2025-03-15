@@ -60,12 +60,12 @@ const PersonalDetails = ({userDetails}) => {
             />
             <ShowInfo
               label="Phone Number"
-              info={userDetails?.additionalDetails?.phoneNumber?`${userDetails?.additionalDetails?.phoneNumber}${userDetails?.additionalDetails?.countryCode}`:null}
+              info={userDetails?.additionalDetails?.phoneNumber?`${userDetails?.additionalDetails?.countryCode} ${userDetails?.additionalDetails?.phoneNumber}`:null}
               text="Enter Phone Number"
             />
             <ShowInfo
               label="Date of Birth"
-              info={userDetails?.additionalDetails?.dob}
+              info={userDetails?.additionalDetails?.dob.split('T').at(0).toString().split('-').reverse().join('-')}
               text="Enter your Birthdate"
             />
             <ShowInfo

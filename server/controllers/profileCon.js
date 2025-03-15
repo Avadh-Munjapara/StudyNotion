@@ -4,7 +4,7 @@ const { imageUpload } = require('../utils/cloudinaryUpload');
 require('dotenv').config();
 exports.updateProfile=async(req,res)=>{
     try {
-       const{dob="",about="",phoneNumber,gender}=req.body; 
+       const{dob="",about="",phoneNumber,gender,countryCode}=req.body; 
     //    if(!gender||!phoneNumber){
     //      return res.status(400).json({
     //          success:false,
@@ -26,6 +26,9 @@ exports.updateProfile=async(req,res)=>{
        }
        if(gender){
         profile.gender=gender;
+       }
+       if(countryCode){
+        profile.countryCode=countryCode;
        }
        await profile.save();
         return res.status(200).json({
@@ -84,11 +87,14 @@ exports.getUserDetails=async(req,res)=>{
 }
 
 exports.updateDisplayPicture=async(req,res)=>{
-    try {
+    try {   
         const{displayPicture}=req.files;
+        // console.log("display pic",displayPicture);
         const userId=req.user.id;
         const dpCloudinary=await imageUpload(displayPicture,process.env.FOLDERNAME);
+        // console.log("dpcloudinary",dpCloudinary);
         const updatedProfile=await User.findByIdAndUpdate(userId,{image:dpCloudinary.secure_url},{new:true});
+        // console.log("updated profile",updatedProfile);
          return res.status(200).json({
              success:true,
              message:"display picture is updated successfully",

@@ -11,4 +11,4 @@ router.put('/updateDP',auth,updateDisplayPicture);
 router.get('/getEnrolledCourses',auth,getEnrolledCourses);
 router.post('/changePassword',auth,changePassword);
 
-module.exports=router; 
+module.exports=router;  

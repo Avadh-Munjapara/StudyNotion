@@ -110,7 +110,7 @@ const dispatch=useDispatch();
                 }
               </div>
               <div className="relative cursor-pointer" onClick={showBox}>
-              <div className="text-white rounded-full h-8 w-8 "style={{backgroundImage: `url(${user?.image})`}} >
+              <div className="text-white rounded-full h-8 w-8 "style={{backgroundImage: `url(${user?.image})`,backgroundSize:"cover"}} >
               </div>
               <div ref={boxRef} onClick={logoutHandler} className="flex gap-1 items-center  right-0 -bottom-14 invisible  text-richblack-200 absolute bg-richblack-700 px-3 py-2 ">
               <MdLogout />

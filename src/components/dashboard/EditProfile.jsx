@@ -6,9 +6,17 @@ import { useDispatch } from "react-redux";
 import { getUserDetails } from "../../services/operations/profileApi";
 import toast from "react-hot-toast";
 import SubmitBtn from "../comman/SubmitBtn";
-const EditProfile = ({ userDetails }) => {
+const EditProfile = () => {
   const [loading, setLoading] = useState(false);
+  const [userDetails, setUserDetails] = useState(null);
   const dispatch = useDispatch();
+  useEffect(() => {
+    const fetchUserDetails = async () => {
+      dispatch(getUserDetails(setLoading, setUserDetails));
+    };
+    fetchUserDetails();
+  }, [dispatch]);
+
   const {
     register,
     reset,
@@ -18,27 +26,38 @@ const EditProfile = ({ userDetails }) => {
     formState: { errors, dirtyFields, isDirty },
   } = useForm({
     defaultValues: {
-      dob: userDetails?.dob,
+      dob: userDetails?.additionalDetails?.dob,
       about: userDetails?.about,
       phoneNumber: userDetails?.phoneNumber,
       gender: userDetails?.gender,
-      countryCode: userDetails?.countryCode
+      countryCode: userDetails?.countryCode,
     },
   });
+  // useEffect(() => {
+  //   console.log("user data in setValue useEffect",userDetails);
+  //     setValue('dob',userDetails?.dob);
+  //     setValue('about',userDetails?.about);
+  //     setValue('phoneNumber',userDetails?.phoneNumber);
+  //     setValue('gender',userDetails?.gender);
+  //     setValue('countryCode',userDetails?.countryCode);
+  // }, [userDetails]);
+
+
   useEffect(() => {
-    const fetchUserDetails = async () => {
-      dispatch(getUserDetails(setLoading));
-    };
-    fetchUserDetails();
-  }, [dispatch]);
+    // console.log("user data",userDetails);
+  }, [userDetails]);
   const formHandler = (data) => {
     console.log(data.phoneNumber);
     console.log(isDirty);
     // console.log(dirtyFields);
-    data={  
-      ...data,
-      phoneNumber:`${data.countrycode}${data.phoneNumber}`
-    }
+
+    //these lines botherd me a lot
+    // data = {
+    //   ...data,
+    //   phoneNumber: `${data.countrycode}${data.phoneNumber}`,
+    // };
+
+
     if (isDirty) {
       dispatch(updateProfile(data, setLoading));
       reset();
@@ -55,7 +74,7 @@ const EditProfile = ({ userDetails }) => {
       </h2>
       <form
         onSubmit={handleSubmit(formHandler)}
-        className="flex flex-col items-start"
+        className="flex flex-col gap-5 items-start"
       >
         <div className="grid gap-x-5 gap-y-5 grid-cols-2">
           <div className="flex gap-6">
@@ -68,9 +87,7 @@ const EditProfile = ({ userDetails }) => {
                 id="dob"
                 name="dob"
                 type="date"
-                placeholder={`${
-                  userDetails?.dob || "Enter your birthdate"
-                }`}
+                placeholder={`${userDetails?.dob || "Enter your birthdate"}`}
                 className="field2 w-full"
               />
             </div>
@@ -147,13 +164,14 @@ const EditProfile = ({ userDetails }) => {
                   {...register("countryCode")}
                   name="countryCode"
                   id="countryCode"
-                  defaultValue='+91'
+                  defaultValue="+91"
                 >
                   {countrycode.map((item, index) => {
-                    return <option key={index} className="field" value={item.code}>
+                    return (
+                      <option key={index} className="field" value={item.code}>
                         {item.code} {item.country}
                       </option>
-                    
+                    );
                   })}
                 </select>
 
@@ -161,7 +179,9 @@ const EditProfile = ({ userDetails }) => {
                   type="text"
                   name="phoneNumber"
                   id="phoneNumber"
-                  placeholder={`${userDetails?.phoneNumber || "Enter your Phone Number"}`}
+                  placeholder={`${
+                    userDetails?.phoneNumber || "Enter your Phone Number"
+                  }`}
                   {...register("phoneNumber", {
                     pattern: {
                       value: /^[0-9]{8,13}$/,
@@ -192,7 +212,7 @@ const EditProfile = ({ userDetails }) => {
           </div>
         </div>
 
-        <SubmitBtn text={'save'}/>
+        <SubmitBtn text={"save"} />
       </form>
     </div>
   );

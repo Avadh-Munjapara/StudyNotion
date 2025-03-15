@@ -15,7 +15,7 @@ const profileSchema=mongoose.Schema({
         type:Number,
         trim:true,
     },
-    countrycode:{
+    countryCode:{
         type:String,
         trim:true
     }

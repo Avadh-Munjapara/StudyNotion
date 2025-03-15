@@ -66,7 +66,8 @@ exports.signup=async(req,res)=>{
         gender:null,
         phoneNumber:null,
         about:null,
-        dob:null
+        dob:null,
+        countryCode:null
     }
     const ProfileDetails=await Profile.create(pd);
 

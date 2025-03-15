@@ -21,5 +21,6 @@ export const contactEndpoint={
 export const profileEndpoint={
   GETUSERDETAILS:`${baseUrl}/profile/getUserDetails`,
   UPDATEPROFILE:`${baseUrl}/profile/updateProfile`,
-  DELETEPROFILE:`${baseUrl}/profile/deleteAccount`
+  DELETEPROFILE:`${baseUrl}/profile/deleteAccount`,
+  UPDATEDPAPI:`${baseUrl}/profile/updateDP`,
 }

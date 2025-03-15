@@ -27,18 +27,19 @@ const ChangePassword = () => {
   };
 
   return (
-    <div className="ml-20 mt-10 p-6 flex flex-col max-w-fit mr-64 gap-6 bg-richblack-800 rounded-lg border-[1px] border-richblack-700">
+    <div className="ml-20 mt-10 p-6 flex flex-col mr-64 gap-6 bg-richblack-800 rounded-lg border-[1px] border-richblack-700">
+      <div className="">
       <h2 className="text-lg font-semibold text-richblack-5">Password</h2>
       <form
         onSubmit={handleSubmit(submitHandler)}
-        className="flex flex-col "
+        className="flex flex-col gap-5 w-fit"
       >
-        <div className="flex gap-10 min-w-full">
-          <div className="flex flex-col gap-[2px]">
+        <div className="flex w-full justify-between gap-10 ">
+          <div className="flex w-1/2 flex-col gap-[2px]">
             <label htmlFor="oldPassword" className="text-richblack-5 text-sm">
               Current Password <span className="text-[#EF476F]">*</span>
             </label>
-            <div className="flex field2 gap-3 items-center">
+            <div className="flex field2 w-full gap-3 items-center">
               <input
                 {...register("oldPassword", {
                   required: { value: true, message: "Field is empty" },
@@ -55,11 +56,11 @@ const ChangePassword = () => {
             </div>
           </div>
 
-          <div className="flex flex-col gap-[2px]">
+          <div className="flex w-1/2 flex-col gap-[2px]">
             <label htmlFor="oldPassword" className="text-richblack-5 text-sm">
               Change Password <span className="text-[#EF476F]">*</span>
             </label>
-            <div className="flex field2 justify-between items-center">
+            <div className="flex field2 w-full justify-between items-center">
               <input
                 {...register("password", {
                   required: { value: true, message: "Field is empty" },
@@ -80,6 +81,8 @@ const ChangePassword = () => {
 
         <SubmitBtn text={'save'} />
       </form>
+      </div>
+     
     </div>
   );
 };

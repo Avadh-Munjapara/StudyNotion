@@ -4,7 +4,8 @@ import { profileEndpoint } from "../apis";
 import { setLoading, setUser } from "../../slices/profileSlice";
 import { setToken } from "../../slices/authSlice";
 import { resetCart } from "../../slices/cartSlice";
-const { GETUSERDETAILS, UPDATEPROFILE, DELETEPROFILE } = profileEndpoint;
+import { setDP } from "../../slices/profileSlice";
+const { GETUSERDETAILS, UPDATEPROFILE, DELETEPROFILE,UPDATEDPAPI } = profileEndpoint;
 const token = JSON.parse(localStorage.getItem("token")) || null;
 
 export function getUserDetails(setLoading, setUserDetails) {
@@ -74,3 +75,24 @@ export function deleteAccount(navigate) {
     }
   };
 }
+
+export function updateDP(formData){
+    return async(dispatch)=>{
+      const tId=toast.loading('updating...');
+      try {
+        const response=await apiConnector(UPDATEDPAPI,"PUT",formData,{
+          'Content-Type': 'multipart/form-data',
+          Authorization:`bearer ${token}`
+        })
+        if(response.data.success){
+          dispatch(setDP(response.data.url));
+          toast.success("Profile picture updated");
+        }
+      } catch (error) {
+        toast.error("faild to update profile picture");
+          console.log("error while update dp operation",error.message);
+      }
+      toast.dismiss(tId);
+    }
+}
+
