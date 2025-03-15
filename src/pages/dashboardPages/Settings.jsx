@@ -5,22 +5,24 @@ import { useDispatch } from 'react-redux';
 import { getUserDetails } from '../../services/operations/profileApi';
 import Spinner from '../../components/comman/Spinner';
 import DeleteAccount from '../../components/dashboard/DeleteAccount';
+import ChangePassword from '../../components/dashboard/settings/ChangePassword';
 const Settings = () => {
     const dispatch = useDispatch();
     const [loading, setLoading] = useState(false);
-    const [profileInformation, setProfileInformation] = useState(null);
+    const [userDetails, setUserDetails] = useState(null);
     useEffect(() => {
         const fetchUserDetails = async () => {
-          dispatch(getUserDetails(setLoading, setProfileInformation));
+          dispatch(getUserDetails(setLoading, setUserDetails));
         };
         fetchUserDetails();
       }, [dispatch]);
     return loading===true ? (<div className='h-full w-full flex justify-center items-center mx-auto'>
         <Spinner/>
                 </div>)
-                :( <div>
+                :( <div className=''>
                     <h1 className='pt-6 pl-6 text-richblack-5 font-semibold text-4xl'>Edit Profile</h1>
-                    <EditProfile profileInformation={profileInformation?.additionalDetails}/>
+                    <EditProfile profileInformation={userDetails?.additionalDetails}/>
+                    <ChangePassword/>
                     <DeleteAccount/>
                 </div>)
 }

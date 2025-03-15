@@ -6,7 +6,7 @@ const { resetPasswordToken, resetPassword } = require('../controllers/resetPassw
 const router=express.Router();  
 router.post("/signUp",signup);
 router.post("/login",login);
-router.post("/changePassword",auth,changePassword);
+router.put("/changePassword",auth,changePassword);
 router.post('/sendotp',sendOTP);
 router.post('/contactUs',contactUs);
 router.post('/resetPasswordToken',resetPasswordToken);

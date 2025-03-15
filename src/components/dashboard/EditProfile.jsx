@@ -5,7 +5,8 @@ import { updateProfile } from "../../services/operations/profileApi";
 import { useDispatch } from "react-redux";
 import { getUserDetails } from "../../services/operations/profileApi";
 import toast from "react-hot-toast";
-const EditProfile = ({ profileInformation }) => {
+import SubmitBtn from "../comman/SubmitBtn";
+const EditProfile = ({ userDetails }) => {
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const {
@@ -17,11 +18,11 @@ const EditProfile = ({ profileInformation }) => {
     formState: { errors, dirtyFields, isDirty },
   } = useForm({
     defaultValues: {
-      dob: profileInformation?.dob,
-      about: profileInformation?.about,
-      phoneNumber: profileInformation?.phoneNumber,
-      gender: profileInformation?.gender,
-      countryCode: profileInformation?.countryCode
+      dob: userDetails?.dob,
+      about: userDetails?.about,
+      phoneNumber: userDetails?.phoneNumber,
+      gender: userDetails?.gender,
+      countryCode: userDetails?.countryCode
     },
   });
   useEffect(() => {
@@ -58,7 +59,7 @@ const EditProfile = ({ profileInformation }) => {
       >
         <div className="grid gap-x-5 gap-y-5 grid-cols-2">
           <div className="flex gap-6">
-            <div className="flex flex-col gap-[6px]">
+            <div className="flex flex-col w-full  gap-[6px]">
               <label className="text-sm text-richblack-5" htmlFor="dob">
                 Date of Birth
               </label>
@@ -68,7 +69,7 @@ const EditProfile = ({ profileInformation }) => {
                 name="dob"
                 type="date"
                 placeholder={`${
-                  profileInformation?.dob || "Enter your birthdate"
+                  userDetails?.dob || "Enter your birthdate"
                 }`}
                 className="field2 w-full"
               />
@@ -146,17 +147,13 @@ const EditProfile = ({ profileInformation }) => {
                   {...register("countryCode")}
                   name="countryCode"
                   id="countryCode"
+                  defaultValue='+91'
                 >
                   {countrycode.map((item, index) => {
-                    return item.code === "+91" ? (
-                      <option className="field" selected value={item.code}>
+                    return <option key={index} className="field" value={item.code}>
                         {item.code} {item.country}
                       </option>
-                    ) : (
-                      <option className="field" value={item.code}>
-                        {item.code} {item.country}
-                      </option>
-                    );
+                    
                   })}
                 </select>
 
@@ -164,6 +161,7 @@ const EditProfile = ({ profileInformation }) => {
                   type="text"
                   name="phoneNumber"
                   id="phoneNumber"
+                  placeholder={`${userDetails?.phoneNumber || "Enter your Phone Number"}`}
                   {...register("phoneNumber", {
                     pattern: {
                       value: /^[0-9]{8,13}$/,
@@ -188,18 +186,13 @@ const EditProfile = ({ profileInformation }) => {
               id="about"
               name="about"
               type="text"
-              placeholder={`${profileInformation?.about || "Enter your Bio"}`}
+              placeholder={`${userDetails?.about || "Enter your Bio"}`}
               className="field2"
             />
           </div>
         </div>
 
-        <button
-          type="submit"
-          className="bg-[#FFD60A] mt-5 self-end rounded-lg font-medium p-3"
-        >
-          Save
-        </button>
+        <SubmitBtn text={'save'}/>
       </form>
     </div>
   );

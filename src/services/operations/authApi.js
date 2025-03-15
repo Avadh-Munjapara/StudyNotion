@@ -4,7 +4,8 @@ import apiConnector from "../apiConnector";
 import { auth } from "../apis";
 import { resetCart } from "../../slices/cartSlice";
 import { setUser } from "../../slices/profileSlice";
-const { SENDOTPAPI, SIGNUPAPI, LOGINAPI, FORGOTPASSWORDAPI, PASSWORDTOKENAPI } = auth;
+const { SENDOTPAPI, SIGNUPAPI, LOGINAPI, FORGOTPASSWORDAPI, PASSWORDTOKENAPI,CHANGEPASSWORDAPI } = auth;
+const token=localStorage.getItem('token')?JSON.parse(localStorage.getItem('token')):null;
 export function sendOTP(email, navigate) {
   return async (dispatch) => {
     dispatch(setLoading(true));
@@ -116,4 +117,22 @@ export function setForgotPassword(payload, setPassChanged) {
     }
     dispatch(setLoading(false));
   };
+}
+
+export function changePassword(payload){
+  return async (dispatch)=>{
+    const tId=toast.loading("loading");
+    try {
+      const response = await apiConnector(CHANGEPASSWORDAPI,"PUT",payload,{
+        Authorization:`bearer ${token}`
+      });
+      if(response.data.success){
+        toast.dismiss(tId);
+        toast.success('password changed');
+      }
+    } catch (error) {
+      console.log('error while changing password operaion',error.message);
+      toast.dismiss(tId);
+    }
+  }
 }

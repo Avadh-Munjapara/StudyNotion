@@ -206,21 +206,21 @@ exports.sendOTP=async (req,res)=>{
 exports.changePassword=async(req,res)=>{
     try {
         //data fetch
-        const{oldPassword,password,confirmPassword}=req.body;
+        const{oldPassword,password}=req.body;
         //validation
-        if(!password||!confirmPassword||!oldPassword){
+        if(!password||!oldPassword){
              return res.status(400).json({
                  success:false,
                  message:"all fields are required"
             });
         }
         //password check
-        if(password!=confirmPassword){
-             return res.status(400).json({
-                 success:false,
-                 message:"passwords not matched"
-            });
-        }
+        // if(password!=confirmPassword){
+        //      return res.status(400).json({
+        //          success:false,
+        //          message:"passwords not matched"
+        //     });
+        // }
         //old password check
         let user=await User.findById(req.user.id);
         if(!user){

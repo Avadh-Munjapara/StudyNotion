@@ -11,6 +11,7 @@ export const auth={
   LOGINAPI:`${baseUrl}/auth/login`,
   PASSWORDTOKENAPI:`${baseUrl}/auth/resetPasswordToken`,
   FORGOTPASSWORDAPI:`${baseUrl}/auth/resetPassword`,
+  CHANGEPASSWORDAPI:`${baseUrl}/auth/changePassword`
 };
 
 export const contactEndpoint={
