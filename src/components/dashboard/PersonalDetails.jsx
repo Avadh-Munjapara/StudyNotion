@@ -5,10 +5,9 @@ import { useNavigate } from 'react-router-dom';
 const PersonalDetails = ({userDetails}) => {
     const navigate=useNavigate();
     const clickHandler=()=>{
-        navigate('/settings');
+        navigate('/dashboard/settings');
     }
-
-    return (
+    return (  
         <div className="pb-10">
         <div className="flex p-6 ml-20 mt-10 w-fit mx-auto rounded-xl items-center  bg-richblack-800 justify-between gap-52">
           <div className="flex text-richblack-5 gap-5">
@@ -33,7 +32,7 @@ const PersonalDetails = ({userDetails}) => {
             </h2>
             <EditBtn clickHandler={clickHandler}/>
           </div>
-          <p className='text-sm text-richblack-300'>{userDetails?.about||'Write something about your self'}</p>
+          <p className='text-sm text-richblack-300'>{userDetails?.additionalDetails?.about||'Write something about your self'}</p>
         </div>
 
         <div className="flex flex-col p-6 ml-20 mt-10 w-[641.75px]  mx-auto rounded-xl   bg-richblack-800 gap-5">
@@ -61,7 +60,7 @@ const PersonalDetails = ({userDetails}) => {
             />
             <ShowInfo
               label="Phone Number"
-              info={userDetails?.additionalDetails?.phoneNumber}
+              info={userDetails?.additionalDetails?.phoneNumber?`${userDetails?.additionalDetails?.phoneNumber}${userDetails?.additionalDetails?.countryCode}`:null}
               text="Enter Phone Number"
             />
             <ShowInfo

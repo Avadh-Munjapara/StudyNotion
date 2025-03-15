@@ -40,6 +40,16 @@ border: 1px solid rgba(71, 80, 107, 0.3);
     color: #999DAA;
 }
 
+.field2{
+    box-shadow: 0px -1.1px rgba(255, 255, 255, 0.18) inset;
+    background-color: rgba(44, 51, 63, 1);
+    border-radius: 8px;
+    padding: 12px;
+    color: rgba(153, 157, 170, 1)
+}
+.field2:focus{
+    outline: none;
+}
 .field:focus{
     outline: none;
 }

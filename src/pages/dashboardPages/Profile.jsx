@@ -14,9 +14,9 @@ const Profile = () => {
     };
     fetchUserDetails();
   }, [dispatch]);
-  useEffect(() => {
-    // console.log("user in profile", userDetails);
-  }, [userDetails]);
+  // useEffect(() => {
+  //    console.log("user in profile", userDetails);
+  // }, [userDetails]);
   return (
     <div className="h-full w-full">
       {loading ? (

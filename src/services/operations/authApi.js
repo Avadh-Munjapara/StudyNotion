@@ -51,7 +51,7 @@ export function login(email, password, navigate) {
       if (response.data.success) {
         const user=response.data.user;
         const image=user.image.split(' ').join("?");
-        console.log(image);
+        // console.log(image);
         const userData={
           ...user,
           image

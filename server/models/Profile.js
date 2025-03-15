@@ -15,6 +15,10 @@ const profileSchema=mongoose.Schema({
         type:Number,
         trim:true,
     },
+    countrycode:{
+        type:String,
+        trim:true
+    }
 });
 
 module.exports=mongoose.model("Profile",profileSchema);
