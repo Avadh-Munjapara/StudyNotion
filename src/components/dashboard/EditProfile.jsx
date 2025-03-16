@@ -11,10 +11,10 @@ const EditProfile = () => {
   const [loading, setLoading] = useState(false);
   const [userDetails, setUserDetails] = useState(null);
   const dispatch = useDispatch();
-  useEffect(() => {
-    const fetchUserDetails = async () => {
-      dispatch(getUserDetails(setLoading, setUserDetails));
-    };
+  const fetchUserDetails = async () => {
+    dispatch(getUserDetails(setLoading, setUserDetails));
+  };
+  useEffect(() => { 
     fetchUserDetails();
   }, [dispatch]);
 
@@ -27,29 +27,29 @@ const EditProfile = () => {
     formState: { errors, dirtyFields, isDirty },
   } = useForm({
     defaultValues: {
-      dob: userDetails?.additionalDetails?.dob,
-      about: userDetails?.about,
-      phoneNumber: userDetails?.phoneNumber,
-      gender: userDetails?.gender,
-      countryCode: userDetails?.countryCode,
+      dob: null,
+      about: null,
+      phoneNumber: null,
+      gender: null,
+      countryCode: '+91',
     },
   });
   // useEffect(() => {
-  //   console.log("user data in setValue useEffect",userDetails);
-  //     setValue('dob',userDetails?.dob);
-  //     setValue('about',userDetails?.about);
-  //     setValue('phoneNumber',userDetails?.phoneNumber);
-  //     setValue('gender',userDetails?.gender);
-  //     setValue('countryCode',userDetails?.countryCode);
+  //   console.log("user data in setValue useEffect", userDetails);
+  //   setValue("dob", userDetails?.additionalDetails?.dob);
+  //   setValue("about", userDetails?.additionalDetails?.about);
+  //   setValue("phoneNumber", userDetails?.additionalDetails?.phoneNumber);
+  //   setValue("gender", userDetails?.additionalDetails?.gender);
+  //   setValue("countryCode", userDetails?.additionalDetails?.countryCode);
   // }, [userDetails]);
-
 
   useEffect(() => {
     // console.log("user data",userDetails);
   }, [userDetails]);
   const formHandler = (data) => {
-    console.log(data.phoneNumber);
-    console.log(isDirty);
+    // console.log(data);
+    // console.log(isDirty);
+    // console.log(dirtyFields);
     // console.log(dirtyFields);
 
     //these lines botherd me a lot
@@ -58,13 +58,14 @@ const EditProfile = () => {
     //   phoneNumber: `${data.countrycode}${data.phoneNumber}`,
     // };
 
-
     if (isDirty) {
       dispatch(updateProfile(data, setLoading));
       reset();
     } else {
       toast.error("update at least one detail");
     }
+    dispatch(getUserDetails(setLoading, setUserDetails));
+
   };
 
   const genderWatch = watch("gender");
@@ -88,7 +89,6 @@ const EditProfile = () => {
                 id="dob"
                 name="dob"
                 type="date"
-                placeholder={`${userDetails?.dob || "Enter your birthdate"}`}
                 className="field2 w-full"
               />
             </div>
@@ -105,7 +105,7 @@ const EditProfile = () => {
                   type="radio"
                   value="male"
                   className={`${
-                    genderWatch === "male"
+                    genderWatch === "male" || userDetails?.gender === "male"
                       ? "bg-[rgba(255,214,10,1)] outline outline-[2px] outline-[#2C333F] outline-offset-[-4px] "
                       : "outline outline-[2px] outline-[#585D69] outline-offset-[-1px]  bg-transparent"
                   } appearance-none w-4 h-4 rounded-full`}
@@ -165,7 +165,6 @@ const EditProfile = () => {
                   {...register("countryCode")}
                   name="countryCode"
                   id="countryCode"
-                  defaultValue="+91"
                 >
                   {countrycode.map((item, index) => {
                     return (
@@ -180,9 +179,10 @@ const EditProfile = () => {
                   type="text"
                   name="phoneNumber"
                   id="phoneNumber"
-                  placeholder={`${
-                    userDetails?.phoneNumber || "Enter your Phone Number"
-                  }`}
+                  placeholder={
+                    userDetails?.additionalDetails?.phoneNumber ||
+                    "Enter your Phone Number"
+                  }
                   {...register("phoneNumber", {
                     pattern: {
                       value: /^[0-9]{8,13}$/,
@@ -206,18 +206,20 @@ const EditProfile = () => {
               {...register("about")}
               id="about"
               name="about"
+              placeholder={
+                userDetails?.additionalDetails?.about || "Write about yourself"
+              }
               type="text"
-              placeholder={`${userDetails?.about || "Enter your Bio"}`}
               className="field2"
             />
           </div>
         </div>
 
         <div className="flex gap-3 self-end">
-        <CancelBtn reset={reset}/>
-        <SubmitBtn text={"save"} />
+          <CancelBtn reset={reset} />
+          <SubmitBtn text={"save"} />
         </div>
-      </form> 
+      </form>
     </div>
   );
 };

@@ -42,6 +42,7 @@ export function updateProfile(payload, setLoading) {
       if (response.data.success) {
         console.log("successfully updated Profile");
         toast.success("profile Upadted!!!");
+        return response.data;
       } else {
         toast.error("something went wrong!");
       }

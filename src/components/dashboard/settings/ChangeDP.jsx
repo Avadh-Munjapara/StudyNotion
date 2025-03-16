@@ -41,7 +41,7 @@ const ChangeDP = () => {
           Change Profile Picture
         </h2>
       
-        <div className='flex justify-between w-full'> 
+        <div className='flex relative  justify-between w-full'> 
           <div className='flex gap-3 items-center'>
             {
               filePreview && <img className='h-10 rounded-full w-10' src={filePreview} alt="preview image" />
@@ -63,8 +63,9 @@ const ChangeDP = () => {
         <CancelBtn reset={resetPreview}/>
         <SubmitBtn text={"save"} />
         </div>
+        {errors.displayPicture && <p className='text-sm absolute -bottom-[22px] left-0 text-red-600'>*{errors.displayPicture.message}</p>}
         </div>
-        {errors.displayPicture && <p className='text-sm text-red-600'>{errors.displayPicture.message}</p>}
+        
       </form>
     </div>
   );
