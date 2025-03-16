@@ -132,6 +132,7 @@ export function changePassword(payload){
       }
     } catch (error) {
       console.log('error while changing password operaion',error.message);
+      toast.error('faild to change password');
       toast.dismiss(tId);
     }
   }

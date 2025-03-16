@@ -86,6 +86,12 @@ export function updateDP(formData){
         })
         if(response.data.success){
           dispatch(setDP(response.data.url));
+          const user=JSON.parse(localStorage.getItem("user"));
+          const updatedUser={...user,image:response.data.url};
+          // console.log(updatedUser);
+          const updatedUserJson=JSON.stringify(updatedUser);
+          // console.log(updatedUserJson);
+          localStorage.setItem("user",updatedUserJson);
           toast.success("Profile picture updated");
         }
       } catch (error) {
