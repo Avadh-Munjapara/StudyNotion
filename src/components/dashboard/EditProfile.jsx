@@ -64,7 +64,6 @@ const EditProfile = () => {
     } else {
       toast.error("update at least one detail");
     }
-    dispatch(getUserDetails(setLoading, setUserDetails));
 
   };
 

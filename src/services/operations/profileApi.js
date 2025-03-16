@@ -42,15 +42,16 @@ export function updateProfile(payload, setLoading) {
       if (response.data.success) {
         console.log("successfully updated Profile");
         toast.success("profile Upadted!!!");
-        return response.data;
+        toast.dismiss(tId);
       } else {
         toast.error("something went wrong!");
+        toast.dismiss(tId);
+
       }
     } catch (error) {
       console.log("error in updateProfile operaion", error.message);
     }
     setLoading(false);
-    toast.dismiss(tId);
   };
 }
 
