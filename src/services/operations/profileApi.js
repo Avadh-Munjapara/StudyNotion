@@ -5,7 +5,7 @@ import { setLoading, setUser } from "../../slices/profileSlice";
 import { setToken } from "../../slices/authSlice";
 import { resetCart } from "../../slices/cartSlice";
 import { setDP } from "../../slices/profileSlice";
-const { GETUSERDETAILS, UPDATEPROFILE, DELETEPROFILE,UPDATEDPAPI } = profileEndpoint;
+const { GETUSERDETAILS, UPDATEPROFILE, DELETEPROFILE,UPDATEDPAPI,GET_ENROLLED_COURSES_API } = profileEndpoint;
 const token = JSON.parse(localStorage.getItem("token")) || null;
 
 export function getUserDetails(setLoading, setUserDetails) {
@@ -102,5 +102,22 @@ export function updateDP(formData){
       }
       toast.dismiss(tId);
     }
+}
+
+export async function getEnrolledCourses(){
+  let result=[];
+  try {
+    const response=await apiConnector(GET_ENROLLED_COURSES_API,'GET',{},{
+      Authorization:`bearer ${token}`
+    })
+    if(!response.data.success){
+      throw new Error(response.data.message);
+    }
+    result=response.data.enrolledCourses;
+  } catch (error) {
+      console.log('error in getEnrolled courses api',error);
+      toast.error('could not get Enrolled courses');
+  }
+  return result;
 }
 

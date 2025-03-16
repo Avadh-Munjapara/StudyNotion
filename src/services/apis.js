@@ -12,7 +12,7 @@ export const auth={
   PASSWORDTOKENAPI:`${baseUrl}/auth/resetPasswordToken`,
   FORGOTPASSWORDAPI:`${baseUrl}/auth/resetPassword`,
   CHANGEPASSWORDAPI:`${baseUrl}/auth/changePassword`
-};
+}; 
 
 export const contactEndpoint={
     SENDMESSAGEAPI:`${baseUrl}/auth/contactUs`,
@@ -23,4 +23,5 @@ export const profileEndpoint={
   UPDATEPROFILE:`${baseUrl}/profile/updateProfile`,
   DELETEPROFILE:`${baseUrl}/profile/deleteAccount`,
   UPDATEDPAPI:`${baseUrl}/profile/updateDP`,
+  GET_ENROLLED_COURSES_API:`${baseUrl}/profile/getEnrolledCourses`,
 }
