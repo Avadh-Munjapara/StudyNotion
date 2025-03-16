@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { changePassword } from "../../../services/operations/authApi";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
 import SubmitBtn from "../../comman/SubmitBtn";
+import CancelBtn from "../../comman/CancelBtn";
 const ChangePassword = () => {
   const {
     register,
@@ -79,7 +80,10 @@ const ChangePassword = () => {
           </div>
         </div>
 
-        <SubmitBtn text={'save'} />
+        <div className="flex gap-3 self-end">
+        <CancelBtn reset={reset}/>
+        <SubmitBtn text={"save"} />
+        </div>
       </form>
       </div>
      

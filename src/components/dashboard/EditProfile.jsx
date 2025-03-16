@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { getUserDetails } from "../../services/operations/profileApi";
 import toast from "react-hot-toast";
 import SubmitBtn from "../comman/SubmitBtn";
+import CancelBtn from "../comman/CancelBtn";
 const EditProfile = () => {
   const [loading, setLoading] = useState(false);
   const [userDetails, setUserDetails] = useState(null);
@@ -212,8 +213,11 @@ const EditProfile = () => {
           </div>
         </div>
 
+        <div className="flex gap-3 self-end">
+        <CancelBtn reset={reset}/>
         <SubmitBtn text={"save"} />
-      </form>
+        </div>
+      </form> 
     </div>
   );
 };

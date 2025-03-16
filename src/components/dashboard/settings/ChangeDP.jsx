@@ -5,12 +5,21 @@ import { useForm } from 'react-hook-form';
 import { updateDP } from '../../../services/operations/profileApi';
 import { MdOutlineFileUpload } from "react-icons/md";
 import useFilePreview from '../../../hooks/useFilePreview';
+import CancelBtn from '../../comman/CancelBtn';
 const ChangeDP = () => {
   const { register, handleSubmit,formState:{errors},watch,reset } = useForm();
   const dispatch = useDispatch();
   const file=watch('displayPicture');
   const [filePreview,setFilePreview]=useFilePreview(file); 
   const image = useSelector((state) => state.profile.user.image);
+
+  const resetPreview=()=>{
+    reset();
+    setFilePreview(null);
+    // console.log('file',file);
+    // console.log("filePreview",filePreview);
+  }
+
   const clickHandler = (data) => {
     // console.log("dp file", data.displayPicture[0]);
     // Create FormData to send the file
@@ -50,7 +59,10 @@ const ChangeDP = () => {
           className="hidden"
         />
           </div>
-          <SubmitBtn text="Save" />
+          <div className="flex gap-3 self-end">
+        <CancelBtn reset={resetPreview}/>
+        <SubmitBtn text={"save"} />
+        </div>
         </div>
         {errors.displayPicture && <p className='text-sm text-red-600'>{errors.displayPicture.message}</p>}
       </form>
