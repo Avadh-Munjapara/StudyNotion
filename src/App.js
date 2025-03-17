@@ -14,6 +14,7 @@ import DashBoard from "./pages/dashboardPages/DashBoard";
 import Profile from "./pages/dashboardPages/Profile";
 import Settings from "./pages/dashboardPages/Settings";
 import EnrolledCourses from "./pages/dashboardPages/EnrolledCourses";
+import WishList from "./pages/dashboardPages/WishList";
 function App() {
   return (
    <div className="font-inter w-screen overflow-x-hidden min-h-screen bg-richblack-900">
@@ -31,6 +32,7 @@ function App() {
         <Route path="my-profile" element={<Profile/>}/>
         <Route path="settings" element={<Settings/>}/> 
         <Route path="enrolled-courses" element={<EnrolledCourses/>}/> 
+        <Route path="wishList" element={<WishList/>}/> 
       </Route>
     </Routes>
    </div>

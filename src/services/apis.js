@@ -25,3 +25,7 @@ export const profileEndpoint={
   UPDATEDPAPI:`${baseUrl}/profile/updateDP`,
   GET_ENROLLED_COURSES_API:`${baseUrl}/profile/getEnrolledCourses`,
 }
+
+export const courseEndPoint={
+  GET_AVG_RATING:`${baseUrl}/course/getAverageRating`,
+}

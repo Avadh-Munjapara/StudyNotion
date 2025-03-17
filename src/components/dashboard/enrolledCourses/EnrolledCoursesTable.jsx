@@ -22,7 +22,7 @@ const EnrolledCoursesTable = () => {
     fetchEntolledCourses();
   }, []);
   return (
-    <div>
+    <div className="w-full">
       {enrolledCourses ? (
         enrolledCourses.length>0 ? <table className="rounded-lg border-collapse ">
         <tr className="bg-[#2C333F] font-medium text-[#C5C7D4]">
@@ -56,7 +56,7 @@ const EnrolledCoursesTable = () => {
           })
         }
       </table>
-      : <div>
+      : <div className="h-full w-full flex justify-center items-center">
         <p className="text-richblack-5">You Have not Enrolled in any courses</p>
       </div>
 
