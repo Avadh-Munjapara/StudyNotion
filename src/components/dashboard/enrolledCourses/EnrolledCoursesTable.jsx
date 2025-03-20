@@ -59,7 +59,6 @@ const EnrolledCoursesTable = () => {
       : <div className="h-full w-full flex justify-center items-center">
         <p className="text-richblack-5">You Have not Enrolled in any courses</p>
       </div>
-
       ) : (
         <div>
         <Spinner />

@@ -65,7 +65,7 @@ const PersonalDetails = ({userDetails}) => {
             />
             <ShowInfo
               label="Date of Birth"
-              info={userDetails?.additionalDetails?.dob.split('T').at(0).toString().split('-').reverse().join('-')}
+              info={userDetails?.additionalDetails?.dob?.split('T').at(0).toString().split('-').reverse().join('-')}
               text="Enter your Birthdate"
             />
             <ShowInfo

@@ -57,6 +57,7 @@ const SignupForm = ({setIsLoggedIn,changeTab}) => {
           "confirmPassword":formData.cpassword,
           "accountType":user,
         }
+        console.log("signup data",data);
         dispatch(setSignupData(data));
         dispatch(sendOTP(formData.email,navigate));
     }

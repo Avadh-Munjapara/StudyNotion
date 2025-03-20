@@ -15,6 +15,8 @@ import Profile from "./pages/dashboardPages/Profile";
 import Settings from "./pages/dashboardPages/Settings";
 import EnrolledCourses from "./pages/dashboardPages/EnrolledCourses";
 import WishList from "./pages/dashboardPages/WishList";
+import MyCourses from "./pages/dashboardPages/InstructorPages/MyCourses";
+import AddCourse from "./components/dashboard/addCourse";
 function App() {
   return (
    <div className="font-inter w-screen overflow-x-hidden min-h-screen bg-richblack-900">
@@ -33,6 +35,8 @@ function App() {
         <Route path="settings" element={<Settings/>}/> 
         <Route path="enrolled-courses" element={<EnrolledCourses/>}/> 
         <Route path="wishList" element={<WishList/>}/> 
+        <Route path='my-courses' element={<MyCourses/>}/>
+        <Route path='add-course' element={<AddCourse/>}/>
       </Route>
     </Routes>
    </div>
