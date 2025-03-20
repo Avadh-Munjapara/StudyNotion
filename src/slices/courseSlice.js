@@ -6,7 +6,7 @@ const initialState={
 }
 
 const courseSlice=createSlice({
-    name:course,
+    name:"course",
     initialState,
     reducers:{
         setStep(state,action){
