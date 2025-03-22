@@ -46,7 +46,7 @@ border: 1px solid rgba(71, 80, 107, 0.3);
     border-radius: 8px;
     padding: 12px;
     color: rgba(153, 157, 170, 1)
-}
+} 
 .field2:focus{
     outline: none;
 }

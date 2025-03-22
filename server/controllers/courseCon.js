@@ -5,9 +5,9 @@ const { imageUpload } = require("../utils/cloudinaryUpload");
 const { default: mongoose } = require("mongoose");
 exports.createCourse=async(req,res)=>{
     try {
-        const{name,description,whatYouWillLearn,price,category}=req.body;
+        const{name,description,whatYouWillLearn,price,category,tags,instructions}=req.body;
         const {thumbnail}=req.files;
-        if(!name||!description||!whatYouWillLearn||!price||!category||!thumbnail){
+        if(!name||!description||!whatYouWillLearn||!price||!category||!thumbnail||!tags||!instructions){
              return res.status(400).json({
                  success:false,
                  message:"all fields are required, somthing is missing"
@@ -35,7 +35,10 @@ exports.createCourse=async(req,res)=>{
             price,
             category:categoryDoc._id,
             instructor:instructor._id,
-            thumbnail:thumbUpload.secure_url
+            thumbnail:thumbUpload.secure_url,
+            tag:tags,
+            instructions,
+            status:"draft"
         });
         const updatedCategory=await Category.findByIdAndUpdate(category,{$push:{courses:course._id}},{new:true});
         const updatedInstructor=await User.findByIdAndUpdate(instructor._id,{$push:{courses:course._id}},{new:true});

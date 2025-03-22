@@ -9,7 +9,7 @@ const StepDots = () => {
     { id: 3, name: "Publish" },
   ];
   return (
-    <div className="flex w-full justify-around ml-6 mt-6">
+    <div className="flex w-full justify-around ml-6 mt-6`">
       {stages.map((item, index) => {
          if (step === item.id) {
             return (

@@ -7,7 +7,7 @@ import { IoCartOutline } from "react-icons/io5";
 import { FaRegCircleUser } from "react-icons/fa6";
 import apiConnector from "../../services/apiConnector";
 import { IoIosArrowDropdown } from "react-icons/io";
-import { courses } from "../../services/apis";
+import { categoryEndpoint } from "../../services/apis";
 import { useState } from "react";
 import { MdLogout } from "react-icons/md";
 import { logout } from "../../services/operations/authApi";
@@ -19,7 +19,7 @@ const NavBar = () => {
   const location=useLocation();
 const dispatch=useDispatch();
   useEffect(() => {
-    apiConnector(courses.totalCourses,"get")
+    apiConnector(categoryEndpoint.GET_ALL_CATEGORY_API,"get")
       .then((response) => {
         setCategories(response.data.categories);
       })
