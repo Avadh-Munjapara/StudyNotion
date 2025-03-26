@@ -114,6 +114,31 @@ const CourseInformation = () => {
 
       <Tags register={register} tags={tags} getValues={getValues} setTags={setTags} watch={watch} errors={errors}/>
       <ThumbnailUpload watch={watch} register={register} erros={errors}/>
+
+      <div className="flex flex-col gap-1">
+        <Label
+          text={"Benefits of the Course"}
+          forwhat={"benefits"}
+          required={true}
+        />
+        <textarea
+          className="field2"
+          rows={6}
+          {...register("benefits", {
+            required: {
+              value: true,
+              message: "Course benefits are required",
+            },
+          })}
+          placeholder="Enter Course benefits"
+          type="text"
+          name="benefits"
+          id="benefits"
+        />
+      </div>
+      {errors.benefits && (
+        <ErrorMessage message={errors.benefits.message} />
+      )}
     </div> 
   );
 };
