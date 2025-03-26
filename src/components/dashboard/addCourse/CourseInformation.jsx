@@ -8,6 +8,7 @@ import { setLoading } from "../../../slices/courseSlice";
 import { useDispatch, useSelector } from "react-redux";
 import Spinner from "../../comman/Spinner";
 import Tags from "./Tags";
+import ThumbnailUpload from "./ThumbnailUpload";
 const CourseInformation = () => {
   const {
     register,
@@ -112,8 +113,8 @@ const CourseInformation = () => {
       {errors.category && <ErrorMessage message={errors.category.message} />}
 
       <Tags register={register} tags={tags} getValues={getValues} setTags={setTags} watch={watch} errors={errors}/>
-      
-    </div>
+      <ThumbnailUpload watch={watch} register={register} erros={errors}/>
+    </div> 
   );
 };
 

@@ -29,6 +29,7 @@ const Tags = ({ tags, register, errors, setTags, watch, getValues }) => {
             className="field2"
             {...register("tags", {
               required: { value: true, message: "Tags is required" },
+              pattern:{value:/[\w]+/,message:"only character and digits are allowed"}
             })}
             placeholder="Enter Tags"
             type="text"

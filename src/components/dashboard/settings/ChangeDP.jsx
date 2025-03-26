@@ -57,7 +57,7 @@ const ChangeDP = () => {
           type="file"
           id="displayPicture"
           className="hidden"
-        />
+        />    
           </div>
           <div className="flex gap-3 self-end">
         <CancelBtn reset={resetPreview}/>
