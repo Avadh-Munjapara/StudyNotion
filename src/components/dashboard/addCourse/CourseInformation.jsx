@@ -9,17 +9,22 @@ import { useDispatch, useSelector } from "react-redux";
 import Spinner from "../../comman/Spinner";
 import Tags from "./Tags";
 import ThumbnailUpload from "./ThumbnailUpload";
+import InstructionsInput from "./InstructionsInput";
+import { MdKeyboardArrowRight } from "react-icons/md";
+import SubmitBtn from "../../comman/SubmitBtn";
 const CourseInformation = () => {
   const {
     register,
     setValue,
     getValue,
     watch,
+    handleSubmit,
     getValues,
     formState: { errors },
   } = useForm();
   const [categories, setCategories] = useState([]);
   const [tags, setTags] = useState([]);
+  const [instructions, setInstructions] = useState([]);
   const loading = useSelector((state) => state.course.loading);
   const dispatch = useDispatch();
   useEffect(() => {
@@ -33,13 +38,16 @@ const CourseInformation = () => {
     };
     fetchCategories();
   }, []);
+  const submitHandler=(data)=>{
+    console.log(data);
+  }
   return loading ? (
     <div>
       {" "}
       <Spinner />{" "}
     </div>
   ) : (
-    <div className="ml-5 flex flex-col gap-5 bg-[#161D29] p-3">
+    <form onSubmit={handleSubmit(submitHandler)} className="ml-5 flex flex-col gap-5 bg-[#161D29] p-3">
       <div className="flex flex-col gap-1">
         <Label text={"Course Title"} forwhat={"courseTitle"} required={true} />
         <input
@@ -52,10 +60,11 @@ const CourseInformation = () => {
           name="courseTitle"
           id="courseTitle"
         />
-      </div>
-      {errors.courseTitle && (
+        {errors.courseTitle && (
         <ErrorMessage message={errors.courseTitle.message} />
       )}
+      </div>
+      
 
       <div className="flex flex-col gap-1">
         <Label
@@ -77,10 +86,11 @@ const CourseInformation = () => {
           name="courseDesc"
           id="courseDesc"
         />
-      </div>
-      {errors.courseDesc && (
+         {errors.courseDesc && (
         <ErrorMessage message={errors.courseDesc.message} />
       )}
+      </div>
+     
 
       <div className="flex flex-col gap-1">
         <Label text={"Price"} forwhat={"price"} required={true} />
@@ -97,8 +107,8 @@ const CourseInformation = () => {
             id="price"
           />
         </div>
-      </div>
       {errors.price && <ErrorMessage message={errors.price.message} />}
+      </div>
 
       <div className="flex flex-col gap-1">
         <Label text={"Category"} forwhat={"category"} required={true} />
@@ -109,8 +119,8 @@ const CourseInformation = () => {
             </option>
           ))}
         </select>
-      </div>
       {errors.category && <ErrorMessage message={errors.category.message} />}
+      </div>
 
       <Tags register={register} tags={tags} getValues={getValues} setTags={setTags} watch={watch} errors={errors}/>
       <ThumbnailUpload watch={watch} register={register} erros={errors}/>
@@ -135,11 +145,17 @@ const CourseInformation = () => {
           name="benefits"
           id="benefits"
         />
-      </div>
       {errors.benefits && (
         <ErrorMessage message={errors.benefits.message} />
       )}
-    </div> 
+      </div>
+
+      <InstructionsInput instructions={instructions} watch={watch} setInstructions={setInstructions} register={register} errors={errors}/>
+   <div className="self-end">
+   <SubmitBtn text={<>Next <MdKeyboardArrowRight /> </>}/>
+
+   </div>
+    </form> 
   );
 };
 

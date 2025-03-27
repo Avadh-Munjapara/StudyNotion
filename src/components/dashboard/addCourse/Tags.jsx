@@ -21,7 +21,6 @@ const Tags = ({ tags, register, errors, setTags, watch, getValues }) => {
     setTags(updTags);
   };
   return (
-    <>
       <div className="flex flex-col gap-3">
         <div className="flex flex-col gap-1">
           <Label text={"Tags"} forwhat={"tags"} required={true} />
@@ -37,6 +36,7 @@ const Tags = ({ tags, register, errors, setTags, watch, getValues }) => {
             id="tags"
             onKeyDown={keyDownHandler}
           />
+            {errors.tags && <ErrorMessage message={errors.tags.message} />}
         </div>
         {tags.length > 0 && (
           <ul className="flex  gap-3">
@@ -58,8 +58,7 @@ const Tags = ({ tags, register, errors, setTags, watch, getValues }) => {
           </ul>
         )}
       </div>
-      {errors.tags && <ErrorMessage message={errors.tags.message} />}
-    </>
+    
   );
 };
 

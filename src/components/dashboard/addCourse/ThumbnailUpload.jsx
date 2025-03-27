@@ -25,9 +25,9 @@ const ThumbnailUpload = ({ register, erros, watch }) => {
               htmlFor="thumbnail"
               className="cursor-pointer p-3 bg-[#171717] rounded-full"
             >
-              <IoCloudUpload className="text-[#FFD60A] w-6 h-6" />
+              <IoCloudUpload className="text-[#FFD60A] w-5 h-5" />
             </label>
-            <p className="text-[#999DAA] text-center">
+            <p className="text-[#999DAA] text-center text-xs">
               Drag and drop an image, or
               <span>
                 <label
@@ -41,11 +41,14 @@ const ThumbnailUpload = ({ register, erros, watch }) => {
               <br />
               Max 6MB each (12MB for videos)
             </p>
-            <div className="flex text-[#6E727F] gap-12 font-semibold">
+            <div className="flex text-[#6E727F] gap-12 text-xs font-semibold">
               <p>Aspect ratio 16:9</p>
               <p> Recommended size 1024x576</p>
             </div>
           </div>
+          {
+        erros.thumbnail && <ErrorMessage message={erros.thumbnail.message}/>
+      }
         </div>
       )}
 
@@ -57,9 +60,7 @@ const ThumbnailUpload = ({ register, erros, watch }) => {
         })}
         type="file"
       />
-      {
-        erros.thumbnail && <ErrorMessage message={erros.thumbnail.message}/>
-      }
+      
     </>
   );
 };
