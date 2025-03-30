@@ -3,10 +3,11 @@ const User=require("../models/User");
 const Category=require("../models/Category");
 const { imageUpload } = require("../utils/cloudinaryUpload");
 const { default: mongoose } = require("mongoose");
-exports.createCourse=async(req,res)=>{
+exports.createCourse=async(req,res)=>{ 
     try {
         const{name,description,whatYouWillLearn,price,category,tags,instructions}=req.body;
         const {thumbnail}=req.files;
+
         if(!name||!description||!whatYouWillLearn||!price||!category||!thumbnail||!tags||!instructions){
              return res.status(400).json({
                  success:false,
@@ -20,7 +21,8 @@ exports.createCourse=async(req,res)=>{
                  message:"instructor is not in our database"
             });
         }
-        const categoryDoc=await Category.findById(category);
+        const categoryId=await Category.find({name:category},'_id');
+        const categoryDoc=await Category.findById(categoryId);
         if(!categoryDoc){
              return res.status(400).json({
                  success:false,
@@ -40,7 +42,7 @@ exports.createCourse=async(req,res)=>{
             instructions,
             status:"draft"
         });
-        const updatedCategory=await Category.findByIdAndUpdate(category,{$push:{courses:course._id}},{new:true});
+        const updatedCategory=await Category.findByIdAndUpdate(categoryId,{$push:{courses:course._id}},{new:true});
         const updatedInstructor=await User.findByIdAndUpdate(instructor._id,{$push:{courses:course._id}},{new:true});
         return res.status(201).json({
              success:true,

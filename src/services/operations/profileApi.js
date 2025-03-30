@@ -81,7 +81,7 @@ export function deleteAccount(navigate) {
 export function updateDP(formData){
     return async(dispatch)=>{
       const tId=toast.loading('updating...');
-      try {
+      try { 
         const response=await apiConnector(UPDATEDPAPI,"PUT",formData,{
           'Content-Type': 'multipart/form-data',
           Authorization:`bearer ${token}`

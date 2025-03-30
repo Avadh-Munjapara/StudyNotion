@@ -14,7 +14,7 @@ const ChangeDP = () => {
   const image = useSelector((state) => state.profile.user.image);
 
   const resetPreview=()=>{
-    reset();
+    reset(); 
     setFilePreview(null);
     // console.log('file',file);
     // console.log("filePreview",filePreview);

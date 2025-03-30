@@ -12,6 +12,7 @@ import ThumbnailUpload from "./ThumbnailUpload";
 import InstructionsInput from "./InstructionsInput";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import SubmitBtn from "../../comman/SubmitBtn";
+import { createCourse } from "../../../services/operations/courseApi";
 const CourseInformation = () => {
   const {
     register,
@@ -23,7 +24,7 @@ const CourseInformation = () => {
     formState: { errors },
   } = useForm();
   const [categories, setCategories] = useState([]);
-  const [tags, setTags] = useState([]);
+  const [allTags, setAllTags] = useState([]);
   const [instructions, setInstructions] = useState([]);
   const loading = useSelector((state) => state.course.loading);
   const dispatch = useDispatch();
@@ -38,8 +39,25 @@ const CourseInformation = () => {
     };
     fetchCategories();
   }, []);
-  const submitHandler=(data)=>{
-    console.log(data);
+  const submitHandler=async (data)=>{
+
+    const formData=new FormData();
+     formData.append('thumbnail',data.thumbnail[0]);
+     formData.append('name',data.courseTitle);
+     formData.append('description',data.courseDesc);
+     formData.append('whatYouWillLearn',data.benefits);
+     formData.append('price',data.price);
+     formData.append('category',data.category);
+     formData.append('tags',allTags);
+     formData.append('instructions',instructions);
+    if(!allTags.empty && instructions){
+     dispatch(createCourse(formData,setLoading));
+    }
+  }
+  const downHandler=(e)=>{
+    if(e.key==='Enter'){
+      e.preventDefault();
+    }
   }
   return loading ? (
     <div>
@@ -47,7 +65,7 @@ const CourseInformation = () => {
       <Spinner />{" "}
     </div>
   ) : (
-    <form onSubmit={handleSubmit(submitHandler)} className="ml-5 flex flex-col gap-5 bg-[#161D29] p-3">
+    <form onKeyDown={downHandler} onSubmit={handleSubmit(submitHandler)} className="ml-5 flex flex-col gap-5 bg-[#161D29] p-3">
       <div className="flex flex-col gap-1">
         <Label text={"Course Title"} forwhat={"courseTitle"} required={true} />
         <input
@@ -112,7 +130,7 @@ const CourseInformation = () => {
 
       <div className="flex flex-col gap-1">
         <Label text={"Category"} forwhat={"category"} required={true} />
-        <select name="category" className="field2 cursor-pointer" id="category">
+        <select {...register('category')} name="category" className="field2 cursor-pointer" id="category">
           {categories?.map((item, index) => (
             <option key={index} value={item.name}>
               {item.name}
@@ -122,7 +140,7 @@ const CourseInformation = () => {
       {errors.category && <ErrorMessage message={errors.category.message} />}
       </div>
 
-      <Tags register={register} tags={tags} getValues={getValues} setTags={setTags} watch={watch} errors={errors}/>
+      <Tags register={register} allTags={allTags} getValues={getValues} setAllTags={setAllTags} watch={watch} errors={errors}/>
       <ThumbnailUpload watch={watch} register={register} erros={errors}/>
 
       <div className="flex flex-col gap-1">
