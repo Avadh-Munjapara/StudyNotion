@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit"
 const initialState={
     step:1,
     loading:false,
-    courseInfo:localStorage.getItem('course')?JSON.parse(localStorage.getItem('course')):null
+    courseInfo:null
 }
 
 const courseSlice=createSlice({
@@ -13,11 +13,14 @@ const courseSlice=createSlice({
         setStep(state,action){
             state.step=action.payload;
         },
+        setCourseInfo(state,action){
+            state.courseInfo=action.payload;
+        },
         setLoading(state,action){
             state.loading=action.payload;
         }
     }
 })
 
-export const {setStep,setLoading}=courseSlice.actions;
+export const {setStep,setLoading,setCourseInfo}=courseSlice.actions;
 export default courseSlice.reducer;

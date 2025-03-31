@@ -1,7 +1,7 @@
 import { setLoading } from "../../slices/authSlice";
 import apiConnector from "../apiConnector";
 import { courseEndPoint } from "../apis";
-import { setStep } from "../../slices/courseSlice";
+import { setStep,setCourseInfo } from "../../slices/courseSlice";
 import toast from "react-hot-toast";
 
 const{GET_AVG_RATING,CREATE_COURSE_API}=courseEndPoint;
@@ -20,10 +20,11 @@ export async function getAverageRating(payLoad){
     }
 }
 
-export function createCourse(payLoad,setLoading){
+export function createCourse(payLoad,course,setLoading){
     return async (dispatch)=>{
         try {
             dispatch(setLoading(true));
+            dispatch(setCourseInfo(course));
             const createdCourse=await apiConnector(CREATE_COURSE_API,'POST',payLoad,{
                 'Content-Type': 'multipart/form-data',
                 Authorization:`bearer ${token}`

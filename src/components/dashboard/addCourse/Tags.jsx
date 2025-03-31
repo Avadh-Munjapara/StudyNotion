@@ -60,13 +60,13 @@ const Tags = ({ allTags, register, errors, setAllTags, watch, getValues }) => {
                 className="bg-[#FFD60A] flex items-center  gap-1 p-1 text-black rounded-lg"
               >
                 {item}
-                <button
-                  onClick={() => {
+                <span className="cursor-pointer"
+                  onClick={(e) => {
                     removeTag(index);
                   }}
                 >
                   <RxCross2 />
-                </button>
+                </span>
               </li>
             ))}
           </ul>

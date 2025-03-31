@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import Label from "../../comman/Label";
 import ErrorMessage from "../../comman/ErrorMessage";
@@ -12,6 +12,7 @@ import ThumbnailUpload from "./ThumbnailUpload";
 import InstructionsInput from "./InstructionsInput";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import SubmitBtn from "../../comman/SubmitBtn";
+import toast from "react-hot-toast";
 import { createCourse } from "../../../services/operations/courseApi";
 const CourseInformation = () => {
   const {
@@ -21,13 +22,16 @@ const CourseInformation = () => {
     watch,
     handleSubmit,
     getValues,
+    reset,
     formState: { errors },
   } = useForm();
   const [categories, setCategories] = useState([]);
   const [allTags, setAllTags] = useState([]);
   const [instructions, setInstructions] = useState([]);
   const loading = useSelector((state) => state.course.loading);
+  const courseInfo = useSelector((state) => state.course.courseInfo);
   const dispatch = useDispatch();
+
   useEffect(() => {
     const fetchCategories = async () => {
       try {
@@ -39,33 +43,76 @@ const CourseInformation = () => {
     };
     fetchCategories();
   }, []);
-  const submitHandler=async (data)=>{
 
-    const formData=new FormData();
-     formData.append('thumbnail',data.thumbnail[0]);
-     formData.append('name',data.courseTitle);
-     formData.append('description',data.courseDesc);
-     formData.append('whatYouWillLearn',data.benefits);
-     formData.append('price',data.price);
-     formData.append('category',data.category);
-     formData.append('tags',allTags);
-     formData.append('instructions',instructions);
-    if(!allTags.empty && instructions){
-     dispatch(createCourse(formData,setLoading));
+  useEffect(() => {
+    if (courseInfo) {
+      reset({
+        courseTitle: courseInfo.name,
+        courseDesc: courseInfo.description,
+        benefits: courseInfo.whatYouWillLearn,
+        price: courseInfo.price,
+        category: courseInfo.category,
+      });
+      // setValue('courseTitle',courseInfo.name);
+      // setValue('courseDesc',courseInfo.description);
+      // setValue('benefits',courseInfo.whatYouWillLearn);
+      // setValue('price',courseInfo.price);
+      // setValue('category',courseInfo.category);
+      setAllTags(courseInfo.tags);
+      setInstructions(courseInfo.instructions);
     }
-  }
-  const downHandler=(e)=>{
-    if(e.key==='Enter'){
+  }, [courseInfo]);
+
+  const updateThumbnail = (thumbnail) => {
+    return thumbnail.current.files[0];
+  };
+
+  const submitHandler = async (data) => {
+    if (allTags.length === 0 || instructions.length === 0) {
+      if (allTags.length === 0) {
+        toast.error("please add at least one tag");
+      } else if (instructions.length === 0) {
+        toast.error("please add at least one instruction");
+      }
+    } else {
+      const courseInfo = {
+        name: data.courseTitle,
+        description: data.courseDesc,
+        whatYouWillLearn: data.benefits,
+        price: data.price,
+        category: data.category,
+        tags: allTags,
+        instructions: instructions,
+        thumbnail: URL.createObjectURL(data.thumbnail[0]),
+      };
+      const formData = new FormData();
+      formData.append("thumbnail", data.thumbnail[0]);
+      formData.append("name", data.courseTitle);
+      formData.append("description", data.courseDesc);
+      formData.append("whatYouWillLearn", data.benefits);
+      formData.append("price", data.price);
+      formData.append("category", data.category);
+      formData.append("tags", allTags);
+      formData.append("instructions", instructions);
+      dispatch(createCourse(formData, courseInfo, setLoading));
+    }
+  };
+  const downHandler = (e) => {
+    if (e.key === "Enter") {
       e.preventDefault();
     }
-  }
+  };
   return loading ? (
-    <div>
+    <div className="flex h-full w-full justify-center items-center">
       {" "}
       <Spinner />{" "}
     </div>
   ) : (
-    <form onKeyDown={downHandler} onSubmit={handleSubmit(submitHandler)} className="ml-5 flex flex-col gap-5 bg-[#161D29] p-3">
+    <form
+      onKeyDown={downHandler}
+      onSubmit={handleSubmit(submitHandler)}
+      className="ml-5 flex rounded-lg border border-richblack-700 flex-col gap-5 bg-[#161D29] p-6"
+    >
       <div className="flex flex-col gap-1">
         <Label text={"Course Title"} forwhat={"courseTitle"} required={true} />
         <input
@@ -79,10 +126,9 @@ const CourseInformation = () => {
           id="courseTitle"
         />
         {errors.courseTitle && (
-        <ErrorMessage message={errors.courseTitle.message} />
-      )}
+          <ErrorMessage message={errors.courseTitle.message} />
+        )}
       </div>
-      
 
       <div className="flex flex-col gap-1">
         <Label
@@ -104,11 +150,10 @@ const CourseInformation = () => {
           name="courseDesc"
           id="courseDesc"
         />
-         {errors.courseDesc && (
-        <ErrorMessage message={errors.courseDesc.message} />
-      )}
+        {errors.courseDesc && (
+          <ErrorMessage message={errors.courseDesc.message} />
+        )}
       </div>
-     
 
       <div className="flex flex-col gap-1">
         <Label text={"Price"} forwhat={"price"} required={true} />
@@ -125,23 +170,35 @@ const CourseInformation = () => {
             id="price"
           />
         </div>
-      {errors.price && <ErrorMessage message={errors.price.message} />}
+        {errors.price && <ErrorMessage message={errors.price.message} />}
       </div>
 
       <div className="flex flex-col gap-1">
         <Label text={"Category"} forwhat={"category"} required={true} />
-        <select {...register('category')} name="category" className="field2 cursor-pointer" id="category">
+        <select
+          {...register("category")}
+          name="category"
+          className="field2 cursor-pointer"
+          id="category"
+        >
           {categories?.map((item, index) => (
             <option key={index} value={item.name}>
               {item.name}
             </option>
           ))}
         </select>
-      {errors.category && <ErrorMessage message={errors.category.message} />}
+        {errors.category && <ErrorMessage message={errors.category.message} />}
       </div>
 
-      <Tags register={register} allTags={allTags} getValues={getValues} setAllTags={setAllTags} watch={watch} errors={errors}/>
-      <ThumbnailUpload watch={watch} register={register} erros={errors}/>
+      <Tags
+        register={register}
+        allTags={allTags}
+        getValues={getValues}
+        setAllTags={setAllTags}
+        watch={watch}
+        errors={errors}
+      />
+      <ThumbnailUpload watch={watch} register={register} erros={errors} />
 
       <div className="flex flex-col gap-1">
         <Label
@@ -163,18 +220,26 @@ const CourseInformation = () => {
           name="benefits"
           id="benefits"
         />
-      {errors.benefits && (
-        <ErrorMessage message={errors.benefits.message} />
-      )}
+        {errors.benefits && <ErrorMessage message={errors.benefits.message} />}
       </div>
 
-      <InstructionsInput instructions={instructions} watch={watch} setInstructions={setInstructions} register={register} errors={errors}/>
-   <div className="self-end">
-   <SubmitBtn text={<>Next <MdKeyboardArrowRight /> </>}/>
-
-   </div>
-    </form> 
+      <InstructionsInput
+        instructions={instructions}
+        watch={watch}
+        setInstructions={setInstructions}
+        register={register}
+        errors={errors}
+      />
+      <div className="self-end">
+        <SubmitBtn
+          text={
+            <>
+              Next <MdKeyboardArrowRight />{" "}
+            </>
+          }
+        />
+      </div>
+    </form>
   );
 };
-
 export default CourseInformation;

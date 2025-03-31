@@ -3,7 +3,7 @@ const User=require("../models/User");
 const Category=require("../models/Category");
 const { imageUpload } = require("../utils/cloudinaryUpload");
 const { default: mongoose } = require("mongoose");
-exports.createCourse=async(req,res)=>{ 
+exports.createCourse=async(req,res)=>{  
     try {
         const{name,description,whatYouWillLearn,price,category,tags,instructions}=req.body;
         const {thumbnail}=req.files;
@@ -49,7 +49,7 @@ exports.createCourse=async(req,res)=>{
              message:"the course created successfully",
              course
         });
-    } catch (error) {
+    } catch (error) {  
         console.log('error while creating course', error);
         return res.status(500).json({
             success: false,
