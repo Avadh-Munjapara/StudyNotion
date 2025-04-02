@@ -112,7 +112,6 @@ const CourseInformation = () => {
           instructions: instructions,
           thumbnail: URL.createObjectURL(data.thumbnail[0]),
         };
-        console.log(courseInfo);
         const formData = new FormData();
         formData.append("thumbnail", data.thumbnail[0]);
         formData.append("name", data.courseTitle);
@@ -145,14 +144,18 @@ const CourseInformation = () => {
           formData.append("description", data.courseDesc);
         data.benefits != courseInfo.whatYouWillLearn &&
           formData.append("whatYouWillLearn", data.benefits);
-        data.price != courseInfo.price &&
-          formData.append("price", data.price);
+        data.price != courseInfo.price && formData.append("price", data.price);
         data.category != courseInfo.category &&
           formData.append("category", data.category);
-        compareArrays(allTags, courseInfo.tags) && allTags.forEach((item) => {formData.append("tags", item)});
-        compareArrays(instructions, courseInfo.instructions) && instructions.forEach((item) => {formData.append("instructions", item)});
+       if(!compareArrays(allTags, courseInfo.tags)) 
+          allTags.forEach((item) => {
+            formData.append("tags", item);
+          });
+        if(!compareArrays(instructions, courseInfo.instructions))
+          instructions.forEach((item) => {
+            formData.append("instructions", item);
+          });
         formData.append("courseId", courseInfo.courseId);
-        console.log(formData);
         const updCourse = {
           courseId: courseInfo.courseId,
           name: data.courseTitle,
@@ -270,6 +273,7 @@ const CourseInformation = () => {
       </div>
 
       <Tags
+      setValue={setValue}
         register={register}
         allTags={allTags}
         getValues={getValues}
@@ -303,6 +307,7 @@ const CourseInformation = () => {
       </div>
 
       <InstructionsInput
+      setValue={setValue}
         instructions={instructions}
         watch={watch}
         setInstructions={setInstructions}

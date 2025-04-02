@@ -2,7 +2,7 @@ import React from "react";
 import Label from "../../comman/Label";
 import ErrorMessage from "../../comman/ErrorMessage";
 import { RxCross2 } from "react-icons/rx";
-const Tags = ({ allTags, register, errors, setAllTags, watch, getValues }) => {
+const Tags = ({ setValue,allTags, register, errors, setAllTags, watch, getValues }) => {
   const tagWatch = watch("tags");
   const clickHandler =(e)=>{
     if (tagWatch) {
@@ -10,6 +10,7 @@ const Tags = ({ allTags, register, errors, setAllTags, watch, getValues }) => {
       const updTags = [...allTags, value];
       e.target.value = "";
       setAllTags(updTags);
+      setValue("tags", "");
     }
   }
   const keyDownHandler = (e) => {

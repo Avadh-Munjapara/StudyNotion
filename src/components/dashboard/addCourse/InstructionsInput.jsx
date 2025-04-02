@@ -5,7 +5,7 @@ const InstructionsInput = ({
   instructions,
   setInstructions,
   register,
-  errors,
+  setValue,
   watch,
 }) => {
   const instruction = watch("instruction");
@@ -13,6 +13,7 @@ const InstructionsInput = ({
     if (instruction) {
       const newIns = [...instructions, instruction];
       setInstructions(newIns);
+      setValue('instruction', '');
     }
   };
   const keyDownHandler = (e) => {
