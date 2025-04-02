@@ -52,7 +52,7 @@ const Tags = ({ allTags, register, errors, setAllTags, watch, getValues }) => {
             {errors.tags && <ErrorMessage message={errors.tags.message} />}
         </div>
        
-        {allTags.length > 0 && (
+        {allTags && allTags.length > 0 && (
           <ul className="flex  gap-3">
             {allTags.map((item, index) => (
               <li

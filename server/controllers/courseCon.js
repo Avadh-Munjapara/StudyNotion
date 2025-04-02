@@ -127,3 +127,79 @@ exports.getAllCourses=async (req,res)=>{
         });
     }
 }
+
+exports.editCourse=async(req,res)=>{
+ try {
+    const{name,description,whatYouWillLearn,price,category,tags,instructions,courseId}=req.body;
+    console.log(name,description,whatYouWillLearn,price,category,tags,instructions,courseId);
+    let thumbnail;
+    if(req.files){
+        thumbnail=req.files.thumbnail;
+    }
+    if(!name&&!description&&!whatYouWillLearn&&!price&&!category&&!thumbnail&&!tags&&!instructions){
+         return res.status(400).json({
+             success:false,
+             message:"some fields are required"
+        });
+    }
+    console.log(req.body.name);
+    if(!courseId){
+         return res.status(400).json({
+             success:false,
+             message:"courseId is required"
+        });
+    }
+    const course=await Course.findById(courseId);
+    if(!course){
+         return res.status(400).json({
+             success:false,
+             message:"no course found with that courseid"
+        });
+    }
+    if(name){
+        course.name=name;
+    }
+    if(description){
+        course.description=description;
+    }
+    if(whatYouWillLearn){
+        course.whatYouWillLearn=whatYouWillLearn;
+    }
+    if(price){
+        course.price=price;
+    }
+    if(category){
+        const categoryId=await Category.find({name:category},'_id');
+        const categoryDoc=await Category.findById(categoryId);
+        if(!categoryDoc){
+             return res.status(400).json({
+                 success:false,
+                 message:"no category found"
+            });
+        }
+        course.category=categoryDoc._id;
+    }
+    if(thumbnail){
+        const thumbUpload=await imageUpload(thumbnail,process.env.FOLDERNAME);
+        course.thumbnail=thumbUpload.secure_url;
+    }
+    if(tags){
+        course.tag=tags;
+    }
+    if(instructions){
+        course.instructions=instructions;
+    }
+    const updatedCourse=await course.save();
+    return res.json({
+        success:true,
+        message:"course updated successfully",
+        updatedCourse
+    });
+ } catch (error) {
+     console.log('error while editing course details controller', error);
+     return res.status(500).json({
+         success: false,
+         message: 'something went wrong while editing course details'
+     });
+ }
+}

@@ -4,7 +4,7 @@ import Label from "../../comman/Label";
 import ErrorMessage from "../../comman/ErrorMessage";
 import { RiMoneyRupeeCircleLine } from "react-icons/ri";
 import { getAllCategory } from "../../../services/operations/CategoryApi";
-import { setLoading } from "../../../slices/courseSlice";
+import { setLoading, setStep } from "../../../slices/courseSlice";
 import { useDispatch, useSelector } from "react-redux";
 import Spinner from "../../comman/Spinner";
 import Tags from "./Tags";
@@ -14,11 +14,12 @@ import { MdKeyboardArrowRight } from "react-icons/md";
 import SubmitBtn from "../../comman/SubmitBtn";
 import toast from "react-hot-toast";
 import { createCourse } from "../../../services/operations/courseApi";
+import { editCourseDetails } from "../../../services/operations/courseApi";
+import YellowBtn from "../../comman/YellowBtn";
 const CourseInformation = () => {
   const {
     register,
     setValue,
-    getValue,
     watch,
     handleSubmit,
     getValues,
@@ -30,7 +31,10 @@ const CourseInformation = () => {
   const [instructions, setInstructions] = useState([]);
   const loading = useSelector((state) => state.course.loading);
   const courseInfo = useSelector((state) => state.course.courseInfo);
+  const thumnailPreview = courseInfo?.thumbnail;
+  const editCourse = useSelector((state) => state.course.editCourse);
   const dispatch = useDispatch();
+  const thumbanil = watch("thumbnail");
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -45,56 +49,125 @@ const CourseInformation = () => {
   }, []);
 
   useEffect(() => {
-    if (courseInfo) {
-      reset({
-        courseTitle: courseInfo.name,
-        courseDesc: courseInfo.description,
-        benefits: courseInfo.whatYouWillLearn,
-        price: courseInfo.price,
-        category: courseInfo.category,
-      });
-      // setValue('courseTitle',courseInfo.name);
-      // setValue('courseDesc',courseInfo.description);
-      // setValue('benefits',courseInfo.whatYouWillLearn);
-      // setValue('price',courseInfo.price);
-      // setValue('category',courseInfo.category);
-      setAllTags(courseInfo.tags);
-      setInstructions(courseInfo.instructions);
+    if (editCourse) {
+      setValue("courseTitle", courseInfo.name);
+      setValue("courseDesc", courseInfo.description);
+      setValue("benefits", courseInfo.whatYouWillLearn);
+      setValue("price", courseInfo.price);
+      setValue("category", courseInfo.category);
+      setAllTags([...courseInfo.tags]);
+      setInstructions([...courseInfo.instructions]);
     }
-  }, [courseInfo]);
+  }, []);
 
-  const updateThumbnail = (thumbnail) => {
-    return thumbnail.current.files[0];
+  const isFormUpdated = () => {
+    if (
+      getValues("courseTitle") != courseInfo.name ||
+      getValues("courseDesc") != courseInfo.description ||
+      getValues("price") != courseInfo.price ||
+      getValues("category") != courseInfo.category ||
+      getValues("benefits") != courseInfo.whatYouWillLearn
+    ) {
+      return true;
+    }
+    if (!compareArrays(allTags, courseInfo.tags)) {
+      return true;
+    }
+    if (!compareArrays(instructions, courseInfo.instructions)) {
+      return true;
+    }
+    if (thumbanil[0]) return true;
+    return false;
+  };
+
+  const compareArrays = (arr1, arr2) => {
+    if (arr1.length !== arr2.length) return false;
+    return arr1.every((item, index) => item === arr2[index]);
   };
 
   const submitHandler = async (data) => {
-    if (allTags.length === 0 || instructions.length === 0) {
-      if (allTags.length === 0) {
-        toast.error("please add at least one tag");
-      } else if (instructions.length === 0) {
-        toast.error("please add at least one instruction");
+    if (!editCourse) {
+      if (
+        allTags.length === 0 ||
+        instructions.length === 0 ||
+        !data.thumbnail[0]
+      ) {
+        console.log("executed1");
+
+        if (allTags.length === 0) {
+          toast.error("please add at least one tag");
+        } else if (instructions.length === 0) {
+          toast.error("please add at least one instruction");
+        } else if (!data.thumbnail[0]) {
+          toast.error("please upload thumbnail");
+        }
+      } else {
+        const courseInfo = {
+          name: data.courseTitle,
+          description: data.courseDesc,
+          whatYouWillLearn: data.benefits,
+          price: data.price,
+          category: data.category,
+          tags: allTags,
+          instructions: instructions,
+          thumbnail: URL.createObjectURL(data.thumbnail[0]),
+        };
+        console.log(courseInfo);
+        const formData = new FormData();
+        formData.append("thumbnail", data.thumbnail[0]);
+        formData.append("name", data.courseTitle);
+        formData.append("description", data.courseDesc);
+        formData.append("whatYouWillLearn", data.benefits);
+        formData.append("price", data.price);
+        formData.append("category", data.category);
+        formData.append("tags", allTags);
+        formData.append("instructions", instructions);
+        dispatch(createCourse(formData, courseInfo, setLoading));
       }
     } else {
-      const courseInfo = {
-        name: data.courseTitle,
-        description: data.courseDesc,
-        whatYouWillLearn: data.benefits,
-        price: data.price,
-        category: data.category,
-        tags: allTags,
-        instructions: instructions,
-        thumbnail: URL.createObjectURL(data.thumbnail[0]),
-      };
-      const formData = new FormData();
-      formData.append("thumbnail", data.thumbnail[0]);
-      formData.append("name", data.courseTitle);
-      formData.append("description", data.courseDesc);
-      formData.append("whatYouWillLearn", data.benefits);
-      formData.append("price", data.price);
-      formData.append("category", data.category);
-      formData.append("tags", allTags);
-      formData.append("instructions", instructions);
-      dispatch(createCourse(formData, courseInfo, setLoading));
+      if (allTags.length === 0) {
+        toast.error("please add at least one tag");
+        return;
+      } else if (instructions.length === 0) {
+        toast.error("please add at least one instruction");
+        return;
+      }
+      if (!isFormUpdated()) {
+        toast.error("no changes made in the form");
+      } else {
+        const formData = new FormData();
+        if (data?.thumbnail[0]) {
+          formData.append("thumbnail", data.thumbnail[0]);
+        }
+        data.courseTitle != courseInfo.name &&
+          formData.append("name", data.courseTitle);
+        data.courseDesc != courseInfo.description &&
+          formData.append("description", data.courseDesc);
+        data.benefits != courseInfo.whatYouWillLearn &&
+          formData.append("whatYouWillLearn", data.benefits);
+        data.price != courseInfo.price &&
+          formData.append("price", data.price);
+        data.category != courseInfo.category &&
+          formData.append("category", data.category);
+        compareArrays(allTags, courseInfo.tags) && allTags.forEach((item) => {formData.append("tags", item)});
+        compareArrays(instructions, courseInfo.instructions) && instructions.forEach((item) => {formData.append("instructions", item)});
+        formData.append("courseId", courseInfo.courseId);
+        console.log(formData);
+        const updCourse = {
+          courseId: courseInfo.courseId,
+          name: data.courseTitle,
+          description: data.courseDesc,
+          whatYouWillLearn: data.benefits,
+          price: data.price,
+          category: data.category,
+          tags: allTags,
+          instructions: instructions,
+          thumbnail: data.thumbnail[0]
+            ? URL.createObjectURL(data.thumbnail[0])
+            : thumnailPreview,
+        };
+        dispatch(editCourseDetails(formData, updCourse, setLoading));
+      }
     }
   };
   const downHandler = (e) => {
@@ -181,11 +254,17 @@ const CourseInformation = () => {
           className="field2 cursor-pointer"
           id="category"
         >
-          {categories?.map((item, index) => (
-            <option key={index} value={item.name}>
-              {item.name}
-            </option>
-          ))}
+          {categories?.map((item, index) =>
+            item.name === courseInfo?.category ? (
+              <option key={index} value={item.name} selected>
+                {item.name}
+              </option>
+            ) : (
+              <option key={index} value={item.name}>
+                {item.name}
+              </option>
+            )
+          )}
         </select>
         {errors.category && <ErrorMessage message={errors.category.message} />}
       </div>
@@ -234,10 +313,23 @@ const CourseInformation = () => {
         <SubmitBtn
           text={
             <>
-              Next <MdKeyboardArrowRight />{" "}
+              {editCourse ? (
+                "Save changes"
+              ) : (
+                <>
+                  {" "}
+                  Next <MdKeyboardArrowRight />
+                </>
+              )}
             </>
           }
         />
+        {editCourse && (
+          <YellowBtn
+            text={"continue without saving"}
+            clickHandler={() => dispatch(setStep(2))}
+          />
+        )}
       </div>
     </form>
   );

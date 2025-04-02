@@ -1,9 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit"
 
 const initialState={
-    step:1,
+    editCourse:localStorage.getItem('editCourse')?JSON.parse(localStorage.getItem('editCourse')) :false,
+    step:localStorage.getItem('step')?JSON.parse(localStorage.getItem('step')):1,
     loading:false,
-    courseInfo:null
+    courseInfo:localStorage.getItem('courseInfo')?JSON.parse(localStorage.getItem('courseInfo')) :null
 }
 
 const courseSlice=createSlice({
@@ -12,15 +13,24 @@ const courseSlice=createSlice({
     reducers:{
         setStep(state,action){
             state.step=action.payload;
+            localStorage.setItem('step',JSON.stringify(action.payload));
         },
         setCourseInfo(state,action){
             state.courseInfo=action.payload;
+            localStorage.setItem('courseInfo',JSON.stringify(action.payload));
+        },
+        deleteCourseInfo(state,action){
+            state.courseInfo=null;
+            localStorage.removeItem('courseInfo');
         },
         setLoading(state,action){
             state.loading=action.payload;
+        },
+        setEditCourse(state,action){
+            state.editCourse=action.payload;
+            localStorage.setItem('editCourse',action.payload);
         }
     }
 })
-
-export const {setStep,setLoading,setCourseInfo}=courseSlice.actions;
+export const {setStep,setLoading,setCourseInfo,setEditCourse,deleteCourseInfo}=courseSlice.actions;
 export default courseSlice.reducer;

@@ -131,7 +131,7 @@ exports.login=async (req,res)=>{
         role:checkUser.accountType
     }
     const token=jwt.sign(jwtPayload,process.env.JWT_SECRET,{
-        expiresIn:"2h"
+        expiresIn:"30d"
     })
     checkUser.token=token;
     //send cookie and token

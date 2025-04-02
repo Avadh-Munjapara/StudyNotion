@@ -29,4 +29,7 @@ export const profileEndpoint={
 export const courseEndPoint={
   GET_AVG_RATING:`${baseUrl}/course/getAverageRating`,
   CREATE_COURSE_API:`${baseUrl}/course/createCourse`,
+  EDIT_COURSE_API:`${baseUrl}/course/editCourse`,
+  CREATE_SECTION_API:`${baseUrl}/course/createSection`,
+  UPDATE_SECTION_API:`${baseUrl}/course/updateSection`,
 }

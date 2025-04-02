@@ -3,6 +3,7 @@ import { setLoading, setToken } from "../../slices/authSlice";
 import apiConnector from "../apiConnector";
 import { auth } from "../apis";
 import { resetCart } from "../../slices/cartSlice";
+import { deleteCourseInfo, setCourseInfo, setEditCourse, setStep } from "../../slices/courseSlice";
 import { setUser } from "../../slices/profileSlice";
 const { SENDOTPAPI, SIGNUPAPI, LOGINAPI, FORGOTPASSWORDAPI, PASSWORDTOKENAPI,CHANGEPASSWORDAPI } = auth;
 const token=localStorage.getItem('token')?JSON.parse(localStorage.getItem('token')):null;
@@ -20,7 +21,7 @@ export function sendOTP(email, navigate) {
     }
     dispatch(setLoading(false));
   };
-}
+} 
 
 export function signup(data, navigate) {
   return async (dispatch) => {
@@ -80,8 +81,10 @@ export function logout(navigate) {
     dispatch(setToken(null));
     dispatch(setUser(null));
     dispatch(resetCart());
-    localStorage.removeItem("user");
-    localStorage.removeItem("token");
+    dispatch(deleteCourseInfo());
+    dispatch(setCourseInfo(null));
+    dispatch(setEditCourse(false));
+    dispatch(setStep(1));
     toast.success("logged out");
     navigate("/");
   };
