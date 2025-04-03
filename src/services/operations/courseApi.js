@@ -14,6 +14,7 @@ const {
   EDIT_COURSE_API,
   CREATE_SECTION_API,
   UPDATE_SECTION_API,
+  DELETE_SECTION_API
 } = courseEndPoint;
 const token = localStorage.getItem("token")
   ? JSON.parse(localStorage.getItem("token"))
@@ -50,7 +51,7 @@ export function createCourse(payLoad, course, setLoading) {
         dispatch(setCourseInfo(newCreatedCourse));
         dispatch(setStep(2));
         dispatch(setEditCourse(true));
-        toast.success("course created successfully!");
+        toast.success("course created!");
       }
     } catch (error) {
       console.log("error in createCourse api", error);
@@ -73,9 +74,10 @@ export function editCourseDetails(payLoad, course) {
             }
         );
         if (editedCourse.data.success) {
+          console.log(editedCourse);
             dispatch(setCourseInfo({...course,thumbnail:editedCourse.data.updatedCourse.thumbnail}));
             dispatch(setStep(2));
-            toast.success("course edited successfully!");
+            toast.success("course edited!");
         }
         } catch (error) {
         console.log("error in editCourse api", error);
@@ -99,7 +101,7 @@ export function createSection(payLoad) {
       );
       if (createdSection.data.success) {
         dispatch(setCourseInfo(createdSection.data.updatedCourse));
-        toast.success("section created successfully!");
+        toast.success("section created!");
       }
     } catch (error) {
       console.log("error in createSection api", error);
@@ -117,7 +119,7 @@ export function updateSectionName(payload,courseInfo,index){
         Authorization: `bearer ${token}`
       });
       if(response.data.success){
-        toast.success('section name updated successfully');
+        toast.success('section name updated!');
         console.log(response,"updated seection");
         const updatedCourseInfo={...courseInfo,courseContent:[...courseInfo.courseContent]};
         updatedCourseInfo.courseContent[index]=response.data.updatedSection
@@ -128,4 +130,24 @@ export function updateSectionName(payload,courseInfo,index){
     }
     toast.dismiss(tid);
   };
+}
+
+export function deleteSection(payload,courseInfo,index){
+  return async(dispatch)=>{
+    const tid=toast.loading("deleting section");
+    try {
+      const response=await apiConnector(DELETE_SECTION_API,"DELETE",payload,{
+        Authorization:`bearer ${token}`
+      })
+      if(response.data.success){
+        toast.success("section deleted!");
+        const newCourseInfo={...courseInfo,courseContent:[...courseInfo.courseContent]};
+        newCourseInfo.courseContent.splice(index,1);
+        dispatch(setCourseInfo(newCourseInfo));
+      }
+    } catch (error) {
+      console.log("api error in deleteSection",error);
+    }
+    toast.dismiss(tid);
+  }
 }

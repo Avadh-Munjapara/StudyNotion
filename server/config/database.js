@@ -3,6 +3,7 @@ require('dotenv').config();
 const conncetToDatabase=async ()=>{
     try{
         await mongoose.connect(process.env.DBURL,{
+            dbName:'StudyNotionDB',
             useNewUrlParser:true,
             useUnifiedTopology:true,
         })

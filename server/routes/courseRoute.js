@@ -7,7 +7,7 @@ const { createSection, updateSection, deleteSection } = require('../controllers/
 const { createRating, getAverageRating, getAllReviews, getCourseReviews } = require('../controllers/ratingAndReview');
 const { createCourse, getAllCourses, getCourseDetails, editCourse } = require('../controllers/courseCon');
 
-//routes for courses 
+//routes for courses  
 router.post("/createCourse",auth,isInstructor,createCourse);
 router.put("/editCourse",auth,isInstructor,editCourse);
 router.post("/createSection",auth,isInstructor,createSection);

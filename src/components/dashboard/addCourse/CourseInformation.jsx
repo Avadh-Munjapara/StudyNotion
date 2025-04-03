@@ -102,7 +102,7 @@ const CourseInformation = () => {
           toast.error("please upload thumbnail");
         }
       } else {
-        const courseInfo = {
+        const newCourseInfo = {
           name: data.courseTitle,
           description: data.courseDesc,
           whatYouWillLearn: data.benefits,
@@ -157,7 +157,7 @@ const CourseInformation = () => {
           });
         formData.append("courseId", courseInfo._id);
         const updCourse = {
-          _id: courseInfo._id,
+          ...courseInfo,
           name: data.courseTitle,
           description: data.courseDesc,
           whatYouWillLearn: data.benefits,

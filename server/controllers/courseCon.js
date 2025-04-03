@@ -190,6 +190,7 @@ exports.editCourse=async(req,res)=>{
         course.instructions=instructions;
     }
     const updatedCourse=await course.save();
+    console.log(updatedCourse);
     return res.json({
         success:true,
         message:"course updated successfully",

@@ -22,7 +22,7 @@ const CourseBuilder = () => {
     formState: { errors },
   } = useForm();
   const courseInfo = useSelector((state) => state.course.courseInfo);
-  const sections = courseInfo?.courseContent;
+  const sections = courseInfo.courseContent;
   const dispatch = useDispatch();
   const [editSection, setEditSection] = useState(false);
   const [sectionIndex, setSectionIndex] = useState(null);
@@ -98,7 +98,7 @@ const CourseBuilder = () => {
             )}
           </div>
         </form>
-        {courseInfo.courseContent.length > 0 && (
+        {courseInfo?.courseContent?.length > 0 && (
           <NestedView editSectionNameHandler={editSectionNameHandler} />
         )}
       </div>
