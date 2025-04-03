@@ -55,7 +55,7 @@ const CourseInformation = () => {
       setValue("benefits", courseInfo.whatYouWillLearn);
       setValue("price", courseInfo.price);
       setValue("category", courseInfo.category);
-      setAllTags([...courseInfo.tags]);
+      setAllTags([...courseInfo.tag]);
       setInstructions([...courseInfo.instructions]);
     }
   }, []);
@@ -70,7 +70,7 @@ const CourseInformation = () => {
     ) {
       return true;
     }
-    if (!compareArrays(allTags, courseInfo.tags)) {
+    if (!compareArrays(allTags, courseInfo.tag)) {
       return true;
     }
     if (!compareArrays(instructions, courseInfo.instructions)) {
@@ -147,7 +147,7 @@ const CourseInformation = () => {
         data.price != courseInfo.price && formData.append("price", data.price);
         data.category != courseInfo.category &&
           formData.append("category", data.category);
-       if(!compareArrays(allTags, courseInfo.tags)) 
+       if(!compareArrays(allTags, courseInfo.tag)) 
           allTags.forEach((item) => {
             formData.append("tags", item);
           });
@@ -155,15 +155,15 @@ const CourseInformation = () => {
           instructions.forEach((item) => {
             formData.append("instructions", item);
           });
-        formData.append("courseId", courseInfo.courseId);
+        formData.append("courseId", courseInfo._id);
         const updCourse = {
-          courseId: courseInfo.courseId,
+          _id: courseInfo._id,
           name: data.courseTitle,
           description: data.courseDesc,
           whatYouWillLearn: data.benefits,
           price: data.price,
           category: data.category,
-          tags: allTags,
+          tag: allTags,
           instructions: instructions,
           thumbnail: data.thumbnail[0]
             ? URL.createObjectURL(data.thumbnail[0])
@@ -314,7 +314,7 @@ const CourseInformation = () => {
         register={register}
         errors={errors}
       />
-      <div className="self-end">
+      <div className="self-end flex gap-2">
         <SubmitBtn
           text={
             <>
@@ -330,8 +330,10 @@ const CourseInformation = () => {
           }
         />
         {editCourse && (
-          <YellowBtn
-            text={"continue without saving"}
+          <YellowBtn 
+          textColour={'#000814'}
+          bgColour={'#C5C7D4'}
+            text={"Continue without saving"}
             clickHandler={() => dispatch(setStep(2))}
           />
         )}

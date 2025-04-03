@@ -6,15 +6,14 @@ import NavBar from '../../components/comman/NavBar';
 const DashBoard = () => {
     const location=useLocation();
     return (
-        <div className='w-full'>
+        <div className='w-full h-full'>
             <NavBar/>
-            <div className='flex'>
+            <div className='flex h-full'>
                 <div className='w-[16%]'>
                 <Sidebar/>
                 </div>
-            <div className='w-[80%]'>   
+            <div className='w-[80%] h-full'>   
             <Outlet/>
-
             </div>
 
             </div>

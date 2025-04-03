@@ -1,9 +1,15 @@
 import React from "react";
 
-const YellowBtn = ({clickHandler,text}) => {
+const YellowBtn = ({ clickHandler, text, textColour, bgColour }) => {
   return (
     <button
-      className="rounded-lg font-medium cursor-pointer text-[#000814] h-fit bg-[#FFD60A] py-3 px-6 items-center flex gap-2 border border-[#2C333F]"
+      className={`rounded-lg font-medium cursor-pointer
+       h-fit w-fit
+        py-3 px-6 items-center flex gap-1 border border-[#2C333F]`}
+      style={{
+        color: textColour || "#000814",
+        backgroundColor: bgColour || "#FFD60A",
+      }}
       onClick={() => clickHandler()}
     >
       {text}

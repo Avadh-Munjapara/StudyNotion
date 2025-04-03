@@ -46,7 +46,7 @@ export function createCourse(payLoad, course, setLoading) {
         }
       );
       if (createdCourse.data.success) {
-        const newCreatedCourse = {...course,courseId: createdCourse.data.course._id};
+        const newCreatedCourse = {...course,'_id': createdCourse.data.course._id};
         dispatch(setCourseInfo(newCreatedCourse));
         dispatch(setStep(2));
         dispatch(setEditCourse(true));
@@ -104,6 +104,27 @@ export function createSection(payLoad) {
     } catch (error) {
       console.log("error in createSection api", error);
       toast.error("section not created!");
+    }
+    toast.dismiss(tid);
+  };
+}
+
+export function updateSectionName(payload,courseInfo,index){
+  return async (dispatch)=>{
+    const tid=toast.loading('updating section name');
+    try {
+      const response=await apiConnector(courseEndPoint.UPDATE_SECTION_API,'PUT',payload,{
+        Authorization: `bearer ${token}`
+      });
+      if(response.data.success){
+        toast.success('section name updated successfully');
+        console.log(response,"updated seection");
+        const updatedCourseInfo={...courseInfo,courseContent:[...courseInfo.courseContent]};
+        updatedCourseInfo.courseContent[index]=response.data.updatedSection
+        dispatch(setCourseInfo(updatedCourseInfo));
+      }
+    } catch (error) {
+      console.log('error in update section api',error);
     }
     toast.dismiss(tid);
   };
