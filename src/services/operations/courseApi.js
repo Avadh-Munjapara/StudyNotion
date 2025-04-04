@@ -14,7 +14,8 @@ const {
   EDIT_COURSE_API,
   CREATE_SECTION_API,
   UPDATE_SECTION_API,
-  DELETE_SECTION_API
+  DELETE_SECTION_API,
+  CREATE_SUBSECTION_API,
 } = courseEndPoint;
 const token = localStorage.getItem("token")
   ? JSON.parse(localStorage.getItem("token"))
@@ -150,4 +151,40 @@ export function deleteSection(payload,courseInfo,index){
     }
     toast.dismiss(tid);
   }
+}
+
+export function createsubsection(payload,courseInfo,index){
+  return async (dispatch) => {
+    const tid = toast.loading("Creating subsection...");
+    try {
+      const createdSubSection = await apiConnector(
+        CREATE_SUBSECTION_API,
+        "POST",
+        payload,
+        {
+          Authorization: `bearer ${token}`,
+        }
+      );
+      if (createdSubSection.data.success) {
+        const newSubSection= createdSubSection.data.subSection;
+        const updatedCourseInfo = {
+          ...courseInfo,
+          courseContent: courseInfo.courseContent.map((content, i) => 
+              i === index 
+                  ? {
+                      ...content,
+                      subSections: [...content.subSections,newSubSection]
+                  } 
+                  : {...content}
+          )
+      };
+        dispatch(setCourseInfo(updatedCourseInfo));
+        toast.success("subsection created!");
+      }
+    } catch (error) {
+      console.log("error in createSubSection api", error);
+      toast.error("subsection not created!");
+    }
+    toast.dismiss(tid);
+  };
 }

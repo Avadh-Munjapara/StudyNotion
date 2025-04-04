@@ -6,6 +6,8 @@ import { RiDeleteBin5Line } from "react-icons/ri";
 import { deleteSection } from "../../../services/operations/courseApi";
 import ConfirmationModal from "../../comman/ConfirmationModal";
 import useOnClickOutside from "../../../hooks/useOnClickOutside";
+import SubSection from "./SubSection";
+import { IoMdArrowDropdown } from "react-icons/io";
 const NestedView = ({ editSectionNameHandler }) => {
   const [confirmationModal,setConfirmationModal]=useState(null);
   const [deleteSectionInfo,setDeleteSectionInfo]=useState(null);
@@ -58,8 +60,11 @@ const NestedView = ({ editSectionNameHandler }) => {
                   <RiDeleteBin5Line />
                 </button>
                 <p>|</p>
+                <IoMdArrowDropdown className="text-richblack-400" />
               </div>
             </summary>
+              <SubSection sectionIndex={index} subSections={section.subSections}/>    
+                
           </details>
         ))}
     </div>

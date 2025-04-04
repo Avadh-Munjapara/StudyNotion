@@ -32,5 +32,6 @@ export const courseEndPoint={
   EDIT_COURSE_API:`${baseUrl}/course/editCourse`,
   CREATE_SECTION_API:`${baseUrl}/course/createSection`,
   UPDATE_SECTION_API:`${baseUrl}/course/updateSection`,
-  DELETE_SECTION_API:`${baseUrl}/course/deleteSection`
+  DELETE_SECTION_API:`${baseUrl}/course/deleteSection`,
+  CREATE_SUBSECTION_API:`${baseUrl}/course/createSubSection`,
 }
