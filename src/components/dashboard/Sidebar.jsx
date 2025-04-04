@@ -62,8 +62,7 @@ const Sidebar = () => {
         </button>
       </div>
       {/* modal */}
-      {confirmationModal && <ConfirmationModal heading={<>Do you Really want to{" "}
-      <span className="text-red-600 font-semibold">Log Out?</span></>}
+      {confirmationModal && <ConfirmationModal
       modalRef={modalRef}
       btn1Text="Cancel"
       btn2Text="Log Out"
