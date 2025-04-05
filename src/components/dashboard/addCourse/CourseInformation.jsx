@@ -108,7 +108,7 @@ const CourseInformation = () => {
           whatYouWillLearn: data.benefits,
           price: data.price,
           category: data.category,
-          tags: allTags,
+          tag: allTags,
           instructions: instructions,
           thumbnail: URL.createObjectURL(data.thumbnail[0]),
         };

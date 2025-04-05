@@ -12,6 +12,7 @@ const SubSection = ({ subSections,sectionIndex }) => {
     const [editSub,setEditSub]=useState(false);
     const [deleteSub,setDeleteSub]=useState(false);
     const [viewSub,setViewSub]=useState(false);
+    const [subSectionInfo,setSubSectionInfo]=useState(null);
     const modalRef = useRef(null);
     const removeModal=()=>{
         setCreateSub(false);
@@ -29,11 +30,8 @@ const SubSection = ({ subSections,sectionIndex }) => {
               key={subSection._id}
               className="flex items-center gap-3 py-2 pl-10"
             >
-              <h3 onClick={()=>setViewSub(true)} className="text-richblack-50 font-semibold">
-                {subSection.title}
-              </h3>
               <summary className="flex  justify-between">
-                <div className="flex items-center gap-3">
+                <div onClick={()=>{setViewSub(true); setSubSectionInfo(subSection)}} className="flex w-full items-center gap-3">
                   <HiMiniRectangleStack className="text-richblack-400" />
                   <h3 className="text-richblack-50 font-semibold">
                     {subSection.title}
@@ -41,10 +39,10 @@ const SubSection = ({ subSections,sectionIndex }) => {
                 </div>
                 <div className="flex gap-1 text-richblack-400 text-xl">
                   <button>
-                    <MdOutlineModeEdit onClick={()=>setEditSub(true)} />
+                    <MdOutlineModeEdit onClick={()=>{setEditSub(true); setSubSectionInfo(subSection)}} />
                   </button>
 
-                  <button onClick={()=>setDeleteSub(true)}>
+                  <button onClick={()=>{setDeleteSub(true); setSubSectionInfo(subSection)}}>
                     <RiDeleteBin5Line />
                   </button>
                 </div>
@@ -58,9 +56,9 @@ const SubSection = ({ subSections,sectionIndex }) => {
       </button>
       {
         createSub && <SubSectionForm sectionIndex={sectionIndex} removeForm={removeModal} ref={modalRef} create={true}/> ||
-        editSub && <SubSectionForm sectionIndex={sectionIndex} removeForm={removeModal} ref={modalRef} edit={true}/>||
-        deleteSub && <SubSectionForm sectionIndex={sectionIndex} removeForm={removeModal} ref={modalRef} dele={true}/>||
-        viewSub && <SubSectionForm sectionIndex={sectionIndex} removeForm={removeModal} ref={modalRef} view={true}/>
+        editSub && <SubSectionForm sectionIndex={sectionIndex} subSectionInfo={subSectionInfo} removeForm={removeModal} ref={modalRef} edit={true}/>||
+        deleteSub && <SubSectionForm sectionIndex={sectionIndex} subSectionInfo={subSectionInfo} removeForm={removeModal} ref={modalRef} dele={true}/>||
+        viewSub && <SubSectionForm sectionIndex={sectionIndex} subSectionInfo={subSectionInfo} removeForm={removeModal} ref={modalRef} view={true}/>
       }
     </div>
   );

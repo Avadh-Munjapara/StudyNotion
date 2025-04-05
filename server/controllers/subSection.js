@@ -41,12 +41,13 @@ exports.createSubSection=async (req,res)=>{
 
 exports.updateSubSection=async (req,res)=>{
     try {
-        const{subSectionId,name,title,timeDuration}=req.body;
-        const {video}=req.files;
-        if(!subSectionId||(!name && !title && !timeDuration && !video)){
+        const{subSectionId,description,title,timeDuration}=req.body;
+        const video=req?.files?.videoFile;
+        console.log(video,"video");
+        if(!subSectionId||(!description && !title && !timeDuration && !video)){
             return res.status(400).json({
                 success:false,
-                message:"subsectionid and of the field are required"
+                message:"subsectionid and one of the field are required"
            });
        }
        let updateObject={}; 
@@ -54,8 +55,8 @@ exports.updateSubSection=async (req,res)=>{
         const videoUploaded=await videoUpload(video,process.env.FOLDERNAME);
         updateObject.videoUrl=videoUploaded.secure_url;
        }
-       if(name){
-        updateObject.name=name
+       if(description){
+        updateObject.description=description
        }
        if(title){
         updateObject.title=title
@@ -90,6 +91,7 @@ exports.deleteSubSection=async (req,res)=>{
                 subSections:subSectionId
             }
         })
+        console.log("updated section",updatedSection);
          return res.status(200).json({
              success:true,
              message:"subsection deleted successfully",

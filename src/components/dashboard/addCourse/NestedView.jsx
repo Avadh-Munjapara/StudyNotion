@@ -63,6 +63,7 @@ const NestedView = ({ editSectionNameHandler }) => {
                 <IoMdArrowDropdown className="text-richblack-400" />
               </div>
             </summary>
+            
               <SubSection sectionIndex={index} subSections={section.subSections}/>    
                 
           </details>
