@@ -90,7 +90,7 @@ exports.deleteSubSection=async (req,res)=>{
             $pull:{
                 subSections:subSectionId
             }
-        })
+        },{new:true}).populate("subSections");
         console.log("updated section",updatedSection);
          return res.status(200).json({
              success:true,
