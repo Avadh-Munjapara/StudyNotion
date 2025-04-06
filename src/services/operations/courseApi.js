@@ -5,8 +5,10 @@ import {
   setStep,
   setCourseInfo,
   setEditCourse,
+  setLoading as setLoadingCourse
 } from "../../slices/courseSlice";
 import toast from "react-hot-toast";
+import { set } from "react-hook-form";
 
 const {
   GET_AVG_RATING,
@@ -90,7 +92,7 @@ export function editCourseDetails(payLoad, course) {
     };
 }
 
-export function createSection(payLoad) {
+export function createSection(payLoad,courseInfo) {
   return async (dispatch) => {
     const tid = toast.loading("Creating section...");
     try {
@@ -103,7 +105,17 @@ export function createSection(payLoad) {
         }
       );
       if (createdSection.data.success) {
-        dispatch(setCourseInfo(createdSection.data.updatedCourse));
+        const newCourseInfo={
+          ...courseInfo,
+        courseContent: courseInfo?.courseContent?.map((content,i)=>({
+          ...content,
+          subSections: content?.subSections?.map((subSection,j)=>({
+            ...subSection
+          }))
+        }))
+        }
+        newCourseInfo.courseContent.push(createdSection.data.section);
+        dispatch(setCourseInfo(newCourseInfo));
         toast.success("section created!");
       }
     } catch (error) {
@@ -114,7 +126,7 @@ export function createSection(payLoad) {
   };
 }
 
-export function updateSectionName(payload,courseInfo,index){
+export function updateSectionName(payload,courseInfo,index,setEditSection){
   return async (dispatch)=>{
     const tid=toast.loading('updating section name');
     try {
@@ -124,9 +136,18 @@ export function updateSectionName(payload,courseInfo,index){
       if(response.data.success){
         toast.success('section name updated!');
         console.log(response,"updated seection");
-        const updatedCourseInfo={...courseInfo,courseContent:[...courseInfo.courseContent]};
-        updatedCourseInfo.courseContent[index]=response.data.updatedSection
+        const updatedCourseInfo={
+          ...courseInfo,
+          courseContent: courseInfo.courseContent.map((content,i)=>({
+            ...content,
+            subSections: content.subSections.map((subSection,j)=>({
+              ...subSection
+            }))
+          }))
+        }
+        updatedCourseInfo.courseContent[index].name=response.data.updatedSection.name
         dispatch(setCourseInfo(updatedCourseInfo));
+        setEditSection(false);
       }
     } catch (error) {
       console.log('error in update section api',error);
@@ -144,7 +165,15 @@ export function deleteSection(payload,courseInfo,index){
       })
       if(response.data.success){
         toast.success("section deleted!");
-        const newCourseInfo={...courseInfo,courseContent:[...courseInfo.courseContent]};
+        const newCourseInfo={
+          ...courseInfo,
+          courseContent: courseInfo.courseContent.map((content,i)=>({
+            ...content,
+            subSections: content.subSections.map((subSection,j)=>({
+              ...subSection
+            }))
+          }))
+        }
         newCourseInfo.courseContent.splice(index,1);
         dispatch(setCourseInfo(newCourseInfo));
       }
@@ -155,8 +184,9 @@ export function deleteSection(payload,courseInfo,index){
   }
 }
 
-export function createsubsection(payload,courseInfo,index){
+export function createSubsection(payload,courseInfo,index,removeForm){
   return async (dispatch) => {
+    dispatch(setLoadingCourse(true));
     const tid = toast.loading("Creating subsection...");
     try {
       const createdSubSection = await apiConnector(
@@ -177,22 +207,26 @@ export function createsubsection(payload,courseInfo,index){
                       ...content,
                       subSections: [...content.subSections,newSubSection]
                   } 
-                  : {...content}
+                  : {...content,subSections:[...content.subSections]}
           )
       };
         dispatch(setCourseInfo(updatedCourseInfo));
         toast.success("subsection created!");
+        removeForm();
       }
     } catch (error) {
       console.log("error in createSubSection api", error);
       toast.error("subsection not created!");
     }
     toast.dismiss(tid);
+    dispatch(setLoadingCourse(false));
+
   };
 }
 
-export function editSubSection(payload,courseInfo,index){
+export function editSubSection(payload,courseInfo,index,removeForm){
   return async (dispatch) => {
+    dispatch(setLoadingCourse(true));
     const tid = toast.loading("Editing subsection...");
     try {
       const response = await apiConnector(
@@ -223,17 +257,21 @@ export function editSubSection(payload,courseInfo,index){
       console.log(updatedCourseInfo,"updated subsection");
         dispatch(setCourseInfo(updatedCourseInfo));
         toast.success("subsection edited!");
+        removeForm();
       }
     } catch (error) {
       console.log("error in editSubSection api", error);
       toast.error("subsection not edited!");
     }
     toast.dismiss(tid);
+    dispatch(setLoadingCourse(false));
+
   };
 }
 
-export function deleteSubSection(payload,courseInfo,index){
+export function deleteSubSection(payload,courseInfo,index,removeForm){
   return async (dispatch) =>{
+    dispatch(setLoadingCourse(true));
     const tid =toast.loading("Deleting subsection...");
     try {
       const response=await apiConnector(DELETE_SUBSECTION_API,"DELETE",payload,{
@@ -248,11 +286,14 @@ export function deleteSubSection(payload,courseInfo,index){
         updatedCourseInfo.courseContent[index]=upadatedSection;
         dispatch(setCourseInfo(updatedCourseInfo));
         toast.success("subsection deleted!");
+        removeForm();
       }
     } catch (error) {
       console.log("error in deleteSubSection api",error);
       toast.error("subsection not deleted!");
     }
     toast.dismiss(tid);
+    dispatch(setLoadingCourse(false));
+
   }
 }

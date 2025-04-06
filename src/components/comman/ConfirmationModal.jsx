@@ -23,7 +23,7 @@ const ConfirmationModal = ({heading,modalRef,btn1Text,btn2Text,btn1Handler,btn2H
             </button>
             <button
               onClick={btn2Handler}
-              className="px-2 py-1 bg-red-600 rounded-md"
+              className="px-2 py-1 bg-richblack-300 rounded-md"
             >
               {btn2Text}
             </button>

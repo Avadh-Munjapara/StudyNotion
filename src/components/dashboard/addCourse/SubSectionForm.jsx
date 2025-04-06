@@ -9,11 +9,12 @@ import { useDispatch, useSelector } from "react-redux";
 import SubmitBtn from "../../comman/SubmitBtn";
 import ConfirmationModal from "../../comman/ConfirmationModal";
 import {
-  createsubsection,
+  createSubsection,
   deleteSubSection,
   editSubSection,
 } from "../../../services/operations/courseApi";
 import toast from "react-hot-toast";
+import useOnClickOutside from "../../../hooks/useOnClickOutside";
 const SubSectionForm = ({
   ref,
   subSectionInfo,
@@ -37,7 +38,7 @@ const SubSectionForm = ({
       setValue("description", subSectionInfo.description);
     }
   }, []);
-  const modalRef=useRef(null);
+  const deleModalRef=useRef(null);
   const dispatch = useDispatch();
   const [deleteModal,setDeleteModal]=useState(false);
   const file = watch("video");
@@ -48,8 +49,9 @@ const SubSectionForm = ({
       subSectionId:subSectionInfo._id,
       sectionId:courseInfo.courseContent[sectionIndex]._id
     }
-    dispatch(deleteSubSection(payload,courseInfo,sectionIndex));
+    dispatch(deleteSubSection(payload,courseInfo,sectionIndex,removeForm));
   }
+  useOnClickOutside(deleModalRef,removeForm);
   const submitHanlder = (data) => {
     if (create) {
       const formData = new FormData();
@@ -57,7 +59,7 @@ const SubSectionForm = ({
       formData.append("title", data.title);
       formData.append("description", data.description);
       formData.append("sectionId", courseInfo.courseContent[sectionIndex]._id);
-      dispatch(createsubsection(formData, courseInfo, sectionIndex));
+      dispatch(createSubsection(formData, courseInfo, sectionIndex,removeForm));
     } else if (edit) {
       if (
         (file?file[0]?false:true:true) &&
@@ -78,13 +80,14 @@ const SubSectionForm = ({
         if (data.description != subSectionInfo.description) {
           formData.append("description", data.description);
         }
-        dispatch(editSubSection(formData, courseInfo, sectionIndex));
+        dispatch(editSubSection(formData, courseInfo, sectionIndex,removeForm));
       }
     }
   };
   return (
-    <div ref={ref} className="">
-      <div className="flex py-6 px-4 justify-between items-center bg-richblack-700 rounded-lg border border-richblack-600">
+    <>
+    <div ref={ref} className="absolute z-20 top-1 border border-richblack-700 rounded-lg left-[30%]">
+      <div className="flex py-6 px-4 justify-between rounded-t-lg items-center bg-richblack-700  border border-richblack-600">
         <h2 className="text-white">
           {create
             ? "Create Lecture"
@@ -100,7 +103,7 @@ const SubSectionForm = ({
           <ImCross className="text-richblack-50" onClick={removeForm} />
         </button>
       </div>
-      <div className="bg-richblack-800 p-8">
+      <div className="bg-richblack-800 rounded-b-lg p-8">
           <form
             onSubmit={handleSubmit(submitHanlder)}
             className="flex flex-col gap-6 "
@@ -108,7 +111,7 @@ const SubSectionForm = ({
             <div className="flex flex-col gap-1">
               <Label text={"Video Lecture"} required={true} />
               {videoPreview || subSectionInfo?.videoUrl ? (
-                <video src={videoPreview || subSectionInfo?.videoUrl}> </video>
+                <video className="h-52 rounded-lg" controls src={videoPreview || subSectionInfo?.videoUrl}> </video>
               ) : (
                 <ImViUpload forwhat={"video"} />
               )}
@@ -179,9 +182,11 @@ const SubSectionForm = ({
           </form>
       </div>
       {
-        deleteModal ? <ConfirmationModal modalRef={modalRef} btn1Text={'Cancel'} btn2Text={'Delete'} btn1Handler={()=>{setDeleteModal(false)}} btn2Handler={()=>{deleteHandler()}}/> : null
+        deleteModal ? <ConfirmationModal modalRef={deleModalRef} btn1Text={'Cancel'} btn2Text={'Delete'} btn1Handler={()=>{setDeleteModal(false)}} btn2Handler={()=>{deleteHandler()}}/> : null
       }
     </div>
+    </>
+    
   );
 };
 

@@ -53,8 +53,8 @@ const CourseBuilder = () => {
           courseId,
         };
     editSection
-      ? dispatch(updateSectionName(payload,courseInfo,sectionIndex))
-      : dispatch(createSection(payload));
+      ? dispatch(updateSectionName(payload,courseInfo,sectionIndex,setEditSection))
+      : dispatch(createSection(payload,courseInfo));
 
     reset();
   };
