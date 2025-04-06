@@ -1,4 +1,4 @@
-import React, { useState,useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { ImCross } from "react-icons/im";
 import Label from "../../comman/Label";
 import ImViUpload from "./ImViUpload";
@@ -7,7 +7,6 @@ import useFilePreview from "../../../hooks/useFilePreview";
 import ErrorMessage from "../../comman/ErrorMessage";
 import { useDispatch, useSelector } from "react-redux";
 import SubmitBtn from "../../comman/SubmitBtn";
-import ConfirmationModal from "../../comman/ConfirmationModal";
 import {
   createSubsection,
   deleteSubSection,
@@ -15,6 +14,7 @@ import {
 } from "../../../services/operations/courseApi";
 import toast from "react-hot-toast";
 import useOnClickOutside from "../../../hooks/useOnClickOutside";
+
 const SubSectionForm = ({
   ref,
   subSectionInfo,
@@ -32,37 +32,73 @@ const SubSectionForm = ({
     setValue,
     formState: { errors },
   } = useForm();
+  
+  const dispatch = useDispatch();
+  const file = watch("video");
+  const [videoPreview, setVideoPreview] = useFilePreview(file);
+  const courseInfo = useSelector((state) => state.course.courseInfo);
+  
+  // Add state for video duration
+  const [videoDuration, setVideoDuration] = useState(null);
+  const videoRef = useRef(null); // Ref for the video element
+  const deleModalRef = useRef(null);
+
+  // Populate form fields when in view/edit/delete mode
   useEffect(() => {
     if (view || edit || dele) {
       setValue("title", subSectionInfo.title);
       setValue("description", subSectionInfo.description);
     }
-  }, []);
-  const deleModalRef=useRef(null);
-  const dispatch = useDispatch();
-  const [deleteModal,setDeleteModal]=useState(false);
-  const file = watch("video");
-  const [videoPreview, setVideoPreview] = useFilePreview(file);
-  const courseInfo = useSelector((state) => state.course.courseInfo);
-  const deleteHandler=()=>{
-    const payload={
-      subSectionId:subSectionInfo._id,
-      sectionId:courseInfo.courseContent[sectionIndex]._id
+  }, [view, edit, dele, subSectionInfo, setValue]);
+
+  // Fetch video duration when videoPreview or subSectionInfo.videoUrl changes
+  useEffect(() => {
+    const videoElement = videoRef.current;
+    if (!videoElement) return;
+
+    const handleLoadedMetadata = () => {
+      const durationInSeconds = videoElement.duration;
+      setVideoDuration(durationInSeconds); // Duration in seconds
+    };
+
+    // Reset duration when video source changes
+    setVideoDuration(null);
+
+    if (videoPreview || subSectionInfo?.videoUrl) {
+      videoElement.addEventListener("loadedmetadata", handleLoadedMetadata);
     }
-    dispatch(deleteSubSection(payload,courseInfo,sectionIndex,removeForm));
-  }
-  useOnClickOutside(deleModalRef,removeForm);
-  const submitHanlder = (data) => {
+
+    // Cleanup event listener
+    return () => {
+      if (videoElement) {
+        videoElement.removeEventListener("loadedmetadata", handleLoadedMetadata);
+      }
+    };
+  }, [videoPreview, subSectionInfo?.videoUrl]);
+
+  const deleteHandler = () => {
+    const payload = {
+      subSectionId: subSectionInfo._id,
+      sectionId: courseInfo.courseContent[sectionIndex]._id,
+    };
+    dispatch(deleteSubSection(payload, courseInfo, sectionIndex, removeForm));
+  };
+
+  useOnClickOutside(deleModalRef, removeForm);
+
+  const submitHandler = (data) => {
     if (create) {
       const formData = new FormData();
       formData.append("videoFile", data.video[0]);
       formData.append("title", data.title);
       formData.append("description", data.description);
       formData.append("sectionId", courseInfo.courseContent[sectionIndex]._id);
-      dispatch(createSubsection(formData, courseInfo, sectionIndex,removeForm));
+      // Optionally append duration if needed in the backend
+      if (videoDuration) formData.append("timeDuration", formatDuration(videoDuration));
+      dispatch(createSubsection(formData, courseInfo, sectionIndex, removeForm));
     } else if (edit) {
       if (
-        (file?file[0]?false:true:true) &&
+        (file ? (file[0] ? false : true) : true) &&
         subSectionInfo.title === data.title &&
         subSectionInfo.description === data.description
       ) {
@@ -71,23 +107,33 @@ const SubSectionForm = ({
       } else {
         const formData = new FormData();
         formData.append("subSectionId", subSectionInfo._id);
-        if (file[0]) {
+        formData.append("timeDuration", formatDuration(videoDuration));
+        if (file?.[0]) {
           formData.append("videoFile", data.video[0]);
         }
-        if (data.title != subSectionInfo.title) {
+        if (data.title !== subSectionInfo.title) {
           formData.append("title", data.title);
         }
-        if (data.description != subSectionInfo.description) {
+        if (data.description !== subSectionInfo.description) {
           formData.append("description", data.description);
         }
-        dispatch(editSubSection(formData, courseInfo, sectionIndex,removeForm));
+        if (videoDuration) formData.append("duration", videoDuration);
+        dispatch(editSubSection(formData, courseInfo, sectionIndex, removeForm));
       }
     }
   };
+
+  // Optional: Format duration into minutes and seconds
+  const formatDuration = (seconds) => {
+    if (!seconds) return "N/A";
+    const minutes = Math.floor(seconds / 60);
+    const remainingSeconds = Math.floor(seconds % 60);
+    return `${minutes}:${remainingSeconds < 10 ? "0" : ""}${remainingSeconds}`;
+  };
+
   return (
-    <>
     <div ref={ref} className="absolute z-20 top-1 border border-richblack-700 rounded-lg left-[30%]">
-      <div className="flex py-6 px-4 justify-between rounded-t-lg items-center bg-richblack-700  border border-richblack-600">
+      <div className="flex py-6 px-4 justify-between rounded-t-lg items-center bg-richblack-700 border border-richblack-600">
         <h2 className="text-white">
           {create
             ? "Create Lecture"
@@ -104,89 +150,90 @@ const SubSectionForm = ({
         </button>
       </div>
       <div className="bg-richblack-800 rounded-b-lg p-8">
-          <form
-            onSubmit={handleSubmit(submitHanlder)}
-            className="flex flex-col gap-6 "
-          >
-            <div className="flex flex-col gap-1">
-              <Label text={"Video Lecture"} required={true} />
-              {videoPreview || subSectionInfo?.videoUrl ? (
-                <video className="h-52 rounded-lg" controls src={videoPreview || subSectionInfo?.videoUrl}> </video>
-              ) : (
-                <ImViUpload forwhat={"video"} />
-              )}
-              {videoPreview || (subSectionInfo?.videoUrl && edit) ? (
-                <button className="rounded-lg font-medium cursor-pointer self-end
-       h-fit w-fit 
-        py-3 px-6 items-center flex gap-1 my-1 bg-[#C5C7D4]" type="button">
-                  <label htmlFor="video">Select other lecture video</label>
-                </button>
-              ) : null}
-              <input 
-                {...register("video")}
-                className="hidden"
-                type="file"
-                id="video"
-                name="video"
-              />
-            </div>
+        <form onSubmit={handleSubmit(submitHandler)} className="flex flex-col gap-6">
+          <div className="flex flex-col gap-1">
+            <Label text={"Video Lecture"} required={true} />
+            {videoPreview || subSectionInfo?.videoUrl ? (
+              <video
+                ref={videoRef} // Attach ref to video element
+                className="h-52 rounded-lg"
+                controls
+                src={videoPreview || subSectionInfo?.videoUrl}
+              ></video>
+            ) : (
+              <ImViUpload forwhat={"video"} />
+            )}
+            {videoPreview || (subSectionInfo?.videoUrl && edit) ? (
+              <button
+                className="rounded-lg font-medium cursor-pointer self-end h-fit w-fit py-3 px-6 items-center flex gap-1 my-1 bg-[#C5C7D4]"
+                type="button"
+              >
+                <label htmlFor="video">Select other lecture video</label>
+              </button>
+            ) : null}
+            <input
+              {...register("video")}
+              className="hidden"
+              type="file"
+              id="video"
+              name="video"
+            />
+            
+          </div>
 
-            <div className="flex flex-col gap-1">
-              <Label text={"Lecture Title"} required={true} />
-              <input
+          <div className="flex flex-col gap-1">
+            <Label text={"Lecture Title"} required={true} />
+            <input
               readOnly={view || dele}
-                {...register("title", {
-                  required: {
-                    value: true,
-                    message: "the lecture title is required",
-                  },
-                })}
-                className="field2"
-                type="text"
-                name="title"
-                id="title"
-              />
-              {errors.title && <ErrorMessage message={errors.title.message} />}
-            </div>
+              {...register("title", {
+                required: {
+                  value: true,
+                  message: "The lecture title is required",
+                },
+              })}
+              className="field2"
+              type="text"
+              name="title"
+              id="title"
+            />
+            {errors.title && <ErrorMessage message={errors.title.message} />}
+          </div>
 
-            <div className="flex flex-col gap-1">
-              <Label text={"Lecture Description"} required={true} />
-              <input readOnly={view || dele}
-                {...register("description", {
-                  required: {
-                    value: true,
-                    message: "the lecture description is required",
-                  },
-                })}
-                className="field2"
-                type="text"
-                name="description"
-                id="description"
-              />
-              {errors.description && (
-                <ErrorMessage message={errors.description.message} />
-              )}
-            </div>
-            <div className="flex justify-end">
-            {
-            (edit || create) 
-            ? (
-              <SubmitBtn
-                text={create ? "Create" : edit ? "Save Edits" : null}
-              />
-            )
-            : dele ? <button onClick={()=>{setDeleteModal(true)}}
-             className="font-medium text-richblack-5 bg-red-800 border border-red-300 px-6 py-4 rounded-lg" type="button">Delete Lecture</button> :null
-          }
-            </div>
-          </form>
+          <div className="flex flex-col gap-1">
+            <Label text={"Lecture Description"} required={true} />
+            <input
+              readOnly={view || dele}
+              {...register("description", {
+                required: {
+                  value: true,
+                  message: "The lecture description is required",
+                },
+              })}
+              className="field2"
+              type="text"
+              name="description"
+              id="description"
+            />
+            {errors.description && (
+              <ErrorMessage message={errors.description.message} />
+            )}
+          </div>
+          <div className="flex justify-end">
+            {edit || create ? (
+              <SubmitBtn text={create ? "Create" : edit ? "Save Edits" : null} />
+            ) : dele ? (
+              <button
+                onClick={deleteHandler}
+                className="font-medium text-richblack-5 bg-red-800 border border-red-300 px-6 py-4 rounded-lg"
+                type="button"
+              >
+                Delete Lecture
+              </button>
+            ) : null}
+          </div>
+        </form>
       </div>
-      {
-        deleteModal ? <ConfirmationModal modalRef={deleModalRef} btn1Text={'Cancel'} btn2Text={'Delete'} btn1Handler={()=>{setDeleteModal(false)}} btn2Handler={()=>{deleteHandler()}}/> : null
-      }
     </div>
-    </>
-    
   );
 };
 

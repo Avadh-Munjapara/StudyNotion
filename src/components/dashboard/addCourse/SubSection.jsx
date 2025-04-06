@@ -6,7 +6,7 @@ import { RiAddLine } from "react-icons/ri";
 import { useDispatch, useSelector } from "react-redux";
 import useOnClickOutside from "../../../hooks/useOnClickOutside";
 import SubSectionForm from "./SubSectionForm";
-const SubSection = ({ subSections, sectionIndex }) => {
+const SubSection = ({ ref,subSections, sectionIndex }) => {
   const dispatch = useDispatch();
   const loading=useSelector((state)=>state.course.loading);
   const [createSub, setCreateSub] = useState(false);
@@ -28,11 +28,10 @@ const SubSection = ({ subSections, sectionIndex }) => {
     <>
       <div>
         {subSections.length > 0 &&
-          subSections.map((subSection) => (
-            <div>
+          subSections.map((subSection,index) => (
               <details
                 key={subSection._id}
-                className="flex items-center gap-3 py-2 pl-10"
+                className={`flex items-center gap-3 py-2 ${index<subSections.length-1?"border-b":null} border-richblack-600 ml-10`}
               >
                 <summary className="flex  justify-between">
                   <div
@@ -68,7 +67,6 @@ const SubSection = ({ subSections, sectionIndex }) => {
                   </div>
                 </summary>
               </details>
-            </div>
           ))}
         <button
           onClick={() => setCreateSub(true)}
