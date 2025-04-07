@@ -79,8 +79,7 @@ export function editCourseDetails(payLoad, course) {
             }
         );
         if (editedCourse.data.success) {
-          console.log(editedCourse);
-            dispatch(setCourseInfo({...course,thumbnail:editedCourse.data.updatedCourse.thumbnail}));
+            dispatch(setCourseInfo({...course,thumbnail:editedCourse.data.updatedCourse.thumbnail,status:editedCourse.data.updatedCourse.status}));
             dispatch(setStep(2));
             toast.success("course edited!");
         }

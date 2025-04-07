@@ -130,13 +130,13 @@ exports.getAllCourses=async (req,res)=>{
 
 exports.editCourse=async(req,res)=>{
  try {
-    const{name,description,whatYouWillLearn,price,category,tags,instructions,courseId}=req.body;
-    console.log(name,description,whatYouWillLearn,price,category,tags,instructions,courseId);
+    const{name,description,whatYouWillLearn,status,price,category,tags,instructions,courseId}=req.body;
+    console.log(name,description,whatYouWillLearn,price,category,tags,instructions,status,courseId);
     let thumbnail;
     if(req.files){
         thumbnail=req.files.thumbnail;
     }
-    if(!name&&!description&&!whatYouWillLearn&&!price&&!category&&!thumbnail&&!tags&&!instructions){
+    if(!name&&!description&&!whatYouWillLearn&&!price&&!category&&!thumbnail&&!tags&&!instructions&&!status){
          return res.status(400).json({
              success:false,
              message:"some fields are required"
@@ -188,6 +188,9 @@ exports.editCourse=async(req,res)=>{
     }
     if(instructions){
         course.instructions=instructions;
+    }
+    if(status){
+        course.status=status;
     }
     const updatedCourse=await course.save();
     console.log(updatedCourse);

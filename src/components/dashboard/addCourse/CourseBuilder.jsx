@@ -9,7 +9,7 @@ import {
 import ErrorMessage from "../../comman/ErrorMessage";
 import YellowBtn from "../../comman/YellowBtn";
 import { setEditCourse, setStep } from "../../../slices/courseSlice";
-import { MdKeyboardArrowLeft } from "react-icons/md";
+import { MdKeyboardArrowLeft,MdKeyboardArrowRight } from "react-icons/md";
 import NestedView from "./NestedView";
 import toast from "react-hot-toast";
 const CourseBuilder = () => {
@@ -102,7 +102,7 @@ const CourseBuilder = () => {
           <NestedView editSectionNameHandler={editSectionNameHandler} />
         )}
       </div>
-      <div className="self-end">
+      <div className="self-end flex gap-4">
         <YellowBtn
           bgColour="#161D29"
           textColour="#F1F2FF"
@@ -112,6 +112,18 @@ const CourseBuilder = () => {
           text={
             <>
               <MdKeyboardArrowLeft className="text-xl" /> Back
+            </>
+          }
+        />
+          <YellowBtn
+          bgColour="#FFD60A"
+          textColour="#000814"
+          clickHandler={() => {
+            dispatch(setStep(3));
+          }}
+          text={
+            <>
+               Next <MdKeyboardArrowRight className="text-xl" />
             </>
           }
         />
