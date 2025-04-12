@@ -29,7 +29,7 @@ const userSchema=mongoose.Schema({
         type:mongoose.Schema.Types.ObjectId,
         required:true,
         ref:"Profile"
-    },
+    }, 
     courses:[{
         type:mongoose.Schema.Types.ObjectId,
         ref:"Course"

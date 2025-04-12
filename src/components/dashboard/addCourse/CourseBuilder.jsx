@@ -58,6 +58,17 @@ const CourseBuilder = () => {
 
     reset();
   };
+  const nextStepHandler = () => {
+    if (!sections || sections.length <= 0) {
+        toast.error("Add at least one section in course");
+        return;
+    }
+    if (!sections.every(section => section.subSections && section.subSections.length >= 1)) {
+        toast.error("Add at least one lecture in each section");
+        return;
+    }
+    dispatch(setStep(3));
+};
   return (
     <div className="flex flex-col gap-10">
       <div className="back p-6 ml-6 flex flex-col gap-4">
@@ -119,7 +130,7 @@ const CourseBuilder = () => {
           bgColour="#FFD60A"
           textColour="#000814"
           clickHandler={() => {
-            dispatch(setStep(3));
+            nextStepHandler();
           }}
           text={
             <>

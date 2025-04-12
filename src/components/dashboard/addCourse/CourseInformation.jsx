@@ -4,7 +4,7 @@ import Label from "../../comman/Label";
 import ErrorMessage from "../../comman/ErrorMessage";
 import { RiMoneyRupeeCircleLine } from "react-icons/ri";
 import { getAllCategory } from "../../../services/operations/CategoryApi";
-import { setLoading, setStep } from "../../../slices/courseSlice";
+import { setCourseInfo, setLoading, setStep } from "../../../slices/courseSlice";
 import { useDispatch, useSelector } from "react-redux";
 import Spinner from "../../comman/Spinner";
 import Tags from "./Tags";
@@ -36,6 +36,13 @@ const CourseInformation = () => {
   const dispatch = useDispatch();
   const thumbanil = watch("thumbnail");
 
+  // useEffect(()=>{
+  //   return ()=>{
+  //     dispatch(setCourseInfo(null));
+  //     dispatch(setStep(1));
+  //     }
+  // })
+
   useEffect(() => {
     const fetchCategories = async () => {
       try {
@@ -49,23 +56,35 @@ const CourseInformation = () => {
   }, []);
 
   useEffect(() => {
-    if (editCourse) {
+    if (editCourse && courseInfo) {
       setValue("courseTitle", courseInfo.name);
       setValue("courseDesc", courseInfo.description);
       setValue("benefits", courseInfo.whatYouWillLearn);
       setValue("price", courseInfo.price);
-      setValue("category", courseInfo.category);
+      setValue("category", courseInfo.category.name);
       setAllTags([...courseInfo.tag]);
       setInstructions([...courseInfo.instructions]);
+    }else{
+      reset();
+      const newArray=[];
+      setAllTags(newArray);
+      setInstructions(newArray);
     }
-  }, []);
+  }, [editCourse,courseInfo]);
+
+  useEffect(()=>{
+    return ()=>{
+      setCourseInfo(null);
+      setStep(1);
+    }
+  })
 
   const isFormUpdated = () => {
     if (
       getValues("courseTitle") != courseInfo.name ||
       getValues("courseDesc") != courseInfo.description ||
       getValues("price") != courseInfo.price ||
-      getValues("category") != courseInfo.category ||
+      getValues("category") != courseInfo.category.name ||
       getValues("benefits") != courseInfo.whatYouWillLearn
     ) {
       return true;
@@ -178,7 +197,7 @@ const CourseInformation = () => {
       e.preventDefault();
     }
   };
-  return loading ? (
+  return loading  ? (
     <div className="flex h-full w-full justify-center items-center">
       {" "}
       <Spinner />{" "}

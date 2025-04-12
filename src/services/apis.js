@@ -24,6 +24,7 @@ export const profileEndpoint={
   DELETEPROFILE:`${baseUrl}/profile/deleteAccount`,
   UPDATEDPAPI:`${baseUrl}/profile/updateDP`,
   GET_ENROLLED_COURSES_API:`${baseUrl}/profile/getEnrolledCourses`,
+  GET_INSTRUCTOR_COURSES_API:`${baseUrl}/profile/getInstructorCourses`,
 }
 
 export const courseEndPoint={
@@ -36,4 +37,5 @@ export const courseEndPoint={
   CREATE_SUBSECTION_API:`${baseUrl}/course/createSubSection`,
   EDIT_SUBSECTION_API:`${baseUrl}/course/updateSubSection`,
   DELETE_SUBSECTION_API:`${baseUrl}/course/deleteSubSection`,
+  GET_FULL_COURSE_DETAILS_API:`${baseUrl}/course/courseDetails`
 }

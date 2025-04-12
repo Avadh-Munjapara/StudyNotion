@@ -20,6 +20,7 @@ const {
   CREATE_SUBSECTION_API,
   EDIT_SUBSECTION_API,
   DELETE_SUBSECTION_API,
+  GET_FULL_COURSE_DETAILS_API ,
 } = courseEndPoint;
 const token = localStorage.getItem("token")
   ? JSON.parse(localStorage.getItem("token"))
@@ -294,5 +295,22 @@ export function deleteSubSection(payload,courseInfo,index,removeForm){
     toast.dismiss(tid);
     dispatch(setLoadingCourse(false));
 
+  }
+}
+
+export async function getFullCourseDetails(payload, dispatch) {
+  try {
+    dispatch(setLoadingCourse(true));
+    const response = await apiConnector(
+      `${GET_FULL_COURSE_DETAILS_API}/${payload.courseId}`,
+      'GET'
+    );
+    if (response.data.success) {
+      return response.data.course;
+    }
+  } catch (error) {
+    console.log('error while fetching full course ....api error', error);
+  } finally {
+    dispatch(setLoadingCourse(false));
   }
 }

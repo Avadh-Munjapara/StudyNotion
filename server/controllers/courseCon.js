@@ -59,7 +59,7 @@ exports.createCourse=async(req,res)=>{
 }
 
 exports.getCourseDetails=async (req,res)=>{
-    const courseId=req.body.courseId;
+    const courseId=req.params.courseId;
     if(!courseId){
          return res.status(400).json({
              success:false,
@@ -67,25 +67,26 @@ exports.getCourseDetails=async (req,res)=>{
         });
     }
     try {
-        const course = await Course.find({ _id: courseId })
-          .populate(
-            {
+        const course = await Course.findById(courseId)
+          .populate({
               path: "instructor",
               populate: {
-                path: "additionalDetails",
+                path: "additionalDetails"
               },
-            },
-            { strictPopulate: false }
-          ).populate("category")
-          .populate(
-            {
+              options: { strictPopulate: false }
+          })
+          .populate({
+              path: "category",
+              options: { strictPopulate: false }
+          })
+          .populate({
               path: "courseContent",
               populate: {
-                path: "subSections",
+                path: "subSections"
               },
-            },
-            { strictPopulate: false }
-        );
+              options: { strictPopulate: false }
+          });
+        
         if(!course){
              return res.status(400).json({
                  success:false,
@@ -206,4 +207,28 @@ exports.editCourse=async(req,res)=>{
          message: 'something went wrong while editing course details'
      });
  }
+}
+
+exports.getInstructorCourses=async (req,res)=>{
+    try {
+        const instructorId=req.user.id;
+        const instructor=await User.findById(instructorId);
+        if(!instructor){
+             return res.status(400).json({
+                 success:false,
+                 message:"no instructor found with that id"
+            });
+        }
+        const courses=await Course.find({instructor:instructorId});
+        return res.status(200).json({
+             success:true,
+             courses
+        });
+    } catch (error) {
+        console.log('error while fetching instructor courses', error);
+        return res.status(500).json({
+            success: false,
+            message: 'something went wrong while fetching instructor courses'
+        });
+    }
 }

@@ -16,7 +16,7 @@ router.delete("/deleteSection",auth,isInstructor,deleteSection);
 router.post("/createSubSection",auth,isInstructor,createSubSection);
 router.put("/updateSubSection",auth,isInstructor,updateSubSection);
 router.delete("/deleteSubSection",auth,isInstructor,deleteSubSection);
-router.get("/courseDetails",getCourseDetails);
+router.get("/courseDetails/:courseId",getCourseDetails);
 router.get("/allCourse",getAllCourses); 
 
 //routes for category
