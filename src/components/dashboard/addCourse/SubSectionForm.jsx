@@ -94,7 +94,7 @@ const SubSectionForm = ({
       formData.append("description", data.description);
       formData.append("sectionId", courseInfo.courseContent[sectionIndex]._id);
       // Optionally append duration if needed in the backend
-      if (videoDuration) formData.append("timeDuration", formatDuration(videoDuration));
+      if (videoDuration) formData.append("timeDuration", videoDuration);
       dispatch(createSubsection(formData, courseInfo, sectionIndex, removeForm));
     } else if (edit) {
       if (
@@ -107,7 +107,7 @@ const SubSectionForm = ({
       } else {
         const formData = new FormData();
         formData.append("subSectionId", subSectionInfo._id);
-        formData.append("timeDuration", formatDuration(videoDuration));
+        formData.append("timeDuration", videoDuration);
         if (file?.[0]) {
           formData.append("videoFile", data.video[0]);
         }
@@ -122,15 +122,7 @@ const SubSectionForm = ({
       }
     }
   };
-
-  // Optional: Format duration into minutes and seconds
-  const formatDuration = (seconds) => {
-    if (!seconds) return "N/A";
-    const minutes = Math.floor(seconds / 60);
-    const remainingSeconds = Math.floor(seconds % 60);
-    return `${minutes}:${remainingSeconds < 10 ? "0" : ""}${remainingSeconds}`;
-  };
-
+  
   return (
     <div ref={ref} className="absolute z-20 top-1 border border-richblack-700 rounded-lg left-[30%]">
       <div className="flex py-6 px-4 justify-between rounded-t-lg items-center bg-richblack-700 border border-richblack-600">

@@ -5,7 +5,7 @@ const subSectionSchema=mongoose.Schema({
         type:String
     },
     timeDuration:{
-        type:String
+        type:Number
     },
     description:{
         type:String

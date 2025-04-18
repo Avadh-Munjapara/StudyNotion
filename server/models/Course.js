@@ -56,6 +56,10 @@ const courseSchema = mongoose.Schema({
   status:{
     type:String,
     enum:["draft","published"]
+  },
+  createdAt:{
+    type:Date,
+    default:Date.now
   }
 });
 

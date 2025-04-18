@@ -1,8 +1,9 @@
 const Course = require("../models/Course");
-const User=require("../models/User");
+const User=require("../models/User"); 
 const Category=require("../models/Category");
 const { imageUpload } = require("../utils/cloudinaryUpload");
 const { default: mongoose } = require("mongoose");
+const {ObjectId}=mongoose.Types;    
 exports.createCourse=async(req,res)=>{  
     try {
         const{name,description,whatYouWillLearn,price,category,tags,instructions}=req.body;
@@ -209,26 +210,114 @@ exports.editCourse=async(req,res)=>{
  }
 }
 
-exports.getInstructorCourses=async (req,res)=>{
-    try {
-        const instructorId=req.user.id;
-        const instructor=await User.findById(instructorId);
-        if(!instructor){
-             return res.status(400).json({
-                 success:false,
-                 message:"no instructor found with that id"
-            });
-        }
-        const courses=await Course.find({instructor:instructorId});
-        return res.status(200).json({
-             success:true,
-             courses
-        });
-    } catch (error) {
-        console.log('error while fetching instructor courses', error);
-        return res.status(500).json({
-            success: false,
-            message: 'something went wrong while fetching instructor courses'
-        });
+exports.getInstructorCourses = async (req, res) => {
+  try {
+    const instructorId = req.user.id; // Get instructor ID from authenticated user
+    const instructor = await User.findById(instructorId);
+    if (!instructor) {
+      return res.status(400).json({
+        success: false,
+        message: 'No instructor found with that ID',
+      });
     }
-}
+
+    const courses = await Course.aggregate([
+      {
+        $match: {
+          instructor: new ObjectId(instructorId), // Use dynamic instructorId
+        },
+      },
+      {
+        $unwind: {
+          path: '$courseContent',
+          preserveNullAndEmptyArrays: true, // Handle empty courseContent
+        },
+      },
+      {
+        $lookup: {
+          from: 'sections',
+          localField: 'courseContent',
+          foreignField: '_id',
+          as: 'result',
+        },
+      },
+      {
+        $unwind: {
+          path: '$result',
+          preserveNullAndEmptyArrays: true, // Handle no matching sections
+        },
+      },
+      {
+        $addFields: {
+          subSections: '$result.subSections',
+        },
+      },
+      {
+        $unwind: {
+          path: '$subSections',
+          preserveNullAndEmptyArrays: true, // Handle empty subSections
+        },
+      },
+      {
+        $lookup: {
+          from: 'subsections',
+          localField: 'subSections',
+          foreignField: '_id',
+          as: 'result2',
+        },
+      },
+      {
+        $unwind: {
+          path: '$result2',
+          preserveNullAndEmptyArrays: true, // Handle no matching subsections
+        },
+      },
+      {
+        $group: {
+          _id: '$_id',
+          totalDuration: {
+            $sum: '$result2.timeDuration', // Sum durations (0 if no subsections)
+          },
+          doc: {
+            $first: '$$ROOT', // Preserve original document
+          },
+        },
+      },
+      {
+        $replaceRoot: {
+          newRoot: {
+            $mergeObjects: [
+              '$doc',
+              {
+                totalDuration: '$totalDuration',
+              },
+            ],
+          },
+        },
+      },
+      {
+        $project: {
+          result: 0,
+          result2: 0,
+          subSections: 0,
+          courseContent: 0, // Explicitly exclude courseContent
+          'doc.result': 0,
+          'doc.result2': 0,
+          'doc.subSections': 0,
+        },
+      },
+    ]);
+
+    return res.status(200).json({
+      success: true,
+      courses,
+    });
+  } catch (error) {
+    console.error('Error while fetching instructor courses:', error.stack); // Improved error logging
+    return res.status(500).json({
+      success: false,
+      message: 'Something went wrong while fetching instructor courses',
+      error: error.message, // Include error message for debugging
+    });
+  }
+};

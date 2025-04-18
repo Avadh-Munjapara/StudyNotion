@@ -21,6 +21,7 @@ const Publish = () => {
     formData.append("courseId",courseInfo._id);
     formData.append("status",data.publish?data.publish:'draft');
     dispatch(editCourseDetails(formData,courseInfo));
+    navigate('/dashboard/my-courses'); 
   }
   const dispatch = useDispatch();
   return (

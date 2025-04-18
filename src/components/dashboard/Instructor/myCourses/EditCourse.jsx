@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getFullCourseDetails } from '../../../../services/operations/courseApi';
 import { useDispatch, useSelector } from 'react-redux';
-import { setCourseInfo, setEditCourse } from '../../../../slices/courseSlice';
+import { setCourseInfo, setEditCourse,setStep } from '../../../../slices/courseSlice';
 import RenderSteps from '../../addCourse/RenderSteps';
 import toast from 'react-hot-toast';
 import Spinner from '../../../comman/Spinner';
@@ -17,6 +17,7 @@ const EditCourse = () => {
         // Reset course info when component unmounts
         return () => {
             dispatch(setCourseInfo(null));
+            dispatch(setStep(1));
             dispatch(setEditCourse(false));
         };
     }, []);
