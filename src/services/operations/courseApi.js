@@ -22,6 +22,7 @@ const {
   DELETE_SUBSECTION_API,
   GET_FULL_COURSE_DETAILS_API,
   DELETE_COURSE_API,
+  GET_CATEGORY_COURSES_API,
 } = courseEndPoint;
 const token = localStorage.getItem("token")
   ? JSON.parse(localStorage.getItem("token"))
@@ -342,4 +343,17 @@ export async function deleteCourse(payload) {
   } 
   toast.dismiss(tid);
   return false;
+}
+
+export function getCategoryCourses(payload){
+  return async (dispatch)=>{
+    dispatch(setLoadingCourse(true));
+    try { 
+      const response=await apiConnector(`${GET_CATEGORY_COURSES_API}/${payload.categoryId}`,'GET');
+      console.log(response,"category page details");  
+    } catch (error) {
+      console.log(error);
+    }
+    dispatch(setLoadingCourse(false));
+  }
 }

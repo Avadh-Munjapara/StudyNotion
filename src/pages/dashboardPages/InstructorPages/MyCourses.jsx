@@ -7,6 +7,7 @@ import { getInstructorCourses } from "../../../services/operations/profileApi";
 import Spinner from "../../../components/comman/Spinner";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { setStep,setCourseInfo } from "../../../slices/courseSlice";
 const MyCourses = () => {
   const [courses, setCourses] = useState(null);
   const navigate=useNavigate();
@@ -29,9 +30,11 @@ const MyCourses = () => {
   ) : courses && courses.length > 0 ? (
     <div>
       <div className="flex w-full items-center justify-between">
-        <LocationBar />
+      <div className="p-6">
+          <LocationBar/>
+          </div>
         <YellowBtn
-          clickHandler={()=> navigate('/dashboard/add-course')}
+          clickHandler={()=> {dispatch(setStep(1));dispatch(setCourseInfo(null));navigate('/dashboard/add-course')}}
           text={
             <>
               <IoIosAddCircle />

@@ -210,6 +210,7 @@ exports.editCourse=async(req,res)=>{
  }
 }
 
+
 exports.getInstructorCourses = async (req, res) => {
   try {
     const instructorId = req.user.id; // Get instructor ID from authenticated user
@@ -225,7 +226,7 @@ exports.getInstructorCourses = async (req, res) => {
       {
         $match: {
           instructor: new ObjectId(instructorId), // Use dynamic instructorId
-        },
+        },  
       },
       {
         $unwind: {

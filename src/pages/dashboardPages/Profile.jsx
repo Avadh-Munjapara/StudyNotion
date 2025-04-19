@@ -24,8 +24,10 @@ const Profile = () => {
           <Spinner />
         </div>
       ) : (
-        <div>
+        <div> 
+          <div className="p-6">
           <LocationBar/>
+          </div>
           <PersonalDetails userDetails={userDetails}/>
         </div>
       )}

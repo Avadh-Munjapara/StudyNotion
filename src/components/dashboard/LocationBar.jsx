@@ -12,7 +12,7 @@ const LocationBar = () => {
     currentLocation[0]='home';
 
     return (
-        <div className='flex flex-col gap-5 pt-6 pl-6'>
+        <div className='flex flex-col gap-5'>
             <nav className='flex items-center gap-3'>
                 {
                     currentLocation.map((item,index)=>{

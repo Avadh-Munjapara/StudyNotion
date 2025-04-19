@@ -59,21 +59,20 @@ const dispatch=useDispatch();
                      <div className="flex gap-1 items-center">
                      Catalog<IoIosArrowDropdown />
                      </div>
-                      <div className="group-hover:visible invisible absolute px-5 left-0 top-8 rounded-xl py-3 text-black bg-richblack-25">
-                        <div className="z-10 relative">
-
+                      <div className="group-hover:visible invisible opacity-0 group-hover:opacity-100 transition-all group-hover:-translate-y-2 duration-[250] absolute px-2 -translate-x-5  top-12 rounded-xl py-3 text-black bg-richblack-25">
+                        <div className="z-10  flex flex-col gap-1 relative ">
                       {
                         categories.length===0
                         ?('No Categroies have been created')
                         :(
                         categories.map((category, index) => {
-                          return <div key={index}>{category.name}</div>
+                          return <Link to={`/catalog/${category.name}`} className="px-10 text-lg rounded-lg font-[550] py-1 hover:bg-richblack-100 " key={index}>{category.name}</Link>
                         })
                       )
                       }
                         </div>
                           
-                      <div className="bg-richblack-25 h-10 w-10 absolute top-0 left-12 rotate-45">
+                      <div className="bg-richblack-25 h-20 w-20 absolute top-0 left-12 rotate-45">
 
                       </div>
                       </div>

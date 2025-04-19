@@ -1,5 +1,6 @@
 const Category=require('../models/Category');
 const Course = require('../models/Course');
+const mongoose = require('mongoose');
 
 exports.createCategory=async (req,res)=>{
     try {
@@ -54,7 +55,7 @@ exports.getAllCategory=async(req,res)=>{
 
 exports.getCategoryPageDetails=async (req,res)=>{
     try {
-        const {categoryId}=req.body;
+        const {categoryId}=req.params;
         const categoryCourses=await Category.findById(categoryId).populate("courses").select("courses");
         if(!categoryCourses){
              return res.status(400).json({

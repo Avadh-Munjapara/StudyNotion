@@ -22,7 +22,7 @@ router.get("/allCourse",getAllCourses);
 
 //routes for category
 router.post("/createCategory",auth,isAdmin,createCategory);
-router.get("/categoryCourses",getCategoryPageDetails);
+router.get("/categoryCourses/:categoryId", getCategoryPageDetails);
 router.get("/allCategory",getAllCategory);
 
 //routes for rating and review
@@ -30,5 +30,5 @@ router.post('/createRating',auth,isStudent,createRating);
 router.get('/getAverageRating',getAverageRating);
 router.get('/getAllReviews',getAllReviews);
 router.get('/getCourseReview',getCourseReviews);
-
+    
 module.exports=router;
