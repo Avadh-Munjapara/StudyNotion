@@ -326,7 +326,8 @@ export async function getFullCourseDetails(payload, dispatch) {
   }
 }
 
-export async function deleteCourse(payload) {
+export async function deleteCourse(payload,dispatch) {
+  dispatch(setLoadingCourse(true));
   const tid=toast.loading('deleting Course...');
   try {
     const response = await apiConnector(DELETE_COURSE_API, "DELETE", payload, {
@@ -335,6 +336,7 @@ export async function deleteCourse(payload) {
     if (response.data.success) {
       toast.success('Course Deleted!');
       toast.dismiss(tid);
+      dispatch(setLoadingCourse(false));
       return true;
     }
   } catch (error) {
@@ -342,14 +344,18 @@ export async function deleteCourse(payload) {
     toast.error("course not deleted");
   } 
   toast.dismiss(tid);
+  dispatch(setLoadingCourse(false));
   return false;
 }
 
-export function getCategoryCourses(payload){
+export function getCategoryCourses(payload,setCourses){
   return async (dispatch)=>{
     dispatch(setLoadingCourse(true));
     try { 
       const response=await apiConnector(`${GET_CATEGORY_COURSES_API}/${payload.categoryId}`,'GET');
+      if(response.data.success){
+        setCourses(response.data);
+      }
       console.log(response,"category page details");  
     } catch (error) {
       console.log(error);

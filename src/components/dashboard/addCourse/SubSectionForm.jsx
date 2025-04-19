@@ -93,6 +93,7 @@ const SubSectionForm = ({
       formData.append("title", data.title);
       formData.append("description", data.description);
       formData.append("sectionId", courseInfo.courseContent[sectionIndex]._id);
+      formData.append("courseId", courseInfo._id);
       // Optionally append duration if needed in the backend
       if (videoDuration) formData.append("timeDuration", videoDuration);
       dispatch(createSubsection(formData, courseInfo, sectionIndex, removeForm));

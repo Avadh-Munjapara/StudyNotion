@@ -56,7 +56,7 @@ exports.getAllCategory=async(req,res)=>{
 exports.getCategoryPageDetails=async (req,res)=>{
     try {
         const {categoryId}=req.params;
-        const categoryCourses=await Category.findById(categoryId).populate("courses").select("courses");
+        const categoryCourses=await Category.findById(categoryId).select("courses").populate("courses");
         if(!categoryCourses){
              return res.status(400).json({
                  success:false,

@@ -1,5 +1,6 @@
 const Course=require('../models/Course');
 const Section=require('../models/Section');
+const SubSection = require('../models/SubSection');
 exports.createSection=async (req,res)=>{    
     try {
         const{name,courseId}=req.body;
@@ -17,7 +18,8 @@ exports.createSection=async (req,res)=>{
             });
         }
         const section=await Section.create({
-            name
+            name,
+            courseId
         });
         const updatedCourse=await Course.findByIdAndUpdate(courseId,{
             $push:{courseContent:section._id}
@@ -73,6 +75,7 @@ exports.deleteSection=async (req,res)=>{
                  message:"provide sectionid and courseid both"
             });
         }
+        await SubSection.deleteMany({courseId,sectionId});
         const deletedSection=await Section.findByIdAndDelete(sectionId);
         //should i write code delete section from the course
         const updatedCourse=await Course.findByIdAndUpdate(courseId,{$pull:{

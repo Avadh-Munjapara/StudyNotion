@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { use, useRef, useState } from "react";
 import { MdModeEditOutline } from "react-icons/md";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
@@ -10,16 +10,19 @@ import { deleteCourse } from "../../../../services/operations/courseApi";
 import { FaCheckCircle } from "react-icons/fa";
 import { HiMiniClock } from "react-icons/hi2";
 import formatDuration from "../../../../utils/formatDuration";
+import { useDispatch, useSelector } from "react-redux";
 const CoursesTable = ({ courses,updateCourses }) => {
   const [deleteModal,setDeleteModal]=useState(false);
   const [delCourseId,setDelCourseId]=useState(null);
+  const dispatch=useDispatch();
   const modalRef=useRef(null);
   useOnClickOutside(modalRef,()=>{
-    setDeleteModal(false);
+    !loading&&setDeleteModal(false);
   })
   const navigate=useNavigate();
+  const loading=useSelector((state)=>state.course.loading);
   const deleteCourseHandler=async ()=>{
-   const isDeleted=await deleteCourse({courseId:delCourseId});
+   const isDeleted=await deleteCourse({courseId:delCourseId},dispatch);
    console.log(isDeleted);
    if(isDeleted){
     setDeleteModal(false);
@@ -106,7 +109,7 @@ const CoursesTable = ({ courses,updateCourses }) => {
       </Tbody>
     </Table>
     {
-      deleteModal && <ConfirmationModal modalRef={modalRef} btn1Text={'cancel'} btn1Handler={()=>setDeleteModal(false)} btn2Text={'Delete'} btn2Handler={()=>{deleteCourseHandler()}} />
+      deleteModal && <ConfirmationModal modalRef={modalRef} btn1Text={'cancel'} btn1Handler={()=> !loading&&setDeleteModal(false)} btn2Text={'Delete'} btn2Handler={()=>{deleteCourseHandler()}} />
     }
     </>
     

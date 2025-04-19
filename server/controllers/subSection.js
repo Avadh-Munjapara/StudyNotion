@@ -4,7 +4,7 @@ const { videoUpload } = require('../utils/cloudinaryUpload');
 require('dotenv').config();
 exports.createSubSection=async (req,res)=>{
     try {
-        const{title,timeDuration,description,sectionId}=req.body;
+        const{title,timeDuration,description,courseId,sectionId}=req.body;
         if(!title ||!timeDuration || !description || !sectionId){
              return res.status(400).json({
                  success:false,
@@ -16,7 +16,7 @@ exports.createSubSection=async (req,res)=>{
         const video=await videoUpload(videoFile,process.env.FOLDERNAME);
         console.log("video",video);
         const subSection=await SubSection.create({
-            title,timeDuration,description,videoUrl:video.secure_url
+            title,timeDuration,description,videoUrl:video.secure_url,courseId,sectionId
         });
         const updatedSection=await Section.findByIdAndUpdate(sectionId,{
             $push:{subSections:subSection._id}
