@@ -167,6 +167,7 @@ export function updateSectionName(payload, courseInfo, index, setEditSection) {
 
 export function deleteSection(payload, courseInfo, index) {
   return async (dispatch) => {
+    dispatch(setLoadingCourse(true));
     const tid = toast.loading("deleting section");
     try {
       const response = await apiConnector(
@@ -195,6 +196,8 @@ export function deleteSection(payload, courseInfo, index) {
       console.log("api error in deleteSection", error);
     }
     toast.dismiss(tid);
+    dispatch(setLoadingCourse(false));
+
   };
 }
 

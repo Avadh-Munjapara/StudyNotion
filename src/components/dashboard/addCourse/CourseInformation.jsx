@@ -4,7 +4,7 @@ import Label from "../../comman/Label";
 import ErrorMessage from "../../comman/ErrorMessage";
 import { RiMoneyRupeeCircleLine } from "react-icons/ri";
 import { getAllCategory } from "../../../services/operations/CategoryApi";
-import { setCourseInfo, setLoading, setStep } from "../../../slices/courseSlice";
+import { setCourseInfo,setEditCourse, setLoading, setStep } from "../../../slices/courseSlice";
 import { useDispatch, useSelector } from "react-redux";
 import Spinner from "../../comman/Spinner";
 import Tags from "./Tags";
@@ -76,6 +76,7 @@ const CourseInformation = () => {
     return ()=>{
       setCourseInfo(null);
       setStep(1);
+        // setEditCourse(false);
     }
   })
 

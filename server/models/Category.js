@@ -9,6 +9,7 @@ const categorySchema=mongoose.Schema({
         type:String,
     },
     courses:[{
+        ref:'Course',
         type:mongoose.Schema.Types.ObjectId,
         required:true
     }]

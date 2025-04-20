@@ -9,7 +9,7 @@ exports.createRating=async(req,res)=>{
         }
         const userId=req.user.id;
         //if user has enrolled in course
-        const isEnrolled=await Course.findOne({_id:courseId,studentsEnrolled:{$elemMatch:{$eq:userId}}});
+        const isEnrolled=await Course.aggregate({$match:{_id:courseId}},{$elmMatch:{studentsEnrolled:{$eq:userId}}});
         if(!isEnrolled){
              return res.status(400).json({
                  success:false,
@@ -50,7 +50,7 @@ exports.getAverageRating=async(req,res)=>{
         course:new mongoose.Schema.Types.ObjectId(courseId),
     }},{
         $group:{
-        _id:null,
+        _id:courseId,
         avgRating:{
             $avg:"$rating"
         }
@@ -75,7 +75,6 @@ exports.getAverageRating=async(req,res)=>{
         });
     }
 }
-
 exports.getAllReviews=async(req,res)=>{
     try {
         const allRatings=RAR.find({}).sort({rating:"desc"}).populate({

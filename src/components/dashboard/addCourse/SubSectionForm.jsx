@@ -37,7 +37,7 @@ const SubSectionForm = ({
   const file = watch("video");
   const [videoPreview, setVideoPreview] = useFilePreview(file);
   const courseInfo = useSelector((state) => state.course.courseInfo);
-  
+  const loading=useSelector((state)=>state.course.loading);
   // Add state for video duration
   const [videoDuration, setVideoDuration] = useState(null);
   const videoRef = useRef(null); // Ref for the video element
@@ -77,6 +77,7 @@ const SubSectionForm = ({
   }, [videoPreview, subSectionInfo?.videoUrl]);
 
   const deleteHandler = () => {
+    if(loading) return;
     const payload = {
       subSectionId: subSectionInfo._id,
       sectionId: courseInfo.courseContent[sectionIndex]._id,
@@ -87,7 +88,8 @@ const SubSectionForm = ({
   useOnClickOutside(deleModalRef, removeForm);
 
   const submitHandler = (data) => {
-    if (create) {
+    if (loading) return;
+    else if (create) {
       const formData = new FormData();
       formData.append("videoFile", data.video[0]);
       formData.append("title", data.title);
@@ -123,7 +125,7 @@ const SubSectionForm = ({
       }
     }
   };
-  
+   
   return (
     <div ref={ref} className="absolute z-20 top-1 border border-richblack-700 rounded-lg left-[30%]">
       <div className="flex py-6 px-4 justify-between rounded-t-lg items-center bg-richblack-700 border border-richblack-600">

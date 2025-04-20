@@ -59,7 +59,7 @@ const dispatch=useDispatch();
                      <div className="flex gap-1 items-center">
                      Catalog<IoIosArrowDropdown />
                      </div>
-                      <div className="group-hover:visible invisible opacity-0 group-hover:opacity-100 transition-all group-hover:-translate-y-2 duration-[250] absolute px-2 -translate-x-5  top-12 rounded-xl py-3 text-black bg-richblack-25">
+                      <div className="group-hover:visible invisible opacity-0 group-hover:opacity-100 transition-all z-30 group-hover:-translate-y-2 duration-[250] absolute px-2 -translate-x-5  top-12 rounded-xl py-3 text-black bg-richblack-25">
                         <div className="z-10  flex flex-col gap-1 relative ">
                       {
                         categories.length===0

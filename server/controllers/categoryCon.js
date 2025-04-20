@@ -56,7 +56,7 @@ exports.getAllCategory=async(req,res)=>{
 exports.getCategoryPageDetails=async (req,res)=>{
     try {
         const {categoryId}=req.params;
-        const categoryCourses=await Category.findById(categoryId).select("courses").populate("courses");
+        const categoryCourses=await Category.findById(categoryId).select('courses').populate('courses');
         if(!categoryCourses){
              return res.status(400).json({
                  success:false,
@@ -69,14 +69,18 @@ exports.getCategoryPageDetails=async (req,res)=>{
                  message:"no courses found for the selected category"
         })
     }
-    const diffCategoryCourses=await Category.find({_id:{
-        $ne:categoryId 
-    }}).select("courses").populate("courses");
+    const diffCategoryCourses=await Category.aggregate([{
+        $match:{_id:{$ne:categoryId}}
+    },
+])
+    console.log("diff category course",diffCategoryCourses);
+
     const topSellingCourses=await Course.find({}).sort({studentsEnrolled:"desc"}).limit(10);
+
      return res.status(200).json({
          success:true,
-         categoryCourses,
-         diffCategoryCourses,
+         categoryCourses:categoryCourses.courses,
+         diffCategoryCourses:diffCategoryCourses,
          topSellingCourses
     }); 
  } catch (error) {

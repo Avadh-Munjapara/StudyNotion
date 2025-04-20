@@ -7,7 +7,8 @@ import { useDispatch, useSelector } from "react-redux";
 import TitleBar from "../components/catalog/TitleBar";
 import Spinner from "../components/comman/Spinner";
 import NavBar from "../components/comman/NavBar";
-import CoursesToStart from "../components/catalog/CoursesToStart";
+import SliderCourses from "../components/catalog/SliderCourses";
+import GridCourses from "../components/catalog/GridCourses";
 const CatalogPage = () => {
   const [courses, setCourses] = useState([]);
   const [categories, setCategories] = useState([]);
@@ -34,23 +35,25 @@ const CatalogPage = () => {
     const fetchCourses = async () => {
       if (categoryObj) {
         const payload = { categoryId: categoryObj._id };
-        dispatch(getCategoryCourses(payload,setCourses));
+        dispatch(getCategoryCourses(payload, setCourses));
       }
     };
     fetchCourses();
   }, [params, categories]);
 
+
   return loading ? (
     <Spinner />
   ) : (
-    <div>
+    <>
       <NavBar />
       <TitleBar para={categoryObj?.description} />
-      <CoursesToStart courses={courses?.categoryCourses?.courses}/>
-      {/* <TopSellingCourses/>
-      <FrequentlyBoughtCourses/> */}
-
-    </div>
+      <div className="max-w-maxContent w-11/12 mx-auto">
+        <SliderCourses type={"start"} courses={courses.categoryCourses} />
+        <SliderCourses type={"top"} courses={courses.topSellingCourses} />
+        <GridCourses courses={courses.diffCategoryCourses} />
+      </div>
+    </>
   );
 };
 
