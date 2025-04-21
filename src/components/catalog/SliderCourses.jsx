@@ -6,7 +6,7 @@ import "swiper/css";
 
 const SliderCourses = ({ courses, type }) => {
   return (
-    <div className=" my-10  w-11/12">
+    <div className=" my-10">
       <h2 className="text-richblack-5 mb-5 font-semibold text-3xl">
         {type === 'start' ? 'Courses to get you started' : 'Top Selling courses'}
       </h2>
@@ -16,11 +16,12 @@ const SliderCourses = ({ courses, type }) => {
         slidesPerView={3}
         loop={true}
         spaceBetween={30}
+        className=""
       >
-        {courses?.length === 0 ? (
+        {courses?.length <= 0 || !courses ? (
           <p>No courses in this category have been created</p>
         ) : (
-          <div>
+          <div className="w-full">
             {courses?.map((item, index) => (
               <SwiperSlide key={index}> {/* Add key for list rendering */}
                 <CourseCard info={item} />

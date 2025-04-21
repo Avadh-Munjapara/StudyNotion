@@ -29,18 +29,19 @@ const CatalogPage = () => {
     fetchCategories();
   }, []);
   useEffect(() => {
-    setCategoryObj(
-      categories.filter((cat) => cat.name === params.catalogName).at(0)
-    );
+    const newCategoryObject = categories
+      .filter((cat) => cat.name === params.catalogName)
+      .at(0);
+    setCategoryObj(newCategoryObject);
+
     const fetchCourses = async () => {
-      if (categoryObj) {
-        const payload = { categoryId: categoryObj._id };
+      if (newCategoryObject) {
+        const payload = { categoryId: newCategoryObject._id };
         dispatch(getCategoryCourses(payload, setCourses));
       }
     };
     fetchCourses();
   }, [params, categories]);
-
 
   return loading ? (
     <Spinner />

@@ -357,7 +357,8 @@ export function getCategoryCourses(payload,setCourses){
     try { 
       const response=await apiConnector(`${GET_CATEGORY_COURSES_API}/${payload.categoryId}`,'GET');
       if(response.data.success){
-        setCourses(response.data);
+        const courses=response.data;
+        setCourses(courses);
       }
       console.log(response,"category page details");  
     } catch (error) {
