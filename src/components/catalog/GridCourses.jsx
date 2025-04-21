@@ -7,9 +7,9 @@ const GridCourses = ({ courses }) => {
       <h2 className="text-richblack-5 text-3xl font-semibold">
         Different Category courses
       </h2>
-      {!courses ? (
+      {!courses || courses?.length<=0 ? (
         <p className="text-red-500 relative -top-5 font-semibold text-3xl">
-          {!courses && "No courses found here"}
+          No courses found here
         </p>
       ) : (
         <div className="grid grid-cols-2 gap-y-3 gap-x-10 ">

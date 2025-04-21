@@ -122,6 +122,17 @@ exports.getCategoryPageDetails = async (req, res) => {
         },
       },
       {
+        $project:{
+          courses:{
+            $filter:{
+              input:'$courses',
+              as:'course',
+              cond:{$eq:["$$course.status",'published']},
+            }
+          },
+        }
+      },
+      {
         $project: {
           courses: 1,
           _id: 0,
