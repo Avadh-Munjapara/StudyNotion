@@ -1,0 +1,28 @@
+disappear dropdown when clicking elsewhere
+in profile whenever i go to dashboard after login data is not rendered until i refresh
+cancel button in edit profile
+try to send file without form data
+add taransitions on button in dashboard
+user data is one render behind in placeholder in settings 
+modal for delete account 
+change appearance of logout modal
+protect routes from unauthorized parties
+set loading while deleting account
+automatic logout when surpassing desired timelimit
+pattern for tags in course information
+preserve data in form while navigating
+alteranative for localstorage clear while logout because this will create reseeding information for the form
+use cloudinary links insted of static in images like profile photo
+remove editcourse false while logout
+use default value in category instead selected fix on refresh
+when i logout the course progress should remain present
+restricet student from login when instructor toggle is active
+add loding while uploading video and dont let user to close window when video is uploading
+add up arrow in details tag course builder
+fix log error handling 
+add atleast one section in course builder check while going next
+checkfor loading in every important submit button
+total duration in my courses
+when logout and login profile info show old data we have to refresh once to update data
+add avg rating in catalog
+enhance logic of category page details like diffcategory course fetch show only those courses which are published
