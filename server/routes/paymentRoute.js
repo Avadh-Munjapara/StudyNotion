@@ -1,8 +1,8 @@
-const { capturePayment, verifySignature } = require('../controllers/payment');
+const { capturePayment, verifySignatureAndEnrollStudent } = require('../controllers/payment');
 
 const  express  = require('express');
 const router=express.Router();
 router.post('/capturePayment',capturePayment);
-router.post('/verifySignature',verifySignature);
+router.post('/verifySignature',verifySignatureAndEnrollStudent);
 
 module.exports=router;

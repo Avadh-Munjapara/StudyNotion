@@ -19,6 +19,7 @@ import MyCourses from "./pages/dashboardPages/InstructorPages/MyCourses";
 import AddCourse from "./components/dashboard/addCourse";
 import EditCourse from "./components/dashboard/Instructor/myCourses/EditCourse";
 import CatalogPage from "./pages/CatalogPage";
+import CourseInfoPage from "./pages/CourseInfoPage";
 function App() {
   return (
     <div className="font-inter w-screen overflow-x-hidden min-h-screen bg-richblack-900">
@@ -29,6 +30,7 @@ function App() {
         <Route path="/verify-email" element={<Verify />}></Route>
         <Route path="/forgot-password" element={<ForgotPassword />}></Route>
         <Route path="/catalog/:catalogName" element={<CatalogPage/>}></Route>
+        <Route path="/course/:courseId" element={<CourseInfoPage/>}></Route>
         <Route
           path="/forgot-password/:id"
           element={<ResetForgotPassword />}
