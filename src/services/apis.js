@@ -41,3 +41,8 @@ export const courseEndPoint={
   DELETE_COURSE_API:`${baseUrl}/course/deleteCourse`,
   GET_CATEGORY_COURSES_API:`${baseUrl}/course/categoryCourses`,
 }
+
+export const paymentEndpoint={
+  CAPTURE_PAYMENT_API:`${baseUrl}/payment/capturePayment`,
+  VERIFY_SIGNATURE_ENROLL_STUDENT_API:`${baseUrl}/payment/verifySignatureEnrollStudent`,
+}

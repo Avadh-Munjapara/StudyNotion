@@ -20,7 +20,7 @@ app.use(fileUpload({
 
 app.use(cors({
     origin: 'http://localhost:3000',
-    credentials:true
+    credentials:true 
 }));
 
 app.use('/api/v1/auth',userRoute);
