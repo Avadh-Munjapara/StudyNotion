@@ -25,4 +25,8 @@ checkfor loading in every important submit button
 total duration in my courses
 when logout and login profile info show old data we have to refresh once to update data
 add avg rating in catalog
-enhance logic of category page details like diffcategory course fetch show only those courses which are published
+enhance logic of category page details like top selling course only show public and review its logic
+add mostpopular and new in category page details
+redirect to enrolled courses when payment completed
+add location bar in course info page
+add rating and courseinfo page

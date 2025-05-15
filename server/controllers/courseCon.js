@@ -95,6 +95,7 @@ exports.getCourseDetails = async (req, res) => {
     });
   }
   try {
+    // const courseIdObjectId = new mongoose.Types.ObjectId(courseId);
     const course = await Course.findById(courseId)
       .populate({
         path: "instructor",
