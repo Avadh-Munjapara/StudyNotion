@@ -1,5 +1,6 @@
 import toast from "react-hot-toast";
 import { paymentEndpoint } from "../apis";
+import { resetCart } from "../../slices/cartSlice";
 const { default: apiConnector } = require("../apiConnector");
 const  token = localStorage.getItem('token') ? JSON.parse(localStorage.getItem("token")):null;
 const  user = localStorage.getItem('user') ? JSON.parse(localStorage.getItem("user")):null;
@@ -19,7 +20,7 @@ const userId = user ? user._id : null;
 }
 
 
-export const buyCourse = async (courses)=>{
+export const buyCourse = async (courses,dispatch,fromCart=false)=>{
     const order=await createOrder(courses);
     console.log(order);
     const razorSdk=await loadScript("https://checkout.razorpay.com/v1/checkout.js");
@@ -52,6 +53,10 @@ export const buyCourse = async (courses)=>{
             const result=await verifySignatureAndEnrollStudent(data);
             if(result){
                 toast.success("payment successful");
+                console.log(fromCart);
+                if(fromCart){
+                    dispatch(resetCart());
+                }
             }else{
                 toast.error("payment failed");
             }
