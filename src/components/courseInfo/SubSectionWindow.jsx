@@ -5,14 +5,14 @@ import { MdKeyboardArrowUp } from "react-icons/md";
 import { PiMonitorPlayFill } from "react-icons/pi";
 const SubSectionWindow = ({ subSections }) => {
   const [arrowUp, setArrowUp] = useState(false);
-
+    console.log(subSections);
   const toggleArrow = () => {
     if (arrowUp) setArrowUp(false);
     else setArrowUp(true);
   };
 
   return (
-    <div className="border-[1px] py-4 px-8 border-richblack-600">
+    <div className="border-[1px]  flex flex-col gap-3 py-4 px-8 border-richblack-600">
       {subSections?.map((subSection) => {
         const length = formatDuration(subSection?.timeDuration);
         return (
@@ -36,7 +36,7 @@ const SubSectionWindow = ({ subSections }) => {
                   : `${length?.hours}h : ${length?.minutes}m`}
               </p>
             </summary>
-            <p className="text-richblack-50 px-[22px] text-sm">
+            <p className="text-richblack-50 px-[22px] py-1 text-sm">
               {subSection?.description}
             </p>
           </details>

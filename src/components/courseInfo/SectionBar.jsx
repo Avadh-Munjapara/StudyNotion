@@ -51,9 +51,7 @@ const SectionBar = ({ section }) => {
             </span>
           </p>
         </summary>
-        {section?.subSections?.map((subSection) => (
           <SubSectionWindow subSections={section?.subSections} />
-        ))}
       </details>
     </div>
   );

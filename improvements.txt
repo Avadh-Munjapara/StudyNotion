@@ -32,3 +32,4 @@ add location bar in course info page
 add rating and courseinfo page
 add course instructions in buy page
 add hours in my courses instructotr
+myprofile is not updating automatically while switching users
