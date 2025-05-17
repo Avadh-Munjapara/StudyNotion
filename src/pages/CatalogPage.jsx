@@ -9,6 +9,7 @@ import Spinner from "../components/comman/Spinner";
 import NavBar from "../components/comman/NavBar";
 import SliderCourses from "../components/catalog/SliderCourses";
 import GridCourses from "../components/catalog/GridCourses";
+import Footer from "../components/comman/Footer";
 const CatalogPage = () => {
   const [courses, setCourses] = useState([]);
   const [categories, setCategories] = useState([]);
@@ -49,11 +50,12 @@ const CatalogPage = () => {
     <>
       <NavBar />
       <TitleBar para={categoryObj?.description} />
-      <div className="max-w-maxContent w-11/12 mx-auto">
+      <div className="max-w-maxContent w-11/12 mx-auto mb-14">
         <SliderCourses type={"start"} courses={courses.categoryCourses} />
         <SliderCourses type={"top"} courses={courses.topSellingCourses} />
         <GridCourses courses={courses.diffCategoryCourses} />
       </div>
+      <Footer/>
     </>
   );
 };

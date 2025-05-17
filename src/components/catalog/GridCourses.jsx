@@ -14,7 +14,7 @@ const GridCourses = ({ courses }) => {
       ) : (
         <div className="grid grid-cols-2 gap-y-3 gap-x-10 ">
           {courses?.map((item, index) => (
-            <CourseCard info={item} />
+            <CourseCard allowWidth={true} info={item} />
           ))}
         </div>
       )}

@@ -1,7 +1,7 @@
 import React from "react";
 import YellowBtn from "../comman/YellowBtn";
 import { useDispatch } from "react-redux";
-
+import { TiTickOutline } from "react-icons/ti";
 
 
 const CourseBuyCard = ({
@@ -31,7 +31,7 @@ const CourseBuyCard = ({
       <ul className="flex flex-col">
         <p className="text-richblack-5 font-medium">This course includes:</p>
         {
-            instructions?.map((item)=><li className="text-caribbeangreen-100 text-sm">{item}</li>)
+            instructions?.map((item)=><li className="text-caribbeangreen-100 flex gap-1 items-center text-sm"><TiTickOutline className="text-lg"/>{item}</li>)
         }
       </ul>
       </div>
