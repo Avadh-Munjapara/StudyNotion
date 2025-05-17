@@ -15,9 +15,9 @@ const courseSchema = mongoose.Schema({
     ref:"User", 
     trim: true,
   },
-  whatYouWillLearn: {
+  whatYouWillLearn: [{
     type: String,
-  },
+  }],
   courseContent: [
     {
       type: mongoose.Schema.Types.ObjectId,

@@ -13,7 +13,7 @@ const CourseInfoPage = () => {
   const loacation = useLocation();
   const courseId = loacation.pathname.split("/").at(-1);
   const loading = useSelector((state) => state.course.loading);
-  const user=useSelector((state) => state.profile.user);
+  const user = useSelector((state) => state.profile.user);
   const dispatch = useDispatch();
   useEffect(() => {
     const fetchCourseDetails = async () => {
@@ -32,9 +32,9 @@ const CourseInfoPage = () => {
     await buyCourse([courseId]);
   };
 
-  const isStudentEnrolled=()=>{
+  const isStudentEnrolled = () => {
     return course?.studentsEnrolled?.some((student) => student === user._id);
-  }
+  };
 
   return (
     <div>
@@ -46,17 +46,42 @@ const CourseInfoPage = () => {
           {/* <YellowBtn clickHandler={handleBuyCourse} text={'Buy'}/> */}
 
           {/* courseInfo section */}
-          <div className="w-full">
+          <div className="w-full flex flex-col gap-10">
             <div className="w-full bg-richblack-800">
-              <div className=" max-w-maxContent w-11/12 py-8 flex justify-between  mx-auto">
-                <CourseIntro course={course} />
-                <CourseBuyCard thumbnail={course?.thumbnail}
-                 buyHandler={handleBuyCourse} isBought={isStudentEnrolled()} course={course}
-                 price={course?.price} instructions={course?.instructions}
-                 
-                 />
+              <div className=" max-w-maxContent w-11/12 relative py-8 flex   mx-auto">
+                <div className="w-[73%]">
+                  <CourseIntro course={course} />
+                </div>
+                <div className="absolute right-0 ">
+                  <CourseBuyCard
+                    thumbnail={course?.thumbnail}
+                    buyHandler={handleBuyCourse}
+                    isBought={isStudentEnrolled()}
+                    course={course}
+                    price={course?.price}
+                    instructions={course?.instructions}
+                  />
+                </div>
               </div>
               <div className="w-1 h- full"></div>
+            </div>
+
+            {/* what you'll learn */}
+            <div className="w-full">
+              <div className="max-w-maxContent w-11/12 mx-auto ">
+                <div className="w-[73%] p-8 flex flex-col gap-3 border-richblack-700 border-[1px]">
+                  <p className="text-3xl text-richblack-5 font-medium">
+                    What you'll learn
+                  </p>
+                  <ul className="list-type-none">
+                    {course?.whatYouWillLearn?.map((item) => (
+                      <li className="text-richblack-50 font-medium text-sm">
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
         </div>

@@ -76,7 +76,7 @@ const CourseInformation = () => {
     return ()=>{
       setCourseInfo(null);
       setStep(1);
-        // setEditCourse(false);
+        setEditCourse(false);
     }
   })
 

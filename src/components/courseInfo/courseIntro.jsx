@@ -1,9 +1,11 @@
 import React from 'react';
 import { BsExclamationCircle } from "react-icons/bs";
+import { IoIosGlobe } from "react-icons/io";
+
 import Stars from "../comman/Stars";
 const CourseIntro = ({course}) => {
     return (
-        <div className='border-r-[1px] border-richblack-700'>
+        <div className='border-r-[1px] flex flex-col gap-3 border-richblack-700'>
             <h1 className="text-richblack-5 font-medium text-3xl">
                   {course?.name}
                 </h1>
@@ -22,12 +24,15 @@ const CourseIntro = ({course}) => {
                   Created by {course?.instructor?.firstName}{" "}
                   {course?.instructor?.lastName}
                 </p>
+                <div className='flex gap-2 items-center'>
                 <p className="text-richblack-25 flex gap-2 items-center">
                   <BsExclamationCircle />
                   {course?.createdAt?.split("-").at(1)}/
                   {course?.createdAt?.split("-").at(0)}
                 </p>
-        </div>
+                <p className='flex gap-1 text-richblack-25 items-center'><IoIosGlobe /> English</p>
+                </div>
+        </div>  
     );
 }
 

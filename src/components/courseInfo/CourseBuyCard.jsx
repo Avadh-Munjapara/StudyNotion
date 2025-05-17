@@ -23,17 +23,17 @@ const CourseBuyCard = ({
         <YellowBtn text={"Go To Course"} />
       ) : (
         <div>
-          <div>
-            <YellowBtn text="Add to Cart" clickHandler={addToCart} />
-            <YellowBtn widthFull={true} text="Buy Now" bgColour={'#161D29'} clickHandler={buyHandler} />
+          <div className="flex flex-col gap-3">
+            <YellowBtn widthFull={true} text="Add to Cart" clickHandler={addToCart} />
+            <YellowBtn textColour={'#F1F2FF'} widthFull={true} text="Buy Now" bgColour={'#161D29'} clickHandler={buyHandler} />
           </div>
         </div>
       )}
       <p className="text-richblack-25 text-sm text-center">30-Day Money-Back Guarantee</p>
-      <ul>
+      <ul className="flex flex-col">
         <p className="text-richblack-5 font-medium">This course includes:</p>
         {
-            instructions?.map((item)=><li className="text-caribbeangreen-100">{item}</li>)
+            instructions?.map((item)=><li className="text-caribbeangreen-100 text-sm">{item}</li>)
         }
       </ul>
       </div>
