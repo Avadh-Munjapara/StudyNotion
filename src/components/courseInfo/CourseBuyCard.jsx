@@ -2,8 +2,9 @@ import React from "react";
 import YellowBtn from "../comman/YellowBtn";
 import { useDispatch } from "react-redux";
 import { TiTickOutline } from "react-icons/ti";
-
-
+import { FaShareFromSquare } from "react-icons/fa6";
+import copy from 'copy-to-clipboard';
+import toast from "react-hot-toast";
 const CourseBuyCard = ({
   thumbnail,
   isBought,
@@ -12,6 +13,12 @@ const CourseBuyCard = ({
   instructions,
   addToCart
 }) => {
+
+  const shareHandler=()=>{
+      copy(window.location.href);
+      toast.success("Link Copied to Clipboard");
+  }
+
   return (
     <div className="bg-richblack-700 rounded-lg">
       <div className=""><img src={thumbnail} className="h-[200px]" alt="thumbnail of course"/></div>
@@ -34,7 +41,9 @@ const CourseBuyCard = ({
             instructions?.map((item)=><li className="text-caribbeangreen-100 flex gap-1 items-center text-sm"><TiTickOutline className="text-lg"/>{item}</li>)
         }
       </ul>
+            <p onClick={shareHandler} className="text-yellow-100 flex gap-1 items-center justify-center"><FaShareFromSquare/> Share</p>
       </div>
+
     </div>
   );
 };

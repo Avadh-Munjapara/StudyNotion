@@ -22,7 +22,7 @@ const SectionBar = ({ section }) => {
 
   const length = lecturesLength();
   return (
-    <div className="">
+    <div>
       <details>
         <summary
           onClick={toggleArrow}

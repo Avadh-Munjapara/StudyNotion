@@ -36,3 +36,5 @@ myprofile is not updating automatically while switching users
 review stars average in wishlist
 add remove from cart instead add to cart when it is already in cart in courseinfo page
 eventhough course is bought razorpay gateway is open though it shows payment of 1 rupee fix this
+coursepage is opened at footer 
+bring back logout to the front layer and add dashboard options while clicking on pp
