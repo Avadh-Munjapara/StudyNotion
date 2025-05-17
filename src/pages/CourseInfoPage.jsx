@@ -10,6 +10,7 @@ import CourseIntro from "../components/courseInfo/courseIntro";
 import CourseBuyCard from "../components/courseInfo/CourseBuyCard";
 import CourseContent from "../components/courseInfo/CourseContent";
 import Footer from "../components/comman/Footer";
+import { addItem } from "../slices/cartSlice";
 const CourseInfoPage = () => {
   const [course, setCourse] = useState(null);
   const loacation = useLocation();
@@ -29,6 +30,10 @@ const CourseInfoPage = () => {
     };
     fetchCourseDetails();
   }, []);
+
+  const addToCart = ()=>{
+    dispatch(addItem(course));
+  }
 
   const handleBuyCourse = async () => {
     await buyCourse([courseId]);
@@ -62,6 +67,7 @@ const CourseInfoPage = () => {
                     course={course}
                     price={course?.price}
                     instructions={course?.instructions}
+                    addToCart={addToCart}
                   />
                 </div>
               </div>

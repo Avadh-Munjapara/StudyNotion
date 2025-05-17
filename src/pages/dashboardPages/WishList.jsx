@@ -23,14 +23,14 @@ const WishList = () => {
       });
   }, [totalItems]);
   return (
-    <div>
+    <div className='pl-6 pt-6 '>
       <LocationBar />
       {items && totalItems > 0 ? (
-        <div className="flex flex-col gap-3">
-          <h3 className="border-b-[1px] border-[#2C333F]">{totalItems} Courses in Wishlist</h3>
-          <div className="flex gap-10">
-            <div className="flex flex-col">
-              {items.maps((item, index) => {
+        <div className="flex flex-col gap-5">
+          <h3 className="border-b-[1px] text-richblack-400 font-semibold py-2 border-[#2C333F]">{totalItems} Courses in Wishlist</h3>
+          <div className="flex justify-between max-w-maxContent gap-10">
+            <div className="flex w-4/5 gap-5 flex-col">
+              {items.map((item, index) => {
                 return (
                   <>
                     <CourseCard
@@ -45,7 +45,9 @@ const WishList = () => {
                 );
               })}
             </div>
+            <div className="w-1/5">
             <TotalAmount />
+            </div>
           </div>
         </div>
       ) : (

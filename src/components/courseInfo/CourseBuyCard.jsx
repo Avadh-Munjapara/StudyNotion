@@ -1,10 +1,7 @@
 import React from "react";
 import YellowBtn from "../comman/YellowBtn";
+import { useDispatch } from "react-redux";
 
-
-const addToCart=()=>{
-
-}
 
 
 const CourseBuyCard = ({
@@ -13,6 +10,7 @@ const CourseBuyCard = ({
   price,
   buyHandler,
   instructions,
+  addToCart
 }) => {
   return (
     <div className="bg-richblack-700 rounded-lg">

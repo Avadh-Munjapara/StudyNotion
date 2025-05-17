@@ -98,7 +98,7 @@ const dispatch=useDispatch();
             ):(
               <div className="flex gap-4">
               
-                <div className="relative ">
+                <Link to={'/dashboard/wishList'} className="relative ">
                 <IoCartOutline className="text-white cursor-pointer h-8 w-8"/>
                 {
                   totalItems===0
@@ -107,7 +107,7 @@ const dispatch=useDispatch();
                     text-xs text-black -top-1 ball_animation bg-green-400 flex justify-center items-center">{totalItems}</div>
                     )
                 }
-              </div>
+              </Link>
               <div className="relative cursor-pointer" onClick={showBox}>
               <div className="text-white rounded-full h-8 w-8 "style={{backgroundImage: `url(${user?.image})`,backgroundSize:"cover"}} >
               </div>

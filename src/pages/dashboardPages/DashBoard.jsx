@@ -6,9 +6,9 @@ import NavBar from '../../components/comman/NavBar';
 const DashBoard = () => {
     const location=useLocation();
     return (
-        <div className='w-full relative h-full'>
+        <div className='w-full relative  h-full'>
             <NavBar/>
-            <div className='flex h-full'>
+            <div className='flex mx-auto  h-full'>
                 <div className='w-[16%]'>
                 <Sidebar/>
                 </div>
