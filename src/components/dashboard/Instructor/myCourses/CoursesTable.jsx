@@ -11,6 +11,7 @@ import { FaCheckCircle } from "react-icons/fa";
 import { HiMiniClock } from "react-icons/hi2";
 import formatDuration from "../../../../utils/formatDuration";
 import { useDispatch, useSelector } from "react-redux";
+import showLength from "../../../../utils/showLength";
 const CoursesTable = ({ courses,updateCourses }) => {
   const [deleteModal,setDeleteModal]=useState(false);
   const [delCourseId,setDelCourseId]=useState(null);
@@ -81,7 +82,7 @@ const CoursesTable = ({ courses,updateCourses }) => {
                 </div>
               </Td>
               <Td className="text-richblack-100 py-[10px] text-center font-medium">
-                {item?.totalDuration ? formatDuration(item.totalDuration):'null'}
+                {item?.totalDuration ? showLength(formatDuration(item.totalDuration)):'null'}
               </Td> 
               <Td className=" py-[10px] ">
                 <div className="flex text-richblack-100 gap-2 mx-auto justify-center">

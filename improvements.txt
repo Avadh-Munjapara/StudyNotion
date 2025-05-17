@@ -30,3 +30,5 @@ add mostpopular and new in category page details
 redirect to enrolled courses when payment completed
 add location bar in course info page
 add rating and courseinfo page
+add course instructions in buy page
+add hours in my courses instructotr

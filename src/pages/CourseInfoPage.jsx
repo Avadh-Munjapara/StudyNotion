@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 import NavBar from "../components/comman/NavBar";
 import CourseIntro from "../components/courseInfo/courseIntro";
 import CourseBuyCard from "../components/courseInfo/CourseBuyCard";
+import CourseContent from "../components/courseInfo/CourseContent";
 const CourseInfoPage = () => {
   const [course, setCourse] = useState(null);
   const loacation = useLocation();
@@ -46,7 +47,7 @@ const CourseInfoPage = () => {
           {/* <YellowBtn clickHandler={handleBuyCourse} text={'Buy'}/> */}
 
           {/* courseInfo section */}
-          <div className="w-full flex flex-col gap-10">
+          <div className="w-full flex flex-col gap-10 pb-32">
             <div className="w-full bg-richblack-800">
               <div className=" max-w-maxContent w-11/12 relative py-8 flex   mx-auto">
                 <div className="w-[73%]">
@@ -66,9 +67,9 @@ const CourseInfoPage = () => {
               <div className="w-1 h- full"></div>
             </div>
 
-            {/* what you'll learn */}
+            {/* what you'll learn  and courseContent*/}
             <div className="w-full">
-              <div className="max-w-maxContent w-11/12 mx-auto ">
+              <div className="max-w-maxContent w-11/12 flex flex-col gap-10 mx-auto ">
                 <div className="w-[73%] p-8 flex flex-col gap-3 border-richblack-700 border-[1px]">
                   <p className="text-3xl text-richblack-5 font-medium">
                     What you'll learn
@@ -80,6 +81,10 @@ const CourseInfoPage = () => {
                       </li>
                     ))}
                   </ul>
+                </div>
+
+                <div className="w-[73%]">
+                    <CourseContent content={course?.courseContent}/>
                 </div>
               </div>
             </div>
