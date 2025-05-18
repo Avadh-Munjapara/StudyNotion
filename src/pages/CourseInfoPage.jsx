@@ -11,6 +11,8 @@ import CourseBuyCard from "../components/courseInfo/CourseBuyCard";
 import CourseContent from "../components/courseInfo/CourseContent";
 import Footer from "../components/comman/Footer";
 import { addItem } from "../slices/cartSlice";
+import toast from "react-hot-toast";
+import { ACCOUNT_TYPE } from "../utils/constants";
 const CourseInfoPage = () => {
   const [course, setCourse] = useState(null);
   const loacation = useLocation();
@@ -31,16 +33,33 @@ const CourseInfoPage = () => {
     fetchCourseDetails();
   }, []);
 
-  const addToCart = ()=>{
+  const addToCart = () => {
+    if (!user) {
+      toast.error("Please login to add items to cart");
+      return;
+    }
+    if (user?.accountType === ACCOUNT_TYPE.INSTRUCTOR) {
+      toast.error("Instructors cannot buy courses");
+      return;
+    }
     dispatch(addItem(course));
-  }
+
+  };
 
   const handleBuyCourse = async () => {
+     if (!user) {
+      toast.error("Please login to buy courses");
+      return;
+    }
+    if (user?.accountType === ACCOUNT_TYPE.INSTRUCTOR) {
+      toast.error("Instructors cannot buy courses");
+      return;
+    }
     await buyCourse([courseId]);
   };
 
   const isStudentEnrolled = () => {
-    return course?.studentsEnrolled?.some((student) => student === user._id);
+    return course?.studentsEnrolled?.some((student) => student === user?._id);
   };
 
   return (
@@ -101,24 +120,28 @@ const CourseInfoPage = () => {
                     Author
                   </h4>
                   <div className="flex gap-4 items-center">
-                    <img className="rounded-full h-[52px]" src={course?.instructor?.image} alt="" />
-                    <p className="text-richblack-5 font-medium">{course?.instructor?.firstName} {course?.instructor?.lastName}</p>
+                    <img
+                      className="rounded-full h-[52px]"
+                      src={course?.instructor?.image}
+                      alt=""
+                    />
+                    <p className="text-richblack-5 font-medium">
+                      {course?.instructor?.firstName}{" "}
+                      {course?.instructor?.lastName}
+                    </p>
                   </div>
-                  <p className="text-richblack-50 text-sm">{course?.instructor?.additionalDetails?.about}</p>
+                  <p className="text-richblack-50 text-sm">
+                    {course?.instructor?.additionalDetails?.about}
+                  </p>
                 </div>
               </div>
 
-
-
               {/* review Slider */}
-
-
-              
             </div>
           </div>
         </div>
       )}
-      <Footer/>
+      <Footer />
     </div>
   );
 };

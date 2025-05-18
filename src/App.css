@@ -95,3 +95,56 @@ border: 1px solid rgba(71, 80, 107, 0.3);
     background-color: #3D2A01;
     color: #FFD60A;
 }
+/* 
+ details{
+    max-height: 4rem;
+    overflow: hidden;
+    transition: max-height 1s linear;
+}
+
+details[open]{
+    max-height: 20rem;
+    transition: max-height 1s linear;
+}  */
+
+
+/* details{
+    overflow: hidden;
+}
+
+details::details-content{
+    background-color: red;
+} */
+
+/* details::details-content{
+    content-visibility: 1s;
+    transition-behavior: allow-discrete;
+} */
+
+/* Replace the existing details related CSS with this
+details {
+  overflow: hidden;
+}
+
+details[open] > :not(summary) {
+  animation: sweep .5s linear;
+}
+
+@keyframes sweep {
+  0%    {
+    opacity: 0;
+    block-size: 0;
+  }
+  100%  {
+    opacity: 1;
+    block-size: auto;
+}
+} */
+
+/* details summary {
+  transition: margin 150ms ease-out;
+}
+
+details[open] summary {
+  margin-bottom: 10px;
+} */

@@ -34,9 +34,9 @@ const CourseContent = ({ content }) => {
           Course Content
         </h3>
         <p className="text-sm text-richblack-50 flex items-center">
-          {content?.length} sections
+          {content?.length} section(s)
           <LuDot className="text-2xl" />
-          {subSectionsLength()} lectures <LuDot className="text-2xl" />
+          {subSectionsLength()} lecture(s) <LuDot className="text-2xl" />
           {length?.hours == 0
             ? `${length?.minutes}m : ${length?.seconds}s`
             : `${length?.hours}h : ${length?.minutes}m`}{" "}
@@ -49,6 +49,7 @@ const CourseContent = ({ content }) => {
           ))}
         </div>
       </div>
+
     </div>
   );
 };

@@ -41,7 +41,7 @@ const CourseBuyCard = ({
             instructions?.map((item)=><li className="text-caribbeangreen-100 flex gap-1 items-center text-sm"><TiTickOutline className="text-lg"/>{item}</li>)
         }
       </ul>
-            <p onClick={shareHandler} className="text-yellow-100 flex gap-1 items-center justify-center"><FaShareFromSquare/> Share</p>
+            <p onClick={shareHandler} className="text-yellow-100 cursor-pointer flex gap-1 items-center justify-center"><FaShareFromSquare/> Share</p>
       </div>
 
     </div>

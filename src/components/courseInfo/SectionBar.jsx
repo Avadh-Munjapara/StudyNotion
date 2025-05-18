@@ -23,7 +23,7 @@ const SectionBar = ({ section }) => {
   const length = lecturesLength();
   return (
     <div>
-      <details>
+      <details className=" select-none ">
         <summary
           onClick={toggleArrow}
           className="flex items-center cursor-pointer justify-between border-[1px] border-richblack-600 bg-richblack-700 px-8 py-4"
