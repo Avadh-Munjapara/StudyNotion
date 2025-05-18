@@ -41,3 +41,4 @@ bring back logout to the front layer and add dashboard options while clicking on
 add share feat in course info page
 transition in course content
 both arrow toggle when clicking on subsetions in course info page
+handle navbar colours for various pages

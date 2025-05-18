@@ -11,21 +11,21 @@ const CourseBuyCard = ({
   price,
   buyHandler,
   instructions,
-  addToCart
+  addToCart,
+  goToCourseHandler
 }) => {
 
   const shareHandler=()=>{
       copy(window.location.href);
       toast.success("Link Copied to Clipboard");
   }
-
   return (
     <div className="bg-richblack-700 rounded-lg">
       <div className=""><img src={thumbnail} className="h-[200px]" alt="thumbnail of course"/></div>
       <div className="p-6 gap-3 flex flex-col">
       <p className="text-3xl font-bold text-richblack-5">Rs. {price}</p>
       {isBought ? (
-        <YellowBtn text={"Go To Course"} />
+        <YellowBtn clickHandler={goToCourseHandler} text={"Go To Course"} />
       ) : (
         <div>
           <div className="flex flex-col gap-3">

@@ -13,6 +13,8 @@ import Footer from "../components/comman/Footer";
 import { addItem } from "../slices/cartSlice";
 import toast from "react-hot-toast";
 import { ACCOUNT_TYPE } from "../utils/constants";
+import { useNavigate } from "react-router-dom";
+
 const CourseInfoPage = () => {
   const [course, setCourse] = useState(null);
   const loacation = useLocation();
@@ -20,6 +22,8 @@ const CourseInfoPage = () => {
   const loading = useSelector((state) => state.course.loading);
   const user = useSelector((state) => state.profile.user);
   const dispatch = useDispatch();
+  const navigate=useNavigate();
+
   useEffect(() => {
     const fetchCourseDetails = async () => {
       const response = await getFullCourseDetails({ courseId }, dispatch);
@@ -32,6 +36,10 @@ const CourseInfoPage = () => {
     };
     fetchCourseDetails();
   }, []);
+
+  const goToCourseHandler=()=>{
+      navigate(`/view-course/${courseId}/sectionId/${course?.courseContent[0]?._id}/sub-sectionId/${course?.courseContent[0]?.subSections[0]?._id}`);
+  }
 
   const addToCart = () => {
     if (!user) {
@@ -87,6 +95,7 @@ const CourseInfoPage = () => {
                     price={course?.price}
                     instructions={course?.instructions}
                     addToCart={addToCart}
+                    goToCourseHandler={goToCourseHandler}
                   />
                 </div>
               </div>
