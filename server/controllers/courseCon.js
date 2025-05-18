@@ -1,3 +1,4 @@
+const CourseProgress = require("../models/CourseProgress");
 const Course = require("../models/Course");
 const User = require("../models/User");
 const Category = require("../models/Category");
@@ -122,9 +123,16 @@ exports.getCourseDetails = async (req, res) => {
         message: "no course found with that courseid",
       });
     }
+    const courseIdObjectId = new mongoose.Types.ObjectId(courseId);
+    const completedLectures=await CourseProgress.findOne({courseId:courseIdObjectId});
+    console.log(completedLectures);
     return res.status(200).json({
       success: true,
-      course,
+      course:{
+        ...course._doc,
+        completedLectures:completedLectures?.completedVideos || []
+      }
+      
     });
   } catch (error) {
     console.log("error while fetching details of course", error);
