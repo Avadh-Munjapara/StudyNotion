@@ -6,9 +6,9 @@ import VideoDetails from '../components/viewCourse/VideoDetails';
 
 const ViewCourse = () => {
     return (
-        <div>
+        <div className='h-full'>
             <NavBar/>
-            <div>
+            <div className='flex h-full'>
                 <CourseSideBar/>
                 <Outlet>
                     <VideoDetails/>

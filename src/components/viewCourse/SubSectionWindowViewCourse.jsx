@@ -17,7 +17,6 @@ const SubSectionWindowViewCourse = ({ subSections }) => {
       {subSections?.map((subSection, index) => {
         const isCompleted = isLectureCompleted(subSection._id);
         const isLoaded = subSectionId === subSection._id ? true : false;
-        console.log(isLoaded);
         return (
           <div
             onClick={() =>

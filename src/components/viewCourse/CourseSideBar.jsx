@@ -57,7 +57,7 @@ const CourseSidebar = () => {
   return loading ? (
     <Spinner />
   ) : sectionData.length > 0 ? (
-    <div className="bg-richblack-800  max-w-[300px] h-full">
+    <div className="bg-richblack-800  min-w-[300px] min-h-fit">
       <div className="border-b-[1px] pt-7 pb-3 border-richblack-600 mx-6">
         <h1 className="text-sm font-semibold text-richblack-25">
           {entireCourseData?.name}

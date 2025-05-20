@@ -32,7 +32,7 @@ const Sidebar = () => {
     dispatch(logout(navigate));
   };
   return (
-    <div className="h-full">
+    <div className="min-h-fit">
       <div className=" relative pt-8 bg-richblack-800 flex h-full  flex-col gap-2">
         <div className="w-full">
           {sidebarLinks.map((item, index) => {
