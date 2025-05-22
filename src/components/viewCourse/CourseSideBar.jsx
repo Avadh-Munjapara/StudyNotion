@@ -68,7 +68,7 @@ const CourseSidebar = () => {
           </span>
         </p>
       </div>
-      <div>
+      <div className="flex flex-col gap-3">
         {sectionData?.map((section, index) => (
           <SectionBarViewCourse section={section} />
         ))}

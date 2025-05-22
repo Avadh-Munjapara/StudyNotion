@@ -24,7 +24,7 @@ const SubSectionWindowViewCourse = ({ subSections }) => {
                 `view-course/${subSection?.courseId}/sectionId/${subSection?.sectionId}/sub-sectionId/${subSection?._id}`
               )
             }
-            className="flex cursor-pointer items-center gap-2"
+            className={`x flex cursor-pointer items-center gap-2`}
           >
             {isLoaded ? (
               <FaPlay className="text-blue-100 " />
