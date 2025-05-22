@@ -116,13 +116,13 @@ const VideoDetails = () => {
         <source src={subSection?.videoUrl} />
       </Player>
       {lectureEnded && (
-        <div className="absolute left-0 top-0 z-10 flex flex-col items-center justify-center gap-3 bg-transparent bg-linear-to-t from-richblack-800 to-richblack-5  w-full h-full">
-          {<YellowBtn text={"ReWatch"} clickHandler={playAgainHandler} />}
+        <div className="absolute left-0 top-0 z-10 flex flex-col items-center  justify-center gap-3 bg-gradient-to-t from-richblack-900 to-richblack-200/10 w-full h-full">
+          {<YellowBtn text={"ReWatch"} bgColour={'#000814'} textColour={'#FFFFFF'} clickHandler={playAgainHandler} />}
           {!isLastVideo() && (
             <YellowBtn text={"Next"} clickHandler={nextVideo} />
           )}
           {!isFirstVideo() && (
-            <YellowBtn text={"Previous"} clickHandler={previousVideo} />
+            <YellowBtn text={"Previous"} bgColour={'#000814'} textColour={'#FFFFFF'} clickHandler={previousVideo} />
           )}
         </div>
       )}

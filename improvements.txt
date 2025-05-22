@@ -42,3 +42,5 @@ add share feat in course info page
 transition in course content
 both arrow toggle when clicking on subsetions in course info page
 handle navbar colours for various pages
+fix sidebar height in viewcourse
+improve logic for arrowup down in course sidebar
