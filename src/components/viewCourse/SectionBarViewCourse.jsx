@@ -5,7 +5,7 @@ import SubSectionWindowViewCourse from "./SubSectionWindowViewCourse";
 import { useParams } from "react-router-dom";
 const SectionBarViewCourse = ({ section }) => {
     const sectionId=useParams().sectionId;
-  const [arrowUp, setArrowUp] = useState(false);
+  const [arrowUp, setArrowUp] = useState(section?._id===sectionId);
   const toggleArrow = () => {
     if (arrowUp) setArrowUp(false);
     else setArrowUp(true);

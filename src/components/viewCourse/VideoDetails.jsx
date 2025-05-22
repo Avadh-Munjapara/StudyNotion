@@ -116,7 +116,7 @@ const VideoDetails = () => {
         <source src={subSection?.videoUrl} />
       </Player>
       {lectureEnded && (
-        <div className="absolute left-0 top-0 z-10 flex flex-col items-center justify-center gap-3 bg-white/10 backdrop-blur-sm  w-full h-full">
+        <div className="absolute left-0 top-0 z-10 flex flex-col items-center justify-center gap-3 bg-transparent bg-linear-to-t from-richblack-800 to-richblack-5  w-full h-full">
           {<YellowBtn text={"ReWatch"} clickHandler={playAgainHandler} />}
           {!isLastVideo() && (
             <YellowBtn text={"Next"} clickHandler={nextVideo} />
