@@ -6,6 +6,7 @@ const router=express.Router();
 const { createSection, updateSection, deleteSection } = require('../controllers/sectionCon');
 const { createRating, getAverageRating, getAllReviews, getCourseReviews } = require('../controllers/ratingAndReview');
 const { createCourse, getAllCourses, getCourseDetails, editCourse, deleteCourse } = require('../controllers/courseCon');
+const { markComplete } = require('../controllers/courseProgress');
 
 //routes for courses  
 router.post("/createCourse",auth,isInstructor,createCourse);
@@ -30,5 +31,8 @@ router.post('/createRating',auth,isStudent,createRating);
 router.get('/getAverageRating',getAverageRating);
 router.get('/getAllReviews',getAllReviews);
 router.get('/getCourseReview',getCourseReviews);
-    
+
+//routes for courseProgress
+router.post('/markCompleted',auth,isStudent,markComplete);
+
 module.exports=router;
