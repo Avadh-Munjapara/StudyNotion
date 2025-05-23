@@ -40,6 +40,7 @@ export const courseEndPoint={
   GET_FULL_COURSE_DETAILS_API:`${baseUrl}/course/courseDetails`,
   DELETE_COURSE_API:`${baseUrl}/course/deleteCourse`,
   GET_CATEGORY_COURSES_API:`${baseUrl}/course/categoryCourses`,
+  MARK_AS_COMPLETED_API:`${baseUrl}/course/markCompleted`
 }
 
 export const paymentEndpoint={

@@ -1,8 +1,8 @@
 import React from "react";
 
-const YellowBtn = ({ clickHandler,widthFull, text, textColour, bgColour }) => {
+const YellowBtn = ({ clickHandler,widthFull, text, textColour, bgColour,disabled=false }) => {
   return (
-    <button 
+    <button disabled={disabled}
       className={`rounded-lg font-medium cursor-pointer justify-center
        h-fit
         py-3 px-6 items-center flex gap-1 border border-[#2C333F]`}

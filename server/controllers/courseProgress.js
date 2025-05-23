@@ -10,6 +10,12 @@ exports.markComplete= async (req, res) =>{
     });
   }
    var progressObject =await CourseProgress.findOne({courseId,userId});
+   if(progressObject?.completedVideos?.includes(subSectionId)){
+    return res.status(400).json({
+        success:false,
+        message:'lecture is already marked'
+    })
+   }
    console.log(progressObject);
     if (!progressObject) {
       progressObject = CourseProgress.create({

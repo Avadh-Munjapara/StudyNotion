@@ -9,7 +9,7 @@ import {
 } from "../../slices/courseSlice";
 import toast from "react-hot-toast";
 import { set } from "react-hook-form";
-
+import { setCompletedLectures } from "../../slices/viewCourse";
 const {
   GET_AVG_RATING,
   CREATE_COURSE_API,
@@ -23,6 +23,7 @@ const {
   GET_FULL_COURSE_DETAILS_API,
   DELETE_COURSE_API,
   GET_CATEGORY_COURSES_API,
+  MARK_AS_COMPLETED_API
 } = courseEndPoint;
 const token = localStorage.getItem("token")
   ? JSON.parse(localStorage.getItem("token"))
@@ -366,4 +367,23 @@ export function getCategoryCourses(payload,setCourses){
     }
     dispatch(setLoadingCourse(false));
   }
+}
+
+export async function markAsComplete(courseId,subSectionId,dispatch,setLoading,completedLecturess){
+  setLoading(true);
+  try {
+    var response=await apiConnector(MARK_AS_COMPLETED_API,'POST',{
+      courseId,
+      subSectionId
+    },{Authorization:`bearer ${token}`});
+    if(response?.data?.success){
+      const newCompletedLectures=[...completedLecturess,subSectionId];
+      dispatch(setCompletedLectures(newCompletedLectures));
+    }
+    console.log(response);
+  } catch (error) {
+    console.log('error in mark complete api',error);
+  }
+  setLoading(false);
+  return response.data;
 }
