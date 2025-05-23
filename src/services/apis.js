@@ -38,6 +38,7 @@ export const courseEndPoint={
   EDIT_SUBSECTION_API:`${baseUrl}/course/updateSubSection`,
   DELETE_SUBSECTION_API:`${baseUrl}/course/deleteSubSection`,
   GET_FULL_COURSE_DETAILS_API:`${baseUrl}/course/courseDetails`,
+  GET_FULL_ENROLLED_COURSE_DETAILS_API:`${baseUrl}/course/enrolledCourseDetails`,
   DELETE_COURSE_API:`${baseUrl}/course/deleteCourse`,
   GET_CATEGORY_COURSES_API:`${baseUrl}/course/categoryCourses`,
   MARK_AS_COMPLETED_API:`${baseUrl}/course/markCompleted`

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { getFullCourseDetails } from "../../services/operations/courseApi";
+import { getFullCourseDetails, getFullEnrolledCourseDetails } from "../../services/operations/courseApi";
 import { useDispatch, useSelector } from "react-redux";
 import Spinner from "../comman/Spinner";
 import SectionBarViewCourse from "./SectionBarViewCourse";
@@ -24,7 +24,7 @@ const CourseSidebar = () => {
   const totalLectures = useSelector((state) => state.viewCourse.totalLectures);
   useEffect(() => {
     const fetchCourseDetails = async () => {
-      const response = await getFullCourseDetails({ courseId }, dispatch);
+      const response = await getFullEnrolledCourseDetails( courseId , dispatch);
       if (response) {
         console.log(response);
         dispatch(setEntireCourseData(response));

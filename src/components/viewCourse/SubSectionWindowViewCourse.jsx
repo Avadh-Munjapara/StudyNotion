@@ -10,6 +10,7 @@ const SubSectionWindowViewCourse = ({ subSections }) => {
     (state) => state.viewCourse.completedLectures
   );
   const isLectureCompleted = (subSectionId) => {
+    console.log(completedLectures);
     return completedLectures.includes(subSectionId);
   };
   return (
@@ -43,7 +44,7 @@ const SubSectionWindowViewCourse = ({ subSections }) => {
                 isLoaded
                   ? "text-blue-100 font-medium"
                   : isCompleted
-                  ? "text-richblack-50 font-medium"
+                  ? "text-richblack-50 font-medium line-through"
                   : "text-richblack-300"
               }`}
             >

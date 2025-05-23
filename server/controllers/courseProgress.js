@@ -21,7 +21,7 @@ exports.markComplete= async (req, res) =>{
       progressObject = CourseProgress.create({
         courseId,
         completedVideos:[subSectionId],
-        userId
+        userId  
       })
       return res.status(200).json({
         success:true,

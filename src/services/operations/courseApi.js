@@ -23,7 +23,8 @@ const {
   GET_FULL_COURSE_DETAILS_API,
   DELETE_COURSE_API,
   GET_CATEGORY_COURSES_API,
-  MARK_AS_COMPLETED_API
+  MARK_AS_COMPLETED_API,
+  GET_FULL_ENROLLED_COURSE_DETAILS_API
 } = courseEndPoint;
 const token = localStorage.getItem("token")
   ? JSON.parse(localStorage.getItem("token"))
@@ -330,6 +331,29 @@ export async function getFullCourseDetails(payload, dispatch) {
   }
 }
 
+export async function getFullEnrolledCourseDetails(courseId, dispatch) {
+  try {
+    dispatch(setLoadingCourse(true));
+    const response = await apiConnector(
+      GET_FULL_ENROLLED_COURSE_DETAILS_API,
+      "POST",
+      {
+        courseId
+      },
+      {
+        Authorization:`bearer ${token}`
+      }
+    );
+    if (response.data.success) {
+      return response.data.course;
+    }
+  } catch (error) {
+    console.log("error while fetching full course ....api error", error);
+  } finally {
+    dispatch(setLoadingCourse(false));
+  }
+}
+
 export async function deleteCourse(payload,dispatch) {
   dispatch(setLoadingCourse(true));
   const tid=toast.loading('deleting Course...');
@@ -372,7 +396,7 @@ export function getCategoryCourses(payload,setCourses){
 export async function markAsComplete(courseId,subSectionId,dispatch,setLoading,completedLecturess){
   setLoading(true);
   try {
-    var response=await apiConnector(MARK_AS_COMPLETED_API,'POST',{
+    var response=await apiConnector(MARK_AS_COMPLETED_API,'PUT',{
       courseId,
       subSectionId
     },{Authorization:`bearer ${token}`});

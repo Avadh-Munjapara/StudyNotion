@@ -123,8 +123,58 @@ exports.getCourseDetails = async (req, res) => {
         message: "no course found with that courseid",
       });
     }
+    return res.status(200).json({
+      success: true,
+      course
+    });
+  } catch (error) {
+    console.log("error while fetching details of course", error);
+    return res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+exports.getEnrolledCourseDetails = async (req, res) => {
+  const {courseId} = req.body;
+  const userId = req.user.id;
+  if (!courseId) {
+    return res.status(400).json({
+      success: false,
+      message: "courseId not found",
+    });
+  }
+  try {
     const courseIdObjectId = new mongoose.Types.ObjectId(courseId);
-    const completedLectures=await CourseProgress.findOne({courseId:courseIdObjectId});
+    const course = await Course.findById(courseId)
+      .populate({
+        path: "instructor",
+        populate: {
+          path: "additionalDetails",
+        },
+        options: { strictPopulate: false },
+      })
+      .populate({
+        path: "category",
+        options: { strictPopulate: false },
+      })
+      .populate({
+        path: "courseContent",
+        populate: {
+          path: "subSections",
+        },
+        options: { strictPopulate: false },
+      });
+
+    if (!course) {
+      return res.status(400).json({
+        success: false,
+        message: "no course found with that courseid",
+      });
+    }
+    const userIdObject = new mongoose.Types.ObjectId(userId);
+    const completedLectures=await CourseProgress.findOne({courseId:courseIdObjectId,userId:userIdObject});
     console.log(completedLectures);
     return res.status(200).json({
       success: true,
@@ -135,7 +185,7 @@ exports.getCourseDetails = async (req, res) => {
       
     });
   } catch (error) {
-    console.log("error while fetching details of course", error);
+    console.log("error while fetching full details of enrolled course", error);
     return res.status(500).json({
       success: false,
       message: error.message,
