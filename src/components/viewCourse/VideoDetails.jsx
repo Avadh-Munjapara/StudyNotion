@@ -5,6 +5,7 @@ import { Player } from "video-react";
 import "video-react/dist/video-react.css"; // import css
 import YellowBtn from "../comman/YellowBtn";
 import Spinner from "../comman/Spinner";
+
 const VideoDetails = () => {
   const videoRef = useRef(null);
   const params = useParams();
@@ -109,7 +110,8 @@ const VideoDetails = () => {
   };
 
   return subSection?.videoUrl ? (
-    <div className="w-full h-full relative">
+    <div className="flex flex-col pl-5  gap-4 w-full h-full">
+        <div className="w-full h-full relative">
       <Player
         key={subSection?.videoUrl}
         ref={videoRef}
@@ -141,6 +143,13 @@ const VideoDetails = () => {
         </div>
       )}
     </div>
+    <div className=" pb-3">
+      <h2 className="text-richblack-5 text-3xl">{subSection.title}</h2>
+      <p className="text-richblack-50">{subSection.description}</p>
+    </div>
+    </div>
+
+    
   ) : (
     <Spinner />
   );
