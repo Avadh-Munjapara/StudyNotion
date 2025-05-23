@@ -40,6 +40,12 @@ const CourseSidebar = () => {
       }
     };
     fetchCourseDetails();
+    return () => {
+      dispatch(setEntireCourseData(null));
+      dispatch(setSectionData(null));
+      dispatch(setTotalLectures(null));
+      dispatch(setCompletedLectures(null));
+    };
   }, []);
   const detailsList = document.querySelectorAll("details");
   detailsList.forEach((details) => {
@@ -56,7 +62,7 @@ const CourseSidebar = () => {
 
   return loading ? (
     <Spinner />
-  ) : sectionData.length > 0 ? (
+  ) : sectionData && sectionData.length > 0 ? (
     <div className="bg-richblack-800  min-w-[300px] min-h-fit">
       <div className="border-b-[1px] pt-7 pb-3 border-richblack-600 mx-6">
         <h1 className="text-sm font-semibold text-richblack-25">

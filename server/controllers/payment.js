@@ -4,6 +4,7 @@ const crypto = require("crypto");
 const razorpay = require("razorpay");
 const { default: mongoose } = require("mongoose");
 const mailSender = require("../utils/mailSender");
+const CourseProgress = require("../models/CourseProgress");
 
 exports.capturePayment = async (req, res) => {
   //fetch needed data
@@ -69,10 +70,10 @@ exports.capturePayment = async (req, res) => {
   try {
     // let orderId, currency, amount;
     instance.orders.create(options, (err, order) => {
-       return res.status(200).json({
-      success: true,
-      order
-    });
+      return res.status(200).json({
+        success: true,
+        order,
+      });
     });
     // const order = {
     //   orderId,
@@ -101,14 +102,26 @@ exports.verifySignatureAndEnrollStudent = async (req, res) => {
   // const shaSum = crypto.createHmac("sha256", webHookSecret);
   // shaSum.update(JSON.stringify(req.body));
   // const digest = shaSum.digest("hex");
-  const {razorpay_signature,razorpay_order_id, razorpay_payment_id,courses,userId}=req.body;
-  if(!razorpay_order_id||!razorpay_signature||!razorpay_payment_id){
-    return res.status(200).json({success:false,message:'payment faild , some fields are missing'});
+  const {
+    razorpay_signature,
+    razorpay_order_id,
+    razorpay_payment_id,
+    courses,
+    userId,
+  } = req.body;
+  if (!razorpay_order_id || !razorpay_signature || !razorpay_payment_id) {
+    return res.status(200).json({
+      success: false,
+      message: "payment faild , some fields are missing",
+    });
   }
 
-  const body=razorpay_order_id+"|"+razorpay_payment_id;
+  const body = razorpay_order_id + "|" + razorpay_payment_id;
 
-  const expectedSignature=crypto.createHmac('sha256',process.env.RAZORPAY_SECRET).update(body.toString()).digest('hex');
+  const expectedSignature = crypto
+    .createHmac("sha256", process.env.RAZORPAY_SECRET)
+    .update(body.toString())
+    .digest("hex");
   if (razorpay_signature === expectedSignature) {
     //fullfill the action
     let enrolledStudent;
@@ -119,12 +132,26 @@ exports.verifySignatureAndEnrollStudent = async (req, res) => {
           { $push: { studentsEnrolled: userId } },
           { new: true }
         );
+        const courseProgess = {
+          userId: userId,
+          courseId: course,
+        };
+
+        const courseProgressObject = await CourseProgress.create(courseProgess);
+
         enrolledStudent = await User.findByIdAndUpdate(
           userId,
-          { $push: { courses: course } },
+          {
+            $push: {
+              courses: course,
+              courseProgress: courseProgressObject._id,
+            },
+          },
           { new: true }
         );
-      }     
+
+        console.log(courseProgressObject);
+      }
     } catch (error) {
       console.log("error while updating database", error);
       return res.status(500).json({
@@ -150,10 +177,6 @@ exports.verifySignatureAndEnrollStudent = async (req, res) => {
     });
   }
 };
-
-
-
-
 
 // exports.capturePayment=async (req,res)=>{
 //     //fetch needed data

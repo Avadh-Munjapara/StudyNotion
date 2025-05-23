@@ -44,3 +44,7 @@ both arrow toggle when clicking on subsetions in course info page
 handle navbar colours for various pages
 fix sidebar height in viewcourse
 improve logic for arrowup down in course sidebar
+can add transitions in course view video gradient
+catalog page main category courses not showing properly
+at first time order is not created after we have switched the user	
+from the course after buying course the ui should change

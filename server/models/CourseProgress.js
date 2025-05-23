@@ -1,10 +1,14 @@
 const { default: mongoose } = require("mongoose");
 
 const courseProgressSchema=mongoose.Schema({
+    userId:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"User",
+        required:true,
+    },
     courseId:{
         type:mongoose.Schema.Types.ObjectId,
         ref:"Course",
-        required:true,
     },
     completedVideos:[{
         type:mongoose.Schema.Types.ObjectId,

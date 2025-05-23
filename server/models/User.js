@@ -1,4 +1,5 @@
 const { default: mongoose } = require("mongoose");
+const CourseProgress = require("./CourseProgress");
 
 const userSchema=mongoose.Schema({
     firstName:{
@@ -38,7 +39,7 @@ const userSchema=mongoose.Schema({
         type:String,
         required:true,
     }, 
-    courseProgess:[
+    courseProgress:[
         {
             type:mongoose.Schema.ObjectId,
             ref:"CourseProgress"
@@ -52,5 +53,12 @@ const userSchema=mongoose.Schema({
     }
 
 });
+
+userSchema.post('save',(doc)=>{
+    doc={
+        ...doc,
+        courseProgress:[]
+    }   
+})
 
 module.exports=mongoose.model("User",userSchema);

@@ -70,7 +70,7 @@ exports.signup=async(req,res)=>{
         countryCode:null
     }
     const ProfileDetails=await Profile.create(pd);
-
+    
     const user=await User.create({
         firstName,
         lastName,

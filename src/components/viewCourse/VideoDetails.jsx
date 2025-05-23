@@ -18,16 +18,18 @@ const VideoDetails = () => {
   const sectionData = useSelector((state) => state.viewCourse.sectionData);
 
   useEffect(() => {
-    const sectionIndex = sectionData.findIndex(
-      (section) => section._id === sectionId
-    );
-    setSectionIndex(sectionIndex);
-    const subSectionIndex = sectionData[sectionIndex].subSections.findIndex(
-      (subSection) => subSection._id === subSectionId
-    );
-    setSubSectionIndex(subSectionIndex);
-    setSubSection(sectionData[sectionIndex].subSections[subSectionIndex]);
-    setLectureEnded(false);
+    if (sectionData?.length>0) {
+      const sectionIndex = sectionData.findIndex(
+        (section) => section._id === sectionId
+      );
+      setSectionIndex(sectionIndex);
+      const subSectionIndex = sectionData[sectionIndex].subSections.findIndex(
+        (subSection) => subSection._id === subSectionId
+      );
+      setSubSectionIndex(subSectionIndex);
+      setSubSection(sectionData[sectionIndex].subSections[subSectionIndex]);
+      setLectureEnded(false);
+    }
   }, [params.sectionId, params.subSectionId, sectionData]);
 
   //   const subSection = sectionData[
@@ -38,8 +40,8 @@ const VideoDetails = () => {
   //     )
   //   ]?.subSections?.filter((subSection) => subSection?._id === subSectionId)[0];
   const navigate = useNavigate();
-  const sectionLength = sectionData?.length;
-  const lecturesLength = sectionData[sectionIndex]?.subSections?.length;
+  const sectionLength = sectionData? sectionData?.length : null;
+  const lecturesLength = sectionData? sectionData[sectionIndex]?.subSections?.length : null;
 
   const isFirstVideo = () => {
     return sectionData[0].subSections[0]._id === subSectionId;
@@ -117,12 +119,24 @@ const VideoDetails = () => {
       </Player>
       {lectureEnded && (
         <div className="absolute left-0 top-0 z-10 flex flex-col items-center  justify-center gap-3 bg-gradient-to-t from-richblack-900 to-richblack-200/10 w-full h-full">
-          {<YellowBtn text={"ReWatch"} bgColour={'#000814'} textColour={'#FFFFFF'} clickHandler={playAgainHandler} />}
+          {
+            <YellowBtn
+              text={"ReWatch"}
+              bgColour={"#000814"}
+              textColour={"#FFFFFF"}
+              clickHandler={playAgainHandler}
+            />
+          }
           {!isLastVideo() && (
             <YellowBtn text={"Next"} clickHandler={nextVideo} />
           )}
           {!isFirstVideo() && (
-            <YellowBtn text={"Previous"} bgColour={'#000814'} textColour={'#FFFFFF'} clickHandler={previousVideo} />
+            <YellowBtn
+              text={"Previous"}
+              bgColour={"#000814"}
+              textColour={"#FFFFFF"}
+              clickHandler={previousVideo}
+            />
           )}
         </div>
       )}
