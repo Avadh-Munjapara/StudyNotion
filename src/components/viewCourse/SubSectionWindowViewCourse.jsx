@@ -10,7 +10,6 @@ const SubSectionWindowViewCourse = ({ subSections }) => {
     (state) => state.viewCourse.completedLectures
   );
   const isLectureCompleted = (subSectionId) => {
-    console.log(completedLectures);
     return completedLectures.includes(subSectionId);
   };
   return (
@@ -33,7 +32,7 @@ const SubSectionWindowViewCourse = ({ subSections }) => {
               <input
                 type="checkbox"
                 disabled
-                value={isCompleted}
+                checked={isCompleted}
                 name="isCompleted"
                 id="isCompleted"
               />
