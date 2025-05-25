@@ -82,10 +82,10 @@ const CourseSidebar = () => {
         />
       </div>
       <div className="border-b-[1px] pt-7 pb-3 border-richblack-600 mb-5 mx-6">
-        <h1 className="text-sm font-semibold text-richblack-25">
-          {entireCourseData?.name}
+        <h1 className="text-[18px] font-bold  text-richblack-25">
+          {entireCourseData?.name}  
         </h1>
-        <p className="text-richblack-500 text-smm font-semibold">
+        <p className="text-richblack-500 text-sm font-semibold">
           <span>
             {completedLectures?.length}/{totalLectures}
           </span>
@@ -97,10 +97,12 @@ const CourseSidebar = () => {
         ))}
       </div>
       {reviewModal && (
-        <ReviewModal
-          modalRef={modalRef}
-          disappearHandler={() => setReviewModal(false)}
-        />
+        <div className="absolute flex justify-center items-center bg-richblack-900/80 z-20 h-full left-0 top-0  right-0">
+          <ReviewModal
+            modalRef={modalRef}
+            disappearHandler={() => setReviewModal(false)}
+          />
+        </div>
       )}
     </div>
   ) : (

@@ -6,7 +6,7 @@ import VideoDetails from "../components/viewCourse/VideoDetails";
 import Footer from "../components/comman/Footer";
 const ViewCourse = () => {
   return (
-    <div className="h-full">
+    <div className="relative h-full">
       <NavBar />
       <div className="flex h-full">
         <CourseSideBar />

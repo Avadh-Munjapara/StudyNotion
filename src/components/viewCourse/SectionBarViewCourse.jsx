@@ -26,9 +26,9 @@ const SectionBarViewCourse = ({ section }) => {
         className="text-sm px-6 py-4  flex bg-richblack-700 border-[1px] border-richblack-600  cursor-pointer justify-between"
         onClick={toggleArrow}
       >
-        <h2 className="text-richblack-5 font-medium">{section?.name}</h2>
+        <h2 className="text-richblack-5 font-semibold">{section?.name}</h2>
         <div className="flex items-center gap-1">
-          <div className="text-richblack-25">
+          <div className="text-richblack-25 text-sm">
             {length?.hours == 0
               ? length.minutes == 0
                 ? `${length?.seconds}s`

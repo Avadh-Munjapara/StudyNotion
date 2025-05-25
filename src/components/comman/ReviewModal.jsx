@@ -34,11 +34,7 @@ const ReviewModal = ({ modalRef, disappearHandler }) => {
     rating = newRating;
   };
   return (
-    <div
-      ref={modalRef}
-      className="absolute flex justify-center items-center bg-richblack-900/80  z-20 h-full left-0 top-0 right-0"
-    >
-      <div className="flex flex-col">
+      <div ref={modalRef} className="flex absolute top-24 flex-col">
         <h3 className="flex font-semibold bg-richblack-700 rounded-t-lg py-4 border-b-[1px] border-richblack-25 px-6 text-richblack-5 justify-between items-center">
           Add Review{" "}
           <span className="cursor-pointer" onClick={disappearHandler}>
@@ -101,7 +97,6 @@ const ReviewModal = ({ modalRef, disappearHandler }) => {
           </form>
         </div>
       </div>
-    </div>
   );
 };
 

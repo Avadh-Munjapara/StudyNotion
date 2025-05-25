@@ -41,11 +41,11 @@ const SubSectionWindowViewCourse = ({ subSections }) => {
             <h3
               className={`${
                 isLoaded
-                  ? "text-blue-100 font-medium"
+                  ? "text-blue-100 font-semibold"
                   : isCompleted
-                  ? "text-richblack-50 font-medium line-through"
-                  : "text-richblack-300"
-              }`}
+                  ? "text-richblack-400 font-medium line-through"
+                  : "text-richblack-25 font-medium  "
+              } text-sm`}
             >
               {subSection?.title}
             </h3>
