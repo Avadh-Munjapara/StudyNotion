@@ -26,6 +26,7 @@ const {
   MARK_AS_COMPLETED_API,
   GET_FULL_ENROLLED_COURSE_DETAILS_API,
   CREATE_RATING_API,
+  GET_COURSE_REVIEW_API,
 } = courseEndPoint;
 const token = localStorage.getItem("token")
   ? JSON.parse(localStorage.getItem("token"))
@@ -450,4 +451,13 @@ export async function addRating(rating, review, courseId, setLoading,disappearHa
     console.log("error while create rating api", error);
   }
   toast.dismiss(tId);
+}
+
+export async function getCourseReviews(courseId){
+  try {
+    const response=await apiConnector(GET_COURSE_REVIEW_API,"POST",{courseId});
+    if(response?.data?.success) return response.data.data;
+  } catch (error) {
+    
+  }
 }

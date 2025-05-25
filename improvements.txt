@@ -47,4 +47,6 @@ improve logic for arrowup down in course sidebar
 can add transitions in course view video gradient
 catalog page main category courses not showing properly
 at first time order is not created after we have switched the user	
-from the course after buying course the ui should change
+from the course after buying course the ui should changex
+show no internet connection
+add feat: update review

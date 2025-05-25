@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getCategoryCourses } from "../services/operations/courseApi";
+import { getCategoryCourses, getCourseReviews } from "../services/operations/courseApi";
 import { useParams } from "react-router-dom";
 import { categoryEndpoint } from "../services/apis";
 import apiConnector from "../services/apiConnector";

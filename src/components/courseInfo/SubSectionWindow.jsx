@@ -5,7 +5,6 @@ import { MdKeyboardArrowUp } from "react-icons/md";
 import { PiMonitorPlayFill } from "react-icons/pi";
 const SubSectionWindow = ({ subSections }) => {
   const [arrowUp, setArrowUp] = useState(false);
-    console.log(subSections);
   const toggleArrow = () => {
     if (arrowUp) setArrowUp(false);
     else setArrowUp(true);

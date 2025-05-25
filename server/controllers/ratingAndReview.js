@@ -105,7 +105,7 @@ exports.getAllReviews = async (req, res) => {
       .pouplate({
         path: "course",
         select: "name",
-      });
+      }).limit(15);
     return res.status(200).json({
       success: true,
       message: "all reviews fetched successfully",
@@ -123,11 +123,12 @@ exports.getAllReviews = async (req, res) => {
 exports.getCourseReviews = async (req, res) => {
   try {
     const { courseId } = req.body;
-    const cid = new mongoose.Schema.Types.ObjectId(courseId);
-    const courseReviews = await RAR.find({ course: cid });
+    const cid = new mongoose.Types.ObjectId(courseId);
+    const courseReviews = await RAR.find({ course: {$eq:cid} }).populate({path:'user',select:"firstName lastName image"}).limit(15);
     if (!courseReviews) {
       return res.status(200).json({
         success: true,
+        data:[],
         message: "no reviews given to course till now",
       });
     }

@@ -14,22 +14,25 @@ import { addItem } from "../slices/cartSlice";
 import toast from "react-hot-toast";
 import { ACCOUNT_TYPE } from "../utils/constants";
 import { useNavigate } from "react-router-dom";
+import ReviewSlider from "../components/comman/ReviewSlider";
+import { getCourseReviews } from "../services/operations/courseApi";
 
 const CourseInfoPage = () => {
   const [course, setCourse] = useState(null);
+  const [reviews, setReviews] = useState(null);
+
   const loacation = useLocation();
   const courseId = loacation.pathname.split("/").at(-1);
   const loading = useSelector((state) => state.course.loading);
   const user = useSelector((state) => state.profile.user);
   const dispatch = useDispatch();
-  const navigate=useNavigate();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchCourseDetails = async () => {
       const response = await getFullCourseDetails({ courseId }, dispatch);
       if (response) {
         setCourse(response);
-        console.log(response);
       } else {
         console.error("Failed to fetch course details");
       }
@@ -37,9 +40,21 @@ const CourseInfoPage = () => {
     fetchCourseDetails();
   }, []);
 
-  const goToCourseHandler=()=>{
-      navigate(`/view-course/${courseId}/sectionId/${course?.courseContent[0]?._id}/sub-sectionId/${course?.courseContent[0]?.subSections[0]?._id}`);
-  }
+  useEffect(() => {
+    const getReviews=async()=>{
+      const reviews=await getCourseReviews(courseId);
+      if(reviews)
+        setReviews(reviews);
+    }
+
+    getReviews();
+  }, []);
+
+  const goToCourseHandler = () => {
+    navigate(
+      `/view-course/${courseId}/sectionId/${course?.courseContent[0]?._id}/sub-sectionId/${course?.courseContent[0]?.subSections[0]?._id}`
+    );
+  };
 
   const addToCart = () => {
     if (!user) {
@@ -51,11 +66,10 @@ const CourseInfoPage = () => {
       return;
     }
     dispatch(addItem(course));
-
   };
 
   const handleBuyCourse = async () => {
-     if (!user) {
+    if (!user) {
       toast.error("Please login to buy courses");
       return;
     }
@@ -146,6 +160,7 @@ const CourseInfoPage = () => {
               </div>
 
               {/* review Slider */}
+              <ReviewSlider reviews={reviews} />
             </div>
           </div>
         </div>

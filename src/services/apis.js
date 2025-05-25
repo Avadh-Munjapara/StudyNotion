@@ -43,6 +43,7 @@ export const courseEndPoint={
   GET_CATEGORY_COURSES_API:`${baseUrl}/course/categoryCourses`,
   MARK_AS_COMPLETED_API:`${baseUrl}/course/markCompleted`,
   CREATE_RATING_API:`${baseUrl}/course/createRating`,
+  GET_COURSE_REVIEW_API:`${baseUrl}/course/getCourseReview`,
 }
 
 export const paymentEndpoint={

@@ -31,7 +31,7 @@ router.get("/allCategory",getAllCategory);
 router.post('/createRating',auth,isStudent,createRating);
 router.get('/getAverageRating',getAverageRating);
 router.get('/getAllReviews',getAllReviews);
-router.get('/getCourseReview',getCourseReviews);
+router.post('/getCourseReview',getCourseReviews);
 
 //routes for courseProgress
 router.put('/markCompleted',auth,isStudent,markComplete);
