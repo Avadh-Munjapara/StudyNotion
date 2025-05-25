@@ -1,4 +1,4 @@
-import React, { useEffect,useState } from "react";
+import React, { useEffect, useState } from "react";
 import useOnClickOutside from "../../hooks/useOnClickOutside";
 import { RxCross2 } from "react-icons/rx";
 import { useSelector } from "react-redux";
@@ -10,6 +10,7 @@ import ErrorMessage from "./ErrorMessage";
 import SubmitBtn from "./SubmitBtn";
 import { addRating } from "../../services/operations/courseApi";
 import { useParams } from "react-router-dom";
+import YellowBtn from "./YellowBtn";
 const ReviewModal = ({ modalRef, disappearHandler }) => {
   const {
     handleSubmit,
@@ -17,18 +18,17 @@ const ReviewModal = ({ modalRef, disappearHandler }) => {
     formState: { errors },
   } = useForm();
   const user = useSelector((state) => state.profile.user);
-  const params=useParams();
-  const courseId=params.courseId;
-    const [loading,setLoading]=useState(false);
-    var rating = null;
-    useOnClickOutside(modalRef, disappearHandler);
-    const submitHandler = (data) => {
-      if (rating === null) {
-        toast.error("forget to give rating!");
-        return;
-      }
-      addRating(rating, data.review,courseId,setLoading);
-      
+  const params = useParams();
+  const courseId = params.courseId;
+  const [loading, setLoading] = useState(false);
+  var rating = null;
+  useOnClickOutside(modalRef, disappearHandler);
+  const submitHandler = (data) => {
+    if (rating === null) {
+      toast.error("forget to give rating!");
+      return;
+    }
+    addRating(rating, data.review, courseId, setLoading);
   };
   const ratingChangeHandler = (newRating) => {
     rating = newRating;
@@ -39,27 +39,35 @@ const ReviewModal = ({ modalRef, disappearHandler }) => {
       className="absolute flex justify-center items-center bg-richblack-900/80  z-20 h-full left-0 top-0 right-0"
     >
       <div className="flex flex-col">
-        <h3 className="flex font-semibold text-richblack-5 justify-between items-center">
+        <h3 className="flex font-semibold bg-richblack-700 rounded-t-lg py-4 border-b-[1px] border-richblack-25 px-6 text-richblack-5 justify-between items-center">
           Add Review{" "}
           <span className="cursor-pointer" onClick={disappearHandler}>
             {" "}
-            <RxCross2 />
+            <RxCross2 className="text-richblack-50 h-5" />
           </span>
         </h3>
-        <div>
-          <div>
-            <div>
-              <img src={user?.image} alt="profile picture" />
+        <div className="flex rounded-b-lg bg-richblack-800 py-4 flex-col items-center">
+            <div className="flex gap-3">
+              <img
+                className="h-[52px] rounded-full"
+                src={user?.image}
+                alt="profile picture"
+              />
               <div>
-                <p>
+                <p className="text-richblack-5 font-semibold">
                   {user?.firstName} {user?.lastName}
                 </p>
-                <p>Posting Publicly </p>
+                <p className="text-sm text-richblack-5">Posting Publicly </p>
               </div>
-              <ReactStars onChange={ratingChangeHandler} />
-            </div>
+          </div>
 
-            <form onSubmit={handleSubmit(submitHandler)}>
+          <form
+            className="flex flex-col gap-6 px-6"
+            onSubmit={handleSubmit(submitHandler)}
+          >
+            <ReactStars className="self-center" size={36} onChange={ratingChangeHandler} />
+
+            <div className="flex flex-col gap-2">
               <Label
                 text={"Add Your Experience"}
                 required={true}
@@ -72,16 +80,25 @@ const ReviewModal = ({ modalRef, disappearHandler }) => {
                     message: "your review is necessary",
                   },
                 })}
+                placeholder="share details of your own experience for this course"
+                cols={45}
+                rows={5}
                 name="review"
                 id="review"
+                className="text-richblack-200 outline-none p-2 shadow-[0px_1px_1px_#FFFFFF] font-medium bg-richblack-600 rounded-lg"
               ></textarea>
-              {errors.review && (
-                <ErrorMessage message={errors.review.message} />
-              )}
-
+            </div>
+            {errors.review && <ErrorMessage message={errors.review.message} />}
+            <div className="flex justify-end gap-3">
+              <YellowBtn
+                text={"Cancel"}
+                clickHandler={disappearHandler}
+                bgColour={"#2C333F"}
+                textColour={"#F1F2FF"}
+              />
               <SubmitBtn text={"Save Edits"} />
-            </form>
-          </div>
+            </div>
+          </form>
         </div>
       </div>
     </div>
