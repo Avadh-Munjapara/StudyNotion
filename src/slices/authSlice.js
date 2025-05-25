@@ -14,6 +14,7 @@ const authSclie=createSlice({
         },
         setToken(state,action){
             state.token=action.payload;
+            localStorage.setItem('token',JSON.stringify(action.payload));
         },
         setLoading(state,action){
             state.loading=action.payload;
