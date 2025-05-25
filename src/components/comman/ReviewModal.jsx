@@ -28,7 +28,7 @@ const ReviewModal = ({ modalRef, disappearHandler }) => {
       toast.error("forget to give rating!");
       return;
     }
-    addRating(rating, data.review, courseId, setLoading);
+    addRating(rating, data.review, courseId, setLoading,disappearHandler);
   };
   const ratingChangeHandler = (newRating) => {
     rating = newRating;

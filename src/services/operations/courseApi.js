@@ -426,9 +426,10 @@ export async function markAsComplete(
   return response.data;
 }
 
-export async function addRating(rating, review, courseId, setLoading) {
+export async function addRating(rating, review, courseId, setLoading,disappearHandler) {
   try {
     setLoading(true);
+    var tId=toast.loading('Adding Review');
     const response =await apiConnector(
       CREATE_RATING_API,
       "POST",
@@ -443,9 +444,10 @@ export async function addRating(rating, review, courseId, setLoading) {
     );
     console.log(response);
     if (response?.data.success) toast.success("review added");
-
     setLoading(false);
+    disappearHandler(true);
   } catch (error) {
     console.log("error while create rating api", error);
   }
+  toast.dismiss(tId);
 }
