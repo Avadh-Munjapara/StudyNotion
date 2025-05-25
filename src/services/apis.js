@@ -41,10 +41,12 @@ export const courseEndPoint={
   GET_FULL_ENROLLED_COURSE_DETAILS_API:`${baseUrl}/course/enrolledCourseDetails`,
   DELETE_COURSE_API:`${baseUrl}/course/deleteCourse`,
   GET_CATEGORY_COURSES_API:`${baseUrl}/course/categoryCourses`,
-  MARK_AS_COMPLETED_API:`${baseUrl}/course/markCompleted`
+  MARK_AS_COMPLETED_API:`${baseUrl}/course/markCompleted`,
+  CREATE_RATING_API:`${baseUrl}/course/createRating`,
 }
 
 export const paymentEndpoint={
   CAPTURE_PAYMENT_API:`${baseUrl}/payment/capturePayment`,
   VERIFY_SIGNATURE_ENROLL_STUDENT_API:`${baseUrl}/payment/verifySignatureEnrollStudent`,
 }
+

@@ -22,4 +22,4 @@ const ratingAndReviewSchema=mongoose.Schema({
     }
 })
 
-exports.module=mongoose.model("RatingAndReview",ratingAndReviewSchema);
+module.exports=mongoose.model("RatingAndReview",ratingAndReviewSchema);

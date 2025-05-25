@@ -21,8 +21,8 @@ const CourseSidebar = () => {
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.course.loading);
   const sectionData = useSelector((state) => state.viewCourse.sectionData);
-  const [reviewModal,setReviewModal]=useState(false);
-  const modalRef=useRef(null);
+  const [reviewModal, setReviewModal] = useState(false);
+  const modalRef = useRef(null);
   const entireCourseData = useSelector(
     (state) => state.viewCourse.entireCourseData
   );
@@ -73,10 +73,13 @@ const CourseSidebar = () => {
   ) : sectionData && sectionData.length > 0 ? (
     <div className="bg-richblack-800 pt-5 min-w-[300px] min-h-fit">
       <div className="flex justify-between mx-6">
-        <Link to={'/dashboard/enrolled-courses'}>
+        <Link to={"/dashboard/enrolled-courses"}>
           <IoChevronBackCircle className="text-4xl text-richblack-200" />
         </Link>
-        <YellowBtn clickHandler={()=>setReviewModal(true)} text={"Add Review"} />
+        <YellowBtn
+          clickHandler={() => setReviewModal(true)}
+          text={"Add Review"}
+        />
       </div>
       <div className="border-b-[1px] pt-7 pb-3 border-richblack-600 mb-5 mx-6">
         <h1 className="text-sm font-semibold text-richblack-25">
@@ -93,9 +96,12 @@ const CourseSidebar = () => {
           <SectionBarViewCourse section={section} />
         ))}
       </div>
-      {
-        reviewModal && <ReviewModal modalRef={modalRef} disappearHandler={()=>setReviewModal(false)}/>
-      }
+      {reviewModal && (
+        <ReviewModal
+          modalRef={modalRef}
+          disappearHandler={() => setReviewModal(false)}
+        />
+      )}
     </div>
   ) : (
     <p>No Data Found</p>

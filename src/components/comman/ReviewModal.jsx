@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect,useState } from "react";
 import useOnClickOutside from "../../hooks/useOnClickOutside";
 import { RxCross2 } from "react-icons/rx";
 import { useSelector } from "react-redux";
@@ -6,19 +6,29 @@ import { useForm } from "react-hook-form";
 import Label from "./Label";
 import ReactStars from "react-stars";
 import toast from "react-hot-toast";
-import ErrorMessage from './ErrorMessage';
-import SubmitBtn from './SubmitBtn';
+import ErrorMessage from "./ErrorMessage";
+import SubmitBtn from "./SubmitBtn";
+import { addRating } from "../../services/operations/courseApi";
+import { useParams } from "react-router-dom";
 const ReviewModal = ({ modalRef, disappearHandler }) => {
-  const { handleSubmit, register,formState:{errors} } = useForm();
+  const {
+    handleSubmit,
+    register,
+    formState: { errors },
+  } = useForm();
   const user = useSelector((state) => state.profile.user);
-  var rating = null;
-  useOnClickOutside(modalRef, disappearHandler);
-  const submitHandler = (data) => {
-    if (rating === null) {
-      toast.error("forget to give rating!");
-      return;
-    }
-    console.log(data);
+  const params=useParams();
+  const courseId=params.courseId;
+    const [loading,setLoading]=useState(false);
+    var rating = null;
+    useOnClickOutside(modalRef, disappearHandler);
+    const submitHandler = (data) => {
+      if (rating === null) {
+        toast.error("forget to give rating!");
+        return;
+      }
+      addRating(rating, data.review,courseId,setLoading);
+      
   };
   const ratingChangeHandler = (newRating) => {
     rating = newRating;
@@ -46,8 +56,7 @@ const ReviewModal = ({ modalRef, disappearHandler }) => {
                 </p>
                 <p>Posting Publicly </p>
               </div>
-
-              <ReactStars {...register('rating',{required:{value:true,message:"rating is required"}})} onChange={ratingChangeHandler} />
+              <ReactStars onChange={ratingChangeHandler} />
             </div>
 
             <form onSubmit={handleSubmit(submitHandler)}>
@@ -56,12 +65,21 @@ const ReviewModal = ({ modalRef, disappearHandler }) => {
                 required={true}
                 forwhat={"review"}
               />
-              <textarea {...register('review',{required:{value:true,message:"your review is necessary"}})} name="review" id="review"></textarea>
-              {
-                errors.review && <ErrorMessage message={errors.review.message}/>
-              }
+              <textarea
+                {...register("review", {
+                  required: {
+                    value: true,
+                    message: "your review is necessary",
+                  },
+                })}
+                name="review"
+                id="review"
+              ></textarea>
+              {errors.review && (
+                <ErrorMessage message={errors.review.message} />
+              )}
 
-              <SubmitBtn text={'Save Edits'}/>
+              <SubmitBtn text={"Save Edits"} />
             </form>
           </div>
         </div>

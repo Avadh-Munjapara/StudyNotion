@@ -24,7 +24,8 @@ const {
   DELETE_COURSE_API,
   GET_CATEGORY_COURSES_API,
   MARK_AS_COMPLETED_API,
-  GET_FULL_ENROLLED_COURSE_DETAILS_API
+  GET_FULL_ENROLLED_COURSE_DETAILS_API,
+  CREATE_RATING_API,
 } = courseEndPoint;
 const token = localStorage.getItem("token")
   ? JSON.parse(localStorage.getItem("token"))
@@ -199,7 +200,6 @@ export function deleteSection(payload, courseInfo, index) {
     }
     toast.dismiss(tid);
     dispatch(setLoadingCourse(false));
-
   };
 }
 
@@ -338,10 +338,10 @@ export async function getFullEnrolledCourseDetails(courseId, dispatch) {
       GET_FULL_ENROLLED_COURSE_DETAILS_API,
       "POST",
       {
-        courseId
+        courseId,
       },
       {
-        Authorization:`bearer ${token}`
+        Authorization: `bearer ${token}`,
       }
     );
     if (response.data.success) {
@@ -354,15 +354,15 @@ export async function getFullEnrolledCourseDetails(courseId, dispatch) {
   }
 }
 
-export async function deleteCourse(payload,dispatch) {
+export async function deleteCourse(payload, dispatch) {
   dispatch(setLoadingCourse(true));
-  const tid=toast.loading('deleting Course...');
+  const tid = toast.loading("deleting Course...");
   try {
     const response = await apiConnector(DELETE_COURSE_API, "DELETE", payload, {
       Authorization: `bearer ${token}`,
     });
     if (response.data.success) {
-      toast.success('Course Deleted!');
+      toast.success("Course Deleted!");
       toast.dismiss(tid);
       dispatch(setLoadingCourse(false));
       return true;
@@ -370,44 +370,82 @@ export async function deleteCourse(payload,dispatch) {
   } catch (error) {
     console.log("error in deleteCourse api", error);
     toast.error("course not deleted");
-  } 
+  }
   toast.dismiss(tid);
   dispatch(setLoadingCourse(false));
   return false;
 }
 
-export function getCategoryCourses(payload,setCourses){
-  return async (dispatch)=>{
+export function getCategoryCourses(payload, setCourses) {
+  return async (dispatch) => {
     dispatch(setLoadingCourse(true));
-    try { 
-      const response=await apiConnector(`${GET_CATEGORY_COURSES_API}/${payload.categoryId}`,'GET');
-      if(response.data.success){
-        const courses=response.data;
+    try {
+      const response = await apiConnector(
+        `${GET_CATEGORY_COURSES_API}/${payload.categoryId}`,
+        "GET"
+      );
+      if (response.data.success) {
+        const courses = response.data;
         setCourses(courses);
       }
-      console.log(response,"category page details");  
+      console.log(response, "category page details");
     } catch (error) {
       console.log(error);
     }
     dispatch(setLoadingCourse(false));
-  }
+  };
 }
 
-export async function markAsComplete(courseId,subSectionId,dispatch,setLoading,completedLecturess){
+export async function markAsComplete(
+  courseId,
+  subSectionId,
+  dispatch,
+  setLoading,
+  completedLecturess
+) {
   setLoading(true);
   try {
-    var response=await apiConnector(MARK_AS_COMPLETED_API,'PUT',{
-      courseId,
-      subSectionId
-    },{Authorization:`bearer ${token}`});
-    if(response?.data?.success){
-      const newCompletedLectures=[...completedLecturess,subSectionId];
+    var response = await apiConnector(
+      MARK_AS_COMPLETED_API,
+      "PUT",
+      {
+        courseId,
+        subSectionId,
+      },
+      { Authorization: `bearer ${token}` }
+    );
+    if (response?.data?.success) {
+      const newCompletedLectures = [...completedLecturess, subSectionId];
       dispatch(setCompletedLectures(newCompletedLectures));
     }
     console.log(response);
   } catch (error) {
-    console.log('error in mark complete api',error);
+    console.log("error in mark complete api", error);
   }
   setLoading(false);
   return response.data;
+}
+
+export async function addRating(rating, review, courseId, setLoading) {
+  try {
+    setLoading(true);
+    const response =await apiConnector(
+      CREATE_RATING_API,
+      "POST",
+      {
+        courseId,
+        rating,
+        review,
+      },
+      {
+        Authorization: `bearer ${token}`,
+      }
+    );
+    console.log(response);
+    if (response?.data.success) toast.success("review added");
+
+    setLoading(false);
+  } catch (error) {
+    console.log("error while create rating api", error);
+  }
 }
