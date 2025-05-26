@@ -124,7 +124,7 @@ exports.getCourseReviews = async (req, res) => {
   try {
     const { courseId } = req.body;
     const cid = new mongoose.Types.ObjectId(courseId);
-    const courseReviews = await RAR.find({ course: {$eq:cid} }).populate({path:'user',select:"firstName lastName image"}).limit(15);
+    const courseReviews = await RAR.find({ course: {$eq:cid} }).populate({path:'user',select:"firstName lastName image email"}).limit(15);
     if (!courseReviews) {
       return res.status(200).json({
         success: true,

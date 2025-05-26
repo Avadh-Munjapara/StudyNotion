@@ -41,11 +41,10 @@ const CourseInfoPage = () => {
   }, []);
 
   useEffect(() => {
-    const getReviews=async()=>{
-      const reviews=await getCourseReviews(courseId);
-      if(reviews)
-        setReviews(reviews);
-    }
+    const getReviews = async () => {
+      const reviews = await getCourseReviews(courseId);
+      if (reviews) setReviews(reviews);
+    };
 
     getReviews();
   }, []);
@@ -160,7 +159,9 @@ const CourseInfoPage = () => {
               </div>
 
               {/* review Slider */}
-              <ReviewSlider reviews={reviews} />
+              <div className="max-w-maxContent mt-20 w-11/12 mx-auto">
+                <ReviewSlider reviews={reviews} />
+              </div>
             </div>
           </div>
         </div>
