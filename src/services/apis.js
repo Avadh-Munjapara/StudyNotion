@@ -45,6 +45,7 @@ export const courseEndPoint={
   CREATE_RATING_API:`${baseUrl}/course/createRating`,
   GET_COURSE_REVIEW_API:`${baseUrl}/course/getCourseReview`,
   GET_ALL_REVIEWS_API:`${baseUrl}/course/getAllReviews`,
+  GET_AVERAGE_RATING_API:`${baseUrl}/course/getAverageRating`,
 }
 
 export const paymentEndpoint={

@@ -115,7 +115,7 @@ exports.getCourseDetails = async (req, res) => {
           path: "subSections",
         },
         options: { strictPopulate: false },
-      });
+      }).populate('ratingAndReviews');
 
     if (!course) {
       return res.status(400).json({

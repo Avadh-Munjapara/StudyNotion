@@ -29,7 +29,7 @@ router.get("/allCategory",getAllCategory);
 
 //routes for rating and review
 router.post('/createRating',auth,isStudent,createRating);
-router.get('/getAverageRating',getAverageRating);
+router.post('/getAverageRating',getAverageRating);
 router.get('/getAllReviews',getAllReviews);
 router.post('/getCourseReview',getCourseReviews);
 

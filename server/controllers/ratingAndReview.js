@@ -1,6 +1,7 @@
 const { default: mongoose } = require("mongoose");
 const Course = require("../models/Course");
 const RAR = require("../models/RatingAndReview");
+
 exports.createRating = async (req, res) => {
   try {
     const { rating, review, courseId } = req.body;
@@ -58,24 +59,22 @@ exports.createRating = async (req, res) => {
     });
   }
 };
+
 exports.getAverageRating = async (req, res) => {
   try {
     const { courseId } = req.body;
+    const cId=new mongoose.Types.ObjectId(courseId);
     const result = await RAR.aggregate([
       {
-        $match: {
-          course: new mongoose.Schema.Types.ObjectId(courseId),
-        },
-      },
-      {
         $group: {
-          _id: courseId,
+          _id: cId,
           avgRating: {
             $avg: "$rating",
           },
         },
       },
     ]);
+    console.log(result);
     if (result.length > 0) {
       return res.status(200).json({
         success: true,
@@ -94,6 +93,7 @@ exports.getAverageRating = async (req, res) => {
     });
   }
 };
+
 exports.getAllReviews = async (req, res) => {
   try {
     const allRatings =await  RAR.find({})
