@@ -53,6 +53,7 @@ exports.isStudent=async (req,res,next)=>{
 exports.isInstructor=async (req,res,next)=>{
     try {
         if(req.user.role!=="Instructor"){
+            console.log(req.user.role);
             return res.status(403).json({
                 success:false,
                 message:"user is not authrized for Instructor route"

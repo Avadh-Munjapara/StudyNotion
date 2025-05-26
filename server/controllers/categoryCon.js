@@ -63,38 +63,56 @@ exports.getCategoryPageDetails = async (req, res) => {
     //   .populate("courses");
     const categoryCourses = await Category.aggregate([
       {
-        $match:{_id:new mongoose.Types.ObjectId(categoryId)}
+        $match: {
+          _id: new mongoose.Types.ObjectId(categoryId),
+        },
       },
       {
-        $lookup:{
-          from:'courses',
-          localField:'courses',
-          foreignField:'_id',
-          as:'courses'
-        }
+        $lookup: {
+          from: "courses",
+          localField: "courses",
+          foreignField: "_id",
+          as: "courses",
+        },
       },
+
       {
-        $project:{
-          courses:{
-            $filter:{
-              input:'$courses',
-              as:'course',
-              cond:{$eq:["$$course.status",'published']},
-            }
+        $project: {
+          courses: {
+            $filter: {
+              input: "$courses",
+              as: "course",
+              cond: {
+                $eq: ["$$course.status", "published"],
+              },
+            },
           },
-        }
+        },
       },
       {
-        $project:{
-          _id:0,
-          courses:1
-        }
+        $unwind: "$courses",
       },
       {
-        $limit:9
-      }
+        $lookup: {
+          from: "ratingandreviews",
+          localField: "courses.ratingAndReviews",
+          foreignField: "_id",
+          as: "courses.ratingAndReviews",
+        },
+      },
+      {
+        $group: {
+          _id: null,
+          courses: {
+            $push: "$courses",
+          },
+        },
+      },
+      {
+        $limit: 9,
+      },
     ]);
-    console.log('categorydata',categoryCourses);
+    console.log("categorydata", categoryCourses);
     if (!categoryCourses) {
       return res.status(400).json({
         success: false,
@@ -125,44 +143,64 @@ exports.getCategoryPageDetails = async (req, res) => {
         },
       },
       {
-        $project:{
-          courses:{
-            $filter:{
-              input:'$courses',
-              as:'course',
-              cond:{$eq:["$$course.status",'published']},
-            }
-          },
-        }
-      },
-      {
         $project: {
-          courses: 1,
-          _id: 0,
+          courses: {
+            $filter: {
+              input: "$courses",
+              as: "course",
+              cond: { $eq: ["$$course.status", "published"] },
+            },
+          },
         },
       },
       {
-        $limit:4
-      }
+        $unwind: "$courses",
+      },
+      {
+        $lookup: {
+          from: "ratingandreviews",
+          localField: "courses.ratingAndReviews",
+          foreignField: "_id",
+          as: "courses.ratingAndReviews",
+        },
+      },
+       {
+        $group: {
+          _id: null,
+          courses: {
+            $push: "$courses",
+          },
+        },
+      },
     ]);
-    let crs=[];
-    diffCategoryCourses.map((item,index)=>item.courses.map((item,index)=>crs.push(item)))
-    const crs2= crs.slice(0,4);
+    let crs = [];
+    diffCategoryCourses.map((item, index) =>
+      item.courses.map((item, index) => crs.push(item))
+    );
+    const crs2 = crs.slice(0, 4);
 
     const topSellingCourses = await Course.aggregate([
       {
-        $match:{
-          status:"published"
-        }
+        $match: {
+          status: "published",
+        },
       },
       {
-        $sort:{studentsEnrolled:-1}
+        $sort: { studentsEnrolled: -1 },
       },
       {
-        $limit:9
-      }
-    ])
-      console.log("top corusees",topSellingCourses);
+        $limit: 9,
+      },
+      {
+        $lookup: {
+          from: "ratingandreviews",
+          localField: "ratingAndReviews",
+          foreignField: "_id",
+          as: "ratingAndReviews",
+        },
+      },
+    ]);
+    // console.log("top corusees",topSellingCourses);
 
     return res.status(200).json({
       success: true,
