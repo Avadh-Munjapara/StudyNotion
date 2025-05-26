@@ -89,6 +89,9 @@ exports.getCategoryPageDetails = async (req, res) => {
           _id:0,
           courses:1
         }
+      },
+      {
+        $limit:9
       }
     ]);
     console.log('categorydata',categoryCourses);
@@ -138,18 +141,28 @@ exports.getCategoryPageDetails = async (req, res) => {
           _id: 0,
         },
       },
-    //   {
-    //     $limit:5
-    //   }
+      {
+        $limit:4
+      }
     ]);
     let crs=[];
     diffCategoryCourses.map((item,index)=>item.courses.map((item,index)=>crs.push(item)))
     const crs2= crs.slice(0,4);
 
-    const topSellingCourses = await Course.find({})
-      .sort({ studentsEnrolled: "desc" })
-      .limit(10);
-      // console.log("top corusees",topSellingCourses);
+    const topSellingCourses = await Course.aggregate([
+      {
+        $match:{
+          status:"published"
+        }
+      },
+      {
+        $sort:{studentsEnrolled:-1}
+      },
+      {
+        $limit:9
+      }
+    ])
+      console.log("top corusees",topSellingCourses);
 
     return res.status(200).json({
       success: true,
