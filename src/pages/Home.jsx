@@ -14,19 +14,19 @@ import NavBar from "../components/comman/NavBar";
 import { getAllReviews } from "../services/operations/courseApi";
 import ReviewSlider from "../components/comman/ReviewSlider";
 const Home = () => {
-  const [reviews,setReviews]=useState(null);
-  useEffect(()=>{
-    const getAllCoursesReviews=async ()=>{
-      const reviews=await getAllReviews();
-      if(reviews){
+  const [reviews, setReviews] = useState(null);
+  useEffect(() => {
+    const getAllCoursesReviews = async () => {
+      const reviews = await getAllReviews();
+      if (reviews) {
         setReviews(reviews);
       }
-    }
+    };
     getAllCoursesReviews();
-  },[])
+  }, []);
   return (
     <div className="w-full">
-      <NavBar/>
+      <NavBar />
       {/* section1 */}
       <div className="w-11/12 flex flex-col gap-20 items-center max-w-maxContent mx-auto">
         <div className=" flex flex-col pt-[124px] gap-4 items-start sm:items-center ">
@@ -62,7 +62,11 @@ const Home = () => {
             className={`box1 backdrop-blur-2xl  shadow-[1px_1px_300px_90px_#61b3fa] absolute top-20 left-[50%] h-1 w-1 rounded-full`}
           ></div>
           <div className="z-10  relative">
-            <video muted autoPlay className="shadow-[19px_19px_#FFFFFF] bg-blue">
+            <video
+              muted
+              autoPlay
+              className="shadow-[19px_19px_#FFFFFF] bg-blue"
+            >
               <source src={banner} type="video/mp4" />
             </video>
           </div>
@@ -102,25 +106,25 @@ const Home = () => {
           />
         </div>
 
-        <CardsWindow/>
+        <CardsWindow />
       </div>
       {/* section2 */}
       <div className=" bg-pure-greys-5 ">
         <div className="mx-auto text-richblack-700 max-w-maxContent ">
-        <div className="chex h-72 flex items-center justify-center">
-          <div className="flex gap-6">
-            <CustomButton active={true} linkTo={"/courses"}>
-              Explore full catalog
-              <IoMdArrowRoundForward />
-            </CustomButton>
+          <div className="chex h-72 flex items-center justify-center">
+            <div className="flex gap-6">
+              <CustomButton active={true} linkTo={"/courses"}>
+                Explore full catalog
+                <IoMdArrowRoundForward />
+              </CustomButton>
 
-            <CustomButton active={false} linkTo={"/"}>
-              Learn more
-              <IoMdArrowRoundForward />
-            </CustomButton>
+              <CustomButton active={false} linkTo={"/"}>
+                Learn more
+                <IoMdArrowRoundForward />
+              </CustomButton>
+            </div>
           </div>
-        </div>
-        <div className="w-11/12 mx-auto flex justify-center py-20">
+          <div className="w-11/12 mx-auto flex justify-center py-20">
             <div className="flex flex-col lg:flex-row gap-5 lg:gap-12 h-fit">
               <p className="text-4xl text-start sm:text-center lg:text-start font-bold lg:w-[51%]">
                 Get the skills you need for a{" "}
@@ -136,41 +140,46 @@ const Home = () => {
                   Learn More
                 </CustomButton>
               </div>
+            </div>
           </div>
-        </div>
 
-        <TimeLine />
+          <TimeLine />
 
-        <SwissCards />
+          <SwissCards />
         </div>
-       
       </div>
       {/* section3 */}
       <div className="mx-auto py-20 w-11/12 max-w-maxContent">
-        <div className="flex flex-col-reverse md:flex-row gap-20 "> 
+        <div className="flex flex-col-reverse md:flex-row gap-20 ">
           <div className="md:w-[50%] ">
             <div className="shadow-[-15px_-15px_rgb(255,255,255)]">
-            <img className="" src={instructor}  alt="" />
+              <img className="" src={instructor} alt="" />
             </div>
           </div>
           <div className="flex flex-col  md:w-[40%] gap-16 justify-center">
             <div>
-            <p className="text-4xl font-semibold text-[#F1F2FF]">Become an</p>
-            <HighlightedText text={"Instructor"} />
-            <p className="text-[#838894] font-medium">Instructors from around the world teach millions of students on StudyNotion. We provide the tools and skills to teach what you love.</p>
-
+              <p className="text-4xl font-semibold text-[#F1F2FF]">Become an</p>
+              <HighlightedText text={"Instructor"} />
+              <p className="text-[#838894] font-medium">
+                Instructors from around the world teach millions of students on
+                StudyNotion. We provide the tools and skills to teach what you
+                love.
+              </p>
             </div>
-            
-            <CustomButton active={true} linkTo={"/"}>Start Teaching Today <IoMdArrowRoundForward></IoMdArrowRoundForward></CustomButton>
+
+            <CustomButton active={true} linkTo={"/"}>
+              Start Teaching Today{" "}
+              <IoMdArrowRoundForward></IoMdArrowRoundForward>
+            </CustomButton>
           </div>
         </div>
       </div>
-          
-          <div className="w-11/12  max-w-maxContent mx-auto mb-20">
-              <ReviewSlider general={true} reviews={reviews}/>
-          </div>
+
+      <div className="w-11/12 max-w-maxContent mx-auto mb-20">
+        <ReviewSlider general={true} reviews={reviews} />
+      </div>
       {/* footersection */}
-      <Footer/>
+      <Footer />
     </div>
   );
 };
