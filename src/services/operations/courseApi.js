@@ -27,6 +27,7 @@ const {
   GET_FULL_ENROLLED_COURSE_DETAILS_API,
   CREATE_RATING_API,
   GET_COURSE_REVIEW_API,
+  GET_ALL_REVIEWS_API,
 } = courseEndPoint;
 const token = localStorage.getItem("token")
   ? JSON.parse(localStorage.getItem("token"))
@@ -456,6 +457,16 @@ export async function addRating(rating, review, courseId, setLoading,disappearHa
 export async function getCourseReviews(courseId){
   try {
     const response=await apiConnector(GET_COURSE_REVIEW_API,"POST",{courseId});
+    if(response?.data?.success) return response.data.data;
+  } catch (error) {
+    
+  }
+}
+
+export async function getAllReviews(){
+  try {
+    const response=await apiConnector(GET_ALL_REVIEWS_API,"GET");
+    console.log(response);
     if(response?.data?.success) return response.data.data;
   } catch (error) {
     

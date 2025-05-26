@@ -96,13 +96,13 @@ exports.getAverageRating = async (req, res) => {
 };
 exports.getAllReviews = async (req, res) => {
   try {
-    const allRatings = RAR.find({})
+    const allRatings =await  RAR.find({})
       .sort({ rating: "desc" })
       .populate({
         path: "user",
         select: "firstName lastName image email",
       })
-      .pouplate({
+      .populate({
         path: "course",
         select: "name",
       }).limit(15);

@@ -44,6 +44,7 @@ export const courseEndPoint={
   MARK_AS_COMPLETED_API:`${baseUrl}/course/markCompleted`,
   CREATE_RATING_API:`${baseUrl}/course/createRating`,
   GET_COURSE_REVIEW_API:`${baseUrl}/course/getCourseReview`,
+  GET_ALL_REVIEWS_API:`${baseUrl}/course/getAllReviews`,
 }
 
 export const paymentEndpoint={

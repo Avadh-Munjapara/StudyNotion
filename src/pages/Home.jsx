@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { IoMdArrowRoundForward } from "react-icons/io";
 import CustomButton from "../components/home/CustomButton";
 import { Link } from "react-router-dom";
@@ -11,7 +11,19 @@ import instructor from "../assets/Images/Instructor.png";
 import Footer from "../components/comman/Footer";
 import CardsWindow from "../components/home/CardsWindow";
 import NavBar from "../components/comman/NavBar";
+import { getAllReviews } from "../services/operations/courseApi";
+import ReviewSlider from "../components/comman/ReviewSlider";
 const Home = () => {
+  const [reviews,setReviews]=useState(null);
+  useEffect(()=>{
+    const getAllCoursesReviews=async ()=>{
+      const reviews=await getAllReviews();
+      if(reviews){
+        setReviews(reviews);
+      }
+    }
+    getAllCoursesReviews();
+  },[])
   return (
     <div className="w-full">
       <NavBar/>
@@ -153,7 +165,10 @@ const Home = () => {
           </div>
         </div>
       </div>
-
+          
+          <div className="w-11/12  max-w-maxContent mx-auto mb-20">
+              <ReviewSlider general={true} reviews={reviews}/>
+          </div>
       {/* footersection */}
       <Footer/>
     </div>
