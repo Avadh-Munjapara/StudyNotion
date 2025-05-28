@@ -242,16 +242,18 @@ exports.getEnrolledCourses = async (req, res) => {
           courseP.courseId.toString() === course.course._id.toString()
       )[0];
       // console.log(cp,"cp");
+      const coursePercentage=Math.round((cp.completedVideos/cp.totalVideos)*100);
       return {
         ...course.course,
         totalDuration: course.totalDuration,
         courseProgress: {
           ...cp,
         },
+        coursePercentage
       };
     });
 
-    console.log(newCourses);
+    // console.log(newCourses);
 
     if (!enrlCourses) {
       return res.status(404).json({

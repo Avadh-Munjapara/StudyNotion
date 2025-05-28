@@ -50,3 +50,4 @@ at first time order is not created after we have switched the user
 from the course after buying course the ui should changex
 show no internet connection
 add feat: update review
+add function to truncate review and description in enrolled couress
