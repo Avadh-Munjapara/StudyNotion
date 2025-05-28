@@ -38,9 +38,9 @@ const EnrolledCoursesTable = () => {
               return <tr key={index}>
                   <td>
                       <div className="flex gap-5">
-                          <img className="h-[52px] 2-[52px]" src={item.course.thumbnail} alt="" />
+                          <img className="h-[52px] 2-[52px]" src={item.thumbnail} alt="" />
                           <div className="flex flex-col gap-[2px]">
-                              <h3 className="text-richblack-5 font-medium">{item.course.name}</h3>
+                              <h3 className="text-richblack-5 font-medium">{item.name}</h3>
                               <p>{item.description}</p>
                           </div>
                       </div>

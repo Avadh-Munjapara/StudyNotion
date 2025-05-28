@@ -187,6 +187,7 @@ exports.getEnrolledCourses = async (req, res) => {
       },
       {
         $project: {
+          "course._id": 1,
           "course.name": 1,
           "course.description": 1,
           "course.thumbnail": 1,
@@ -229,8 +230,29 @@ exports.getEnrolledCourses = async (req, res) => {
         },
       },
     ]);
-    console.log(enrlCourses);
-    console.log(courseProgress);
+    // console.log(enrlCourses);
+    // console.log(courseProgress);
+    // const courses=enrlCourses.map((course)=>{
+    //     const cp=courseProgress.filter((courseP)=>courseP.courseId==course.course._id)[0];
+    // })
+
+    const newCourses = enrlCourses.map((course) => {
+      const cp = courseProgress.filter(
+        (courseP) =>
+          courseP.courseId.toString() === course.course._id.toString()
+      )[0];
+      // console.log(cp,"cp");
+      return {
+        ...course.course,
+        totalDuration: course.totalDuration,
+        courseProgress: {
+          ...cp,
+        },
+      };
+    });
+
+    console.log(newCourses);
+
     if (!enrlCourses) {
       return res.status(404).json({
         success: false,
@@ -246,8 +268,7 @@ exports.getEnrolledCourses = async (req, res) => {
     return res.status(200).json({
       success: true,
       message: "enrolled courses fetched successfully",
-      enrolledCourses:enrlCourses,
-      courseProgress
+      enrolledCourses: newCourses,
     });
   } catch (error) {
     console.log("error while fetching enrolled courses data", error);
