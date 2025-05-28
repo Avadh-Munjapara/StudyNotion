@@ -3,6 +3,7 @@ const CourseProgress = require("../models/CourseProgress");
 const Profile = require("../models/Profile");
 const User = require("../models/User");
 const { imageUpload } = require("../utils/cloudinaryUpload");
+const Course = require("../models/Course");
 require("dotenv").config();
 exports.updateProfile = async (req, res) => {
   try {
@@ -242,14 +243,16 @@ exports.getEnrolledCourses = async (req, res) => {
           courseP.courseId.toString() === course.course._id.toString()
       )[0];
       // console.log(cp,"cp");
-      const coursePercentage=Math.round((cp.completedVideos/cp.totalVideos)*100);
+      const coursePercentage = Math.round(
+        (cp.completedVideos / cp.totalVideos) * 100
+      );
       return {
         ...course.course,
         totalDuration: course.totalDuration,
         courseProgress: {
           ...cp,
         },
-        coursePercentage
+        coursePercentage,
       };
     });
 
@@ -275,6 +278,42 @@ exports.getEnrolledCourses = async (req, res) => {
   } catch (error) {
     console.log("error while fetching enrolled courses data", error);
     return res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+exports.getInstructorDashInfo = async (req, res) => {
+  try {
+    const instructorId = req.user.id;
+    const instructorObjectId = new mongoose.Types.ObjectId(instructorId);
+    const courses = await Course.find({ instructor: instructorObjectId });
+    if (courses) {
+      const modifiedCourses = courses?.map((course) => {
+        let stdEnrolled = course.studentsEnrolled.length;
+        let income = stdEnrolled * course.price;
+        return {
+          name: course.name,
+          thumbnail: course.thumbnail,
+          price:course.price,
+          noOfStudents: stdEnrolled,
+          courseIncome: income,
+        };  
+      });
+      return res.status(200).json({
+        success: true,
+        courses: modifiedCourses,
+      });
+    } else {
+      return res.status(500).json({
+        success: false,
+        message: "failure at our side",
+      });
+    }
+  } catch (error) {
+    console.log("error in getInstructorDashinfo controller", error);
+    return res.stats(500).json({
       success: false,
       message: error.message,
     });
