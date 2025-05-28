@@ -7,7 +7,7 @@ import {
 import Spinner from "../../comman/Spinner";
 import ProgressBar from "@ramonak/react-progress-bar";
 import formatDuration from "../../../utils/formatDuration";
-
+import { Link } from "react-router-dom";
 const EnrolledCoursesTable = () => {
   const [enrolledCourses, setEnrolledCourses] = useState(null);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
@@ -48,7 +48,8 @@ const EnrolledCoursesTable = () => {
                 return (
                   <tr key={index} className="border-[1px] border-richblack-700">
                     <td className="pl-4 py-4">
-                      <div className="flex gap-5">
+                    <Link to={`/course/${item._id}`}>
+                    <div className="flex gap-5">
                         <img
                           className="h-[52px] 2-[52px]"
                           src={item.thumbnail}
@@ -62,7 +63,7 @@ const EnrolledCoursesTable = () => {
                             {item.description}
                           </p>
                         </div>
-                      </div>
+                      </div></Link>
                     </td>
                     <td className="text-[#C5C7D4] font-medium">
                       {showDuration(item?.totalDuration)}
