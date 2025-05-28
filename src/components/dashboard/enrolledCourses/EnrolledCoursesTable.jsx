@@ -42,7 +42,7 @@ const EnrolledCoursesTable = () => {
                 <th className="text-left pl-4 ">Course Name</th>
                 <th className="text-left">Duration</th>
                 <th className="text-left">Progress</th>
-                <th></th>
+                {/* <th></th> */}
               </tr>
               {enrolledCourses.map((item, index) => {
                 return (
@@ -67,7 +67,7 @@ const EnrolledCoursesTable = () => {
                     <td className="text-[#C5C7D4] font-medium">
                       {showDuration(item?.totalDuration)}
                     </td>
-                    <td className="">
+                    <td className="pr-4">
                       <p className="text-richblack-50 font-semibold mb-1 text-[12px]">
                         Progress {item?.coursePercentage}%
                       </p>
@@ -79,7 +79,7 @@ const EnrolledCoursesTable = () => {
                         isLabelVisible={false}
                       />
                     </td>
-                    <td>
+                    {/* <td>
                       <button
                         onClick={() => setShowDeleteModal(true)}
                         className="flex flex-col gap-2 px-4 mx-auto justify-center"
@@ -88,7 +88,7 @@ const EnrolledCoursesTable = () => {
                         <div className="w-1 h-1 rounded-full bg-richblack-200"></div>
                         <div className="w-1 h-1 rounded-full bg-richblack-200"></div>
                       </button>
-                    </td>
+                    </td> */}
                   </tr>
                 );
               })}
