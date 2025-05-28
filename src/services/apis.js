@@ -25,6 +25,7 @@ export const profileEndpoint={
   UPDATEDPAPI:`${baseUrl}/profile/updateDP`,
   GET_ENROLLED_COURSES_API:`${baseUrl}/profile/getEnrolledCourses`,
   GET_INSTRUCTOR_COURSES_API:`${baseUrl}/profile/getInstructorCourses`,
+  GET_INSTRUCTOR_DASHBOARD_INFO_API:`${baseUrl}/profile/instructorDashboardInfo`,
 }
 
 export const courseEndPoint={

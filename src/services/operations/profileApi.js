@@ -5,7 +5,7 @@ import { setLoading, setUser } from "../../slices/profileSlice";
 import { setToken } from "../../slices/authSlice";
 import { resetCart } from "../../slices/cartSlice";
 import { setDP } from "../../slices/profileSlice";
-const { GETUSERDETAILS, UPDATEPROFILE, DELETEPROFILE,UPDATEDPAPI,GET_ENROLLED_COURSES_API,GET_INSTRUCTOR_COURSES_API } = profileEndpoint;
+const { GETUSERDETAILS, UPDATEPROFILE, DELETEPROFILE,UPDATEDPAPI,GET_ENROLLED_COURSES_API,GET_INSTRUCTOR_COURSES_API,GET_INSTRUCTOR_DASHBOARD_INFO_API } = profileEndpoint;
 const token = JSON.parse(localStorage.getItem("token")) || null;
 
 export function getUserDetails(setLoading, setUserDetails) {
@@ -138,3 +138,19 @@ export async function getInstructorCourses(dispatch){
     dispatch(setLoading(false));
 }
 
+export async function getInstructorDashboardInfo(setLoading){
+  setLoading(true);
+  const tId=toast.loading("loading");
+  try {
+    const response=await apiConnector(GET_INSTRUCTOR_DASHBOARD_INFO_API,"GET",null,{
+      Authorization:`bearer ${token}`
+    })
+    if(response?.data?.success){
+      return response.data.courses;
+    }
+  } catch (error) {
+    console.log("error in ");
+  } finally{
+    toast.dismiss(tId);
+  }
+}

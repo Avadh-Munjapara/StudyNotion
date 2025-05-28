@@ -22,6 +22,7 @@ import CatalogPage from "./pages/CatalogPage";
 import CourseInfoPage from "./pages/CourseInfoPage";
 import ViewCourse from "./pages/ViewCourse";
 import VideoDetails from "./components/viewCourse/VideoDetails";
+import InsDash from "./components/dashboard/Instructor/instructorDashboard/InsDash";
 function App() {
   return (
     <div className="font-inter w-screen overflow-x-hidden min-h-screen bg-richblack-900">
@@ -48,6 +49,7 @@ function App() {
           <Route path="my-courses" element={<MyCourses />}/>
           <Route path="add-course" element={<AddCourse />} />
           <Route path="edit-course/:courseId" element={<EditCourse />} />
+          <Route path="Instructor" element={<InsDash />} />
         </Route>
 
         <Route element={<ViewCourse/>} >
