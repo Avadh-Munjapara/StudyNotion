@@ -5,7 +5,15 @@ import { setLoading, setUser } from "../../slices/profileSlice";
 import { setToken } from "../../slices/authSlice";
 import { resetCart } from "../../slices/cartSlice";
 import { setDP } from "../../slices/profileSlice";
-const { GETUSERDETAILS, UPDATEPROFILE, DELETEPROFILE,UPDATEDPAPI,GET_ENROLLED_COURSES_API,GET_INSTRUCTOR_COURSES_API,GET_INSTRUCTOR_DASHBOARD_INFO_API } = profileEndpoint;
+const {
+  GETUSERDETAILS,
+  UPDATEPROFILE,
+  DELETEPROFILE,
+  UPDATEDPAPI,
+  GET_ENROLLED_COURSES_API,
+  GET_INSTRUCTOR_COURSES_API,
+  GET_INSTRUCTOR_DASHBOARD_INFO_API,
+} = profileEndpoint;
 const token = JSON.parse(localStorage.getItem("token")) || null;
 
 export function getUserDetails(setLoading, setUserDetails) {
@@ -46,7 +54,6 @@ export function updateProfile(payload, setLoading) {
       } else {
         toast.error("something went wrong!");
         toast.dismiss(tId);
-
       }
     } catch (error) {
       console.log("error in updateProfile operaion", error.message);
@@ -59,16 +66,21 @@ export function deleteAccount(navigate) {
   return async (dispatch) => {
     dispatch(setLoading(true));
     try {
-      const response = await apiConnector(DELETEPROFILE, "DELETE",{},{
-        Authorization: `bearer ${token}`,
-      });
+      const response = await apiConnector(
+        DELETEPROFILE,
+        "DELETE",
+        {},
+        {
+          Authorization: `bearer ${token}`,
+        }
+      );
       if (response.data.success) {
         dispatch(setToken(null));
         dispatch(resetCart());
         dispatch(setUser(null));
         localStorage.clear();
         toast.success("Accont Deleted!");
-        navigate('/');
+        navigate("/");
       } else {
         toast.error("something went wrong!");
       }
@@ -78,79 +90,95 @@ export function deleteAccount(navigate) {
   };
 }
 
-export function updateDP(formData){
-    return async(dispatch)=>{
-      const tId=toast.loading('updating...');
-      try { 
-        const response=await apiConnector(UPDATEDPAPI,"PUT",formData,{
-          'Content-Type': 'multipart/form-data',
-          Authorization:`bearer ${token}`
-        })
-        if(response.data.success){
-          dispatch(setDP(response.data.url));
-          const user=JSON.parse(localStorage.getItem("user"));
-          const updatedUser={...user,image:response.data.url};
-          // console.log(updatedUser);
-          const updatedUserJson=JSON.stringify(updatedUser);
-          // console.log(updatedUserJson);
-          localStorage.setItem("user",updatedUserJson);
-          toast.success("Profile picture updated");
-        }
-      } catch (error) {
-        toast.error("faild to update profile picture");
-          console.log("error while update dp operation",error.message);
+export function updateDP(formData) {
+  return async (dispatch) => {
+    const tId = toast.loading("updating...");
+    try {
+      const response = await apiConnector(UPDATEDPAPI, "PUT", formData, {
+        "Content-Type": "multipart/form-data",
+        Authorization: `bearer ${token}`,
+      });
+      if (response.data.success) {
+        dispatch(setDP(response.data.url));
+        const user = JSON.parse(localStorage.getItem("user"));
+        const updatedUser = { ...user, image: response.data.url };
+        // console.log(updatedUser);
+        const updatedUserJson = JSON.stringify(updatedUser);
+        // console.log(updatedUserJson);
+        localStorage.setItem("user", updatedUserJson);
+        toast.success("Profile picture updated");
       }
-      toast.dismiss(tId);
+    } catch (error) {
+      toast.error("faild to update profile picture");
+      console.log("error while update dp operation", error.message);
     }
+    toast.dismiss(tId);
+  };
 }
 
-export async function getEnrolledCourses(){
-  let result=[];
+export async function getEnrolledCourses() {
+  let result = [];
   try {
-    const response=await apiConnector(GET_ENROLLED_COURSES_API,'GET',{},{
-      Authorization:`bearer ${token}`
-    })
-    if(!response.data.success){
+    const response = await apiConnector(
+      GET_ENROLLED_COURSES_API,
+      "GET",
+      {},
+      {
+        Authorization: `bearer ${token}`,
+      }
+    );
+    if (!response.data.success) {
       throw new Error(response.data.message);
     }
-    result=response.data.enrolledCourses;
+    result = response.data.enrolledCourses;
   } catch (error) {
-      console.log('error in getEnrolled courses api',error);
-      toast.error('could not get Enrolled courses');
+    console.log("error in getEnrolled courses api", error);
+    toast.error("could not get Enrolled courses");
   }
   return result;
 }
 
-export async function getInstructorCourses(dispatch){
-    dispatch(setLoading(true));
-    try {
-      const response=await apiConnector(GET_INSTRUCTOR_COURSES_API,'GET',{},{
-        Authorization:`bearer ${token}`
-      })
-      if(response.data.success){
-        dispatch(setLoading(false));
-        return response.data.courses;
-      }
-    } catch (error) {
-      console.log('error in getInstructor courses api',error);
-      toast.error('could not get instructor courses');
-    }
-    dispatch(setLoading(false));
-}
-
-export async function getInstructorDashboardInfo(setLoading){
-  setLoading(true);
-  const tId=toast.loading("loading");
+export async function getInstructorCourses(dispatch) {
+  dispatch(setLoading(true));
   try {
-    const response=await apiConnector(GET_INSTRUCTOR_DASHBOARD_INFO_API,"GET",null,{
-      Authorization:`bearer ${token}`
-    })
-    if(response?.data?.success){
+    const response = await apiConnector(
+      GET_INSTRUCTOR_COURSES_API,
+      "GET",
+      {},
+      {
+        Authorization: `bearer ${token}`,
+      }
+    );
+    if (response.data.success) {
+      dispatch(setLoading(false));
       return response.data.courses;
     }
   } catch (error) {
-    console.log("error in ");
-  } finally{
+    console.log("error in getInstructor courses api", error);
+    toast.error("could not get instructor courses");
+  }
+  dispatch(setLoading(false));
+}
+
+export async function getInstructorDashboardInfo(setLoading) {
+  setLoading(true);
+  try {
+    var tId = toast.loading("loading");
+    const response = await apiConnector(
+      GET_INSTRUCTOR_DASHBOARD_INFO_API,
+      "GET",
+      null,
+      {
+        Authorization: `bearer ${token}`,
+      }
+    );
+    if (response?.data?.success) {
+      return response.data.courses;
+    }
+  } catch (error) {
+    console.log("error in getInstructorDashboardInfo api", error);
+  } finally {
     toast.dismiss(tId);
+    setLoading(false);
   }
 }

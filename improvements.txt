@@ -50,4 +50,6 @@ at first time order is not created after we have switched the user
 from the course after buying course the ui should changex
 show no internet connection
 add feat: update review
-add function to truncate review and description in enrolled couress
+add truncate of review in review side bar for large reviews
+why there is two loading toast in instructor dashboard
+my courses and enrolled courses are not loaded on first render after login
