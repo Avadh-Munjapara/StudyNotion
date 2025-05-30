@@ -11,6 +11,20 @@ const randomColors=(numColors)=>{
     }
     return colors;
 }
+
+    const options = {
+        responsive: true,
+        maintainAspectRatio: true,
+        plugins: {
+            legend: {
+                position: 'top',
+                labels: {
+                    padding: 20,
+                    color: '#AFB2BF', // richblack-300
+                }
+            }
+        }
+    }
 const Visulas = ({courses,type}) => {
     const data ={
     labels:courses?.map((course) => course.name),
@@ -23,8 +37,11 @@ const Visulas = ({courses,type}) => {
     ]
 }
     return (
-        <div className='w-3/4 flex justify-center mx-auto'>
-            <Pie data={data}/>
+        <div className='h-fit'>
+            <Pie options={{
+                offset:10,
+                maintainAspectRatio:false,
+            }} height={'300'} data={data}/>
         </div>
     );
 }

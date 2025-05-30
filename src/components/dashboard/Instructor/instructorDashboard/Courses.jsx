@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Courses = ({ courses }) => {
   return (
-    <div className="flex flex-col bg-richblack-800 px-6 py-4 gap-3">
+    <div className="flex flex-col bg-richblack-800 rounded-lg px-6 py-4 gap-3">
       <h3 className="flex justify-between text-richblack-5 font-semibold">
         Your Courses{" "}
         <Link className="text-yellow-50" to={`/dashboard/my-courses`}>
