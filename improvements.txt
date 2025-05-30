@@ -53,3 +53,4 @@ add feat: update review
 add truncate of review in review side bar for large reviews
 why there is two loading toast in instructor dashboard
 my courses and enrolled courses are not loaded on first render after login
+think of deletion of course and making published course private 

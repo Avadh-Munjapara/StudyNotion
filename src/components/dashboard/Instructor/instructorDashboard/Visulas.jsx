@@ -23,7 +23,7 @@ const Visulas = ({courses,type}) => {
     ]
 }
     return (
-        <div>
+        <div className='w-3/4 flex justify-center mx-auto'>
             <Pie data={data}/>
         </div>
     );
