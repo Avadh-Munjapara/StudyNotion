@@ -244,7 +244,7 @@ exports.getEnrolledCourses = async (req, res) => {
       )[0];
       // console.log(cp,"cp");
       const coursePercentage = Math.round(
-        (cp.completedVideos / cp.totalVideos) * 100
+        (cp?.completedVideos / cp?.totalVideos) * 100
       );
       return {
         ...course.course,
@@ -264,12 +264,12 @@ exports.getEnrolledCourses = async (req, res) => {
         message: "no user with that user id",
       });
     }
-    if (enrlCourses.length == 0) {
-      return res.status(404).json({
-        success: fasle,
-        message: "you have not enrolled in any courses",
-      });
-    }
+    // if (enrlCourses.length == 0) {
+    //   return res.status(404).json({
+    //     success: false,
+    //     message: "you have not enrolled in any courses",
+    //   });
+    // }
     return res.status(200).json({
       success: true,
       message: "enrolled courses fetched successfully",

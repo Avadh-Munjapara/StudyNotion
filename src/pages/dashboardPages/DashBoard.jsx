@@ -6,10 +6,10 @@ import NavBar from '../../components/comman/NavBar';
 const DashBoard = () => {
     const location=useLocation();
     return (
-        <div className='w-full relative  h-full'>
+        <div className='w-full relative '>
             <NavBar/>
-            <div className='flex mx-auto  h-full'>
-                <div className='w-[16%]'>
+            <div className='flex mx-auto'>
+                <div className='w-[16%] min-h-[calc(100vh-3.5rem)]'>
                 <Sidebar/>
                 </div>
             <div className='w-[80%] h-full'>   
