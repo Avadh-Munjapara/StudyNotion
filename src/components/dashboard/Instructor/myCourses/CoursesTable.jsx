@@ -13,6 +13,7 @@ import formatDuration from "../../../../utils/formatDuration";
 import { useDispatch, useSelector } from "react-redux";
 import showLength from "../../../../utils/showLength";
 const CoursesTable = ({ courses,updateCourses }) => {
+    const { token } = useSelector((state) => state.auth);
   const [deleteModal,setDeleteModal]=useState(false);
   const [delCourseId,setDelCourseId]=useState(null);
   const dispatch=useDispatch();
@@ -23,7 +24,7 @@ const CoursesTable = ({ courses,updateCourses }) => {
   const navigate=useNavigate();
   const loading=useSelector((state)=>state.course.loading);
   const deleteCourseHandler=async ()=>{
-   const isDeleted=await deleteCourse({courseId:delCourseId},dispatch);
+   const isDeleted=await deleteCourse(token,{courseId:delCourseId},dispatch);
    console.log(isDeleted);
    if(isDeleted){
     setDeleteModal(false);

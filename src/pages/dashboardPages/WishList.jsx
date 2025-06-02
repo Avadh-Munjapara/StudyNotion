@@ -7,13 +7,15 @@ import TotalAmount from "../../components/dashboard/wishList/TotalAmount";
 import { useState } from "react";
 const WishList = () => {
   const { totalItems, items } = useSelector((state) => state.cart);
+    const { token } = useSelector((state) => state.auth);
+
   const [avgRating, setAvgRating] = useState(new Map());
   useEffect(() => {
     totalItems > 0 &&
       items &&
       items.forEach(async (element) => {
         try {
-          const rating = await getAverageRating(element._id);
+          const rating = await getAverageRating(token,element._id);
           const newMap = new Map(avgRating);
           newMap.set(element._id, rating);
           setAvgRating(newMap);

@@ -20,6 +20,8 @@ const CourseSidebar = () => {
   const { courseId, sectionId, subSectionId } = useParams();
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.course.loading);
+  const { token } = useSelector((state) => state.auth);
+
   const sectionData = useSelector((state) => state.viewCourse.sectionData);
   const [reviewModal, setReviewModal] = useState(false);
   const modalRef = useRef(null);
@@ -32,7 +34,11 @@ const CourseSidebar = () => {
   const totalLectures = useSelector((state) => state.viewCourse.totalLectures);
   useEffect(() => {
     const fetchCourseDetails = async () => {
-      const response = await getFullEnrolledCourseDetails(courseId, dispatch);
+      const response = await getFullEnrolledCourseDetails(
+        token,
+        courseId,
+        dispatch
+      );
       if (response) {
         console.log(response);
         dispatch(setEntireCourseData(response));
@@ -83,7 +89,7 @@ const CourseSidebar = () => {
       </div>
       <div className="border-b-[1px] pt-7 pb-3 border-richblack-600 mb-5 mx-6">
         <h1 className="text-[18px] font-bold  text-richblack-25">
-          {entireCourseData?.name}  
+          {entireCourseData?.name}
         </h1>
         <p className="text-richblack-500 text-sm font-semibold">
           <span>

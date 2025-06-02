@@ -29,10 +29,8 @@ const {
   GET_COURSE_REVIEW_API,
   GET_ALL_REVIEWS_API,
 } = courseEndPoint;
-const token = localStorage.getItem("token")
-  ? JSON.parse(localStorage.getItem("token"))
-  : null;
-export async function getAverageRating(payLoad) {
+
+export async function getAverageRating(token,payLoad) {
   dispatchEvent(setLoading(true));
   try {
     const response = await apiConnector(GET_AVG_RATING, "GET", payLoad, {
@@ -46,7 +44,7 @@ export async function getAverageRating(payLoad) {
   }
 }
 
-export function createCourse(payLoad, course, setLoading) {
+export function createCourse(token,payLoad, course, setLoading) {
   return async (dispatch) => {
     try {
       dispatch(setLoading(true));
@@ -74,7 +72,7 @@ export function createCourse(payLoad, course, setLoading) {
   };
 }
 
-export function editCourseDetails(payLoad, course) {
+export function editCourseDetails(token,payLoad, course) {
   return async (dispatch) => {
     const tid = toast.loading("Editing course...");
     try {
@@ -100,7 +98,7 @@ export function editCourseDetails(payLoad, course) {
   };
 }
 
-export function createSection(payLoad, courseInfo) {
+export function createSection(token,payLoad, courseInfo) {
   return async (dispatch) => {
     const tid = toast.loading("Creating section...");
     try {
@@ -134,7 +132,7 @@ export function createSection(payLoad, courseInfo) {
   };
 }
 
-export function updateSectionName(payload, courseInfo, index, setEditSection) {
+export function updateSectionName(token,payload, courseInfo, index, setEditSection) {
   return async (dispatch) => {
     const tid = toast.loading("updating section name");
     try {
@@ -170,7 +168,7 @@ export function updateSectionName(payload, courseInfo, index, setEditSection) {
   };
 }
 
-export function deleteSection(payload, courseInfo, index) {
+export function deleteSection(token,payload, courseInfo, index) {
   return async (dispatch) => {
     dispatch(setLoadingCourse(true));
     const tid = toast.loading("deleting section");
@@ -205,7 +203,7 @@ export function deleteSection(payload, courseInfo, index) {
   };
 }
 
-export function createSubsection(payload, courseInfo, index, removeForm) {
+export function createSubsection(token,payload, courseInfo, index, removeForm) {
   return async (dispatch) => {
     dispatch(setLoadingCourse(true));
     const tid = toast.loading("Creating subsection...");
@@ -244,7 +242,7 @@ export function createSubsection(payload, courseInfo, index, removeForm) {
   };
 }
 
-export function editSubSection(payload, courseInfo, index, removeForm) {
+export function editSubSection(token,payload, courseInfo, index, removeForm) {
   return async (dispatch) => {
     dispatch(setLoadingCourse(true));
     const tid = toast.loading("Editing subsection...");
@@ -283,7 +281,7 @@ export function editSubSection(payload, courseInfo, index, removeForm) {
   };
 }
 
-export function deleteSubSection(payload, courseInfo, index, removeForm) {
+export function deleteSubSection(token,payload, courseInfo, index, removeForm) {
   return async (dispatch) => {
     dispatch(setLoadingCourse(true));
     const tid = toast.loading("Deleting subsection...");
@@ -333,7 +331,7 @@ export async function getFullCourseDetails(payload, dispatch) {
   }
 }
 
-export async function getFullEnrolledCourseDetails(courseId, dispatch) {
+export async function getFullEnrolledCourseDetails(token,courseId, dispatch) {
   try {
     dispatch(setLoadingCourse(true));
     const response = await apiConnector(
@@ -356,7 +354,7 @@ export async function getFullEnrolledCourseDetails(courseId, dispatch) {
   }
 }
 
-export async function deleteCourse(payload, dispatch) {
+export async function deleteCourse(token,payload, dispatch) {
   dispatch(setLoadingCourse(true));
   const tid = toast.loading("deleting Course...");
   try {
@@ -398,7 +396,7 @@ export function getCategoryCourses(payload, setCourses) {
   };
 }
 
-export async function markAsComplete(
+export async function markAsComplete(token,
   courseId,
   subSectionId,
   dispatch,
@@ -428,7 +426,7 @@ export async function markAsComplete(
   return response.data;
 }
 
-export async function addRating(rating, review, courseId, setLoading,disappearHandler) {
+export async function addRating(token,rating, review, courseId, setLoading,disappearHandler) {
   try {
     setLoading(true);
     var tId=toast.loading('Adding Review');

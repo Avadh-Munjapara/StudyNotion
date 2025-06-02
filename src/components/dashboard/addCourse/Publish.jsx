@@ -14,13 +14,14 @@ const Publish = () => {
     formState: { errors },
   } = useForm();
   const courseInfo = useSelector((state) => state.course.courseInfo);
+    const { token } = useSelector((state) => state.auth);
   const navigate=useNavigate();
   const submitHanlder = (data,event) => {
     event.preventDefault();
     const formData=new FormData();
     formData.append("courseId",courseInfo._id);
     formData.append("status",data.publish?data.publish:'draft');
-    dispatch(editCourseDetails(formData,courseInfo));
+    dispatch(editCourseDetails(token,formData,courseInfo));
     navigate('/dashboard/my-courses'); 
   }
   const dispatch = useDispatch();

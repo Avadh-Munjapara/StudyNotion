@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { countrycode } from "../../data/countrycode";
 import { updateProfile } from "../../services/operations/profileApi";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getUserDetails } from "../../services/operations/profileApi";
 import toast from "react-hot-toast";
 import SubmitBtn from "../comman/SubmitBtn";
@@ -10,11 +10,12 @@ import CancelBtn from "../comman/CancelBtn";
 const EditProfile = () => {
   const [loading, setLoading] = useState(false);
   const [userDetails, setUserDetails] = useState(null);
+  const { token } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const fetchUserDetails = async () => {
-    dispatch(getUserDetails(setLoading, setUserDetails));
+    dispatch(getUserDetails(token, setLoading, setUserDetails));
   };
-  useEffect(() => { 
+  useEffect(() => {
     fetchUserDetails();
   }, [dispatch]);
 
@@ -31,7 +32,7 @@ const EditProfile = () => {
       about: null,
       phoneNumber: null,
       gender: null,
-      countryCode: '+91',
+      countryCode: "+91",
     },
   });
   // useEffect(() => {
@@ -59,12 +60,11 @@ const EditProfile = () => {
     // };
 
     if (isDirty) {
-      dispatch(updateProfile(data, setLoading));
+      dispatch(updateProfile(token,data, setLoading));
       reset();
     } else {
       toast.error("update at least one detail");
     }
-
   };
 
   const genderWatch = watch("gender");

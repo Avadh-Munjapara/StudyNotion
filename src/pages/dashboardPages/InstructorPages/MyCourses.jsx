@@ -13,9 +13,11 @@ const MyCourses = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.profile.loading);
+  const { token } = useSelector((state) => state.auth);
+
   useEffect(() => {
     const getCourses = async () => {
-      const fetchCourses = await getInstructorCourses(dispatch);
+      const fetchCourses = await getInstructorCourses(token, dispatch);
       if (fetchCourses) {
         setCourses(fetchCourses);
       }
@@ -51,7 +53,9 @@ const MyCourses = () => {
     </div>
   ) : (
     <div className="flex items-center flex-col gap-5 h-full justify-center ">
-      <p className="text-3xl  text-richblack-5">You have not Added any courses</p>
+      <p className="text-3xl  text-richblack-5">
+        You have not Added any courses
+      </p>
       <YellowBtn
         clickHandler={() => {
           dispatch(setStep(1));

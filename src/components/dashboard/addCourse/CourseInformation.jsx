@@ -42,6 +42,7 @@ const CourseInformation = () => {
   //     dispatch(setStep(1));
   //     }
   // })
+  const { token } = useSelector((state) => state.auth);
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -141,7 +142,7 @@ const CourseInformation = () => {
         formData.append("category", data.category);
         formData.append("tags", allTags);
         formData.append("instructions", instructions);
-        dispatch(createCourse(formData, courseInfo, setLoading));
+        dispatch(createCourse(token,formData, courseInfo, setLoading));
       }
     } else {
       if (allTags.length === 0) {
@@ -189,7 +190,7 @@ const CourseInformation = () => {
             ? URL.createObjectURL(data.thumbnail[0])
             : thumnailPreview,
         };
-        dispatch(editCourseDetails(formData, updCourse, setLoading));
+        dispatch(editCourseDetails(token,formData, updCourse, setLoading));
       }
     }
   };

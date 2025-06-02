@@ -22,6 +22,7 @@ const CourseBuilder = () => {
     formState: { errors },
   } = useForm();
   const courseInfo = useSelector((state) => state.course.courseInfo);
+    const { token } = useSelector((state) => state.auth);
   const sections = courseInfo.courseContent;
   const dispatch = useDispatch();
   const [editSection, setEditSection] = useState(false);
@@ -53,8 +54,8 @@ const CourseBuilder = () => {
           courseId,
         };
     editSection
-      ? dispatch(updateSectionName(payload,courseInfo,sectionIndex,setEditSection))
-      : dispatch(createSection(payload,courseInfo));
+      ? dispatch(updateSectionName(token,payload,courseInfo,sectionIndex,setEditSection))
+      : dispatch(createSection(token,payload,courseInfo));
 
     reset();
   };

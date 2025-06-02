@@ -19,6 +19,8 @@ const VideoDetails = () => {
   const sectionId = params.sectionId;
   const courseId = params.courseId;
   const sectionData = useSelector((state) => state.viewCourse.sectionData);
+    const { token } = useSelector((state) => state.auth);
+
   const dispatch = useDispatch();
   const completedLectures = useSelector(
     (state) => state.viewCourse.completedLectures
@@ -119,6 +121,7 @@ const VideoDetails = () => {
 
   const markAsCompleteHandler = async () => {
     const response = await markAsComplete(
+      token,
       courseId,
       subSectionId,
       dispatch,

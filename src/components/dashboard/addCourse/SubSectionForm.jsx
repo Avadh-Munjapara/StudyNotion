@@ -32,12 +32,14 @@ const SubSectionForm = ({
     setValue,
     formState: { errors },
   } = useForm();
-  
+
   const dispatch = useDispatch();
   const file = watch("video");
   const [videoPreview, setVideoPreview] = useFilePreview(file);
   const courseInfo = useSelector((state) => state.course.courseInfo);
-  const loading=useSelector((state)=>state.course.loading);
+  const loading = useSelector((state) => state.course.loading);
+  const { token } = useSelector((state) => state.auth);
+
   // Add state for video duration
   const [videoDuration, setVideoDuration] = useState(null);
   const videoRef = useRef(null); // Ref for the video element
@@ -71,18 +73,21 @@ const SubSectionForm = ({
     // Cleanup event listener
     return () => {
       if (videoElement) {
-        videoElement.removeEventListener("loadedmetadata", handleLoadedMetadata);
+        videoElement.removeEventListener(
+          "loadedmetadata",
+          handleLoadedMetadata
+        );
       }
     };
   }, [videoPreview, subSectionInfo?.videoUrl]);
 
   const deleteHandler = () => {
-    if(loading) return;
+    if (loading) return;
     const payload = {
       subSectionId: subSectionInfo._id,
       sectionId: courseInfo.courseContent[sectionIndex]._id,
     };
-    dispatch(deleteSubSection(payload, courseInfo, sectionIndex, removeForm));
+    dispatch(deleteSubSection(token,payload, courseInfo, sectionIndex, removeForm));
   };
 
   useOnClickOutside(deleModalRef, removeForm);
@@ -98,7 +103,9 @@ const SubSectionForm = ({
       formData.append("courseId", courseInfo._id);
       // Optionally append duration if needed in the backend
       if (videoDuration) formData.append("timeDuration", videoDuration);
-      dispatch(createSubsection(formData, courseInfo, sectionIndex, removeForm));
+      dispatch(
+        createSubsection(token, formData, courseInfo, sectionIndex, removeForm)
+      );
     } else if (edit) {
       if (
         (file ? (file[0] ? false : true) : true) &&
@@ -121,13 +128,18 @@ const SubSectionForm = ({
           formData.append("description", data.description);
         }
         if (videoDuration) formData.append("duration", videoDuration);
-        dispatch(editSubSection(formData, courseInfo, sectionIndex, removeForm));
+        dispatch(
+          editSubSection(token,formData, courseInfo, sectionIndex, removeForm)
+        );
       }
     }
   };
-   
+
   return (
-    <div ref={ref} className="absolute z-20 top-1 border border-richblack-700 rounded-lg left-[30%]">
+    <div
+      ref={ref}
+      className="absolute z-20 top-1 border border-richblack-700 rounded-lg left-[30%]"
+    >
       <div className="flex py-6 px-4 justify-between rounded-t-lg items-center bg-richblack-700 border border-richblack-600">
         <h2 className="text-white">
           {create
@@ -145,7 +157,10 @@ const SubSectionForm = ({
         </button>
       </div>
       <div className="bg-richblack-800 rounded-b-lg p-8">
-        <form onSubmit={handleSubmit(submitHandler)} className="flex flex-col gap-6">
+        <form
+          onSubmit={handleSubmit(submitHandler)}
+          className="flex flex-col gap-6"
+        >
           <div className="flex flex-col gap-1">
             <Label text={"Video Lecture"} required={true} />
             {videoPreview || subSectionInfo?.videoUrl ? (
@@ -173,7 +188,6 @@ const SubSectionForm = ({
               id="video"
               name="video"
             />
-            
           </div>
 
           <div className="flex flex-col gap-1">
@@ -215,7 +229,9 @@ const SubSectionForm = ({
           </div>
           <div className="flex justify-end">
             {edit || create ? (
-              <SubmitBtn text={create ? "Create" : edit ? "Save Edits" : null} />
+              <SubmitBtn
+                text={create ? "Create" : edit ? "Save Edits" : null}
+              />
             ) : dele ? (
               <button
                 onClick={deleteHandler}

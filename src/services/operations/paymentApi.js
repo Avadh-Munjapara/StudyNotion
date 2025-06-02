@@ -2,9 +2,7 @@ import toast from "react-hot-toast";
 import { paymentEndpoint } from "../apis";
 import { resetCart } from "../../slices/cartSlice";
 const { default: apiConnector } = require("../apiConnector");
-const  token = localStorage.getItem('token') ? JSON.parse(localStorage.getItem("token")):null;
-const  user = localStorage.getItem('user') ? JSON.parse(localStorage.getItem("user")):null;
-const userId = user ? user._id : null;
+
  function loadScript(src){
     return new Promise((resolve)=>{
         const script=document.createElement('script');
@@ -20,8 +18,8 @@ const userId = user ? user._id : null;
 }
 
 
-export const buyCourse = async (courses,dispatch,fromCart=false)=>{
-    const order=await createOrder(courses);
+export const buyCourse = async (token,userId,courses,dispatch,fromCart=false)=>{
+    const order=await createOrder(token,courses);
     console.log(order);
     const razorSdk=await loadScript("https://checkout.razorpay.com/v1/checkout.js");
     if(!razorSdk){
@@ -50,7 +48,7 @@ export const buyCourse = async (courses,dispatch,fromCart=false)=>{
                 courses,
                 userId
             }
-            const result=await verifySignatureAndEnrollStudent(data);
+            const result=await verifySignatureAndEnrollStudent(token,data);
             if(result){
                 toast.success("payment successful");
                 console.log(fromCart);
@@ -72,7 +70,7 @@ export const buyCourse = async (courses,dispatch,fromCart=false)=>{
 
 
 
-async function createOrder (courses) {
+async function createOrder (token,courses) {
   try {
     const response = await apiConnector(
       paymentEndpoint.CAPTURE_PAYMENT_API,
@@ -90,7 +88,7 @@ async function createOrder (courses) {
   }
 };
 
-export async function verifySignatureAndEnrollStudent (data) {
+export async function verifySignatureAndEnrollStudent (token,data) {
     try {
         const response=await apiConnector(
             paymentEndpoint.VERIFY_SIGNATURE_ENROLL_STUDENT_API,

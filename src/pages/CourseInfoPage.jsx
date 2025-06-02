@@ -25,6 +25,7 @@ const CourseInfoPage = () => {
   const courseId = loacation.pathname.split("/").at(-1);
   const loading = useSelector((state) => state.course.loading);
   const user = useSelector((state) => state.profile.user);
+    const { token } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -76,7 +77,7 @@ const CourseInfoPage = () => {
       toast.error("Instructors cannot buy courses");
       return;
     }
-    await buyCourse([courseId]);
+    await buyCourse(token,user?._id,[courseId]);
   };
 
   const isStudentEnrolled = () => {

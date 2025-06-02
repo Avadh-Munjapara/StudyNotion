@@ -9,9 +9,14 @@ const InsDash = () => {
   const [courses, setCourses] = useState(null);
   const [loading, setLoading] = useState(false);
   const [currChart, setCurrChart] = useState("students");
+  const { token } = useSelector((state) => state.auth);
+
   useEffect(() => {
     const fetchInstructorCourses = async () => {
-      const fetchedCourses = await getInstructorDashboardInfo(setLoading);
+      const fetchedCourses = await getInstructorDashboardInfo(
+        token,
+        setLoading
+      );
       console.log(fetchedCourses);
 
       if (fetchedCourses) {

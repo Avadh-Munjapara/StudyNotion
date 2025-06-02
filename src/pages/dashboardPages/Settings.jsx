@@ -1,7 +1,7 @@
 import React from 'react';
 import EditProfile from '../../components/dashboard/EditProfile';
 import { useState,useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getUserDetails } from '../../services/operations/profileApi';
 import Spinner from '../../components/comman/Spinner';
 import DeleteAccount from '../../components/dashboard/DeleteAccount';
@@ -11,9 +11,11 @@ const Settings = () => {
     const dispatch = useDispatch();
     const [loading, setLoading] = useState(false);
     const [userDetails, setUserDetails] = useState(null);
+      const { token } = useSelector((state) => state.auth);
+
     useEffect(() => {
         const fetchUserDetails = async () => {
-          dispatch(getUserDetails(setLoading, setUserDetails));
+          dispatch(getUserDetails(token,setLoading, setUserDetails));
         };
         fetchUserDetails();
       }, [dispatch]);

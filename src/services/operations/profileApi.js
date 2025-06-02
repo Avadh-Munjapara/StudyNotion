@@ -14,9 +14,8 @@ const {
   GET_INSTRUCTOR_COURSES_API,
   GET_INSTRUCTOR_DASHBOARD_INFO_API,
 } = profileEndpoint;
-const token = JSON.parse(localStorage.getItem("token")) || null;
 
-export function getUserDetails(setLoading, setUserDetails) {
+export function getUserDetails(token,setLoading, setUserDetails) {
   return async (dispatch) => {
     setLoading(true);
     try {
@@ -39,7 +38,7 @@ export function getUserDetails(setLoading, setUserDetails) {
   };
 }
 
-export function updateProfile(payload, setLoading) {
+export function updateProfile(token,payload, setLoading) {
   return async (dispatch) => {
     const tId = toast.loading("loading");
     setLoading(true);
@@ -62,7 +61,7 @@ export function updateProfile(payload, setLoading) {
   };
 }
 
-export function deleteAccount(navigate) {
+export function deleteAccount(token,navigate) {
   return async (dispatch) => {
     dispatch(setLoading(true));
     try {
@@ -90,7 +89,7 @@ export function deleteAccount(navigate) {
   };
 }
 
-export function updateDP(formData) {
+export function updateDP(token,formData) {
   return async (dispatch) => {
     const tId = toast.loading("updating...");
     try {
@@ -138,7 +137,7 @@ export async function getEnrolledCourses(token) {
   return result;
 }
 
-export async function getInstructorCourses(dispatch) {
+export async function getInstructorCourses(token,dispatch) {
   dispatch(setLoading(true));
   try {
     const response = await apiConnector(
@@ -160,7 +159,7 @@ export async function getInstructorCourses(dispatch) {
   dispatch(setLoading(false));
 }
 
-export async function getInstructorDashboardInfo(setLoading) {
+export async function getInstructorDashboardInfo(token,setLoading) {
   setLoading(true);
   try {
     var tId = toast.loading("loading");

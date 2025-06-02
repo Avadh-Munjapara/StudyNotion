@@ -18,6 +18,8 @@ const ReviewModal = ({ modalRef, disappearHandler }) => {
     formState: { errors },
   } = useForm();
   const user = useSelector((state) => state.profile.user);
+    const { token } = useSelector((state) => state.auth);
+
   const params = useParams();
   const courseId = params.courseId;
   const [loading, setLoading] = useState(false);
@@ -28,7 +30,7 @@ const ReviewModal = ({ modalRef, disappearHandler }) => {
       toast.error("forget to give rating!");
       return;
     }
-    addRating(rating, data.review, courseId, setLoading,disappearHandler);
+    addRating(token,rating, data.review, courseId, setLoading,disappearHandler);
   };
   const ratingChangeHandler = (newRating) => {
     rating = newRating;

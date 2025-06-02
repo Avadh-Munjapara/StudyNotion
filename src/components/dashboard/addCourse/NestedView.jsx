@@ -15,11 +15,13 @@ const NestedView = ({ editSectionNameHandler }) => {
   const modalRef = useRef(null);
   const  courseInfo  = useSelector((state) => state.course.courseInfo);
   const  loading  = useSelector((state) => state.course.loading);
+    const { token } = useSelector((state) => state.auth);
+
   const courseContent = courseInfo.courseContent;
   const dispatch = useDispatch();
   const deleteSectionHandler = (payload) => {
     if(loading)return ;
-    dispatch(deleteSection(payload, payload.courseInfo, payload.index));
+    dispatch(deleteSection(token,payload, payload.courseInfo, payload.index));
     setDeleteSectionInfo(null);
     setConfirmationModal(false);
   };
