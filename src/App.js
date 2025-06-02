@@ -23,7 +23,10 @@ import CourseInfoPage from "./pages/CourseInfoPage";
 import ViewCourse from "./pages/ViewCourse";
 import VideoDetails from "./components/viewCourse/VideoDetails";
 import InsDash from "./components/dashboard/Instructor/instructorDashboard/InsDash";
+import { ACCOUNT_TYPE } from "./utils/constants";
+import { useSelector } from "react-redux";
 function App() {
+  const user = useSelector((state) => state.profile.user);
   return (
     <div className="font-inter w-screen overflow-x-hidden min-h-screen bg-richblack-900">
       <Routes>
@@ -41,17 +44,41 @@ function App() {
         <Route path="/about" element={<About />}></Route>
         <Route path="/contact" element={<ContactPage />}></Route>
         <Route path="*" element={<NotFound />}></Route>
-        <Route path="/dashboard" element={<DashBoard />}>
-          <Route index={true} element={<Navigate to={'/dashboard/enrolled-courses'} />} />
-          <Route path="my-profile" element={<Profile />} />
-          <Route path="settings" element={<Settings />} />
-          <Route path="enrolled-courses" element={<EnrolledCourses />} />
-          <Route path="wishList" element={<WishList />} />
-          <Route path="my-courses" element={<MyCourses />} />
-          <Route path="add-course" element={<AddCourse />} />
-          <Route path="edit-course/:courseId" element={<EditCourse />} />
-          <Route path="Instructor" element={<InsDash />} />
-        </Route>
+        {user && (
+          <Route path="/dashboard" element={<DashBoard />}>
+            {user?.accountType === ACCOUNT_TYPE.STUDENT && (
+              <Route
+                index={true}
+                element={<Navigate to={"/dashboard/enrolled-courses"} />}
+              />
+            )}
+            {user?.accountType === ACCOUNT_TYPE.INSTRUCTOR && (
+              <Route
+                index={true}
+                element={<Navigate to={"/dashboard/my-courses"} />}
+              />
+            )}
+            {user?.accountType === ACCOUNT_TYPE.STUDENT && (
+              <>
+                <Route
+                  element={<Navigate to={"/dashboard/enrolled-courses"} />}
+                />
+                <Route path="enrolled-courses" element={<EnrolledCourses />} />
+                <Route path="wishList" element={<WishList />} />
+              </>
+            )}
+            {user?.accountType === ACCOUNT_TYPE.INSTRUCTOR && (
+              <>
+                <Route path="my-courses" element={<MyCourses />} />
+                <Route path="add-course" element={<AddCourse />} />
+                <Route path="edit-course/:courseId" element={<EditCourse />} />
+                <Route path="Instructor" element={<InsDash />} />
+              </>
+            )}
+            <Route path="my-profile" element={<Profile />} />
+            <Route path="settings" element={<Settings />} />
+          </Route>
+        )}
 
         <Route element={<ViewCourse />}>
           <Route

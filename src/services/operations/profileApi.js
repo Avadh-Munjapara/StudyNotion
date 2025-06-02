@@ -115,8 +115,8 @@ export function updateDP(formData) {
     toast.dismiss(tId);
   };
 }
-
-export async function getEnrolledCourses() {
+ 
+export async function getEnrolledCourses(token) {
   let result = [];
   try {
     const response = await apiConnector(

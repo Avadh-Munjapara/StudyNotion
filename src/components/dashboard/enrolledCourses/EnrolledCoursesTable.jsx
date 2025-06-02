@@ -8,13 +8,15 @@ import Spinner from "../../comman/Spinner";
 import ProgressBar from "@ramonak/react-progress-bar";
 import formatDuration from "../../../utils/formatDuration";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 const EnrolledCoursesTable = () => {
+  const { token } = useSelector((state) => state.auth);
   const [enrolledCourses, setEnrolledCourses] = useState(null);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const courseDeleteHandler = () => {};
   const fetchEntolledCourses = async () => {
     try {
-      const response = await getEnrolledCourses();
+      const response = await getEnrolledCourses(token);
       if (response) setEnrolledCourses(response);
       console.log(response);
     } catch (error) {
@@ -48,22 +50,23 @@ const EnrolledCoursesTable = () => {
                 return (
                   <tr key={index} className="border-[1px] border-richblack-700">
                     <td className="pl-4 py-4">
-                    <Link to={`/course/${item._id}`}>
-                    <div className="flex gap-5">
-                        <img
-                          className="h-[52px] 2-[52px]"
-                          src={item.thumbnail}
-                          alt=""
-                        />
-                        <div className="flex flex-col gap-[2px]">
-                          <h3 className="text-richblack-5 font-medium">
-                            {item.name}
-                          </h3>
-                          <p className="text-richblack-300">
-                            {item.description}
-                          </p>
+                      <Link to={`/course/${item._id}`}>
+                        <div className="flex gap-5">
+                          <img
+                            className="h-[52px] 2-[52px]"
+                            src={item.thumbnail}
+                            alt=""
+                          />
+                          <div className="flex flex-col gap-[2px]">
+                            <h3 className="text-richblack-5 font-medium">
+                              {item.name}
+                            </h3>
+                            <p className="text-richblack-300">
+                              {item.description}
+                            </p>
+                          </div>
                         </div>
-                      </div></Link>
+                      </Link>
                     </td>
                     <td className="text-[#C5C7D4] font-medium">
                       {showDuration(item?.totalDuration)}
