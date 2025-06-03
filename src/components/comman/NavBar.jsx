@@ -55,7 +55,8 @@ const NavBar = () => {
       className={`w-full ${
         location.pathname.split("/").at(1) === "dashboard" ||
         location.pathname.split("/").at(-2) === "sub-sectionId" ||
-        location.pathname.split("/").at(-2) === "catalog"
+        location.pathname.split("/").at(-2) === "catalog" ||
+        location.pathname.split("/").at(-2) === "course"
           ? "bg-richblack-800"
           : "bg-richblack-900"
       } border-b-[0.5px] flex border-richblack-500 h-14`}

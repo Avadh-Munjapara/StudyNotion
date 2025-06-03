@@ -25,11 +25,30 @@ import VideoDetails from "./components/viewCourse/VideoDetails";
 import InsDash from "./components/dashboard/Instructor/instructorDashboard/InsDash";
 import { ACCOUNT_TYPE } from "./utils/constants";
 import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import YouAreOffline from "./components/comman/YouAreOffline";
 function App() {
   const user = useSelector((state) => state.profile.user);
+  const [isOnline,setIsOnline] = useState(navigator.onLine);
+  useEffect(()=>{
+    const handleOnline = () => {
+      setIsOnline(true);
+    };
+    const handleOffline = () => {
+      setIsOnline(false);
+    };
+    window.addEventListener("online", handleOnline);
+    window.addEventListener("offline", handleOffline);
+
+    return () => {
+      window.removeEventListener("online", handleOnline);
+      window.removeEventListener("offline", handleOffline);
+    };
+  },[])
   return (
     <div className="font-inter w-screen overflow-x-hidden min-h-screen bg-richblack-900">
-      <Routes>
+      {
+        isOnline ? <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/signUp" element={<Signup />}></Route>
         <Route path="/login" element={<Login />}></Route>
@@ -86,7 +105,8 @@ function App() {
             element={<VideoDetails />}
           />
         </Route>
-      </Routes>
+      </Routes> : <YouAreOffline/>
+      }
     </div>
   );
 }
