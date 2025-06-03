@@ -22,7 +22,7 @@ const Settings = () => {
     return loading===true ? (<div className='h-full w-full flex justify-center items-center mx-auto'>
         <Spinner/>
                 </div>)
-                :( <div className=''>
+                :( <div className='pb-16'>
                     <h1 className='pt-6 pl-6 text-richblack-5 font-semibold text-4xl'>Edit Profile</h1>
                     <ChangeDP/>
                     <EditProfile profileInformation={userDetails?.additionalDetails}/>
