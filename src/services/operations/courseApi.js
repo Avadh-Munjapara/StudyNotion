@@ -376,9 +376,8 @@ export async function deleteCourse(token,payload, dispatch) {
   return false;
 }
 
-export function getCategoryCourses(payload, setCourses) {
-  return async (dispatch) => {
-    dispatch(setLoadingCourse(true));
+export async function getCategoryCourses(payload, setCourses) {
+
     try {
       const response = await apiConnector(
         `${GET_CATEGORY_COURSES_API}/${payload.categoryId}`,
@@ -392,9 +391,8 @@ export function getCategoryCourses(payload, setCourses) {
     } catch (error) {
       console.log(error);
     }
-    dispatch(setLoadingCourse(false));
   };
-}
+
 
 export async function markAsComplete(token,
   courseId,

@@ -18,13 +18,14 @@ const CatalogPage = () => {
   const [courses, setCourses] = useState([]);
   const [categories, setCategories] = useState([]);
   const [categoryObj, setCategoryObj] = useState(null);
-  const loading = useSelector((state) => state.course.loading);
+  // const loading = useSelector((state) => state.course.loading);
+  const [loading, setLoading] = useState(true);
   const [call, setCall] = useState(true);
   const dispatch = useDispatch();
   const params = useParams();
 
   const fetchCategories = async () => {
-    dispatch(setLoading(true));
+    setLoading(true);
     apiConnector(categoryEndpoint.GET_ALL_CATEGORY_API, "GET")
       .then((response) => {
         setCategories(response.data.categories);
@@ -33,11 +34,12 @@ const CatalogPage = () => {
         console.error("Error fetching data:", error);
       });
     setCall(false);
-    dispatch(setLoading(false));
+    setLoading(false);
   };
 
   useEffect(() => {
     if (call) fetchCategories();
+    setLoading(true);
     const newCategoryObject = categories
       .filter((cat) => cat.name === params.catalogName)
       .at(0);
@@ -45,7 +47,8 @@ const CatalogPage = () => {
     const fetchCourses = async () => {
       if (newCategoryObject) {
         const payload = { categoryId: newCategoryObject._id };
-        dispatch(getCategoryCourses(payload, setCourses));
+        await getCategoryCourses(payload, setCourses);
+        setLoading(false);
       }
     };
     fetchCourses();
