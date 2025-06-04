@@ -17,7 +17,7 @@ const SwissCards = () => {
                 <div className='relative -top-36 md:-top-4 md:right-32'><img src={card3} alt="" /></div>
             </div>  
             <div className='relative -top-32 sm:top-0'>
-            <CustomButton active={true} linkTo={'/'}>Learn More</CustomButton>
+            <CustomButton active={true} linkTo={'/about'}>Learn More</CustomButton>
             </div>
         </div>
     );

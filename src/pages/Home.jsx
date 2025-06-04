@@ -13,8 +13,10 @@ import CardsWindow from "../components/home/CardsWindow";
 import NavBar from "../components/comman/NavBar";
 import { getAllReviews } from "../services/operations/courseApi";
 import ReviewSlider from "../components/comman/ReviewSlider";
+import { useSelector } from "react-redux";
 const Home = () => {
   const [reviews, setReviews] = useState(null);
+  const user=useSelector((state)=>state.profile.user);
   useEffect(() => {
     const getAllCoursesReviews = async () => {
       const reviews = await getAllReviews();
@@ -24,6 +26,13 @@ const Home = () => {
     };
     getAllCoursesReviews();
   }, []);
+
+  const isLoggedIn=()=>{
+    if(user?.accountType==='Student') return 'Student';
+    else if(user?.accountType==='Instructor') return 'Instructor'
+    else return null;
+  }
+
   return (
     <div className="w-full">
       <NavBar />
@@ -31,7 +40,7 @@ const Home = () => {
       <div className="w-11/12 flex flex-col gap-20 items-center max-w-maxContent mx-auto">
         <div className=" flex flex-col pt-[124px] gap-4 items-start sm:items-center ">
           <Link
-            to={"/signUp"}
+            to={isLoggedIn()==='Instructor'?'/dashboard/add-course':'/signup'}
             className="hover:bg-richblack-900 bg-richblack-800 rounded-full w-fit sm:self-center
                          flex items-center gap-2 text-bold mb-4 border-b-2 text-richblack-200 transition hover:scale-95  py-3 px-6 "
           >
@@ -48,10 +57,10 @@ const Home = () => {
             instructors.{" "}
           </p>
           <div className="flex gap-4 mt-5">
-            <CustomButton linkTo={"/dashboard/my-profile"} active={true}>
+            <CustomButton linkTo={'/about'} active={true}>
               Learn More <IoMdArrowRoundForward />
             </CustomButton>
-            <CustomButton linkTo={"/signUp"} active={false}>
+            <CustomButton linkTo={'/contact'} active={false}>
               Book a Demo
             </CustomButton>
           </div>
@@ -83,8 +92,8 @@ const Home = () => {
             para="Our courses are designed and taught by industry experts who have years of experience in coding and are passionate about sharing their knowledge with you."
             btn1={"Try it yourself"}
             btn2={"Learn More"}
-            linkTo1={"/"}
-            linkTo2={"/"}
+            linkTo1={isLoggedIn()==='Student'?'/dashboard/enrolled-courses':'/signup'}
+            linkTo2={'/about'}
             codeColor={"pink"}
             codeBlock={
               '<html>\n<head><title>Exampe</\ntitle>\n<linkrel="stylesheet"href="styles.css">\n</head>\n<body>\n<h1/">Header</a>\n</h1>\n<nav><ah ref= " one / " >One< two/ " > Two</three/" >Three</a>\n</nav>'
@@ -97,8 +106,8 @@ const Home = () => {
             para="Go ahead, give it a try. Our hands-on learning environment means you'll be writing real code from your very first lesson."
             btn1={"Continue Lesson"}
             btn2={"Learn More"}
-            linkTo1={"/"}
-            linkTo2={"/"}
+            linkTo1={isLoggedIn()==='Student'?'/dashboard/enrolled-courses':'/signup'}
+            linkTo2={"/about"}
             codeColor={"yellow"}
             codeBlock={
               '<html>\n<head><title>Exampe</\ntitle>\n<linkrel="stylesheet"href="styles.css">\n</head>\n<body>\n<h1/">Header</a>\n</h1>\n<nav><ah ref= " one / " >One< two/ " > Two</three/" >Three</a>\n</nav>'
@@ -113,12 +122,12 @@ const Home = () => {
         <div className="mx-auto text-richblack-700 max-w-maxContent ">
           <div className="chex h-72 flex items-center justify-center">
             <div className="flex gap-6">
-              <CustomButton active={true} linkTo={"/courses"}>
+              <CustomButton active={true} linkTo={"/catalog/AI"}>
                 Explore full catalog
                 <IoMdArrowRoundForward />
               </CustomButton>
 
-              <CustomButton active={false} linkTo={"/"}>
+              <CustomButton active={false} linkTo={"/about"}>
                 Learn more
                 <IoMdArrowRoundForward />
               </CustomButton>
@@ -167,7 +176,7 @@ const Home = () => {
               </p>
             </div>
 
-            <CustomButton active={true} linkTo={"/"}>
+            <CustomButton active={true} linkTo={isLoggedIn()==='Instructor'?'/dashboard/add-course':'/signup'}>
               Start Teaching Today{" "}
               <IoMdArrowRoundForward></IoMdArrowRoundForward>
             </CustomButton>
@@ -181,7 +190,7 @@ const Home = () => {
       {/* footersection */}
       <Footer />
     </div>
-  );
+  ); 
 };
 
 export default Home;
