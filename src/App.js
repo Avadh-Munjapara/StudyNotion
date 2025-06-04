@@ -31,8 +31,10 @@ function App() {
   const user = useSelector((state) => state.profile.user);
   const [isOnline,setIsOnline] = useState(navigator.onLine);
   useEffect(()=>{
-    const handleOnline = () => {
-      setIsOnline(true);
+    const handleOnline = async () => {
+      setTimeout(()=>{
+        setIsOnline(true);
+      },5000)
     };
     const handleOffline = () => {
       setIsOnline(false);

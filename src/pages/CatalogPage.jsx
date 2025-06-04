@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { getCategoryCourses, getCourseReviews } from "../services/operations/courseApi";
+import {
+  getCategoryCourses,
+  getCourseReviews,
+} from "../services/operations/courseApi";
 import { useParams } from "react-router-dom";
 import { categoryEndpoint } from "../services/apis";
 import apiConnector from "../services/apiConnector";
@@ -10,31 +13,35 @@ import NavBar from "../components/comman/NavBar";
 import SliderCourses from "../components/catalog/SliderCourses";
 import GridCourses from "../components/catalog/GridCourses";
 import Footer from "../components/comman/Footer";
+import { setLoading } from "../slices/authSlice";
 const CatalogPage = () => {
   const [courses, setCourses] = useState([]);
   const [categories, setCategories] = useState([]);
   const [categoryObj, setCategoryObj] = useState(null);
   const loading = useSelector((state) => state.course.loading);
+  const [call, setCall] = useState(true);
   const dispatch = useDispatch();
   const params = useParams();
+
+  const fetchCategories = async () => {
+    dispatch(setLoading(true));
+    apiConnector(categoryEndpoint.GET_ALL_CATEGORY_API, "GET")
+      .then((response) => {
+        setCategories(response.data.categories);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+    setCall(false);
+    dispatch(setLoading(false));
+  };
+
   useEffect(() => {
-    const fetchCategories = async () => {
-      apiConnector(categoryEndpoint.GET_ALL_CATEGORY_API, "GET")
-        .then((response) => {
-          setCategories(response.data.categories);
-        })
-        .catch((error) => {
-          console.error("Error fetching data:", error);
-        });
-    };
-    fetchCategories();
-  }, []);
-  useEffect(() => {
+    if (call) fetchCategories();
     const newCategoryObject = categories
       .filter((cat) => cat.name === params.catalogName)
       .at(0);
     setCategoryObj(newCategoryObject);
-
     const fetchCourses = async () => {
       if (newCategoryObject) {
         const payload = { categoryId: newCategoryObject._id };
@@ -55,7 +62,7 @@ const CatalogPage = () => {
         <SliderCourses type={"top"} courses={courses.topSellingCourses} />
         <GridCourses courses={courses.diffCategoryCourses} />
       </div>
-      <Footer/>
+      <Footer />
     </>
   );
 };

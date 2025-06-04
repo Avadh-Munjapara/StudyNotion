@@ -14,7 +14,7 @@ exports.capturePayment = async (req, res) => {
   });
   const { courses } = req.body;
   const userId = req.user.id;
-  if (courses.length == 0 || !userId) {
+  if (courses?.length == 0 || !userId) {
     return res.status(400).json({
       success: false,
       message: "courseid and userid is required",

@@ -28,8 +28,28 @@ app.use('/api/v1/course',courseRoute);
 app.use('/api/v1/profile',profileRoute);
 app.use('/api/v1/payment',paymentRoute);
 
+const checkInternetConnection=async ()=>{
+    try {
+        await require('dns').promises.resolve('www.google.com');
+        return true
+    } catch (error) {
+        return false;
+    }
+}
+
+const connectToDatabaseWithRetry=async ()=>{
+    const isConnected=await checkInternetConnection();
+    if(isConnected){
+        await conncetToDatabase();
+    }else{
+        console.log("No Internet Connection");
+        setTimeout(connectToDatabaseWithRetry,5000);
+    }
+}
+
+
 cloudinaryConnection();
-conncetToDatabase();
+connectToDatabaseWithRetry();
 app.get('/',(req,res)=>{
      return res.status(200).json({
          success:true,
