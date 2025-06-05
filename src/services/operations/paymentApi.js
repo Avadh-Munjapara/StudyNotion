@@ -55,6 +55,7 @@ export const buyCourse = async (token,userId,courses,dispatch,fromCart=false)=>{
                 if(fromCart){
                     dispatch(resetCart());
                 }
+                window.location.href="/dashboard"; // redirect to dashboard
             }else{
                 toast.error("payment failed");
             }
