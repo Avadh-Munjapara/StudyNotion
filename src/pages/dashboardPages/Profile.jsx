@@ -26,7 +26,7 @@ const Profile = () => {
         </div>
       ) : (
         <div>
-          <div className="p-6">
+          <div className="sm:p-6 pl-2 sm:pl-6 pt-6 sm:pt-6">
             <LocationBar />
           </div>
           <PersonalDetails userDetails={user} />

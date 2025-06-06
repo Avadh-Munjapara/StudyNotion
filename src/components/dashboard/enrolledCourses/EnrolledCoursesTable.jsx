@@ -51,9 +51,9 @@ const EnrolledCoursesTable = () => {
                   <tr key={index} className="border-[1px] border-richblack-700">
                     <td className="pl-4 py-4">
                       <Link to={`/course/${item._id}`}>
-                        <div className="flex gap-5">
+                        <div className="flex flex-col sm:flex-row gap-5">
                           <img
-                            className="h-[52px] 2-[52px]"
+                            className="sm:h-[52px] w-3/5 sm:w-fit"
                             src={item.thumbnail}
                             alt=""
                           />

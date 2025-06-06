@@ -33,7 +33,7 @@ const Sidebar = () => {
   };
   return (
     <div className="h-full">
-      <div className="relative pt-8 bg-richblack-800 flex h-full  flex-col gap-2">
+      <div className="relative pt-3 sm:pt-8 bg-richblack-800 pb-3 sm:pb-0 flex h-full  flex-col gap-2">
         <div className="w-full">
           {sidebarLinks.map((item, index) => {
             return item.type === role ||
@@ -55,7 +55,7 @@ const Sidebar = () => {
         </div>
         <button
           onClick={()=>{setConfirmationModal(true)}}
-          className="pl-4 flex gap-2 font-medium  items-center text-richblack-300 "
+          className="sm:pl-4 pl-2 flex gap-2 font-medium  items-center text-richblack-300 "
         >
           <VscSignOut />
           Log Out

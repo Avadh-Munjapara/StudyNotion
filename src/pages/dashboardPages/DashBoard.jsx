@@ -8,11 +8,11 @@ const DashBoard = () => {
     return (
         <div className='w-full relative '>
             <NavBar/>
-            <div className='flex mx-auto'>
-                <div className='w-[16%] min-h-[calc(100vh-3.5rem)]'>
+            <div className='flex flex-col sm:flex-row mx-auto'>
+                <div className='md:w-[16%]  sm:min-h-[calc(100vh-3.5rem)]'>
                 <Sidebar/>
                 </div>
-            <div className='w-[80%] h-full'>   
+            <div className='sm:w-[80%] h-full'>   
             <Outlet/>
             </div>
 
