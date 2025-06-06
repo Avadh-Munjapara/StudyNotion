@@ -29,12 +29,12 @@ const Template = ({
   };
 
   return (
-    <div className="w-full h-screen flex justify-center items-center mx-auto">
+    <div className="w-full min-h-screen flex justify-center  items-center mx-auto">
       {loading ? (
         <Spinner />
       ) : (
-        <div className="min-h-[calc(100vh-65.33px)] py-12 text-white w-[85vw] mx-auto flex justify-between">
-          <div className="flex flex-col gap-4 w-[40%]">
+        <div className="min-h-[calc(100vh-65.33px)] py-12 text-white w-[85vw] mx-auto flex sm:flex-row flex-col gap-10 justify-between">
+          <div className="flex flex-col gap-4 sm:w-[40%]">
             <div>
               <p className="text-3xl font-semibold">
                 {type === "login"
@@ -81,14 +81,14 @@ const Template = ({
               <FcGoogle /> Sign with Google
             </button>
           </div>
-          <div className="self-center">
+          <div className="self-center sm:p-10 p-5 sm:w-[40%]">
             <div className="relative">
               <img
-                className="h-[351px] w-[390px] absolute right-5 bottom-5"
+                className="h-fit w-fit aspect-square absolute right-5 bottom-5"
                 src={setImg()}
                 alt=""
               />
-              <img className="h-[351px] w-[390px]" src={frame} alt="" />
+              <img className="h-fit w-fit aspect-square" src={frame} alt="" />
             </div>
           </div>
         </div>
