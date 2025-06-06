@@ -50,18 +50,20 @@ const NavBar = () => {
     dispatch(logout(navigate));
   };
 
-  const checkForBgColour=(path,pos)=>{
-   return location.pathname.split("/").at(pos) === path;
-  }
+  const checkForBgColour = (path, pos) => {
+    return location.pathname.split("/").at(pos) === path;
+  };
 
   return (
     <div
       className={`w-full ${
-        checkForBgColour("dashboard",1) || checkForBgColour("sub-sectionId",-2) 
-        || checkForBgColour("catalog",-2) || checkForBgColour("course",-2)
+        checkForBgColour("dashboard", 1) ||
+        checkForBgColour("sub-sectionId", -2) ||
+        checkForBgColour("catalog", -2) ||
+        checkForBgColour("course", -2)
           ? "bg-richblack-800"
           : "bg-richblack-900"
-      } border-b-[0.5px] flex border-richblack-500 h-14`}
+      } border-b-[0.5px] flex flex-col md:flex-row gap-2 md:gap-0 pt-2 pb-2 md:pb-0 md:pt-0 border-richblack-500 h-fit md:h-14`}
     >
       <div className="w-11/12 mx-auto flex justify-between max-w-maxContent items-center">
         <div className="">
@@ -160,18 +162,74 @@ const NavBar = () => {
                 className="flex flex-col rounded-lg gap-1  right-0 -bottom-20 invisible  text-richblack-200 absolute bg-richblack-700 px-3 py-2 "
               >
                 {/* <div className=" h-10m w-10 top-0 left-0 rotate-45 bg-richblack-200"></div> */}
-                <div  onClick={logoutHandler} className="flex border-b-[1px] pb-1 border-richblack-200/50  gap-1 cursor-pointer items-center">
+                <div
+                  onClick={logoutHandler}
+                  className="flex border-b-[1px] pb-1 border-richblack-200/50  gap-1 cursor-pointer items-center"
+                >
                   <MdLogout />
                   Logout
                 </div>
-                <Link to={'/dashboard'} className="flex gap-1 cursor-pointer items-center">
-                  <RiDashboard2Line/>
+                <Link
+                  to={"/dashboard"}
+                  className="flex gap-1 cursor-pointer items-center"
+                >
+                  <RiDashboard2Line />
                   Dashboard
                 </Link>
               </div>
             </div>
           </div>
         )}
+      </div>
+      <div className="md:hidden mx-auto ">
+        <nav className="">
+          <ul className="flex gap-5">
+            {NavbarLinks.map((item, index) => {
+              return (
+                <li key={index}>
+                  {item.title === "Catalog" ? (
+                    <div className="text-richblack-200 relative group cursor-pointer">
+                      <div className="flex gap-1 items-center">
+                        Catalog
+                        <IoIosArrowDropdown />
+                      </div>
+                      <div className="group-hover:visible invisible opacity-0 group-hover:opacity-100 transition-all z-30 group-hover:-translate-y-2 duration-[250] absolute px-2 -translate-x-5  top-12 rounded-xl py-3 text-black bg-richblack-25">
+                        <div className="z-10  flex flex-col gap-1 relative ">
+                          {categories.length === 0
+                            ? "No Categroies have been created"
+                            : categories.map((category, index) => {
+                                return (
+                                  <Link
+                                    to={`/catalog/${category.name}`}
+                                    className="px-10 text-lg rounded-lg font-[550] py-1 hover:bg-richblack-100 "
+                                    key={index}
+                                  >
+                                    {category.name}
+                                  </Link>
+                                );
+                              })}
+                        </div>
+
+                        <div className="bg-richblack-25 h-20 w-20 absolute top-0 left-12 rotate-45"></div>
+                      </div>
+                    </div>
+                  ) : (
+                    <Link
+                      className={`${
+                        location.pathname === `${item.path}`
+                          ? "text-[#FFD60A] font-bold"
+                          : "text-richblack-200"
+                      }`}
+                      to={item.path}
+                    >
+                      {item.title}
+                    </Link>
+                  )}
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
       </div>
     </div>
   );
