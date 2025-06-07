@@ -9,7 +9,7 @@ module.exports = {
     },
     extend: {
       maxWidth: {
-        maxContent: "1260px",
+        maxContent: "1360px",
         maxContentTab: "650px"
       },
       colors: {

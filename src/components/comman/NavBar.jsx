@@ -63,7 +63,7 @@ const NavBar = () => {
         checkForBgColour("course", -2)
           ? "bg-richblack-800"
           : "bg-richblack-900"
-      } border-b-[0.5px] flex flex-col md:flex-row gap-2 md:gap-0 pt-2 pb-2 md:pb-0 md:pt-0 border-richblack-500 h-fit md:h-14`}
+      } border-b-[0.5px] flex flex-col md:flex-row gap-2 md:gap-0 pt-2 pb-2 md:pb-0 md:pt-0 border-richblack-700 h-fit md:h-14`}
     >
       <div className="w-11/12 mx-auto flex justify-between max-w-maxContent items-center">
         <div className="">

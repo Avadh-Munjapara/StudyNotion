@@ -38,7 +38,7 @@ const ChangeDP = () => {
   };
 
   return (
-    <div className="flex p-6 ml-20 mr-64 mt-10 mx-auto rounded-xl items-center bg-richblack-800 gap-5">
+    <div className="flex p-6 lg:ml-20 mx-3  max-w-[800px] md:mr-32 lg:mr-64 mt-10 lg:mx-auto rounded-xl items-center bg-richblack-800 gap-5">
       <img src={image} className="w-[78px] h-[78px] rounded-full" alt="" />
       <form
         onSubmit={handleSubmit(clickHandler)}
@@ -47,7 +47,7 @@ const ChangeDP = () => {
       >
         <h2 className=" font-medium text-[#DBDDEA]">Change Profile Picture</h2>
 
-        <div className="flex relative  justify-between w-full">
+        <div className="flex flex-col gap-3 sm:gap-0 sm:flex-row relative justify-between w-full">
           <div className="flex gap-3 items-center">
             {filePreview && (
               <img
@@ -58,7 +58,7 @@ const ChangeDP = () => {
             )}
             <label
               htmlFor="displayPicture"
-              className="bg-[#FFD60A] flex gap-1 items-center  hover:cursor-pointer self-end rounded-lg font-medium py-[6px] px-[18px]"
+              className="bg-[#FFD60A] flex gap-1  items-center  hover:cursor-pointer self-end rounded-lg font-medium py-[6px] px-[18px]"
             >
               <MdOutlineFileUpload className="text-xl" />
               Upload
@@ -72,7 +72,7 @@ const ChangeDP = () => {
               className="hidden"
             />
           </div>
-          <div className="flex gap-3 self-end">
+          <div className="flex flex-row gap-3 self-end">
             <CancelBtn reset={resetPreview} />
             <SubmitBtn text={"save"} />
           </div>

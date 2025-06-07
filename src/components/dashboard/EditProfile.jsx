@@ -69,7 +69,7 @@ const EditProfile = () => {
 
   const genderWatch = watch("gender");
   return (
-    <div className="ml-20 mt-16 p-6 flex flex-col max-w-fit mr-64 gap-6 bg-richblack-800 rounded-lg border-[1px] border-richblack-700">
+    <div className="lg:ml-20 mx-3 mt-16 p-6 max-w-[800px] flex flex-col md:mr-32 lg:mr-64 gap-6 bg-richblack-800 rounded-lg border-[1px] border-richblack-700">
       <h2 className="text-lg font-semibold text-richblack-5">
         Profile Information
       </h2>
@@ -77,7 +77,7 @@ const EditProfile = () => {
         onSubmit={handleSubmit(formHandler)}
         className="flex flex-col gap-5 items-start"
       >
-        <div className="grid gap-x-5 gap-y-5 grid-cols-2">
+        <div className="grid gap-x-5 gap-y-5 grid-cols-1 sm:grid-cols-2">
           <div className="flex gap-6">
             <div className="flex flex-col w-full  gap-[6px]">
               <label className="text-sm text-richblack-5" htmlFor="dob">

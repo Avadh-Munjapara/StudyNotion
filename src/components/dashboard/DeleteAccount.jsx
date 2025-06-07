@@ -16,7 +16,7 @@ const DeleteAccount = () => {
     }
     useOnClickOutside(modalRef,()=>{setConfirmationModal(false)});
     return (
-        <div className='bg-[#340019] rounded-lg p-6 mt-10 border ml-20 mr-64 border-[#691432] flex gap-4 '>
+        <div className='bg-[#340019] rounded-lg p-6 mt-10 max-w-[800px] border lg:ml-20 mx-3 md:mr-32 lg:mr-64 border-[#691432] flex gap-4 '>
             <div className='bg-[#691432] p-4 rounded-full h-fit w-fit flex justify-center items-center'>
             <RiDeleteBinLine className='w-5 h-6 text-[#EF476F]' />
             </div>

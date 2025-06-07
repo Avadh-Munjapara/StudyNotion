@@ -32,8 +32,8 @@ const Sidebar = () => {
     dispatch(logout(navigate));
   };
   return (
-    <div className="h-full">
-      <div className="relative pt-3 sm:pt-8 bg-richblack-800 pb-3 sm:pb-0 flex h-full  flex-col gap-2">
+    <div className="h-full xl:border-l-[1px] border-richblack-700">
+      <div className="relative pt-3 sm:pt-6 bg-richblack-800 pb-3 sm:pb-0 flex h-full flex-col gap-2">
         <div className="w-full">
           {sidebarLinks.map((item, index) => {
             return item.type === role ||

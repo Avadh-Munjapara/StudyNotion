@@ -1,4 +1,4 @@
-import { Navigate, Routes } from "react-router-dom";
+import { Navigate, Routes, useLocation } from "react-router-dom";
 import { Route } from "react-router-dom";
 import "./App.css";
 import Home from "./pages/Home";
@@ -29,6 +29,7 @@ import { useEffect, useState } from "react";
 import YouAreOffline from "./components/comman/YouAreOffline";
 function App() {
   const user = useSelector((state) => state.profile.user);
+  const location = useLocation();
   const [isOnline,setIsOnline] = useState(navigator.onLine);
   useEffect(()=>{
     const handleOnline = async () => {
@@ -48,7 +49,10 @@ function App() {
     };
   },[])
   return (
-    <div className="font-inter w-screen overflow-x-hidden min-h-screen bg-richblack-900">
+    <div className={`font-inter w-screen overflow-x-hidden min-h-screen ${location.pathname.split('/').at(1)==='dashboard'? 'bg-richblack-800': 'bg-richblack-900'}`}>
+      {
+        console.log(location.pathname.split('/').at(1))
+      }
       {
         isOnline ? <Routes>
         <Route path="/" element={<Home />}></Route>

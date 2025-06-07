@@ -28,19 +28,19 @@ const ChangePassword = () => {
   };
 
   return (
-    <div className="ml-20 mt-10 p-6 flex flex-col mr-64 gap-6 bg-richblack-800 rounded-lg border-[1px] border-richblack-700">
+    <div className="lg:ml-20 mx-3  mt-10 p-6 max-w-[800px] flex flex-col md:mr-32 lg:mr-64 gap-6 bg-richblack-800 rounded-lg border-[1px] border-richblack-700">
       <div className="">
       <h2 className="text-lg font-semibold text-richblack-5">Password</h2>
       <form
         onSubmit={handleSubmit(submitHandler)}
-        className="flex flex-col gap-5 w-fit"
+        className="flex flex-col gap-5 "
       >
-        <div className="flex w-full justify-between gap-10 ">
-          <div className="flex w-1/2 flex-col gap-[2px]">
+        <div className="flex w-full sm:flex-row gap-5 flex-col justify-between ">
+          <div className="flex sm:w-1/2 flex-col gap-[2px]">
             <label htmlFor="oldPassword" className="text-richblack-5 text-sm">
               Current Password <span className="text-[#EF476F]">*</span>
             </label>
-            <div className="flex field2 w-full gap-3 items-center">
+            <div className="flex field2 w-full gap-3 justify-between items-center">
               <input
                 {...register("oldPassword", {
                   required: { value: true, message: "Field is empty" },
@@ -57,7 +57,7 @@ const ChangePassword = () => {
             </div>
           </div>
 
-          <div className="flex w-1/2 flex-col gap-[2px]">
+          <div className="flex sm:w-1/2 flex-col gap-[2px]">
             <label htmlFor="oldPassword" className="text-richblack-5 text-sm">
               Change Password <span className="text-[#EF476F]">*</span>
             </label>
