@@ -6,7 +6,7 @@ const Statistics = ({courses}) => {
     const totalCourses = courses.length;
     const labels=['Total Courses','Total Students', 'Total Income'];
     return (
-        <div className='flex flex-col gap-3 pl-6 rounded-lg pt-4 pr-16 h-full bg-richblack-800'> 
+        <div className='flex flex-col pb-3 md:pb-0  gap-3 pl-6 rounded-lg pt-4 pr-16 h-full bg-richblack-800'> 
             <h3 className="font-semibold text-richblack-5">Statistics</h3>
             <div>
                 <p className='text-richblack-300 font-medium'>Total Courses</p>

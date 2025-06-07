@@ -29,12 +29,12 @@ const InsDash = () => {
   return loading ? (
     <Spinner />
   ) : courses && courses.length > 0 ? (
-    <div className="w-full pl-6 py-6 flex flex-col mx-auto gap-4">
+    <div className="w-full md:pl-6 pl-3 sm:pr-0 pr-3 pt-6 md:pb-6 pb-3 flex flex-col mx-auto gap-4">
       <h1 className="text-2xl font-semibold text-richblack-5 ">
         Hi {`${user?.firstName} ${user?.lastName}`} 👋
       </h1>
-      <div className="grid gap-5 grid-cols-4">
-        <div className=" bg-richblack-800 pl-6 pt-4 col-span-3 rounded-lg flex flex-col gap-4 pb-4">
+      <div className="grid md:gap-5 gap-3  grid-cols-4">
+        <div className=" bg-richblack-800 pl-6 pt-4 lg:col-span-3 sm:col-span-2 col-span-4 rounded-lg flex flex-col gap-4 pb-4">
           <h3 className="font-semibold text-richblack-5">Visualize</h3>
           <div className="">
             <button
@@ -62,7 +62,7 @@ const InsDash = () => {
             <Visuals type={currChart} courses={courses} />
           </div>
         </div>
-        <div className="">
+        <div className="lg:col-span-1 sm:col-span-2 col-span-4">
           <Statistics courses={courses} />
         </div>
         <div className="col-span-4">
