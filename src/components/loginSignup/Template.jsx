@@ -6,6 +6,8 @@ import { FcGoogle } from "react-icons/fc";
 import ItalicText from "./ItalicText";
 import { useSelector } from "react-redux";
 import Spinner from "../comman/Spinner";
+import { Link } from "react-router-dom";
+import { IoChevronBackCircle } from "react-icons/io5";
 const Template = ({
   type,
   insLoginImg,
@@ -36,7 +38,11 @@ const Template = ({
         <div className="min-h-[calc(100vh-65.33px)] flex justify-center items-center">
           <div className="py-12 max-w-maxContent text-white w-[85vw] mx-auto flex sm:flex-row flex-col gap-10 justify-between">
             <div className="flex flex-col gap-4 sm:w-[40%]">
-              <div>
+              <div className="relative">
+                <Link className="absolute flex gap-1 items-center text-richblack-200 -left-14 -top-9" to={"/"}>
+                  <IoChevronBackCircle className="text-4xl " />
+                  <span>Back to Home</span>
+                </Link>
                 <p className="text-3xl font-semibold">
                   {type === "login"
                     ? "Welcome Back"
