@@ -21,7 +21,7 @@ const ForgotPassword = () => {
     dispatch(sendResetPasswordToken({ email: mail }, setEmailSent));
   };
   return (
-    <div className="flex justify-center w-full mx-auto items-center h-screen">
+    <div className="flex justify-center w-11/12  mx-auto items-center h-screen">
       {loading ? (
         <Spinner />
       ) : (

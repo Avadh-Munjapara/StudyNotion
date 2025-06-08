@@ -70,7 +70,7 @@ const ResetForgotPassword = () => {
   };
 
   return (
-    <div className="flex justify-center items-center mx-auto h-screen w-full">
+    <div className="flex justify-center items-center mx-auto h-screen w-11/12">
       {
         loading?(<Spinner/>)
         :(<>
