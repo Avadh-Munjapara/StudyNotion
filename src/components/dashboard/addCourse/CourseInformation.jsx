@@ -73,14 +73,6 @@ const CourseInformation = () => {
     }
   }, [editCourse,courseInfo]);
 
-  useEffect(()=>{
-    return ()=>{
-      setCourseInfo(null);
-      setStep(1);
-        setEditCourse(false);
-    }
-  })
-
   const isFormUpdated = () => {
     if (
       getValues("courseTitle") != courseInfo.name ||
@@ -350,6 +342,7 @@ const CourseInformation = () => {
             </>
           }
         />
+ 
         {editCourse && (
           <YellowBtn 
           textColour={'#000814'}

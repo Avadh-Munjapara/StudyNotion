@@ -34,6 +34,7 @@ const EditCourse = () => {
             if (!fetchedCourse) {
                 toast.error('Failed to load course data');
             } else {
+                console.log('fetchedCourse', fetchedCourse);
                 dispatch(setCourseInfo(fetchedCourse));
                 dispatch(setEditCourse(true));
             }
@@ -42,11 +43,10 @@ const EditCourse = () => {
         if (!courseInfo) {
             fetchCourse();
         }
+        
     }, [courseId, dispatch, courseInfo]);
 
-    if (!courseInfo) return <Spinner />;
-    
-    return <RenderSteps />;
+    return courseInfo ? <RenderSteps/> : <Spinner/>
 };
 
 export default EditCourse;
