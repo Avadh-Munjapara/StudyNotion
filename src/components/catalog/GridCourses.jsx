@@ -1,7 +1,17 @@
-import React from "react";
+import {React,useEffect,useState} from "react";
 import CourseCard from "./CourseCard";
 
-const GridCourses = ({ courses }) => {
+const GridCourses = ({ courses }) => { 
+     const [width,setWidth]=useState(window.innerWidth);
+      useEffect(()=>{
+        const handleResize=()=>{
+          setWidth(window.innerWidth);
+        }
+        window.addEventListener('resize',handleResize);
+        return ()=>{
+          window.removeEventListener('resize',handleResize);
+        }
+      },[]);
   return (
     <div className="flex flex-col gap-5">
       <h2 className="text-richblack-5 text-3xl font-semibold">
@@ -12,7 +22,7 @@ const GridCourses = ({ courses }) => {
           No courses found here
         </p>
       ) : (
-        <div className="grid grid-cols-2 gap-y-3 gap-x-10 ">
+        <div className={`grid ${width > 766 ? "grid-cols-2" : "grid-cols-1"} gap-y-3 gap-x-10 `}>
           {courses?.map((item, index) => (
             <CourseCard allowWidth={true} info={item} />
           ))}

@@ -7,13 +7,12 @@ const ReviewSlider = ({ reviews, general }) => {
   useEffect(()=>{
     const handleResize=()=>{
       setWidth(window.innerWidth);
-      console.log(window.innerWidth);
     }
     window.addEventListener('resize',handleResize);
     return ()=>{
       window.removeEventListener('resize',handleResize);
     }
-  },[])
+  },[]);
   return (
     <div className="relative">
       <div className=" bg-gradient-to-r bg-transparent pointer-events-none from-[#000814] via-[#00081400] to-[#000814] z-10 absolute top-0 right-0 left-0 bottom-0"></div>
