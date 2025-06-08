@@ -103,8 +103,8 @@ const CourseSidebar = () => {
         ))}
       </div>
       {reviewModal && (
-        <div className="absolute flex justify-center items-center bg-richblack-900/80 z-20 h-full left-0 top-0  right-0">
-          <ReviewModal
+        <div className="fixed flex inset-0 justify-center items-center bg-richblack-900/80 z-20 h-full ">
+            <ReviewModal
             modalRef={modalRef}
             disappearHandler={() => setReviewModal(false)}
           />
