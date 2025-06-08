@@ -138,7 +138,7 @@ const SubSectionForm = ({
   return (
     <div
       ref={ref}
-      className="absolute z-20 top-1 border border-richblack-700 rounded-lg left-[30%]"
+      className="w-[95%] max-w-[450px] rounded-lg border border-richblack-700 "
     >
       <div className="flex py-6 px-4 justify-between rounded-t-lg items-center bg-richblack-700 border border-richblack-600">
         <h2 className="text-white">

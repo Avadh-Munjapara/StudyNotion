@@ -6,9 +6,9 @@ import { RiAddLine } from "react-icons/ri";
 import { useDispatch, useSelector } from "react-redux";
 import useOnClickOutside from "../../../hooks/useOnClickOutside";
 import SubSectionForm from "./SubSectionForm";
-const SubSection = ({ ref,subSections, sectionIndex }) => {
+const SubSection = ({ ref, subSections, sectionIndex }) => {
   const dispatch = useDispatch();
-  const loading=useSelector((state)=>state.course.loading);
+  const loading = useSelector((state) => state.course.loading);
   const [createSub, setCreateSub] = useState(false);
   const [editSub, setEditSub] = useState(false);
   const [deleteSub, setDeleteSub] = useState(false);
@@ -16,7 +16,7 @@ const SubSection = ({ ref,subSections, sectionIndex }) => {
   const [subSectionInfo, setSubSectionInfo] = useState(null);
   const modalRef = useRef(null);
   const removeModal = () => {
-    if(!loading){
+    if (!loading) {
       setCreateSub(false);
       setEditSub(false);
       setDeleteSub(false);
@@ -28,45 +28,47 @@ const SubSection = ({ ref,subSections, sectionIndex }) => {
     <>
       <div>
         {subSections.length > 0 &&
-          subSections.map((subSection,index) => (
-              <details
-                key={subSection._id}
-                className={`flex items-center gap-3 py-2 ${index<subSections.length-1?"border-b":null} border-richblack-600 ml-10`}
-              >
-                <summary className="flex  justify-between">
-                  <div
-                    onClick={() => {
-                      setViewSub(true);
-                      setSubSectionInfo(subSection);
-                    }}
-                    className="flex w-full items-center gap-3"
-                  >
-                    <HiMiniRectangleStack className="text-richblack-400" />
-                    <h3 className="text-richblack-50 font-semibold">
-                      {subSection.title}
-                    </h3>
-                  </div>
-                  <div className="flex gap-1 text-richblack-400 text-xl">
-                    <button>
-                      <MdOutlineModeEdit
-                        onClick={() => {
-                          setEditSub(true);
-                          setSubSectionInfo(subSection);
-                        }}
-                      />
-                    </button>
-
-                    <button
+          subSections.map((subSection, index) => (
+            <details
+              key={subSection._id}
+              className={`flex items-center gap-3 py-2 ${
+                index < subSections.length - 1 ? "border-b" : null
+              } border-richblack-600 ml-10`}
+            >
+              <summary className="flex  justify-between">
+                <div
+                  onClick={() => {
+                    setViewSub(true);
+                    setSubSectionInfo(subSection);
+                  }}
+                  className="flex w-full items-center gap-3"
+                >
+                  <HiMiniRectangleStack className="text-richblack-400" />
+                  <h3 className="text-richblack-50 font-semibold">
+                    {subSection.title}
+                  </h3>
+                </div>
+                <div className="flex gap-1 text-richblack-400 text-xl">
+                  <button>
+                    <MdOutlineModeEdit
                       onClick={() => {
-                        setDeleteSub(true);
+                        setEditSub(true);
                         setSubSectionInfo(subSection);
                       }}
-                    >
-                      <RiDeleteBin5Line />
-                    </button>
-                  </div>
-                </summary>
-              </details>
+                    />
+                  </button>
+
+                  <button
+                    onClick={() => {
+                      setDeleteSub(true);
+                      setSubSectionInfo(subSection);
+                    }}
+                  >
+                    <RiDeleteBin5Line />
+                  </button>
+                </div>
+              </summary>
+            </details>
           ))}
         <button
           onClick={() => setCreateSub(true)}
@@ -75,49 +77,47 @@ const SubSection = ({ ref,subSections, sectionIndex }) => {
           <RiAddLine className="h-6 w-6" />
           Add Lecture
         </button>
-        {(createSub || editSub || deleteSub || viewSub) && (
-          <div className=" z-20 w-[100vw] absolute min-h-screen  bg-richblack-900/50 top-0 left-0 bottom-0 right-0 backdrop-blur-sm "></div>
-        )}
       </div>
-      {
-        <>
-          {(createSub && (
+
+     {(createSub || editSub || deleteSub || viewSub) && (
+      <div className="fixed inset-0 z-[1000] bg-richblack-900/50 backdrop-blur-sm flex items-center justify-center">
+        {(createSub && (
+          <SubSectionForm
+            sectionIndex={sectionIndex}
+            removeForm={removeModal}
+            ref={modalRef}
+            create={true}
+          />
+        )) ||
+          (editSub && (
             <SubSectionForm
               sectionIndex={sectionIndex}
+              subSectionInfo={subSectionInfo}
               removeForm={removeModal}
               ref={modalRef}
-              create={true}
+              edit={true}
             />
           )) ||
-            (editSub && (
-              <SubSectionForm
-                sectionIndex={sectionIndex}
-                subSectionInfo={subSectionInfo}
-                removeForm={removeModal}
-                ref={modalRef}
-                edit={true}
-              />
-            )) ||
-            (deleteSub && (
-              <SubSectionForm
-                sectionIndex={sectionIndex}
-                subSectionInfo={subSectionInfo}
-                removeForm={removeModal}
-                ref={modalRef}
-                dele={true}
-              />
-            )) ||
-            (viewSub && (
-              <SubSectionForm
-                sectionIndex={sectionIndex}
-                subSectionInfo={subSectionInfo}
-                removeForm={removeModal}
-                ref={modalRef}
-                view={true}
-              />
-            ))}
-        </>
-      }
+          (deleteSub && (
+            <SubSectionForm
+              sectionIndex={sectionIndex}
+              subSectionInfo={subSectionInfo}
+              removeForm={removeModal}
+              ref={modalRef}
+              dele={true}
+            />
+          )) ||
+          (viewSub && (
+            <SubSectionForm
+              sectionIndex={sectionIndex}
+              subSectionInfo={subSectionInfo}
+              removeForm={removeModal}
+              ref={modalRef}
+              view={true}
+            />
+          ))}
+      </div>
+    )}
     </>
   );
 };

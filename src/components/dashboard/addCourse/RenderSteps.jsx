@@ -16,7 +16,7 @@ const RenderSteps = () => {
         {step === 2 && <CourseBuilder />}
         {step === 3 && <Publish />}
       </div>
-      <div className="pl-3 md:pl-0">
+      <div className="px-3 md:px-0">
         <Tips />
       </div>
     </div>

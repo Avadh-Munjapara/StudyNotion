@@ -37,7 +37,7 @@ const NestedView = ({ editSectionNameHandler }) => {
         courseContent.map((section, index) => (
           <details
             key={section._id}
-            className="border-b border-richblack-600 py-3"
+            className="border-b border-richblack-600 py-3 "
           >
             <summary className="flex cursor-pointer  justify-between">
               <div className="flex items-center gap-3">

@@ -9,7 +9,7 @@ const StepDots = () => {
     { id: 3, name: "Publish" },
   ];
   return (
-    <div className="grid grid-cols-3 w-full ml-6 py-6 mt-6`">
+    <div className="grid grid-cols-3 text-center w-full ml-6 py-6 mt-6`">
       {stages.map((item, index) => {
             return (
               <div className="flex relative flex-col items-center gap-1" key={index}>
