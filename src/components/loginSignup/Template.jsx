@@ -33,62 +33,66 @@ const Template = ({
       {loading ? (
         <Spinner />
       ) : (
-        <div className="min-h-[calc(100vh-65.33px)] py-12 text-white w-[85vw] mx-auto flex sm:flex-row flex-col gap-10 justify-between">
-          <div className="flex flex-col gap-4 sm:w-[40%]">
-            <div>
-              <p className="text-3xl font-semibold">
-                {type === "login"
-                  ? "Welcome Back"
-                  : userType === "student"
-                  ? "Join the millions learning to code with StudyNotion for free"
-                  : "Join the StudyNotion to utilize your skills for free"}
-              </p>
-              <p className="text-[#9FA2AF] text-lg">
-                {userType === "student"
-                  ? "Build skills for today, tomorrow, and beyond "
-                  : "Discover your Passions,"}
-                {userType == "student" ? (
-                  <ItalicText text={"Education to future-proof your career."} />
+        <div className="min-h-[calc(100vh-65.33px)] flex justify-center items-center">
+          <div className="py-12 max-w-maxContent text-white w-[85vw] mx-auto flex sm:flex-row flex-col gap-10 justify-between">
+            <div className="flex flex-col gap-4 sm:w-[40%]">
+              <div>
+                <p className="text-3xl font-semibold">
+                  {type === "login"
+                    ? "Welcome Back"
+                    : userType === "student"
+                    ? "Join the millions learning to code with StudyNotion for free"
+                    : "Join the StudyNotion to utilize your skills for free"}
+                </p>
+                <p className="text-[#9FA2AF] text-lg">
+                  {userType === "student"
+                    ? "Build skills for today, tomorrow, and beyond "
+                    : "Discover your Passions,"}
+                  {userType == "student" ? (
+                    <ItalicText
+                      text={"Education to future-proof your career."}
+                    />
+                  ) : (
+                    ""
+                  )}
+                </p>
+                {userType == "instructor" ? (
+                  <ItalicText text={" Be Unstoppable"} />
                 ) : (
                   ""
                 )}
-              </p>
-              {userType == "instructor" ? (
-                <ItalicText text={" Be Unstoppable"} />
+              </div>
+
+              {type === "signup" ? (
+                <SignupForm
+                  changeTab={changeTab}
+                  setIsLoggedIn={setIsLoggedIn}
+                ></SignupForm>
               ) : (
-                ""
+                <LoginForm
+                  changeTab={changeTab}
+                  setIsLoggedIn={setIsLoggedIn}
+                ></LoginForm>
               )}
-            </div>
+              <div className="flex items-center gap-2">
+                <div className="w-[calc(50%)] h-[0.7px] bg-white"></div>
+                <p className="w-fit">OR</p>
+                <div className="w-[calc(50%)] h-[0.7px] bg-white"></div>
+              </div>
 
-            {type === "signup" ? (
-              <SignupForm
-                changeTab={changeTab}
-                setIsLoggedIn={setIsLoggedIn}
-              ></SignupForm>
-            ) : (
-              <LoginForm
-                changeTab={changeTab}
-                setIsLoggedIn={setIsLoggedIn}
-              ></LoginForm>
-            )}
-            <div className="flex items-center gap-2">
-              <div className="w-[calc(50%)] h-[0.7px] bg-white"></div>
-              <p className="w-fit">OR</p>
-              <div className="w-[calc(50%)] h-[0.7px] bg-white"></div>
+              <button className="flex w-full border-2 justify-center py-2 items-center gap-1">
+                <FcGoogle /> {type==='signup'?'Sign Up':'Login'} with Google
+              </button>
             </div>
-
-            <button className="flex w-full border-2 justify-center py-2 items-center gap-1">
-              <FcGoogle /> Sign with Google
-            </button>
-          </div>
-          <div className="self-center sm:p-10 p-5 sm:w-[40%]">
-            <div className="relative">
-              <img
-                className="h-fit w-fit aspect-square absolute right-5 bottom-5"
-                src={setImg()}
-                alt=""
-              />
-              <img className="h-fit w-fit aspect-square" src={frame} alt="" />
+            <div className="self-center sm:p-10 p-5 sm:w-[40%]">
+              <div className="relative">
+                <img
+                  className="h-fit w-fit aspect-square absolute right-5 bottom-5"
+                  src={setImg()}
+                  alt=""
+                />
+                <img className="h-fit w-fit aspect-square" src={frame} alt="" />
+              </div>
             </div>
           </div>
         </div>

@@ -59,7 +59,9 @@ const LoginForm = ({setIsLoggedIn,changeTab}) => {
             }
             </div>
             </div>
-            <Link to='/forgot-password' className='absolute -bottom-5 right-0 text-[12px] text-[#47A5C5]'>Forgot Password</Link>
+            <Link to='/signUp' className='absolute -bottom-6 left-0  text-[12px] text-[#47A5C5]'>New user? Signup </Link>
+            <Link to='/forgot-password' className='absolute -bottom-6 right-0 text-[12px] text-[#47A5C5]'>Forgot Password</Link>
+
             </div>
             <button className='w-full mt-5 py-2 bg-[#FFD60A] text-black rounded-md'>Sign In</button>
 
