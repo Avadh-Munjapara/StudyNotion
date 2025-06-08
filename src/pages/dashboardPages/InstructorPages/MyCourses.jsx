@@ -30,24 +30,26 @@ const MyCourses = () => {
   return loading ? (
     <Spinner />
   ) : courses && courses.length > 0 ? (
-    <div>
-      <div className="flex w-full items-center justify-between">
+    <div className="sm:pr-0 pr-3">
+      <div className="flex sm:flex-row flex-col w-full items-start sm:items-center justify-between">
         <div className="p-6">
           <LocationBar />
         </div>
-        <YellowBtn
-          clickHandler={() => {
-            dispatch(setStep(1));
-            dispatch(setCourseInfo(null));
-            navigate("/dashboard/add-course");
-          }}
-          text={
-            <>
-              <IoIosAddCircle />
-              New
-            </>
-          }
-        />
+        <div className=" pl-6 pb-3 self-start sm:self-center">
+          <YellowBtn
+            clickHandler={() => {
+              dispatch(setStep(1));
+              dispatch(setCourseInfo(null));
+              navigate("/dashboard/add-course");
+            }}
+            text={
+              <>
+                <IoIosAddCircle />
+                New
+              </>
+            }
+          />
+        </div>
       </div>
       <CoursesTable updateCourses={updateCourses} courses={courses} />
     </div>

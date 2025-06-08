@@ -42,7 +42,7 @@ const CoursesTable = ({ courses,updateCourses }) => {
 
   return (
     <>
-    <Table className="rounded-lg w-full border ml-6 my-2 border-richblack-800 text-white border-collapse ">
+    <Table className="rounded-lg w-full border lg:ml-6 ml-3 my-2 border-richblack-800 text-white border-collapse ">
       <Thead className="font-medium text-richblack-100">
         <Tr className="">
           <Th className="text-start">Courses</Th>
@@ -55,10 +55,10 @@ const CoursesTable = ({ courses,updateCourses }) => {
         {courses?.map((item, index) => {
           return (
             <Tr className="" key={index}>
-              <Td className="py-[10px] w-4/6">
-                <div className="flex gap-5">
+              <Td className="py-[10px] md:w-4/6">
+                <div className="flex md:flex-row flex-col gap-5">
                   <img
-                    className="h-[152px] w-fit rounded-lg"
+                    className="max-h-[152px] aspect-auto  rounded-lg"
                     src={item.thumbnail}
                     alt=""
                   />
@@ -86,12 +86,12 @@ const CoursesTable = ({ courses,updateCourses }) => {
                 {item?.totalDuration ? showLength(formatDuration(item.totalDuration)):'null'}
               </Td> 
               <Td className=" py-[10px] ">
-                <div className="flex text-richblack-100 gap-2 mx-auto justify-center">
+                <div className="flex text-richblack-100 gap-2 mx-auto sm:justify-center">
                   <p>{item?.price}</p>
                 </div>
               </Td>
               <Td className="py-[10px]">
-                <div className="flex  gap-2 mx-auto text-richblack-400 font-bold justify-center">
+                <div className="flex  gap-2 mx-auto text-richblack-400 font-bold sm:justify-center">
                   <button className="w-[18px] h-[18px]" onClick={()=>{
                       navigate(`/dashboard/edit-course/${item._id}`);
                   }}>
