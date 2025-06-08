@@ -77,7 +77,7 @@ const CourseSidebar = () => {
   return loading ? (
     <Spinner />
   ) : sectionData && sectionData.length > 0 ? (
-    <div className="bg-richblack-800 pt-5 min-w-[300px] min-h-fit">
+    <div className="bg-richblack-800 pt-5 border-r-[1px] border-b-[1px] border-richblack-700 md:w-2/5 md:max-w-[300px] min-h-fit">
       <div className="flex justify-between mx-6">
         <Link to={"/dashboard/enrolled-courses"}>
           <IoChevronBackCircle className="text-4xl text-richblack-200" />

@@ -8,13 +8,13 @@ const ViewCourse = () => {
   return (
     <div className="relative h-full">
       <NavBar />
-      <div className="flex h-full">
+      <div className="flex md:flex-row flex-col md:gap-0 gap-4 h-full">
         <CourseSideBar />
         <Outlet>
           <VideoDetails />
         </Outlet>
       </div>
-      <div className="mt-5">
+      <div className="">
         <Footer />
       </div>
     </div>

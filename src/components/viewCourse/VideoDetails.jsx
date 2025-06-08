@@ -134,7 +134,7 @@ const VideoDetails = () => {
   };
 
   return subSection?.videoUrl ? (
-    <div className="flex flex-col pl-5  gap-4 w-full h-full">
+    <div className="flex flex-col  mx-auto gap-4  w-full h-full">
       <div className="w-full h-full relative">
         <Player
           key={subSection?.videoUrl}
@@ -180,7 +180,7 @@ const VideoDetails = () => {
           </div>
         )}
       </div>
-      <div className=" pb-3">
+      <div className="pl-3 pb-3">
         <h2 className="text-richblack-5 text-3xl">{subSection.title}</h2>
         <p className="text-richblack-50">{subSection.description}</p>
       </div>
