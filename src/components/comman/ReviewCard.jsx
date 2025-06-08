@@ -2,7 +2,7 @@ import React from "react";
 import Stars from "./Stars";
 const ReviewCard = ({ review,general }) => {
   return (
-    <div className="flex bg-richblack-800 p-4 flex-col gap-2">
+    <div className="flex items-center md:items-start bg-richblack-800 p-4 flex-col gap-2">
       <div className="flex gap-3">
         <img className="w-10 h-10 rounded-full" src={review.user.image} alt="profile pic" />
         <div className="text-richblack-5">

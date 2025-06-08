@@ -96,11 +96,11 @@ const CourseInfoPage = () => {
           {/* courseInfo section */}
           <div className="w-full flex flex-col gap-10 pb-20">
             <div className="w-full bg-richblack-800">
-              <div className=" max-w-maxContent w-11/12 relative py-8 flex   mx-auto">
-                <div className="w-[73%]">
+              <div className=" max-w-maxContent w-11/12 relative py-8 flex md:flex-row flex-col gap-6  mx-auto">
+                <div className="md:w-[73%]">
                   <CourseIntro course={course} />
                 </div>
-                <div className="absolute right-0 ">
+                <div className="md:absolute right-0 ">
                   <CourseBuyCard
                     thumbnail={course?.thumbnail}
                     buyHandler={handleBuyCourse}
@@ -119,7 +119,7 @@ const CourseInfoPage = () => {
             <div className="w-full">
               <div className="max-w-maxContent w-11/12 flex flex-col gap-5 mx-auto ">
                 {/* what you'll learn*/}
-                <div className="w-[73%] p-8 flex flex-col gap-3 border-richblack-700 border-[1px]">
+                <div className="md:w-[73%] p-8 flex flex-col gap-3 border-richblack-700 border-[1px]">
                   <p className="text-3xl text-richblack-5 font-medium">
                     What you'll learn
                   </p>
@@ -133,12 +133,12 @@ const CourseInfoPage = () => {
                 </div>
 
                 {/* course content */}
-                <div className="w-[73%] mt-5">
+                <div className="md:w-[73%] mt-5">
                   <CourseContent content={course?.courseContent} />
                 </div>
 
                 {/*author section*/}
-                <div className="w-[73%] flex flex-col gap-4">
+                <div className="md:w-[73%] flex flex-col gap-4">
                   <h4 className="font-semibold text-2xl text-richblack-5">
                     Author
                   </h4>

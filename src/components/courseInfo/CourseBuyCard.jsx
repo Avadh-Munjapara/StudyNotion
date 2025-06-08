@@ -20,10 +20,10 @@ const CourseBuyCard = ({
       toast.success("Link Copied to Clipboard");
   }
   return (
-    <div className="bg-richblack-700 rounded-lg">
-      <div className=""><img src={thumbnail} className="h-[200px]" alt="thumbnail of course"/></div>
+    <div className="bg-richblack-700 pt-6 md:pt-0  rounded-lg">
+      <div className="mx-auto w-fit"><img src={thumbnail} className="h-[200px]" alt="thumbnail of course"/></div>
       <div className="p-6 gap-3 flex flex-col">
-      <p className="text-3xl font-bold text-richblack-5">Rs. {price}</p>
+      <p className="text-3xl font-bold text-center md:text-start text-richblack-5">Rs. {price}</p>
       {isBought ? (
         <YellowBtn clickHandler={goToCourseHandler} text={"Go To Course"} />
       ) : (
@@ -34,8 +34,8 @@ const CourseBuyCard = ({
           </div>
         </div>
       )}
-      <p className="text-richblack-25 text-sm text-center">30-Day Money-Back Guarantee</p>
-      <ul className="flex flex-col">
+      <p className="text-richblack-25 text-sm text-center ">30-Day Money-Back Guarantee</p>
+      <ul className="flex items-center md:items-start flex-col">
         <p className="text-richblack-5 font-medium">This course includes:</p>
         {
             instructions?.map((item)=><li className="text-caribbeangreen-100 flex gap-1 items-center text-sm"><TiTickOutline className="text-lg"/>{item}</li>)
