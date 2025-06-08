@@ -74,7 +74,7 @@ const Template = ({
                   setIsLoggedIn={setIsLoggedIn}
                 ></LoginForm>
               )}
-              <div className="flex items-center gap-2">
+              {/* <div className="flex items-center gap-2">
                 <div className="w-[calc(50%)] h-[0.7px] bg-white"></div>
                 <p className="w-fit">OR</p>
                 <div className="w-[calc(50%)] h-[0.7px] bg-white"></div>
@@ -82,7 +82,7 @@ const Template = ({
 
               <button className="flex w-full border-2 justify-center py-2 items-center gap-1">
                 <FcGoogle /> {type==='signup'?'Sign Up':'Login'} with Google
-              </button>
+              </button> */}
             </div>
             <div className="self-center sm:p-10 p-5 sm:w-[40%]">
               <div className="relative">
