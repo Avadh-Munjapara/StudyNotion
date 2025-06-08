@@ -208,7 +208,7 @@ const CourseInformation = () => {
     <form
       onKeyDown={downHandler}
       onSubmit={handleSubmit(submitHandler)}
-      className="ml-5 flex rounded-lg border border-richblack-700 flex-col gap-5 bg-[#161D29] p-6"
+      className="md:ml-5 ml-3  flex rounded-lg border border-richblack-700 flex-col gap-5 bg-[#161D29] p-6"
     >
       <div className="flex flex-col gap-1">
         <Label text={"Course Title"} forwhat={"courseTitle"} required={true} />
