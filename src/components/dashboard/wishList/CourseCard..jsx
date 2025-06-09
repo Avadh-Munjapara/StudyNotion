@@ -7,10 +7,10 @@ const CourseCard = ({ course, rating }) => {
   const dispatch = useDispatch();
   return (
     <div className="flex justify-between gap-8">
-      <div className="flex gap-4">
+      <div className="flex gap-4 flex-col sm:flex-row">
         <div>
           <img
-            className="w-[185px] rounded-lg h-[145px]"
+            className="w-[185px] rounded-lg max-h-[145px]"
             src={course.thumbnail}
             alt="course thumbnail"
           />

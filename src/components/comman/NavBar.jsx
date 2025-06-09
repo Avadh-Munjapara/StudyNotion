@@ -159,7 +159,7 @@ const NavBar = () => {
               ></div>
               <div
                 ref={boxRef}
-                className="flex flex-col rounded-lg gap-1  right-0 -bottom-20 invisible  text-richblack-200 absolute bg-richblack-700 px-3 py-2 "
+                className="flex flex-col rounded-lg gap-1 z-[2000] right-0 -bottom-20 invisible  text-richblack-200 absolute bg-richblack-700 px-3 py-2 "
               >
                 {/* <div className=" h-10m w-10 top-0 left-0 rotate-45 bg-richblack-200"></div> */}
                 <div

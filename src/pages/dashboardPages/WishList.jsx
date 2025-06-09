@@ -29,12 +29,12 @@ const WishList = () => {
     <div className="pl-6 pt-6 ">
       <LocationBar />
       {items && totalItems > 0 ? (
-        <div className="flex flex-col gap-5">
+        <div className="flex flex-col gap-5 pb-10">
           <h3 className="border-b-[1px] text-richblack-400 font-semibold py-2 border-[#2C333F]">
             {totalItems} Courses in Wishlist
           </h3>
-          <div className="flex justify-between max-w-maxContent gap-10">
-            <div className="flex w-4/5 gap-5 flex-col">
+          <div className="flex flex-col lg:flex-row justify-between w-11/12 md:w-full max-w-maxContent gap-10">
+            <div className="flex lg:w-4/5 gap-5 flex-col">
               {items.map((item, index) => {
                 return (
                   <>
@@ -50,7 +50,7 @@ const WishList = () => {
                 );
               })}
             </div>
-            <div className="w-1/5">
+            <div className="lg:w-1/5 md:w-2/5 w-3/5 self-start  sm:self-end lg:self-start">
               <TotalAmount />
             </div>
           </div>
