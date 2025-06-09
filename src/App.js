@@ -27,6 +27,7 @@ import { ACCOUNT_TYPE } from "./utils/constants";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import YouAreOffline from "./components/comman/YouAreOffline";
+import AdminDash from "./pages/dashboardPages/AdminPages/AdminDash";
 function App() {
   const user = useSelector((state) => state.profile.user);
   const location = useLocation();
@@ -100,6 +101,13 @@ function App() {
                 <Route path="Instructor" element={<InsDash />} />
               </>
             )}
+            {
+              user?.accountType === ACCOUNT_TYPE.ADMIN && (
+                <>
+                  <Route path="admin" element={<AdminDash/>}/>
+                </>
+              )
+            }
             <Route path="my-profile" element={<Profile />} />
             <Route path="settings" element={<Settings />} />
           </Route>
