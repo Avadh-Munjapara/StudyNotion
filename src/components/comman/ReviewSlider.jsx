@@ -23,7 +23,7 @@ const ReviewSlider = ({ reviews, general }) => {
         </h3>
         <Swiper loop={true} spaceBetween={24} slidesPerView={width>1150 ? 4 : width > 830 ? 3 : width > 623 ? 2 : 1}>
           {reviews?.map((review) => (
-            <SwiperSlide>
+            <SwiperSlide className="">
               <ReviewCard general={general} review={review} />
             </SwiperSlide>
           ))}

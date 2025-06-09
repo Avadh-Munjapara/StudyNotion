@@ -145,7 +145,7 @@ const Home = () => {
                   to be a competitive specialist requires more than professional
                   skills.
                 </p>
-                <CustomButton active={true} linkTo={"/"}>
+                <CustomButton active={true} linkTo={"/about"}>
                   Learn More
                 </CustomButton>
               </div>
