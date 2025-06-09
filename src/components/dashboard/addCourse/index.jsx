@@ -11,9 +11,9 @@ const AddCourse = () => {
   const dispatch = useDispatch();
   useEffect(()=>{
     return ()=>{
-      dispatch(setCourseInfo(null));
-      dispatch(setStep(1));
-      dispatch(setEditCourse(false));
+      // dispatch(setCourseInfo(null));
+      // dispatch(setStep(1));
+      // dispatch(setEditCourse(false));
     }
   },[])
   return (
