@@ -216,3 +216,4 @@ exports.getCategoryPageDetails = async (req, res) => {
     });
   }
 };
+
