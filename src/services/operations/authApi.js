@@ -79,7 +79,8 @@ export function login(email, password, navigate) {
         toast.success("login successfull");
         if (user.accountType === "Student")
           navigate("/dashboard/enrolled-courses");
-        else navigate("/dashboard/my-courses");
+        else if(user.accountType==='Instructor') navigate("/dashboard/my-courses");
+        else if (user.accountType === "Admin") navigate("/dashboard/admin");
       } else {
         throw new Error(response.data.message);
       }

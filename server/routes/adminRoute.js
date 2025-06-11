@@ -9,4 +9,4 @@ router.get("/Stats",auth,isAdmin,stats);
 router.get("/topInstructors",auth,isAdmin,topInstructors);
 router.get("/mostSellingCourses",auth,isAdmin,mostSellingCourses);
 router.get("/categorywiseStudents",auth,isAdmin,categoryWiseStudents);
-module.exports=router;
+module.exports=router; 
