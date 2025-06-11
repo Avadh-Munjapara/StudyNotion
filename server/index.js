@@ -7,6 +7,7 @@ const userRoute=require('./routes/userRoute');
 const courseRoute=require('./routes/courseRoute');
 const profileRoute =require('./routes/profileRoute');
 const paymentRoute=require('./routes/paymentRoute');
+const adminRoute=require('./routes/adminRoute');
 const cors=require('cors');
 const app=express();
 require('dotenv').config();
@@ -27,7 +28,7 @@ app.use('/api/v1/auth',userRoute);
 app.use('/api/v1/course',courseRoute);
 app.use('/api/v1/profile',profileRoute);
 app.use('/api/v1/payment',paymentRoute);
-
+app.use('/api/v1/admin',adminRoute);
 const checkInternetConnection=async ()=>{
     try {
         await require('dns').promises.resolve('www.google.com');

@@ -472,3 +472,4 @@ exports.deleteCourse = async (req, res) => {
     });
   }
 };
+

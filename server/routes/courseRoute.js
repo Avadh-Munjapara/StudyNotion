@@ -1,4 +1,4 @@
-const { createCategory, getAllCategory, getCategoryPageDetails } = require('../controllers/categoryCon');
+const { getAllCategory, getCategoryPageDetails } = require('../controllers/categoryCon');
 const { createSubSection, updateSubSection, deleteSubSection } = require('../controllers/subSection');
 const { auth, isInstructor, isAdmin, isStudent } = require('../middlewares/auth');
 const  express  = require('express');
@@ -23,7 +23,6 @@ router.get("/allCourse",getAllCourses);
 router.delete("/deleteCourse",auth,isInstructor,deleteCourse); 
 
 //routes for category
-router.post("/createCategory",auth,isAdmin,createCategory);
 router.get("/categoryCourses/:categoryId", getCategoryPageDetails);
 router.get("/allCategory",getAllCategory);
 
