@@ -5,6 +5,7 @@ import Spinner from "../../../components/comman/Spinner";
 import CategoryPieChart from "../../../components/dashboard/adminDashbboard/CategoryPieChart";
 import InstructorPolarChart from "../../../components/dashboard/adminDashbboard/InstructorPolarChart";
 import TopSellingCoursesChart from "../../../components/dashboard/adminDashbboard/TopSellingCoursesChart";
+import Stats from "../../../components/dashboard/adminDashbboard/Stats";
 const AdminDash = () => {
   const [loading, setLoading] = useState(false);
   const token = useSelector((state) => state.auth.token);
@@ -28,11 +29,13 @@ const AdminDash = () => {
   return loading ? (
     <Spinner />
   ) : (
-    <div className="">
+    <div className="ml-6 flex flex-col ">
       <h1>Admin DashBoard</h1>
-      <div className="grid grid-cols-2 grid-rows-2">
+      <div className="mb-5">
+        <Stats data={stats[0]} />
+      </div>
+      <div className="grid justify-items-center gap-4 grid-cols-2 grid-rows-2">
         <CategoryPieChart categoryData={catWiseCrs} />
-     
         <InstructorPolarChart insData={topIns[0]} />
         <TopSellingCoursesChart courseData={mstSoldCrs} />
       </div>

@@ -50,7 +50,7 @@ const InstructorPolarChart = ({ insData }) => {
       ></div>
       <div className="">
         <div>
-          <div className="">
+          {/* <div className="">
             <button
               className={`${
                 currChart === "Students"
@@ -71,7 +71,7 @@ const InstructorPolarChart = ({ insData }) => {
             >
               Income
             </button>
-          </div>
+          </div> */}
         </div>
         <PolarArea data={data} />
       </div>
