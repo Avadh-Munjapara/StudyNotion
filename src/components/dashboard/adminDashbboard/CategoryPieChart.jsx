@@ -35,15 +35,16 @@ const CategoryPieChart = ({ categoryData }) => {
         data: categoryData?.map((category) => category.totalStudents),
         backgroundColor: randomColors(categoryData?.length),
         hoverOffset: 20,
-        borderWidth:1
+        borderWidth: 1,
       },
-
     ],
   };
   return (
-    <div className="h-fit">
-      <h2>Student's favourite category</h2>
-      <div>
+    <div className="relative">
+      <div
+        className={`box1 backdrop-blur-2xl shadow-[1px_1px_300px_90px_rgba(71,165,197,1)] absolute top-56 left-24 h-1 w-1 rounded-full`}
+      ></div>
+      <div className="">
         <Pie
           options={{
             offset: 0,
@@ -51,7 +52,7 @@ const CategoryPieChart = ({ categoryData }) => {
           }}
           height={"300"}
           data={data}
-        />
+        />{" "}
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Chart as ChartJS,
   RadialLinearScale,
@@ -18,23 +18,25 @@ const randomColors = (numColors) => {
   }
   return colors;
 };
-const InstructorPolarChart = ({ param, insData }) => {
+const InstructorPolarChart = ({ insData }) => {
+  const [currChart, setCurrChart] = useState("Students");
+
   const data = {
     labels:
-      param === "Students"
+      currChart === "Students"
         ? insData?.byStudents?.map(
             (ins) => `${ins?.firstName} ${ins?.lastName}`
           )
         : insData?.byIncome?.map((ins) => `${ins?.firstName} ${ins?.lastName}`),
     datasets: [
       {
-        label: param === "Students" ? "Students" : "Rupees",
+        label: currChart === "Students" ? "Students" : "Rupees",
         data:
-          param === "Students"
+          currChart === "Students"
             ? insData?.byStudents?.map((ins) => ins?.totalStudents)
             : insData?.byIncome?.map((ins) => ins?.income),
         backgroundColor:
-          param === "Students"
+          currChart === "Students"
             ? randomColors(insData?.byStudents?.length)
             : randomColors(insData?.byIncome?.length),
         borderWidth: 1,
@@ -46,8 +48,31 @@ const InstructorPolarChart = ({ param, insData }) => {
       <div
         className={`box1 backdrop-blur-2xl shadow-[1px_1px_300px_90px_rgba(71,165,197,1)] absolute top-56 left-24 h-1 w-1 rounded-full`}
       ></div>
-      <div className="glass">
-  
+      <div className="">
+        <div>
+          <div className="">
+            <button
+              className={`${
+                currChart === "Students"
+                  ? "bg-richblack-900/50 text-yellow-100"
+                  : "text-yellow-200/60"
+              } font-medium px-3 py-2 rounded-lg`}
+              onClick={() => setCurrChart("Students")}
+            >
+              Students
+            </button>
+            <button
+              className={`${
+                currChart === "Income"
+                  ? "bg-richblack-900/50 text-yellow-100"
+                  : "text-yellow-200/60"
+              } font-medium px-3 py-2 rounded-lg`}
+              onClick={() => setCurrChart("Income")}
+            >
+              Income
+            </button>
+          </div>
+        </div>
         <PolarArea data={data} />
       </div>
     </div>
