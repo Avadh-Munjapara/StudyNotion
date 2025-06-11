@@ -26,7 +26,7 @@ const options = {
     },
   },
 };
-const CategoryChart = ({ categoryData }) => {
+const CategoryPieChart = ({ categoryData }) => {
   const data = {
     labels: categoryData?.map((category) => category.name),
     datasets: [
@@ -34,7 +34,8 @@ const CategoryChart = ({ categoryData }) => {
         label: "students",
         data: categoryData?.map((category) => category.totalStudents),
         backgroundColor: randomColors(categoryData?.length),
-        hoverOffset: 20
+        hoverOffset: 20,
+        borderWidth:1
       },
 
     ],
@@ -56,4 +57,4 @@ const CategoryChart = ({ categoryData }) => {
   );
 };
 
-export default CategoryChart;
+export default CategoryPieChart;
