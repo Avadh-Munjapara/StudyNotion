@@ -36,8 +36,8 @@ const CreateCategory = () => {
 
   return loading 
   ? <Spinner />
-   : <div className="flex flex-row-reverse gap-10  pl-6 pt-6">
-    <div className="flex flex-col gap-4 w-1/2 text-start">
+   : <div className="flex flex-col-reverse md:flex-row-reverse gap-10  pl-6 pt-6">
+    <div className="flex flex-col gap-4 w-3/4 md:w-1/2 text-start">
         <h1 className="text-2xl font-semibold text-richblack-5">Categories</h1>
         <ul className="flex flex-col gap-2">
             {
@@ -50,7 +50,7 @@ const CreateCategory = () => {
             }
         </ul>
     </div>
-    <form className="flex w-1/2 flex-col gap-4" onSubmit={handleSubmit(submitHandler)}>
+    <form className="flex w-3/4 md:w-1/2  flex-col gap-4" onSubmit={handleSubmit(submitHandler)}>
         <h2 className="text-2xl font-semibold text-richblack-5">Create New Scope</h2>
         <div className="flex flex-col gap-1">
  <Label text={"Enter Category Name"} forwhat={"name"} required={true}/>
