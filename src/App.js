@@ -28,6 +28,8 @@ import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import YouAreOffline from "./components/comman/YouAreOffline";
 import AdminDash from "./pages/dashboardPages/AdminPages/AdminDash";
+import CreateCategory from "./pages/dashboardPages/AdminPages/CreateCategory";
+
 function App() {
   const user = useSelector((state) => state.profile.user);
   const location = useLocation();
@@ -119,6 +121,7 @@ function App() {
               {user?.accountType === ACCOUNT_TYPE.ADMIN && (
                 <>
                   <Route path="admin" element={<AdminDash />} />
+                  <Route path="create-category" element={<CreateCategory/>} />
                 </>
               )}
               <Route path="my-profile" element={<Profile />} />

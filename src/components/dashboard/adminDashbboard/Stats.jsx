@@ -5,19 +5,19 @@ const Stats = ({ data }) => {
     <div className="flex py-3 justify-around text-center rounded-lg h-full bg-richblack-800">
       <div>
         <p className="text-3xl font-semibold text-richblack-50">
-          {data.enrolledStudents}
+          {data?.enrolledStudents}
         </p>
         <p className="text-richblack-300 font-medium">Enrolled Students</p>
       </div>
       <div>
         <p className="text-3xl font-semibold text-richblack-50">
-          {data.instructors}
+          {data?.instructors}
         </p>
         <p className="text-richblack-300 font-medium">Instructors</p>
       </div>
       <div>
         <p className="text-3xl font-semibold text-richblack-50">
-          {data.totalUsers}
+          {data?.totalUsers}
         </p>
         <p className="text-richblack-300 font-medium">Registered Users</p>
       </div>

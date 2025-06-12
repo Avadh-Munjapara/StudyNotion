@@ -21,19 +21,36 @@ const makeAuthenticatedRequest = async (url, method, data = null, token) => {
     return response.data;
   } catch (error) {
     console.error(`API request failed for ${method} ${url}:`, error);
-    return null; 
+    return null;
   }
 };
 
-
-export const createCategory = async (token, name, description) => {
-  const result = await makeAuthenticatedRequest(CREATE_CATEGORY_API, "POST", { name, description }, token);
-  if (result) {
-    toast.success("Category created successfully");
-    return result;
+export const createCategory = async (
+  token,
+  name,
+  description,
+  dispatch,
+  setLoading
+) => {
+  try {
+    dispatch(setLoading(true));
+    const result = await makeAuthenticatedRequest(
+      CREATE_CATEGORY_API,
+      "POST",
+      { name, description },
+      token
+    );
+    if (result) {
+      toast.success("Category created successfully");
+      return result;
+    }
+  } catch (error) {
+    console.log("error in create category api",error);
+    toast.error("Failed to create category");
+    return null;
+  } finally {
+    dispatch(setLoading(false));
   }
-  toast.error("Failed to create category");
-  return null;
 };
 
 export const getStats = async (token) => {
@@ -41,15 +58,30 @@ export const getStats = async (token) => {
 };
 
 export const getTopInstructors = async (token) => {
-  return await makeAuthenticatedRequest(GET_TOP_INSTRUCTORS_API, "GET", null, token);
+  return await makeAuthenticatedRequest(
+    GET_TOP_INSTRUCTORS_API,
+    "GET",
+    null,
+    token
+  );
 };
 
 export const getMostSellingCourses = async (token) => {
-  return await makeAuthenticatedRequest(GET_MOST_SELLING_COURSES_API, "GET", null, token);
+  return await makeAuthenticatedRequest(
+    GET_MOST_SELLING_COURSES_API,
+    "GET",
+    null,
+    token
+  );
 };
 
 export const getCategorywiseStudents = async (token) => {
-  return await makeAuthenticatedRequest(GET_CATEGORYWISE_STUDENTS_API, "GET", null, token);
+  return await makeAuthenticatedRequest(
+    GET_CATEGORYWISE_STUDENTS_API,
+    "GET",
+    null,
+    token
+  );
 };
 
 export const getAdminDashboardDetails = async (token, setLoading) => {
@@ -61,23 +93,38 @@ export const getAdminDashboardDetails = async (token, setLoading) => {
       getMostSellingCourses(token),
       getCategorywiseStudents(token),
     ]);
-    const [statsResult, instructorsResult, coursesResult, categoriesResult] = results;
+    const [statsResult, instructorsResult, coursesResult, categoriesResult] =
+      results;
 
     const dashboardData = {
-      stats: statsResult.status === 'fulfilled' ? statsResult.value.stats : null,
-      topInstructors: instructorsResult.status === 'fulfilled' ? instructorsResult.value.topInstructors : null,
-      mostSellingCourses: coursesResult.status === 'fulfilled' ? coursesResult.value.mostSellingCourses : null,
-      categoryWiseCourses: categoriesResult.status === 'fulfilled' ? categoriesResult.value.categoryWiseCourses : null,
+      stats:
+        statsResult.status === "fulfilled" ? statsResult.value.stats : null,
+      topInstructors:
+        instructorsResult.status === "fulfilled"
+          ? instructorsResult.value.topInstructors
+          : null,
+      mostSellingCourses:
+        coursesResult.status === "fulfilled"
+          ? coursesResult.value.mostSellingCourses
+          : null,
+      categoryWiseCourses:
+        categoriesResult.status === "fulfilled"
+          ? categoriesResult.value.categoryWiseCourses
+          : null,
     };
-    
-    if (results.some(result => result.status === 'rejected')) {
-        toast.error("Could not fetch all dashboard data. Some charts may be unavailable.");
+
+    if (results.some((result) => result.status === "rejected")) {
+      toast.error(
+        "Could not fetch all dashboard data. Some charts may be unavailable."
+      );
     }
 
     return dashboardData;
-
   } catch (error) {
-    console.error("An unexpected error occurred while fetching dashboard details:", error);
+    console.error(
+      "An unexpected error occurred while fetching dashboard details:",
+      error
+    );
     toast.error("A critical error occurred. Failed to load dashboard data.");
     return { stats: null, instructors: null, courses: null, categories: null };
   } finally {

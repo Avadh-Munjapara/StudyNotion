@@ -48,6 +48,13 @@ export const sidebarLinks = [
     type: ACCOUNT_TYPE.ADMIN,
     icon: "VscDashboard",
   },
+  {
+    id: 8,
+    name: "Add Category",
+    path: "/dashboard/create-category",
+    type: ACCOUNT_TYPE.ADMIN,
+    icon: "VscGitPullRequestCreate",
+  }
 
   // {
   //   id: 7,

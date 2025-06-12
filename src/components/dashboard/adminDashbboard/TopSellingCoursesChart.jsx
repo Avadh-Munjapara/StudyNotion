@@ -28,7 +28,6 @@ const randomColors = (numColors) => {
   return colors;
 };
 const TopSellingCoursesChart = ({ courseData }) => {
-    console.log(courseData);
   const data = {
     labels: courseData?.map((course) => course.name),
     datasets: [

@@ -21,7 +21,6 @@ const AdminDash = () => {
         setMstSoldCrs(response?.mostSellingCourses);
         setStats(response?.stats);
         setTopIns(response?.topInstructors);
-        console.log(response);
       }
     };
     fetchData(token);
@@ -34,10 +33,12 @@ const AdminDash = () => {
       <div className="mb-5">
         <Stats data={stats[0]} />
       </div>
-      <div className="grid justify-items-center gap-4 grid-cols-2 grid-rows-2">
+      <div className="grid justify-items-center gap-4 grid-cols-2 grid-rows-3">
         <CategoryPieChart categoryData={catWiseCrs} />
         <InstructorPolarChart insData={topIns[0]} />
-        <TopSellingCoursesChart courseData={mstSoldCrs} />
+        <div className="col-span-2 row-span-2">
+          <TopSellingCoursesChart courseData={mstSoldCrs} />
+        </div>
       </div>
     </div>
   );
