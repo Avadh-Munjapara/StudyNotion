@@ -28,15 +28,15 @@ const AdminDash = () => {
   return loading ? (
     <Spinner />
   ) : (
-    <div className="ml-6 mb-6 flex flex-col ">
+    <div className="sm:ml-6 sm:mb-6 ml-3 pb-3 md:w-full w-11/12  flex flex-col ">
       <h1>Admin DashBoard</h1>
       <div className="mb-5">
         <Stats data={stats[0]} />
       </div>
-      <div className="grid gap-4 grid-cols-2 ">
+      <div className="grid gap-4 grid-cols-1 md:grid-cols-2 ">
         <CategoryPieChart categoryData={catWiseCrs} />
         <InstructorPolarChart insData={topIns[0]} />
-        <div className="col-span-2 ">
+        <div className= "md:col-span-2 ">
           <TopSellingCoursesChart courseData={mstSoldCrs} />
         </div>
       </div>

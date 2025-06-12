@@ -46,22 +46,27 @@ const TopSellingCoursesChart = ({ courseData }) => {
         className={`box1 backdrop-blur-2xl shadow-[1px_1px_300px_90px_#12D8FA] absolute top-1/2 left-1/2 h-1 w-1 rounded-full`}
       ></div>
       <div className="glass  px-6 pb-6 py-4">
-                <h2 className="text-richblack-5 text-2xl font-semibold">Most Selling Courses</h2>
+        <h2 className="text-richblack-5 text-2xl font-semibold">
+          Most Selling Courses
+        </h2>
 
-        <div className="px-44">
-          <Radar 
-          options={{
-            plugins: {
-              legend: {
-                position: "top",
-                labels: {
-                  usePointStyle: true,
+        <div className="px-5 sm:px-14 lg:px-44">
+          <Radar
+            options={{
+              offset: 0,
+              maintainAspectRatio: false,
+              plugins: {
+                legend: {
+                  position: "top",
+                  labels: {
+                    usePointStyle: true,
+                  },
                 },
               },
-            },
-          }}
-          data={data}
-        />
+            }}
+            height={"400"}
+            data={data}
+          />
         </div>
       </div>
     </div>

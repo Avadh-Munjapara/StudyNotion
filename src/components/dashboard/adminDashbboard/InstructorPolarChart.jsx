@@ -80,19 +80,23 @@ const InstructorPolarChart = ({ insData }) => {
           </div>
         </div>
         <div className="w-full h-full">
-        <PolarArea
-          options={{
-            plugins: {
-              legend: {
-                position: "top",
-                labels: {
-                  usePointStyle: true,
+          <PolarArea
+            options={{
+              offset: 0,
+              maintainAspectRatio: false,
+              plugins: {
+                legend: {
+                  position: "top",
+                  labels: {
+                    usePointStyle: true,
+                  },
                 },
               },
-            },
-          }}
-          data={data}
-        />
+            }}
+                      height={"300"}
+
+            data={data}
+          />
         </div>
       </div>
     </div>
