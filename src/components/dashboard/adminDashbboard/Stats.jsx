@@ -2,7 +2,7 @@ import React from "react";
 
 const Stats = ({ data }) => {
   return (
-    <div className="flex py-3 justify-around text-center rounded-lg h-full bg-richblack-800">
+    <div className="flex glass py-3 justify-around text-center rounded-lg h-full ">
       <div>
         <p className="text-3xl font-semibold text-richblack-50">
           {data?.enrolledStudents}

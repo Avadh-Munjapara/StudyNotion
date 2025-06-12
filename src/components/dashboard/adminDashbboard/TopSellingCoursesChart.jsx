@@ -35,21 +35,36 @@ const TopSellingCoursesChart = ({ courseData }) => {
         label: "students",
         data: courseData?.map((course) => course?.studentsEnrolled),
         backgroundColor: randomColors(1),
-        borderColor:randomColors(1),
+        borderColor: randomColors(1),
         borderWidth: 1,
       },
     ],
   };
   return (
     <div className="relative">
-          <div
-            className={`box1 backdrop-blur-2xl shadow-[1px_1px_300px_90px_rgba(71,165,197,1)] absolute top-56 left-24 h-1 w-1 rounded-full`}
-          ></div>
-          <div className="">
-      
-              <Radar data={data} />
-          </div>
+      <div
+        className={`box1 backdrop-blur-2xl shadow-[1px_1px_300px_90px_#12D8FA] absolute top-1/2 left-1/2 h-1 w-1 rounded-full`}
+      ></div>
+      <div className="glass  px-6 pb-6 py-4">
+                <h2 className="text-richblack-5 text-2xl font-semibold">Most Selling Courses</h2>
+
+        <div className="px-44">
+          <Radar 
+          options={{
+            plugins: {
+              legend: {
+                position: "top",
+                labels: {
+                  usePointStyle: true,
+                },
+              },
+            },
+          }}
+          data={data}
+        />
         </div>
+      </div>
+    </div>
   );
 };
 

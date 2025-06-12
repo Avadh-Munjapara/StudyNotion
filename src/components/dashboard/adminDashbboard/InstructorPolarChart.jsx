@@ -44,36 +44,56 @@ const InstructorPolarChart = ({ insData }) => {
     ],
   };
   return (
-    <div className="relative">
+    <div className=" relative">
       <div
-        className={`box1 backdrop-blur-2xl shadow-[1px_1px_300px_90px_rgba(71,165,197,1)] absolute top-56 left-24 h-1 w-1 rounded-full`}
+        className={`box1 backdrop-blur-2xl shadow-[1px_1px_300px_90px_#E65C00] absolute top-1/2 left-1/2 h-1 w-1 rounded-full`}
       ></div>
-      <div className="">
+      <div className="glass flex flex-col gap-3 px-6 pb-6 py-4">
         <div>
-          <div className="">
-            <button
-              className={`${
-                currChart === "Students"
-                  ? "bg-richblack-900/50 text-yellow-100"
-                  : "text-yellow-200/60"
-              } font-medium px-3 py-2 rounded-lg`}
-              onClick={() => setCurrChart("Students")}
-            >
-              Students
-            </button>
-            <button
-              className={`${
-                currChart === "Income"
-                  ? "bg-richblack-900/50 text-yellow-100"
-                  : "text-yellow-200/60"
-              } font-medium px-3 py-2 rounded-lg`}
-              onClick={() => setCurrChart("Income")}
-            >
-              Income
-            </button>
+          <div className="flex items-center justify-between gap-1">
+            <h2 className="text-richblack-5 text-2xl font-semibold">
+              Most Loved Instructors
+            </h2>
+
+            <div>
+              <button
+                className={`${
+                  currChart === "Students"
+                    ? "bg-richblack-900/50 text-yellow-100"
+                    : "text-yellow-200/60"
+                } font-medium px-3 py-2 rounded-lg`}
+                onClick={() => setCurrChart("Students")}
+              >
+                Students
+              </button>
+              <button
+                className={`${
+                  currChart === "Income"
+                    ? "bg-richblack-900/50 text-yellow-100"
+                    : "text-yellow-200/60"
+                } font-medium px-3 py-2 rounded-lg`}
+                onClick={() => setCurrChart("Income")}
+              >
+                Income
+              </button>
+            </div>
           </div>
         </div>
-        <PolarArea data={data} />
+        <div className="w-full h-full">
+        <PolarArea
+          options={{
+            plugins: {
+              legend: {
+                position: "top",
+                labels: {
+                  usePointStyle: true,
+                },
+              },
+            },
+          }}
+          data={data}
+        />
+        </div>
       </div>
     </div>
   );
