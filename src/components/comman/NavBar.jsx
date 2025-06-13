@@ -18,13 +18,18 @@ import { useState } from "react";
 import { MdLogout } from "react-icons/md";
 import { logout } from "../../services/operations/authApi";
 import { RiDashboard2Line } from "react-icons/ri";
+import ConfirmationModal from './ConfirmationModal';
+import useOnClickOutside from "../../hooks/useOnClickOutside";
 const NavBar = () => {
   const boxRef = useRef(null);
+  const modalRef=useRef(null);
   const [categories, setCategories] = useState([]);
+  const [logutModal,setLogoutModal]=useState(false);
   const navigate = useNavigate();
   const user = useSelector((state) => state.profile.user);
   const location = useLocation();
   const dispatch = useDispatch();
+  useOnClickOutside(modalRef,()=>{setLogoutModal(false)});
   useEffect(() => {
     apiConnector(categoryEndpoint.GET_ALL_CATEGORY_API, "get")
       .then((response) => {
@@ -163,7 +168,7 @@ const NavBar = () => {
               >
                 {/* <div className=" h-10m w-10 top-0 left-0 rotate-45 bg-richblack-200"></div> */}
                 <div
-                  onClick={logoutHandler}
+                  onClick={()=>{setLogoutModal(true)}}
                   className="flex border-b-[1px] pb-1 border-richblack-200/50  gap-1 cursor-pointer items-center"
                 >
                   <MdLogout />
@@ -231,6 +236,10 @@ const NavBar = () => {
           </ul>
         </nav>
       </div>
+      {
+        logutModal && <ConfirmationModal modalRef={modalRef} btn1Text={"Cancel"} btn1Handler={()=>setLogoutModal(false)} 
+        btn2Handler={logoutHandler} btn2Text={"Log Out"}/>
+      }
     </div>
   );
 };
