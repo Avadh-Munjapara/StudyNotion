@@ -8,18 +8,19 @@ const Profile = () => {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
   const [userDetails, setUserDetails] = useState(null);
-  // useEffect(() => {
-  //   const fetchUserDetails = async () => {
-  //     dispatch(getUserDetails(setLoading, setUserDetails));
-  //   };
-  //   fetchUserDetails();
-  // }, [dispatch]);
+  const token=useSelector((state)=>state.auth.token);
+  useEffect(() => {
+    const fetchUserDetails = async () => {
+      dispatch(getUserDetails(token,setLoading, setUserDetails));
+    };
+    fetchUserDetails();
+  }, [dispatch]);
   const user=useSelector((state)=>state.profile.user);
   // useEffect(() => {
   //    console.log("user in profile", userDetails);
   // }, [userDetails]);
   return (
-    <div className="h-full w-full">
+    <div className="h-full w-full"> 
       {loading ? (
         <div className="h-full flex justify-center items-center mx-auto w-full">
           <Spinner />
@@ -29,7 +30,7 @@ const Profile = () => {
           <div className="sm:p-6 pl-2 sm:pl-6 pt-6 sm:pt-6">
             <LocationBar />
           </div>
-          <PersonalDetails userDetails={user} />
+          <PersonalDetails userDetails={userDetails} />
         </div>
       )}
     </div>

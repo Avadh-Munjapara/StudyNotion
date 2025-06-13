@@ -12,7 +12,7 @@ const PersonalDetails = ({ userDetails }) => {
       <div className="flex flex-col sm:flex-row p-6 md:ml-20 ml-2 mt-10 max-w-[641.75px]  mx-auto rounded-xl justify-between  bg-richblack-800 ">
         <div className="flex text-richblack-5 gap-5">
           <img
-            src={userDetails?.image.split(" ").join("?")}
+            src={userDetails?.image?.split(" ")?.join("?")}
             className="rounded-full w-14 h-14"
             alt=""
           />

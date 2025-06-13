@@ -28,21 +28,24 @@ const EditProfile = () => {
     formState: { errors, dirtyFields, isDirty },
   } = useForm({
     defaultValues: {
-      dob: null,
-      about: null,
-      phoneNumber: null,
-      gender: null,
-      countryCode: "+91",
+      dob:userDetails?.additionalDetails?.dob?.split('T')?.at(0)|| null,
+      about: userDetails?.additionalDetails?.about || null,
+      phoneNumber: userDetails?.additionalDetails?.phoneNumber || null,
+      gender: userDetails?.additionalDetails?.gender || null,
+      countryCode: userDetails?.additionalDetails?.countryCode || "+91",
     },
   });
-  // useEffect(() => {
-  //   console.log("user data in setValue useEffect", userDetails);
-  //   setValue("dob", userDetails?.additionalDetails?.dob);
-  //   setValue("about", userDetails?.additionalDetails?.about);
-  //   setValue("phoneNumber", userDetails?.additionalDetails?.phoneNumber);
-  //   setValue("gender", userDetails?.additionalDetails?.gender);
-  //   setValue("countryCode", userDetails?.additionalDetails?.countryCode);
-  // }, [userDetails]);
+  useEffect(() => {
+    if(userDetails){
+        // console.log("user data in setValue useEffect", userDetails);
+    setValue("dob", userDetails?.additionalDetails?.dob?.split('T')?.at(0));
+    setValue("about", userDetails?.additionalDetails?.about);
+    setValue("phoneNumber", userDetails?.additionalDetails?.phoneNumber);
+    setValue("gender", userDetails?.additionalDetails?.gender);
+    setValue("countryCode", userDetails?.additionalDetails?.countryCode);
+    }
+  
+  }, [userDetails]);
 
   useEffect(() => {
     // console.log("user data",userDetails);
@@ -58,10 +61,11 @@ const EditProfile = () => {
     //   ...data,
     //   phoneNumber: `${data.countrycode}${data.phoneNumber}`,
     // };
-
     if (isDirty) {
       dispatch(updateProfile(token,data, setLoading));
-      reset();
+      reset({
+        ...data
+      });
     } else {
       toast.error("update at least one detail");
     }
@@ -71,7 +75,7 @@ const EditProfile = () => {
   return (
     <div className="lg:ml-20 mx-3 mt-16 p-6 max-w-[800px] flex flex-col md:mr-32 lg:mr-64 gap-6 bg-richblack-800 rounded-lg border-[1px] border-richblack-700">
       <h2 className="text-lg font-semibold text-richblack-5">
-        Profile Information
+        Profile Information 
       </h2>
       <form
         onSubmit={handleSubmit(formHandler)}
@@ -87,7 +91,7 @@ const EditProfile = () => {
                 {...register("dob")}
                 id="dob"
                 name="dob"
-                type="date"
+                type="date" 
                 className="field2 w-full"
               />
             </div>
