@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { useSelector,useDispatch } from "react-redux";
 import { MdKeyboardArrowLeft } from "react-icons/md";
 import YellowBtn from "../../comman/YellowBtn";
-import { setStep } from "../../../slices/courseSlice";
+import { deleteCourseInfo, setEditCourse, setStep } from "../../../slices/courseSlice";
 import { editCourseDetails } from "../../../services/operations/courseApi";
 import { useNavigate } from "react-router-dom";
 import SubmitBtn from "../../comman/SubmitBtn"; 
@@ -21,7 +21,11 @@ const Publish = () => {
     const formData=new FormData();
     formData.append("courseId",courseInfo._id);
     formData.append("status",data.publish?data.publish:'draft');
-    dispatch(editCourseDetails(token,formData,courseInfo));
+    const step=1;
+    dispatch(editCourseDetails(token,formData,courseInfo,step));
+    dispatch(deleteCourseInfo);
+    dispatch(setEditCourse(false));
+    dispatch(setStep(1));
     navigate('/dashboard/my-courses'); 
   }
   const dispatch = useDispatch();

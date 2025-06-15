@@ -72,7 +72,7 @@ export function createCourse(token,payLoad, course, setLoading) {
   };
 }
 
-export function editCourseDetails(token,payLoad, course) {
+export function editCourseDetails(token,payLoad, course,step) {
   return async (dispatch) => {
     const tid = toast.loading("Editing course...");
     try {
@@ -87,7 +87,7 @@ export function editCourseDetails(token,payLoad, course) {
             status: editedCourse.data.updatedCourse.status,
           })
         );
-        dispatch(setStep(2));
+        dispatch(setStep(step));
         toast.success("course edited!");
       }
     } catch (error) {

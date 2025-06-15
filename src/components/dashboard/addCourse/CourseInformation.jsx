@@ -201,7 +201,8 @@ const CourseInformation = () => {
             : thumnailPreview,
         };
         console.log(updCourse,"upd course");
-        dispatch(editCourseDetails(token, formData, updCourse, setLoading));
+        const step=2;
+        dispatch(editCourseDetails(token, formData, updCourse, setLoading,step));
       }
     }
   };
