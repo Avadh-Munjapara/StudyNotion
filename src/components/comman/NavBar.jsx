@@ -70,6 +70,7 @@ const NavBar = () => {
           : "bg-richblack-900"
       } border-b-[0.5px] flex flex-col md:flex-row gap-2 md:gap-0 pt-2 pb-2 md:pb-0 md:pt-0 border-richblack-700 h-fit md:h-14`}
     >
+      
       <div className="w-11/12 mx-auto flex justify-between max-w-maxContent items-center">
         <div className="">
           <img className="w-[160px] h-[32px]" src={logo} alt="" />
@@ -141,7 +142,8 @@ const NavBar = () => {
           </div>
         ) : (
           <div className="flex gap-4">
-            <Link to={"/dashboard/wishList"} className="relative ">
+            
+         {user?.accountType==='Student' ?  <Link to={"/dashboard/wishList"} className="relative ">
               <IoCartOutline className="text-white cursor-pointer h-8 w-8" />
               {totalItems === 0 ? (
                 ""
@@ -153,7 +155,7 @@ const NavBar = () => {
                   {totalItems}
                 </div>
               )}
-            </Link>
+            </Link>:null}
             <div className="relative " onClick={showBox}>
               <div
                 className="text-white cursor-pointer rounded-full h-8 w-8 "
