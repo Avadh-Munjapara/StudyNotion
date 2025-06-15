@@ -4,7 +4,12 @@ import Label from "../../comman/Label";
 import ErrorMessage from "../../comman/ErrorMessage";
 import { RiMoneyRupeeCircleLine } from "react-icons/ri";
 import { getAllCategory } from "../../../services/operations/CategoryApi";
-import { setCourseInfo,setEditCourse, setLoading, setStep } from "../../../slices/courseSlice";
+import {
+  setCourseInfo,
+  setEditCourse,
+  setLoading,
+  setStep,
+} from "../../../slices/courseSlice";
 import { useDispatch, useSelector } from "react-redux";
 import Spinner from "../../comman/Spinner";
 import Tags from "./Tags";
@@ -24,7 +29,7 @@ const CourseInformation = () => {
     handleSubmit,
     getValues,
     reset,
-    formState: { errors },
+    formState: { errors, isDirty,dirtyFields },
   } = useForm();
   const [categories, setCategories] = useState([]);
   const [allTags, setAllTags] = useState([]);
@@ -62,18 +67,24 @@ const CourseInformation = () => {
       setValue("courseDesc", courseInfo.description);
       setValue("benefits", courseInfo.whatYouWillLearn);
       setValue("price", courseInfo.price);
-      setValue("category", courseInfo.category.name);
+      setValue("category", courseInfo.category.name, {
+        shouldValidate: true,
+        shouldDirty: true,
+      });
       setAllTags([...courseInfo.tag]);
       setInstructions([...courseInfo.instructions]);
-    }else{
+    } else {
       reset();
-      const newArray=[];
+      const newArray = [];
       setAllTags(newArray);
       setInstructions(newArray);
     }
-  }, [editCourse,courseInfo]);
+  }, [editCourse, courseInfo]);
 
   const isFormUpdated = () => {
+    console.log(getValues("benefits"),"benefits");
+    // console.log(courseInfo,"courseInfo");
+    // console.log(isDirty);
     if (
       getValues("courseTitle") != courseInfo.name ||
       getValues("courseDesc") != courseInfo.description ||
@@ -81,6 +92,9 @@ const CourseInformation = () => {
       getValues("category") != courseInfo.category.name ||
       getValues("benefits") != courseInfo.whatYouWillLearn
     ) {
+      return true;
+    }
+    if (!compareArrays(allTags, courseInfo.tag)) {
       return true;
     }
     if (!compareArrays(allTags, courseInfo.tag)) {
@@ -99,6 +113,8 @@ const CourseInformation = () => {
   };
 
   const submitHandler = async (data) => {
+          //   console.log(data);
+          // console.log(dirtyFields);
     if (!editCourse) {
       if (
         allTags.length === 0 ||
@@ -134,7 +150,7 @@ const CourseInformation = () => {
         formData.append("category", data.category);
         formData.append("tags", allTags);
         formData.append("instructions", instructions);
-        dispatch(createCourse(token,formData, courseInfo, setLoading));
+        dispatch(createCourse(token, formData, courseInfo, setLoading));
       }
     } else {
       if (allTags.length === 0) {
@@ -145,6 +161,8 @@ const CourseInformation = () => {
         return;
       }
       if (!isFormUpdated()) {
+        toast.error("no changes made in the form");
+      } else if (!isDirty) {
         toast.error("no changes made in the form");
       } else {
         const formData = new FormData();
@@ -160,11 +178,11 @@ const CourseInformation = () => {
         data.price != courseInfo.price && formData.append("price", data.price);
         data.category != courseInfo.category &&
           formData.append("category", data.category);
-       if(!compareArrays(allTags, courseInfo.tag)) 
+        if (!compareArrays(allTags, courseInfo.tag))
           allTags.forEach((item) => {
             formData.append("tags", item);
           });
-        if(!compareArrays(instructions, courseInfo.instructions))
+        if (!compareArrays(instructions, courseInfo.instructions))
           instructions.forEach((item) => {
             formData.append("instructions", item);
           });
@@ -182,7 +200,7 @@ const CourseInformation = () => {
             ? URL.createObjectURL(data.thumbnail[0])
             : thumnailPreview,
         };
-        dispatch(editCourseDetails(token,formData, updCourse, setLoading));
+        dispatch(editCourseDetails(token, formData, updCourse, setLoading));
       }
     }
   };
@@ -191,7 +209,7 @@ const CourseInformation = () => {
       e.preventDefault();
     }
   };
-  return loading  ? (
+  return loading ? (
     <div className="flex h-full w-full justify-center items-center">
       {" "}
       <Spinner />{" "}
@@ -271,7 +289,7 @@ const CourseInformation = () => {
           id="category"
         >
           {categories?.map((item, index) =>
-            item.name === courseInfo?.category ? (
+            item.name === courseInfo?.category?.name ? (
               <option key={index} value={item.name} selected>
                 {item.name}
               </option>
@@ -286,7 +304,7 @@ const CourseInformation = () => {
       </div>
 
       <Tags
-      setValue={setValue}
+        setValue={setValue}
         register={register}
         allTags={allTags}
         getValues={getValues}
@@ -320,7 +338,7 @@ const CourseInformation = () => {
       </div>
 
       <InstructionsInput
-      setValue={setValue}
+        setValue={setValue}
         instructions={instructions}
         watch={watch}
         setInstructions={setInstructions}
@@ -342,11 +360,11 @@ const CourseInformation = () => {
             </>
           }
         />
- 
+
         {editCourse && (
-          <YellowBtn 
-          textColour={'#000814'}
-          bgColour={'#C5C7D4'}
+          <YellowBtn
+            textColour={"#000814"}
+            bgColour={"#C5C7D4"}
             text={"Continue without saving"}
             clickHandler={() => dispatch(setStep(2))}
           />
