@@ -4,10 +4,14 @@ import { MdKeyboardArrowDown } from "react-icons/md";
 import { MdKeyboardArrowUp } from "react-icons/md";
 import { PiMonitorPlayFill } from "react-icons/pi";
 const SubSectionWindow = ({ subSections }) => {
-  const [arrowUp, setArrowUp] = useState(false);
-  const toggleArrow = () => {
-    if (arrowUp) setArrowUp(false);
-    else setArrowUp(true);
+  const [arrowStates, setArrowStates] = useState({});
+  const toggleArrow = (subSectionId,state) => {
+    setArrowStates(
+     {
+       ...arrowStates,
+      [subSectionId]:state
+     }
+    )
   };
 
   return (
@@ -15,14 +19,14 @@ const SubSectionWindow = ({ subSections }) => {
       {subSections?.map((subSection) => {
         const length = formatDuration(subSection?.timeDuration);
         return (
-          <details>
-            <summary onClick={toggleArrow} className="flex cursor-pointer items-center justify-between">
+          <details onToggle={(e)=>toggleArrow(subSection?._id,e.target.open)}>
+            <summary className="flex cursor-pointer items-center justify-between">
               <div className="flex items-center gap-1">
                 <PiMonitorPlayFill className="text-richblack-50 h-4" />
                 <h5 className="text-richblack-5 font-medium text-sm">
                   {subSection?.title}
                 </h5>
-                {arrowUp ? (
+                {arrowStates[subSection?._id] ? (
                   <MdKeyboardArrowUp className="text-richblack-50 text-xl" />
                 ) : (
                   <MdKeyboardArrowDown className="text-richblack-50 text-xl" />
