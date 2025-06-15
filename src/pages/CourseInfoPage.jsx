@@ -123,13 +123,7 @@ const CourseInfoPage = () => {
                   <p className="text-3xl text-richblack-5 font-medium">
                     What you'll learn
                   </p>
-                  <ul className="list-type-none">
-                    {course?.whatYouWillLearn?.map((item) => (
-                      <li className="text-richblack-50 font-medium text-sm">
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
+                  <p className="text-richblack-50 texto=-sm font-medium">{course?.whatYouWillLearn}</p>
                 </div>
 
                 {/* course content */}

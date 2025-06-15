@@ -82,7 +82,7 @@ const CourseInformation = () => {
   }, [editCourse, courseInfo]);
 
   const isFormUpdated = () => {
-    console.log(getValues("benefits"),"benefits");
+    // console.log(getValues("benefits"),"benefits");
     // console.log(courseInfo,"courseInfo");
     // console.log(isDirty);
     if (
@@ -113,8 +113,8 @@ const CourseInformation = () => {
   };
 
   const submitHandler = async (data) => {
-          //   console.log(data);
-          // console.log(dirtyFields);
+            console.log(data);
+          console.log(dirtyFields);
     if (!editCourse) {
       if (
         allTags.length === 0 ||
@@ -193,13 +193,14 @@ const CourseInformation = () => {
           description: data.courseDesc,
           whatYouWillLearn: data.benefits,
           price: data.price,
-          category: data.category,
+          category: {name:data.category},
           tag: allTags,
           instructions: instructions,
           thumbnail: data.thumbnail[0]
             ? URL.createObjectURL(data.thumbnail[0])
             : thumnailPreview,
         };
+        console.log(updCourse,"upd course");
         dispatch(editCourseDetails(token, formData, updCourse, setLoading));
       }
     }
@@ -287,18 +288,13 @@ const CourseInformation = () => {
           name="category"
           className="field2 cursor-pointer"
           id="category"
+          value={watch("category")}
         >
           {categories?.map((item, index) =>
-            item.name === courseInfo?.category?.name ? (
-              <option key={index} value={item.name} selected>
-                {item.name}
-              </option>
-            ) : (
               <option key={index} value={item.name}>
                 {item.name}
               </option>
-            )
-          )}
+         )}
         </select>
         {errors.category && <ErrorMessage message={errors.category.message} />}
       </div>
