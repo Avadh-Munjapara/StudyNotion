@@ -15,7 +15,7 @@ const {
   GET_INSTRUCTOR_DASHBOARD_INFO_API,
 } = profileEndpoint;
 
-export function getUserDetails(token,setLoading, setUserDetails) {
+export function getUserDetails(token, setLoading, setUserDetails) {
   return async (dispatch) => {
     setLoading(true);
     try {
@@ -38,7 +38,7 @@ export function getUserDetails(token,setLoading, setUserDetails) {
   };
 }
 
-export function updateProfile(token,payload, setLoading) {
+export function updateProfile(token, payload, setLoading) {
   return async (dispatch) => {
     const tId = toast.loading("loading");
     setLoading(true);
@@ -61,8 +61,9 @@ export function updateProfile(token,payload, setLoading) {
   };
 }
 
-export function deleteAccount(token,navigate) {
+export function deleteAccount(token, navigate) {
   return async (dispatch) => {
+    const tId = toast.loading("deleting...");
     dispatch(setLoading(true));
     try {
       const response = await apiConnector(
@@ -85,11 +86,14 @@ export function deleteAccount(token,navigate) {
       }
     } catch (error) {
       console.log("error while deleting account operation", error.message);
+    } finally {
+      dispatch(setLoading(false));
+      toast.dismiss(tId);
     }
   };
 }
 
-export function updateDP(token,formData) {
+export function updateDP(token, formData) {
   return async (dispatch) => {
     const tId = toast.loading("updating...");
     try {
@@ -114,7 +118,7 @@ export function updateDP(token,formData) {
     toast.dismiss(tId);
   };
 }
- 
+
 export async function getEnrolledCourses(token) {
   let result = [];
   try {
@@ -137,7 +141,7 @@ export async function getEnrolledCourses(token) {
   return result;
 }
 
-export async function getInstructorCourses(token,dispatch) {
+export async function getInstructorCourses(token, dispatch) {
   dispatch(setLoading(true));
   try {
     const response = await apiConnector(
@@ -159,7 +163,7 @@ export async function getInstructorCourses(token,dispatch) {
   dispatch(setLoading(false));
 }
 
-export async function getInstructorDashboardInfo(token,setLoading) {
+export async function getInstructorDashboardInfo(token, setLoading) {
   setLoading(true);
   try {
     var tId = toast.loading("loading");
