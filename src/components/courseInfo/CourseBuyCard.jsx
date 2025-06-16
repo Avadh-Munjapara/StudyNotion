@@ -1,11 +1,13 @@
 import React from "react";
 import YellowBtn from "../comman/YellowBtn";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { TiTickOutline } from "react-icons/ti";
 import { FaShareFromSquare } from "react-icons/fa6";
 import copy from 'copy-to-clipboard';
 import toast from "react-hot-toast";
+import { removeItem } from "../../slices/cartSlice";
 const CourseBuyCard = ({
+  course,
   thumbnail,
   isBought,
   price,
@@ -14,7 +16,11 @@ const CourseBuyCard = ({
   addToCart,
   goToCourseHandler
 }) => {
-
+  const items=useSelector((state)=>state.cart.items);
+  const dispatch=useDispatch();
+  const removeFromCart=(_id)=>{
+    dispatch(removeItem({_id}));
+  }
   const shareHandler=()=>{
       copy(window.location.href);
       toast.success("Link Copied to Clipboard");
@@ -29,7 +35,10 @@ const CourseBuyCard = ({
       ) : (
         <div>
           <div className="flex flex-col gap-3">
-            <YellowBtn widthFull={true} text="Add to Cart" clickHandler={addToCart} />
+        {
+          items?.some((item)=>item?._id===course?._id) ?  <YellowBtn widthFull={true} text="Remove from Cart" clickHandler={()=>removeFromCart(course?._id)} />
+          : <YellowBtn widthFull={true} text="Add to Cart" clickHandler={addToCart} />
+        }
             <YellowBtn textColour={'#F1F2FF'} widthFull={true} text="Buy Now" bgColour={'#161D29'} clickHandler={buyHandler} />
           </div>
         </div>
