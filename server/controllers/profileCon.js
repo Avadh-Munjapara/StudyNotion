@@ -48,27 +48,110 @@ exports.updateProfile = async (req, res) => {
   }
 };
 
+// exports.deleteAccount = async (req, res) => {
+//   try {
+//     const userId = req.user.id;
+//     const userIdObjectId=new mongoose.Types.ObjectId(userId)
+//     // const account = await User.findByIdAndDelete(userId);
+//     const removeFromCourses=await Course.aggregate([{
+//       $match:{studentsEnrolled:{$in:[userIdObjectId]}}
+//     }
+//   ]);
+//   const crs=removeFromCourses.map((course)=>{
+//     const newStudents=course.studentsEnrolled.filter((student)=>student!=userId);
+//     return {
+//       ...course,
+//       studentsEnrolled:newStudents
+//     }
+//   })
+
+//   console.log(crs);
+
+//     // if (!account) {
+//     //   return res.status(404).json({
+//     //     success: false,
+//     //     message: "no account found",
+//     //   });
+//     // }
+//     //do i need to remove user from other documetns entries?
+//     return res.status(200).json({
+//       success: true,
+//       message: "account deleted successfully",
+//     });
+//   } catch (error) {
+//     console.log("error while deleting profile", error);
+//     return res.status(500).json({
+//       success: false,
+//       message: "failure in deleting profile",
+//     });
+//   }
+// };
+
 exports.deleteAccount = async (req, res) => {
+  let session;
   try {
     const userId = req.user.id;
-    const account = await User.findByIdAndDelete(userId);
-    if (!account) {
-      return res.status(404).json({
-        success: false,
-        message: "no account found",
-      });
-    }
-    //do i need to remove user from other documetns entries?
-    return res.status(200).json({
-      success: true,
-      message: "account deleted successfully",
+    const userIdObjectId = new mongoose.Types.ObjectId(userId);
+
+    session = await mongoose.startSession({
+      defaultTransactionOptions: {
+        readConcern: { level: 'snapshot' },
+        writeConcern: { w: 'majority' },
+        maxTimeMS: 30000 
+      }
     });
+
+    const result = await session.withTransaction(async () => {
+      const coursesToUpdate = await Course.find({
+        studentsEnrolled: userIdObjectId
+      }).session(session);
+
+      if (coursesToUpdate.length > 0) {
+        await Course.bulkWrite(
+          coursesToUpdate.map(course => ({
+            updateOne: {
+              filter: { _id: course._id },
+              update: { $pull: { studentsEnrolled: userIdObjectId } }
+            }
+          })),
+          { session }
+        );
+      }
+
+      await Promise.all([
+        CourseProgress.deleteMany({ userId: userIdObjectId }, { session }),
+        Profile.findByIdAndDelete(
+          (await User.findById(userId).select('additionalDetails')).additionalDetails,
+          { session }
+        ),
+        User.findByIdAndDelete(userId, { session })
+      ]);
+
+      return true;
+    }, {
+      maxTimeMS: 30000
+    });
+
+    if (result) {
+      return res.status(200).json({
+        success: true,
+        message: "Account and related data deleted successfully"
+      });
+    } else {
+      throw new Error("Transaction failed");
+    }
+
   } catch (error) {
-    console.log("error while deleting profile", error);
+    console.log("Error while deleting profile:", error);
     return res.status(500).json({
       success: false,
-      message: "failure in deleting profile",
+      message: "Failed to delete account",
+      error: error.message
     });
+  } finally {
+    if (session) {
+      await session.endSession();
+    }
   }
 };
 
