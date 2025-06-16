@@ -21,7 +21,7 @@ const CourseCard = ({ course, rating }) => {
           </h4>
           <h5 className="text-[#838894]">{course.category.name}</h5>
           <div className="flex items-center gap-2">
-            <span className="text-[#E7C009] block">{rating}</span>
+            <span className="text-[#E7C009] block">{rating?rating:"0"}</span>
             <ReactStars
               count={5}
               edit={false}

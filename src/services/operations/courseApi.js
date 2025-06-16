@@ -28,17 +28,18 @@ const {
   CREATE_RATING_API,
   GET_COURSE_REVIEW_API,
   GET_ALL_REVIEWS_API,
+  GET_AVERAGE_RATING_API
 } = courseEndPoint;
 
 export async function getAverageRating(token,payLoad) {
-  dispatchEvent(setLoading(true));
   try {
-    const response = await apiConnector(GET_AVG_RATING, "GET", payLoad, {
+    const response = await apiConnector(GET_AVERAGE_RATING_API, "POST", payLoad, {
       Authorization: `bearer ${token}`,
     });
     if (!response.data.success) {
       throw new Error(response.data.message);
     }
+    return response.data;
   } catch (error) {
     console.log("error in getAverageRating api", error);
   }

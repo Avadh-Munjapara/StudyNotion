@@ -6,20 +6,23 @@ import CourseCard from "../../components/dashboard/wishList/CourseCard.";
 import TotalAmount from "../../components/dashboard/wishList/TotalAmount";
 import { useState } from "react";
 import { MdOutlineRemoveShoppingCart } from "react-icons/md";
+
 const WishList = () => {
   const { totalItems, items } = useSelector((state) => state.cart);
   const { token } = useSelector((state) => state.auth);
 
-  const [avgRating, setAvgRating] = useState(new Map());
+  const [avgRating, setAvgRating] = useState({});
   useEffect(() => {
     totalItems > 0 &&
       items &&
       items.forEach(async (element) => {
         try {
-          const rating = await getAverageRating(token, element._id);
-          const newMap = new Map(avgRating);
-          newMap.set(element._id, rating);
-          setAvgRating(newMap);
+          const ratingResponse = await getAverageRating(token,{courseId:element._id});
+          setAvgRating({
+            ...avgRating,
+            [element._id]:ratingResponse.avgRating.toFixed(1)
+          });
+          console.log(avgRating);
         } catch (error) {
           console.log("error while getting average rating", error);
         }
