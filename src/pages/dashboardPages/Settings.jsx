@@ -27,7 +27,9 @@ const Settings = () => {
                     <ChangeDP/>
                     <EditProfile profileInformation={userDetails?.additionalDetails}/>
                     <ChangePassword/>
-                    <DeleteAccount/>
+                    {
+                      userDetails?.accountType==='Student'?<DeleteAccount/>:null
+                    }
                 </div>)
 }
 
