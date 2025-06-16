@@ -1,18 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { RiDeleteBinLine } from "react-icons/ri";
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteAccount } from '../../services/operations/profileApi';
 import ConfirmationModal from '../comman/ConfirmationModal';
 import useOnClickOutside from '../../hooks/useOnClickOutside';
+import { LoadingContext } from '../../pages/dashboardPages/DashBoard';
 const DeleteAccount = () => {
+    const {loading,setLoading}=useContext(LoadingContext);
     const navigate=useNavigate();
     const [confirmationModal,setConfirmationModal]=React.useState(false);
       const { token } = useSelector((state) => state.auth);
     const dispatch=useDispatch();
     const modalRef=React.useRef(null);
     const clickHandler=(e)=>{
-        dispatch(deleteAccount(token,navigate));
+        dispatch(deleteAccount(token,navigate,setLoading));
     }
     useOnClickOutside(modalRef,()=>{setConfirmationModal(false)});
     return (

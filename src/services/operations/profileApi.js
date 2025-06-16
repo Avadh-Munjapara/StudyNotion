@@ -61,10 +61,11 @@ export function updateProfile(token, payload, setLoading) {
   };
 }
 
-export function deleteAccount(token, navigate) {
+export function deleteAccount(token, navigate, setLoading) {
   return async (dispatch) => {
     const tId = toast.loading("deleting...");
-    dispatch(setLoading(true));
+    setLoading(true);
+    // dispatch(setLoading(true));
     try {
       const response = await apiConnector(
         DELETEPROFILE,
@@ -87,8 +88,9 @@ export function deleteAccount(token, navigate) {
     } catch (error) {
       console.log("error while deleting account operation", error.message);
     } finally {
-      dispatch(setLoading(false));
+      setLoading(false);
       toast.dismiss(tId);
+      // dispatch(setLoading(false));
     }
   };
 }
