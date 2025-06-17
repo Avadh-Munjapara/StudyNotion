@@ -450,6 +450,10 @@ exports.deleteCourse = async (req, res) => {
         message: "course for given id is not found",
       });
     }
+    if(course.studentsEnrolled.length!=0) return res.status(200).json({
+      success:false,
+      message:"you can not delete course which have students enrolled"
+    })
     await SubSection.deleteMany({ courseId: courseId });
     await Section.deleteMany({ courseId: courseId });
     await Course.findByIdAndDelete(courseId);
