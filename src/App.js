@@ -30,6 +30,7 @@ import YouAreOffline from "./components/comman/YouAreOffline";
 import AdminDash from "./pages/dashboardPages/AdminPages/AdminDash";
 import CreateCategory from "./pages/dashboardPages/AdminPages/CreateCategory";
 import { SpeedInsights } from "@vercel/speed-insights/react";
+import { Analytics } from '@vercel/analytics/react';
 
 function App() {
   const user = useSelector((state) => state.profile.user);
@@ -148,6 +149,7 @@ function App() {
             </Route>
           </Routes>
           <SpeedInsights />
+          <Analytics />
         </>
       ) : (
         <YouAreOffline />
