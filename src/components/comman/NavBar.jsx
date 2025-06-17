@@ -27,6 +27,7 @@ const NavBar = () => {
   const [logutModal, setLogoutModal] = useState(false);
   const navigate = useNavigate();
   const user = useSelector((state) => state.profile.user);
+  const catalogRef=useRef(null);
   const location = useLocation();
   const dispatch = useDispatch();
   useOnClickOutside(modalRef, () => {
@@ -52,6 +53,20 @@ const NavBar = () => {
       boxRef.current.classList.remove("visible");
     }
   };
+
+  const toggleMenu=()=>{
+    if(catalogRef.current.classList.contains('invisible')){
+      catalogRef.current.classList.remove('invisible');
+      catalogRef.current.classList.remove('opacity-0');
+      catalogRef.current.classList.add('visible');
+      catalogRef.current.classList.add('opacity-100');
+    }else{ catalogRef.current.classList.add('invisible');
+      catalogRef.current.classList.add('opacity-0');
+      catalogRef.current.classList.remove('visible');
+      catalogRef.current.classList.remove('opacity-100');
+
+    }
+  }
 
   const logoutHandler = (e) => {
     setLogoutModal(false);
@@ -83,12 +98,14 @@ const NavBar = () => {
               return (
                 <li key={index}>
                   {item.title === "Catalog" ? (
-                    <div className="text-richblack-200 relative group cursor-pointer">
-                      <div className="flex gap-1 items-center">
+                    <div className="text-richblack-200 relative  cursor-pointer">
+                      <div onClick={()=>toggleMenu()} className="flex gap-1 items-center">
                         Catalog
                         <IoIosArrowDropdown />
                       </div>
-                      <div className="group-hover:visible invisible opacity-0 group-hover:opacity-100 transition-all z-30 group-hover:-translate-y-2 duration-[250] absolute px-2 -translate-x-5  top-12 rounded-xl py-3 text-richblack-800 bg-richblack-25">
+                      <div ref={catalogRef}  className=" invisible opacity-0 
+                      transition-all z-30  duration-[250] 
+                      absolute px-2 -translate-x-5  top-12 rounded-xl py-3 text-richblack-800 bg-richblack-25">
                         <div className="z-10  flex flex-col gap-1 relative ">
                           {categories.length === 0
                             ? "No Categroies have been created"
