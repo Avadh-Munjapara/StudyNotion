@@ -5,6 +5,8 @@ const User = require('../models/User');
 const bcrypt=require('bcrypt');
 const jwt=require('jsonwebtoken');
 const mailSender = require('../utils/mailSender');
+const { passwordUpdated } = require("../mail/templates/passwordUpdate");
+
 //signup
 exports.signup=async(req,res)=>{
     
@@ -242,8 +244,10 @@ exports.changePassword=async(req,res)=>{
         //update password in db
         user=await User.findByIdAndUpdate(req.user.id,{password:hashedPassword},{new:true})
         //send mail to user
-        const passUpdateMail=await mailSender(req.user.email,"your password has changed",
-           "your password has been changed"); 
+        const passUpdateMail=await mailSender(req.user.email,	passwordUpdated(
+					user.email,
+					`Password updated successfully for ${user.firstName} ${user.lastName}`
+				)); 
         //return response
         return res.status(200).json({
              success:true,

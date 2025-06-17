@@ -1,4 +1,5 @@
 const mailSender=require('../utils/mailSender');
+const {contactUsEmail}=require("../mail/templates/contactFormRes");
 require('dotenv').config();
 exports.contactUs=async(req,res)=>{
     const{firstName,lastName,email,phoneNumber,message}=req.body;
@@ -11,9 +12,7 @@ exports.contactUs=async(req,res)=>{
 
     try {
         const contactAdmin=mailSender(process.env.USEREMAIL,"we have been contaced",
-            `the user${email} with name ${firstName} ${lastName} have reached us , and 
-            here its message:
-            ${message}`);
+           contactUsEmail(email, firstName, lastName, message, phoneNumber));
     } catch (error) {
         console.log('error while sending mail to admin', error);
         return res.status(500).json({

@@ -5,6 +5,7 @@ const razorpay = require("razorpay");
 const { default: mongoose } = require("mongoose");
 const mailSender = require("../utils/mailSender");
 const CourseProgress = require("../models/CourseProgress");
+const { courseEnrollmentEmail } = require("../mail/templates/courseEnrollmentEmail");
 
 exports.capturePayment = async (req, res) => {
   //fetch needed data
@@ -32,7 +33,7 @@ exports.capturePayment = async (req, res) => {
       });
     }
     for (const course of courses) {
-      courseFound = await Course.findById(course);
+      const courseFound = await Course.findById(course);
       if (!courseFound) {
         return res.status(400).json({
           success: false,
@@ -94,7 +95,13 @@ exports.capturePayment = async (req, res) => {
     });
   }
 };
-
+const fetchCoursesName=(courses)=>{
+  console.log(courses);
+  const names=courses.map((course)=>course.name);
+  const stringNames=names.join();
+  console.log(stringNames);
+  return stringNames;
+}
 //verify signature of razorpay and server
 exports.verifySignatureAndEnrollStudent = async (req, res) => {
   // const webHookSecret = process.env.WEBHOOKSECRET;
@@ -125,6 +132,7 @@ exports.verifySignatureAndEnrollStudent = async (req, res) => {
   if (razorpay_signature === expectedSignature) {
     //fullfill the action
     let enrolledStudent;
+    let enrolledCourses=[];
     try {
       for (const course of courses) {
         const enrolledCourse = await Course.findByIdAndUpdate(
@@ -136,7 +144,7 @@ exports.verifySignatureAndEnrollStudent = async (req, res) => {
           userId: userId,
           courseId: course,
         };
-
+        enrolledCourses.push(enrolledCourse);
         const courseProgressObject = await CourseProgress.create(courseProgess);
 
         enrolledStudent = await User.findByIdAndUpdate(
@@ -162,9 +170,8 @@ exports.verifySignatureAndEnrollStudent = async (req, res) => {
 
     const enrollEmail = await mailSender(
       enrolledStudent.email,
-      "enrollment successfull",
-      "let's begin new journey"
-    );
+     `Successfully Enrolled into ${fetchCoursesName(enrolledCourses)}`,
+            courseEnrollmentEmail(fetchCoursesName(enrolledCourses), `${enrolledStudent.firstName}`  ));
     // console.log("sab bhumi gopal ki");
     return res.status(200).json({
       success: true,
