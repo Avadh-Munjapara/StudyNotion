@@ -108,9 +108,9 @@ exports.getCategoryPageDetails = async (req, res) => {
           },
         },
       },
-      {
-        $limit: 9,
-      },
+      // {
+      //   $limit: 9,
+      // },
     ]);
     console.log("categorydata", categoryCourses);
     if (!categoryCourses) {
