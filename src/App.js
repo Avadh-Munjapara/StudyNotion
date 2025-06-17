@@ -29,6 +29,7 @@ import { useEffect, useState } from "react";
 import YouAreOffline from "./components/comman/YouAreOffline";
 import AdminDash from "./pages/dashboardPages/AdminPages/AdminDash";
 import CreateCategory from "./pages/dashboardPages/AdminPages/CreateCategory";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 
 function App() {
   const user = useSelector((state) => state.profile.user);
@@ -60,82 +61,94 @@ function App() {
       }`}
     >
       {isOnline ? (
-        <Routes>
-          <Route path="/" element={<Home />}></Route>
-          <Route path="/signUp" element={<Signup />}></Route>
-          <Route path="/login" element={<Login />}></Route>
-          <Route path="/verify-email" element={<Verify />}></Route>
-          <Route path="/forgot-password" element={<ForgotPassword />}></Route>
-          <Route path="/catalog/:catalogName" element={<CatalogPage />}></Route>
-          <Route path="/course/:courseId" element={<CourseInfoPage />}></Route>
-          <Route
-            path="/forgot-password/:id"
-            element={<ResetForgotPassword />}
-          ></Route>
-          <Route path="/about" element={<About />}></Route>
-          <Route path="/contact" element={<ContactPage />}></Route>
-          <Route path="*" element={<NotFound />}></Route>
-          {user && (
-            <Route path="/dashboard" element={<DashBoard />}>
-              {user?.accountType === ACCOUNT_TYPE.STUDENT && (
-                <Route
-                  index={true}
-                  element={<Navigate to={"/dashboard/enrolled-courses"} />}
-                />
-              )}
-              {user?.accountType === ACCOUNT_TYPE.INSTRUCTOR && (
-                <Route
-                  index={true}
-                  element={<Navigate to={"/dashboard/my-courses"} />}
-                />
-              )}
-              {user?.accountType === ACCOUNT_TYPE.ADMIN && (
-                <Route
-                  index={true}
-                  element={<Navigate to={"/dashboard/admin"} />}
-                />
-              )}
-              {user?.accountType === ACCOUNT_TYPE.STUDENT && (
-                <>
+        <>
+          <Routes>
+            <Route path="/" element={<Home />}></Route>
+            <Route path="/signUp" element={<Signup />}></Route>
+            <Route path="/login" element={<Login />}></Route>
+            <Route path="/verify-email" element={<Verify />}></Route>
+            <Route path="/forgot-password" element={<ForgotPassword />}></Route>
+            <Route
+              path="/catalog/:catalogName"
+              element={<CatalogPage />}
+            ></Route>
+            <Route
+              path="/course/:courseId"
+              element={<CourseInfoPage />}
+            ></Route>
+            <Route
+              path="/forgot-password/:id"
+              element={<ResetForgotPassword />}
+            ></Route>
+            <Route path="/about" element={<About />}></Route>
+            <Route path="/contact" element={<ContactPage />}></Route>
+            <Route path="*" element={<NotFound />}></Route>
+            {user && (
+              <Route path="/dashboard" element={<DashBoard />}>
+                {user?.accountType === ACCOUNT_TYPE.STUDENT && (
                   <Route
+                    index={true}
                     element={<Navigate to={"/dashboard/enrolled-courses"} />}
                   />
+                )}
+                {user?.accountType === ACCOUNT_TYPE.INSTRUCTOR && (
                   <Route
-                    path="enrolled-courses"
-                    element={<EnrolledCourses />}
+                    index={true}
+                    element={<Navigate to={"/dashboard/my-courses"} />}
                   />
-                  <Route path="wishList" element={<WishList />} />
-                </>
-              )}
-              {user?.accountType === ACCOUNT_TYPE.INSTRUCTOR && (
-                <>
-                  <Route path="my-courses" element={<MyCourses />} />
-                  <Route path="add-course" element={<AddCourse />} />
+                )}
+                {user?.accountType === ACCOUNT_TYPE.ADMIN && (
                   <Route
-                    path="edit-course/:courseId"
-                    element={<EditCourse />}
+                    index={true}
+                    element={<Navigate to={"/dashboard/admin"} />}
                   />
-                  <Route path="Instructor" element={<InsDash />} />
-                </>
-              )}
-              {user?.accountType === ACCOUNT_TYPE.ADMIN && (
-                <>
-                  <Route path="admin" element={<AdminDash />} />
-                  <Route path="create-category" element={<CreateCategory/>} />
-                </>
-              )}
-              <Route path="my-profile" element={<Profile />} />
-              <Route path="settings" element={<Settings />} />
-            </Route>
-          )}
+                )}
+                {user?.accountType === ACCOUNT_TYPE.STUDENT && (
+                  <>
+                    <Route
+                      element={<Navigate to={"/dashboard/enrolled-courses"} />}
+                    />
+                    <Route
+                      path="enrolled-courses"
+                      element={<EnrolledCourses />}
+                    />
+                    <Route path="wishList" element={<WishList />} />
+                  </>
+                )}
+                {user?.accountType === ACCOUNT_TYPE.INSTRUCTOR && (
+                  <>
+                    <Route path="my-courses" element={<MyCourses />} />
+                    <Route path="add-course" element={<AddCourse />} />
+                    <Route
+                      path="edit-course/:courseId"
+                      element={<EditCourse />}
+                    />
+                    <Route path="Instructor" element={<InsDash />} />
+                  </>
+                )}
+                {user?.accountType === ACCOUNT_TYPE.ADMIN && (
+                  <>
+                    <Route path="admin" element={<AdminDash />} />
+                    <Route
+                      path="create-category"
+                      element={<CreateCategory />}
+                    />
+                  </>
+                )}
+                <Route path="my-profile" element={<Profile />} />
+                <Route path="settings" element={<Settings />} />
+              </Route>
+            )}
 
-          <Route element={<ViewCourse />}>
-            <Route
-              path="/view-course/:courseId/sectionId/:sectionId/sub-sectionId/:subSectionId"
-              element={<VideoDetails />}
-            />
-          </Route>
-        </Routes>
+            <Route element={<ViewCourse />}>
+              <Route
+                path="/view-course/:courseId/sectionId/:sectionId/sub-sectionId/:subSectionId"
+                element={<VideoDetails />}
+              />
+            </Route>
+          </Routes>
+          <SpeedInsights />
+        </>
       ) : (
         <YouAreOffline />
       )}
