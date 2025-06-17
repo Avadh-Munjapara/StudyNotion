@@ -20,8 +20,19 @@ app.use(fileUpload({
 }));
 
 app.use(cors({
-    origin: process.env.BACK_URL,
-    credentials:true 
+    origin: [
+        "http://localhost:3000",
+        "https://your-frontend-domain.vercel.app" 
+    ],
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: [
+        "Origin",
+        "X-Requested-With",
+        "Content-Type",
+        "Accept",
+        "Authorization"
+    ]
 }));
 
 app.use('/api/v1/auth',userRoute);
