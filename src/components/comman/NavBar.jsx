@@ -18,18 +18,20 @@ import { useState } from "react";
 import { MdLogout } from "react-icons/md";
 import { logout } from "../../services/operations/authApi";
 import { RiDashboard2Line } from "react-icons/ri";
-import ConfirmationModal from './ConfirmationModal';
+import ConfirmationModal from "./ConfirmationModal";
 import useOnClickOutside from "../../hooks/useOnClickOutside";
 const NavBar = () => {
   const boxRef = useRef(null);
-  const modalRef=useRef(null);
+  const modalRef = useRef(null);
   const [categories, setCategories] = useState([]);
-  const [logutModal,setLogoutModal]=useState(false);
+  const [logutModal, setLogoutModal] = useState(false);
   const navigate = useNavigate();
   const user = useSelector((state) => state.profile.user);
   const location = useLocation();
   const dispatch = useDispatch();
-  useOnClickOutside(modalRef,()=>{setLogoutModal(false)});
+  useOnClickOutside(modalRef, () => {
+    setLogoutModal(false);
+  });
   useEffect(() => {
     apiConnector(categoryEndpoint.GET_ALL_CATEGORY_API, "get")
       .then((response) => {
@@ -52,6 +54,7 @@ const NavBar = () => {
   };
 
   const logoutHandler = (e) => {
+    setLogoutModal(false);
     dispatch(logout(navigate));
   };
 
@@ -70,7 +73,6 @@ const NavBar = () => {
           : "bg-richblack-900"
       } border-b-[0.5px] flex flex-col md:flex-row gap-2 md:gap-0 pt-2 pb-2 md:pb-0 md:pt-0 border-richblack-700 h-fit md:h-14`}
     >
-      
       <div className="w-11/12 mx-auto flex justify-between max-w-maxContent items-center">
         <div className="">
           <img className="w-[160px] h-[32px]" src={logo} alt="" />
@@ -142,20 +144,21 @@ const NavBar = () => {
           </div>
         ) : (
           <div className="flex gap-4">
-            
-         {user?.accountType==='Student' ?  <Link to={"/dashboard/wishList"} className="relative ">
-              <IoCartOutline className="text-white cursor-pointer h-8 w-8" />
-              {totalItems === 0 ? (
-                ""
-              ) : (
-                <div
-                  className="h-4 w-4 rounded-full absolute right-0 
+            {user?.accountType === "Student" ? (
+              <Link to={"/dashboard/wishList"} className="relative ">
+                <IoCartOutline className="text-white cursor-pointer h-8 w-8" />
+                {totalItems === 0 ? (
+                  ""
+                ) : (
+                  <div
+                    className="h-4 w-4 rounded-full absolute right-0 
                     text-xs text-black -top-1 ball_animation bg-green-400 flex justify-center items-center"
-                >
-                  {totalItems}
-                </div>
-              )}
-            </Link>:null}
+                  >
+                    {totalItems}
+                  </div>
+                )}
+              </Link>
+            ) : null}
             <div className="relative " onClick={showBox}>
               <div
                 className="text-white cursor-pointer rounded-full h-8 w-8 "
@@ -170,7 +173,9 @@ const NavBar = () => {
               >
                 {/* <div className=" h-10m w-10 top-0 left-0 rotate-45 bg-richblack-200"></div> */}
                 <div
-                  onClick={()=>{setLogoutModal(true)}}
+                  onClick={() => {
+                    setLogoutModal(true);
+                  }}
                   className="flex border-b-[1px] pb-1 border-richblack-200/50  gap-1 cursor-pointer items-center"
                 >
                   <MdLogout />
@@ -238,10 +243,15 @@ const NavBar = () => {
           </ul>
         </nav>
       </div>
-      {
-        logutModal && <ConfirmationModal modalRef={modalRef} btn1Text={"Cancel"} btn1Handler={()=>setLogoutModal(false)} 
-        btn2Handler={logoutHandler} btn2Text={"Log Out"}/>
-      }
+      {logutModal && (
+        <ConfirmationModal
+          modalRef={modalRef}
+          btn1Text={"Cancel"}
+          btn1Handler={() => setLogoutModal(false)}
+          btn2Handler={logoutHandler}
+          btn2Text={"Log Out"}
+        />
+      )}
     </div>
   );
 };
