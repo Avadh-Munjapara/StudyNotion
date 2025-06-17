@@ -22,7 +22,7 @@ app.use(fileUpload({
 app.use(cors({
     origin: [
         "http://localhost:3000",
-        "studynotion-frontend-dun.vercel.app" 
+        "https://studynotion-frontend-dun.vercel.app" 
     ],
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
