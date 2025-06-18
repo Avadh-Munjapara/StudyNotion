@@ -60,7 +60,7 @@ const WishList = () => {
         </div>
       ) : (
         <div className="flex justify-center w-full h-[20rem] items-center">
-          <p className="text-richblack-50 text-lg flex flex-col items-center gap-3">
+          <p className="text-richblack-50 text-lg flex text-center flex-col items-center gap-3">
             <MdOutlineRemoveShoppingCart className="text-yellow-25 text-3xl" />
             You haven't added anything to wish list yet
           </p>

@@ -9,6 +9,7 @@ import ProgressBar from "@ramonak/react-progress-bar";
 import formatDuration from "../../../utils/formatDuration";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { FaFrownOpen } from "react-icons/fa";
 const EnrolledCoursesTable = () => {
   const { token } = useSelector((state) => state.auth);
   const [enrolledCourses, setEnrolledCourses] = useState(null);
@@ -99,8 +100,9 @@ const EnrolledCoursesTable = () => {
             </table>
           </div>
         ) : (
-          <div className="h-full w-full flex justify-center items-center">
-            <p className="text-richblack-5">
+          <div className="h-[20rem] w-full flex justify-center items-center">
+            <p className="text-richblack-200 text-center flex gap-1 items-center font-medium flex-col text-xl">
+              <FaFrownOpen className="text-yellow-25 text-2xl"/>
               You Have not Enrolled in any courses
             </p>
           </div>
