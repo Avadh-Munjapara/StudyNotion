@@ -220,6 +220,76 @@ async function seedStudents(createdCourses) {
   }
 }
 
+async function seedEnrolledWithoutReviews(createdCourses) {
+  console.log("Creating enrolled users without reviews...");
+  
+  if (!sampleData.enrolledWithoutReviews || !Array.isArray(sampleData.enrolledWithoutReviews)) {
+    console.log("No enrolled users without reviews to create");
+    return;
+  }
+
+  for (const userData of sampleData.enrolledWithoutReviews) {
+    try {
+      // Check if user already exists
+      const existingUser = await User.findOne({ email: userData.email });
+      if (existingUser) {
+        console.log(`User ${userData.email} already exists, skipping...`);
+        continue;
+      }
+
+      // Create profile
+      const profile = await Profile.create({
+        gender: "Other",
+        dateOfBirth: new Date("1995-01-01"),
+        about: userData.additionalDetails.about,
+        contactNumber: userData.additionalDetails.contactNumber
+      });
+
+      // Create user
+      const user = await User.create({
+        firstName: userData.firstName,
+        lastName: userData.lastName,
+        email: userData.email,
+        password: await bcrypt.hash(userData.password, 10),
+        accountType: userData.accountType,
+        image: userData.image,
+        additionalDetails: profile._id,
+        courses: [],
+        courseProgress: []
+      });
+
+      // Handle course enrollments without reviews
+      for (const enrollment of userData.enrolledCourses) {
+        const course = await Course.findOne({ name: enrollment.courseName });
+        if (!course) {
+          console.log(`Course not found: ${enrollment.courseName}`);
+          continue;
+        }
+
+        // Create course progress
+        const progress = await CourseProgress.create({
+          courseId: course._id,
+          userId: user._id,
+          completedVideos: []
+        });
+
+        // Update user's courses and progress
+        user.courses.push(course._id);
+        user.courseProgress.push(progress._id);
+
+        // Update course's enrolled students
+        course.studentsEnrolled.push(user._id);
+        await course.save();
+      }
+
+      await user.save();
+      console.log(`Created enrolled user without reviews: ${user.firstName} ${user.lastName}`);
+
+    } catch (error) {
+      console.error(`Error creating enrolled user without reviews ${userData.email}:`, error);
+    }
+  }
+}
 
 async function seedNonEnrolledUsers() {
   console.log("Creating non-enrolled users...");
@@ -265,12 +335,13 @@ async function seedNonEnrolledUsers() {
 // Main seeder function
 async function seedDatabase() {
   try {
-    // await clearDatabase();
-    // const instructors = await seedInstructors();
-    // const categories = await seedCategories();
-    // const courses = await seedCourses(instructors, categories);
-    // await seedStudents(courses);
-        await seedNonEnrolledUsers(); // Add this line
+    await clearDatabase();
+    const instructors = await seedInstructors();
+    const categories = await seedCategories();
+    const courses = await seedCourses(instructors, categories);
+    await seedStudents(courses);
+    await seedNonEnrolledUsers(); 
+    await seedEnrolledWithoutReviews();
 
     console.log("Database seeded successfully!");
   } catch (error) {

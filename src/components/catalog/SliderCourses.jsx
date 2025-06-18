@@ -14,7 +14,7 @@ const SliderCourses = ({ courses, type }) => {
       return ()=>{
         window.removeEventListener('resize',handleResize);
       }
-    },[]);
+    },[]); 
   return (
     <div className=" my-10">
       <h2 className="text-richblack-5 mb-5 font-semibold text-3xl">

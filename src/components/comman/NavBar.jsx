@@ -112,7 +112,7 @@ const NavBar = () => {
                             : categories.map((category, index) => {
                                 return (
                                   <Link
-                                    to={`/catalog/${category.name}`}
+                                    to={`/catalog/${category.name.replace(" ","-")}`}
                                     className="px-10  rounded-lg font-[550] py-1 hover:bg-richblack-50/80 "
                                     key={index}
                                   >

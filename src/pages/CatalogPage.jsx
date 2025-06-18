@@ -41,7 +41,7 @@ const CatalogPage = () => {
     if (call) fetchCategories();
     setLoading(true);
     const newCategoryObject = categories
-      .filter((cat) => cat.name === params.catalogName)
+      .filter((cat) => cat.name === params.catalogName.replace("-"," "))
       .at(0);
     setCategoryObj(newCategoryObject);
     const fetchCourses = async () => {

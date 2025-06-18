@@ -7993,5 +7993,4939 @@ exports.sampleData = {
         "contactNumber": "+919178313196"
       }
     }
+  ],
+  "enrolledWithoutReviews": [
+    {
+      "firstName": "Kiran",
+      "lastName": "Shah",
+      "email": "kiran.shah@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=KS",
+      "additionalDetails": {
+        "about": "Learning web development",
+        "contactNumber": "+919876543213"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Complete MERN Stack Bootcamp",
+          "completedVideos": [
+            "Course Overview"
+          ]
+        },
+        {
+          "courseName": "Frontend Development Mastery",
+          "completedVideos": [
+            "ES6+ Features"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Deepak",
+      "lastName": "Verma",
+      "email": "deepak.verma@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=DV",
+      "additionalDetails": {
+        "about": "Exploring AI and ML",
+        "contactNumber": "+919876543214"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "AI & Machine Learning Bootcamp",
+          "completedVideos": [
+            "What is Artificial Intelligence?"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Anjali",
+      "lastName": "Agarwal",
+      "email": "anjali.agarwal@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=AA",
+      "additionalDetails": {
+        "about": "Aspiring data scientist",
+        "contactNumber": "+919657435599"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Fullstack Web Development with Next.js and Firebase",
+          "completedVideos": [
+            "Performance Optimization",
+            "Next.js Core Concepts"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Neha",
+      "lastName": "Pandey",
+      "email": "neha.pandey@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=NP",
+      "additionalDetails": {
+        "about": "Working on backend technologies",
+        "contactNumber": "+919707544921"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Frontend Development with React & Tailwind CSS",
+          "completedVideos": [
+            "Components and Props"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Diya",
+      "lastName": "Kumar",
+      "email": "diya.kumar@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=DK",
+      "additionalDetails": {
+        "about": "Competitive programming enthusiast",
+        "contactNumber": "+919401089248"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Python for Machine Learning",
+          "completedVideos": [
+            "Scikit-learn Introduction",
+            "Model Deployment",
+            "Classification Models"
+          ]
+        },
+        {
+          "courseName": "Natural Language Processing Masterclass",
+          "completedVideos": [
+            "Machine Translation",
+            "Text Preprocessing"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Neha",
+      "lastName": "Nair",
+      "email": "neha.nair@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=NN",
+      "additionalDetails": {
+        "about": "Aspiring data scientist",
+        "contactNumber": "+919454560341"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Advanced Algorithms and Data Structures",
+          "completedVideos": [
+            "Problem Solving Strategies"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Tanya",
+      "lastName": "Gupta",
+      "email": "tanya.gupta@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=TG",
+      "additionalDetails": {
+        "about": "Interested in frontend design",
+        "contactNumber": "+919690019375"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Responsive Web Design with HTML5 & CSS3",
+          "completedVideos": [
+            "Flexbox for Flexible Layouts"
+          ]
+        },
+        {
+          "courseName": "Dynamic Programming Deep Dive",
+          "completedVideos": [
+            "Convex Hull Trick",
+            "DP on Trees",
+            "DP Thinking Process"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Nikhil",
+      "lastName": "Chaudhary",
+      "email": "nikhil.chaudhary@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=NC",
+      "additionalDetails": {
+        "about": "Interested in frontend design",
+        "contactNumber": "+919204239270"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Complete MERN Stack Bootcamp",
+          "completedVideos": [
+            "Data Modeling",
+            "Setting Up Development Environment",
+            "Node.js Basics"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Rohan",
+      "lastName": "Bhat",
+      "email": "rohan.bhat@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=RB",
+      "additionalDetails": {
+        "about": "Competitive programming enthusiast",
+        "contactNumber": "+919777209637"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Frontend Development with React & Tailwind CSS",
+          "completedVideos": [
+            "Responsive Design with Tailwind",
+            "React Basics and Setup",
+            "Working with State"
+          ]
+        },
+        {
+          "courseName": "Advanced Python Programming",
+          "completedVideos": [
+            "Creational Patterns",
+            "Task Automation"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Arjun",
+      "lastName": "Mehta",
+      "email": "arjun.mehta@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=AM",
+      "additionalDetails": {
+        "about": "Exploring AI and ML",
+        "contactNumber": "+919335380367"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Complete MERN Stack Bootcamp",
+          "completedVideos": [
+            "REST API Development",
+            "MongoDB Fundamentals"
+          ]
+        },
+        {
+          "courseName": "AI & Machine Learning Bootcamp",
+          "completedVideos": [
+            "Language Models"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Deepak",
+      "lastName": "Mishra",
+      "email": "deepak.mishra@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=DM",
+      "additionalDetails": {
+        "about": "Building full-stack applications",
+        "contactNumber": "+919690407739"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Python Web Development",
+          "completedVideos": [
+            "Models and ORM",
+            "Web Development Overview"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Sneha",
+      "lastName": "Sharma",
+      "email": "sneha.sharma@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=SS",
+      "additionalDetails": {
+        "about": "Data analysis enthusiast",
+        "contactNumber": "+919498902740"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Advanced Python Programming",
+          "completedVideos": [
+            "Selenium Automation",
+            "Task Automation",
+            "Decorators and Generators"
+          ]
+        },
+        {
+          "courseName": "Reinforcement Learning Fundamentals",
+          "completedVideos": [
+            "Deep Q-Networks",
+            "REINFORCE Algorithm",
+            "SARSA"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Shreya",
+      "lastName": "Shetty",
+      "email": "shreya.shetty@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=SS",
+      "additionalDetails": {
+        "about": "Learning web development",
+        "contactNumber": "+919701657865"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Frontend Development with React & Tailwind CSS",
+          "completedVideos": [
+            "Responsive Design with Tailwind"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Saanvi",
+      "lastName": "Mishra",
+      "email": "saanvi.mishra@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=SM",
+      "additionalDetails": {
+        "about": "Exploring AI and ML",
+        "contactNumber": "+919757978194"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Dynamic Programming Deep Dive",
+          "completedVideos": [
+            "Memoization vs Tabulation",
+            "Digit DP",
+            "DP with Bitmasking"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Kunal",
+      "lastName": "Joshi",
+      "email": "kunal.joshi@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=KJ",
+      "additionalDetails": {
+        "about": "Interested in frontend design",
+        "contactNumber": "+919963145062"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Python for Machine Learning",
+          "completedVideos": [
+            "Scikit-learn Introduction"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Vivek",
+      "lastName": "Chaudhary",
+      "email": "vivek.chaudhary@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=VC",
+      "additionalDetails": {
+        "about": "Learning web development",
+        "contactNumber": "+919735827347"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Python Web Development",
+          "completedVideos": [
+            "Scaling Applications"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Nikhil",
+      "lastName": "Reddy",
+      "email": "nikhil.reddy@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=NR",
+      "additionalDetails": {
+        "about": "Aspiring data scientist",
+        "contactNumber": "+919425011386"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Frontend Development Mastery",
+          "completedVideos": [
+            "State Management"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Meera",
+      "lastName": "Rathore",
+      "email": "meera.rathore@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=MR",
+      "additionalDetails": {
+        "about": "Mastering algorithms",
+        "contactNumber": "+919113061195"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Python for Machine Learning",
+          "completedVideos": [
+            "Classification Models"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Manish",
+      "lastName": "Mishra",
+      "email": "manish.mishra@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=MM",
+      "additionalDetails": {
+        "about": "Competitive programming enthusiast",
+        "contactNumber": "+919565841622"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Dynamic Programming Deep Dive",
+          "completedVideos": [
+            "State Reduction",
+            "DP with Bitmasking",
+            "DP on Trees"
+          ]
+        },
+        {
+          "courseName": "Python for Data Analysis",
+          "completedVideos": [
+            "Descriptive Statistics"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Gaurav",
+      "lastName": "Pandey",
+      "email": "gaurav.pandey@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=GP",
+      "additionalDetails": {
+        "about": "Building full-stack applications",
+        "contactNumber": "+919880349767"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Advanced Algorithms and Data Structures",
+          "completedVideos": [
+            "Graph Algorithms",
+            "Problem Solving Strategies",
+            "Algorithm Analysis and Big O Notation"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Rakesh",
+      "lastName": "Sharma",
+      "email": "rakesh.sharma@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=RS",
+      "additionalDetails": {
+        "about": "Mastering algorithms",
+        "contactNumber": "+919641258940"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Python for Machine Learning",
+          "completedVideos": [
+            "Model Evaluation Metrics",
+            "Model Deployment"
+          ]
+        },
+        {
+          "courseName": "Advanced Python Programming",
+          "completedVideos": [
+            "Debugging Techniques"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Sneha",
+      "lastName": "Rathore",
+      "email": "sneha.rathore@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=SR",
+      "additionalDetails": {
+        "about": "Exploring AI and ML",
+        "contactNumber": "+919772700888"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Python for Data Analysis",
+          "completedVideos": [
+            "What is Data Analysis?",
+            "Matplotlib Basics",
+            "Descriptive Statistics"
+          ]
+        },
+        {
+          "courseName": "Frontend Development Mastery",
+          "completedVideos": [
+            "State Management",
+            "Asynchronous JavaScript"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Nikhil",
+      "lastName": "Agarwal",
+      "email": "nikhil.agarwal@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=NA",
+      "additionalDetails": {
+        "about": "Mastering algorithms",
+        "contactNumber": "+919987144881"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Python for Automation",
+          "completedVideos": [
+            "Automating Desktop Apps"
+          ]
+        },
+        {
+          "courseName": "Backend Development with Node.js & Express",
+          "completedVideos": [
+            "Handling HTTP Requests",
+            "Introduction to MongoDB",
+            "Setting Up an Express Server"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Priya",
+      "lastName": "Desai",
+      "email": "priya.desai@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=PD",
+      "additionalDetails": {
+        "about": "Keen on cloud computing",
+        "contactNumber": "+919919303859"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Advanced Algorithms and Data Structures",
+          "completedVideos": [
+            "Trees and Graphs",
+            "String Algorithms"
+          ]
+        },
+        {
+          "courseName": "Advanced Python Programming",
+          "completedVideos": [
+            "Web Scraping with BeautifulSoup",
+            "Selenium Automation",
+            "Object-Oriented Programming in Python"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Shreya",
+      "lastName": "Malhotra",
+      "email": "shreya.malhotra@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=SM",
+      "additionalDetails": {
+        "about": "Aspiring data scientist",
+        "contactNumber": "+919780776893"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Dynamic Programming Deep Dive",
+          "completedVideos": [
+            "Knapsack Problems",
+            "Longest Common Subsequence",
+            "Memoization vs Tabulation"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Shreya",
+      "lastName": "Patel",
+      "email": "shreya.patel@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=SP",
+      "additionalDetails": {
+        "about": "Learning web development",
+        "contactNumber": "+919244258129"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Natural Language Processing Masterclass",
+          "completedVideos": [
+            "Attention Mechanisms",
+            "Machine Translation"
+          ]
+        },
+        {
+          "courseName": "Python for Machine Learning",
+          "completedVideos": [
+            "Model Evaluation Metrics",
+            "Data Normalization",
+            "Feature Engineering"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Vivek",
+      "lastName": "Nair",
+      "email": "vivek.nair@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=VN",
+      "additionalDetails": {
+        "about": "Exploring AI and ML",
+        "contactNumber": "+919171852891"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Fullstack Web Development with Next.js and Firebase",
+          "completedVideos": [
+            "Integrating Real-time Features",
+            "Firebase Authentication",
+            "Image Uploads with Firebase Storage"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Harsh",
+      "lastName": "Kapoor",
+      "email": "harsh.kapoor@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=HK",
+      "additionalDetails": {
+        "about": "Competitive programming enthusiast",
+        "contactNumber": "+919225271900"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Complete MERN Stack Bootcamp",
+          "completedVideos": [
+            "State Management with Redux"
+          ]
+        },
+        {
+          "courseName": "Graph Algorithms Mastery",
+          "completedVideos": [
+            "BFS and DFS",
+            "Bellman-Ford",
+            "Dijkstra's Algorithm"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Avani",
+      "lastName": "Chaudhary",
+      "email": "avani.chaudhary@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=AC",
+      "additionalDetails": {
+        "about": "Mastering algorithms",
+        "contactNumber": "+919453127874"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Backend Development with Node.js & Express",
+          "completedVideos": [
+            "Modules and NPM"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Harsh",
+      "lastName": "Rathore",
+      "email": "harsh.rathore@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=HR",
+      "additionalDetails": {
+        "about": "Interested in frontend design",
+        "contactNumber": "+919396188449"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Advanced Python Programming",
+          "completedVideos": [
+            "Unit Testing with PyTest"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Nikhil",
+      "lastName": "Singh",
+      "email": "nikhil.singh@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=NS",
+      "additionalDetails": {
+        "about": "Interested in frontend design",
+        "contactNumber": "+919554338774"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Reinforcement Learning Fundamentals",
+          "completedVideos": [
+            "Policy Gradients",
+            "SARSA"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Rahul",
+      "lastName": "Mehta",
+      "email": "rahul.mehta@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=RM",
+      "additionalDetails": {
+        "about": "Aspiring data scientist",
+        "contactNumber": "+919662576468"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "String Algorithms Specialist",
+          "completedVideos": [
+            "Edit Distance Algorithms",
+            "Tries and Suffix Trees"
+          ]
+        },
+        {
+          "courseName": "Dynamic Programming Deep Dive",
+          "completedVideos": [
+            "Convex Hull Trick"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Gaurav",
+      "lastName": "Gupta",
+      "email": "gaurav.gupta@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=GG",
+      "additionalDetails": {
+        "about": "Data analysis enthusiast",
+        "contactNumber": "+919868254596"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Complete MERN Stack Bootcamp",
+          "completedVideos": [
+            "State Management with Redux",
+            "Building Responsive UI",
+            "Data Modeling"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Aditya",
+      "lastName": "Pandey",
+      "email": "aditya.pandey@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=AP",
+      "additionalDetails": {
+        "about": "Exploring AI and ML",
+        "contactNumber": "+919238644155"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Dynamic Programming Deep Dive",
+          "completedVideos": [
+            "Longest Common Subsequence"
+          ]
+        },
+        {
+          "courseName": "Python Web Development",
+          "completedVideos": [
+            "Django Basics",
+            "HTTP and APIs",
+            "Setting Up Environment"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Yash",
+      "lastName": "Reddy",
+      "email": "yash.reddy@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=YR",
+      "additionalDetails": {
+        "about": "Working on backend technologies",
+        "contactNumber": "+919860663415"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Reinforcement Learning Fundamentals",
+          "completedVideos": [
+            "SARSA",
+            "Deep Q-Networks"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Manish",
+      "lastName": "Gupta",
+      "email": "manish.gupta@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=MG",
+      "additionalDetails": {
+        "about": "Interested in frontend design",
+        "contactNumber": "+919676309809"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Responsive Web Design with HTML5 & CSS3",
+          "completedVideos": [
+            "Building a Complete Responsive Website",
+            "Box Model and Positioning"
+          ]
+        },
+        {
+          "courseName": "Deep Learning Specialization",
+          "completedVideos": [
+            "Deep Learning Overview",
+            "Sequence Modeling"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Aditi",
+      "lastName": "Joshi",
+      "email": "aditi.joshi@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=AJ",
+      "additionalDetails": {
+        "about": "Competitive programming enthusiast",
+        "contactNumber": "+919781578552"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Complete MERN Stack Bootcamp",
+          "completedVideos": [
+            "Node.js Basics"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Neha",
+      "lastName": "Yadav",
+      "email": "neha.yadav@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=NY",
+      "additionalDetails": {
+        "about": "Data analysis enthusiast",
+        "contactNumber": "+919952263266"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "AI & Machine Learning Bootcamp",
+          "completedVideos": [
+            "What is Artificial Intelligence?",
+            "Computer Vision",
+            "Machine Learning Fundamentals"
+          ]
+        },
+        {
+          "courseName": "String Algorithms Specialist",
+          "completedVideos": [
+            "Boyer-Moore",
+            "Tries and Suffix Trees"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Ananya",
+      "lastName": "Khan",
+      "email": "ananya.khan@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=AK",
+      "additionalDetails": {
+        "about": "Competitive programming enthusiast",
+        "contactNumber": "+919697482863"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Python for Data Analysis",
+          "completedVideos": [
+            "Descriptive Statistics",
+            "Data Cleaning Techniques"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Vikram",
+      "lastName": "Kapoor",
+      "email": "vikram.kapoor@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=VK",
+      "additionalDetails": {
+        "about": "Building full-stack applications",
+        "contactNumber": "+919767810430"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "AI & Machine Learning Bootcamp",
+          "completedVideos": [
+            "TensorFlow Framework"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Kunal",
+      "lastName": "Rao",
+      "email": "kunal.rao@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=KR",
+      "additionalDetails": {
+        "about": "Competitive programming enthusiast",
+        "contactNumber": "+919435892842"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Advanced Python Programming",
+          "completedVideos": [
+            "Selenium Automation"
+          ]
+        },
+        {
+          "courseName": "Responsive Web Design with HTML5 & CSS3",
+          "completedVideos": [
+            "Typography and Colors",
+            "Semantic HTML and Forms",
+            "Flexbox for Flexible Layouts"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Manish",
+      "lastName": "Mehta",
+      "email": "manish.mehta@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=MM",
+      "additionalDetails": {
+        "about": "Competitive programming enthusiast",
+        "contactNumber": "+919463128223"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Deep Learning Specialization",
+          "completedVideos": [
+            "Sequence Modeling"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Rahul",
+      "lastName": "Desai",
+      "email": "rahul.desai@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=RD",
+      "additionalDetails": {
+        "about": "Aspiring data scientist",
+        "contactNumber": "+919362583113"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Reinforcement Learning Fundamentals",
+          "completedVideos": [
+            "REINFORCE Algorithm"
+          ]
+        },
+        {
+          "courseName": "Python for Automation",
+          "completedVideos": [
+            "API Integration",
+            "PyAutoGUI Basics"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Ishaan",
+      "lastName": "Desai",
+      "email": "ishaan.desai@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=ID",
+      "additionalDetails": {
+        "about": "Exploring AI and ML",
+        "contactNumber": "+919751580763"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Backend Development with Node.js & Express",
+          "completedVideos": [
+            "Introduction to MongoDB",
+            "Routing and Middleware",
+            "Handling HTTP Requests"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Aarav",
+      "lastName": "Yadav",
+      "email": "aarav.yadav@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=AY",
+      "additionalDetails": {
+        "about": "Working on backend technologies",
+        "contactNumber": "+919717720935"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Deep Learning Specialization",
+          "completedVideos": [
+            "Deep Learning Overview",
+            "LSTM and GRU"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Avani",
+      "lastName": "Srivastava",
+      "email": "avani.srivastava@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=AS",
+      "additionalDetails": {
+        "about": "Building full-stack applications",
+        "contactNumber": "+919863848740"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Frontend Development with React & Tailwind CSS",
+          "completedVideos": [
+            "Tailwind CSS Fundamentals",
+            "Lifecycle Hooks (useEffect)"
+          ]
+        },
+        {
+          "courseName": "Reinforcement Learning Fundamentals",
+          "completedVideos": [
+            "Multi-Agent RL",
+            "Exploration Strategies"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Priya",
+      "lastName": "Singh",
+      "email": "priya.singh@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=PS",
+      "additionalDetails": {
+        "about": "Interested in frontend design",
+        "contactNumber": "+919768236077"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Fullstack Web Development with Next.js and Firebase",
+          "completedVideos": [
+            "Deploying Next.js and Firebase Apps",
+            "Firebase Authentication",
+            "Server-Side Rendering (SSR) and Static Site Generation (SSG)"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Rakesh",
+      "lastName": "Mishra",
+      "email": "rakesh.mishra@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=RM",
+      "additionalDetails": {
+        "about": "Exploring AI and ML",
+        "contactNumber": "+919520112785"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Reinforcement Learning Fundamentals",
+          "completedVideos": [
+            "Markov Decision Processes"
+          ]
+        },
+        {
+          "courseName": "Competitive Programming Algorithms",
+          "completedVideos": [
+            "Sliding Window"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Avani",
+      "lastName": "Jain",
+      "email": "avani.jain@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=AJ",
+      "additionalDetails": {
+        "about": "Mastering algorithms",
+        "contactNumber": "+919619824928"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Deep Learning Specialization",
+          "completedVideos": [
+            "Variational Autoencoders",
+            "Deep Learning Overview",
+            "Object Detection"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Rahul",
+      "lastName": "Gupta",
+      "email": "rahul.gupta@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=RG",
+      "additionalDetails": {
+        "about": "Mastering algorithms",
+        "contactNumber": "+919230299407"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Complete MERN Stack Bootcamp",
+          "completedVideos": [
+            "React Fundamentals",
+            "Node.js Basics"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Ananya",
+      "lastName": "Chaudhary",
+      "email": "ananya.chaudhary@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=AC",
+      "additionalDetails": {
+        "about": "Exploring AI and ML",
+        "contactNumber": "+919587394235"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Advanced Python Programming",
+          "completedVideos": [
+            "Context Managers"
+          ]
+        },
+        {
+          "courseName": "Python for Machine Learning",
+          "completedVideos": [
+            "Regression Models"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Vikram",
+      "lastName": "Reddy",
+      "email": "vikram.reddy@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=VR",
+      "additionalDetails": {
+        "about": "Building full-stack applications",
+        "contactNumber": "+919606421412"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Python Web Development",
+          "completedVideos": [
+            "Scaling Applications",
+            "HTTP and APIs",
+            "Web Development Overview"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Vivek",
+      "lastName": "Kapoor",
+      "email": "vivek.kapoor@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=VK",
+      "additionalDetails": {
+        "about": "Building full-stack applications",
+        "contactNumber": "+919201050892"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Dynamic Programming Deep Dive",
+          "completedVideos": [
+            "DP Thinking Process",
+            "Knapsack Problems",
+            "Digit DP"
+          ]
+        },
+        {
+          "courseName": "Reinforcement Learning Fundamentals",
+          "completedVideos": [
+            "RL Overview",
+            "Q-Learning"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Siddharth",
+      "lastName": "Pandey",
+      "email": "siddharth.pandey@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=SP",
+      "additionalDetails": {
+        "about": "Interested in frontend design",
+        "contactNumber": "+919331788959"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Python for Data Analysis",
+          "completedVideos": [
+            "Seaborn for Advanced Visuals"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Rohan",
+      "lastName": "Singh",
+      "email": "rohan.singh@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=RS",
+      "additionalDetails": {
+        "about": "Exploring AI and ML",
+        "contactNumber": "+919613422151"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Complete MERN Stack Bootcamp",
+          "completedVideos": [
+            "Building Responsive UI",
+            "Node.js Basics"
+          ]
+        },
+        {
+          "courseName": "Python for Automation",
+          "completedVideos": [
+            "Working with Files",
+            "PyAutoGUI Basics",
+            "Requests Library"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Priya",
+      "lastName": "Rathore",
+      "email": "priya.rathore@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=PR",
+      "additionalDetails": {
+        "about": "Aspiring data scientist",
+        "contactNumber": "+919468224506"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Frontend Development Mastery",
+          "completedVideos": [
+            "State Management"
+          ]
+        },
+        {
+          "courseName": "Computer Vision Essentials",
+          "completedVideos": [
+            "3D Vision"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Ishaan",
+      "lastName": "Nair",
+      "email": "ishaan.nair@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=IN",
+      "additionalDetails": {
+        "about": "Building full-stack applications",
+        "contactNumber": "+919823178734"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "AI & Machine Learning Bootcamp",
+          "completedVideos": [
+            "TensorFlow Framework",
+            "What is Artificial Intelligence?"
+          ]
+        },
+        {
+          "courseName": "Fullstack Web Development with Next.js and Firebase",
+          "completedVideos": [
+            "Server-Side Rendering (SSR) and Static Site Generation (SSG)",
+            "Next.js Core Concepts",
+            "Deploying Next.js and Firebase Apps"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Avani",
+      "lastName": "Yadav",
+      "email": "avani.yadav@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=AY",
+      "additionalDetails": {
+        "about": "Data analysis enthusiast",
+        "contactNumber": "+919280569616"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Complete MERN Stack Bootcamp",
+          "completedVideos": [
+            "Data Modeling"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Rakesh",
+      "lastName": "Singh",
+      "email": "rakesh.singh@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=RS",
+      "additionalDetails": {
+        "about": "Building full-stack applications",
+        "contactNumber": "+919898919219"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Frontend Development Mastery",
+          "completedVideos": [
+            "State Management",
+            "Asynchronous JavaScript"
+          ]
+        },
+        {
+          "courseName": "Python for Machine Learning",
+          "completedVideos": [
+            "Feature Engineering"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Aditya",
+      "lastName": "Gupta",
+      "email": "aditya.gupta@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=AG",
+      "additionalDetails": {
+        "about": "Data analysis enthusiast",
+        "contactNumber": "+919430063803"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Responsive Web Design with HTML5 & CSS3",
+          "completedVideos": [
+            "CSS Grid for Two-Dimensional Layouts"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Diya",
+      "lastName": "Kapoor",
+      "email": "diya.kapoor@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=DK",
+      "additionalDetails": {
+        "about": "Working on backend technologies",
+        "contactNumber": "+919921634175"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Frontend Development Mastery",
+          "completedVideos": [
+            "React Hooks"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Pooja",
+      "lastName": "Rathore",
+      "email": "pooja.rathore@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=PR",
+      "additionalDetails": {
+        "about": "Learning web development",
+        "contactNumber": "+919609179618"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Competitive Programming Algorithms",
+          "completedVideos": [
+            "IO and Time Management",
+            "Binary Search Applications",
+            "Meet-in-the-Middle"
+          ]
+        },
+        {
+          "courseName": "Responsive Web Design with HTML5 & CSS3",
+          "completedVideos": [
+            "CSS Animations and Transitions"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Kavya",
+      "lastName": "Singh",
+      "email": "kavya.singh@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=KS",
+      "additionalDetails": {
+        "about": "Data analysis enthusiast",
+        "contactNumber": "+919843397104"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "AI & Machine Learning Bootcamp",
+          "completedVideos": [
+            "Language Models",
+            "Machine Learning Fundamentals"
+          ]
+        },
+        {
+          "courseName": "String Algorithms Specialist",
+          "completedVideos": [
+            "Edit Distance Algorithms"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Vikram",
+      "lastName": "Srivastava",
+      "email": "vikram.srivastava@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=VS",
+      "additionalDetails": {
+        "about": "Interested in frontend design",
+        "contactNumber": "+919632877955"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Python for Automation",
+          "completedVideos": [
+            "API Integration"
+          ]
+        },
+        {
+          "courseName": "Deep Learning Specialization",
+          "completedVideos": [
+            "RNN Basics",
+            "Deep Learning Overview"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Manish",
+      "lastName": "Pandey",
+      "email": "manish.pandey@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=MP",
+      "additionalDetails": {
+        "about": "Exploring AI and ML",
+        "contactNumber": "+919358653997"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Dynamic Programming Deep Dive",
+          "completedVideos": [
+            "Digit DP"
+          ]
+        },
+        {
+          "courseName": "Deep Learning Specialization",
+          "completedVideos": [
+            "CNN Basics",
+            "LSTM and GRU"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Arjun",
+      "lastName": "Mishra",
+      "email": "arjun.mishra@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=AM",
+      "additionalDetails": {
+        "about": "Competitive programming enthusiast",
+        "contactNumber": "+919655266168"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Deep Learning Specialization",
+          "completedVideos": [
+            "CNN Basics"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Riya",
+      "lastName": "Sharma",
+      "email": "riya.sharma@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=RS",
+      "additionalDetails": {
+        "about": "Working on backend technologies",
+        "contactNumber": "+919398342185"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Advanced Python Programming",
+          "completedVideos": [
+            "Task Automation",
+            "Debugging Techniques"
+          ]
+        },
+        {
+          "courseName": "Competitive Programming Algorithms",
+          "completedVideos": [
+            "Sliding Window"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Rahul",
+      "lastName": "Verma",
+      "email": "rahul.verma@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=RV",
+      "additionalDetails": {
+        "about": "Working on backend technologies",
+        "contactNumber": "+919708173662"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Python for Automation",
+          "completedVideos": [
+            "Cron Jobs with Python",
+            "Automating Desktop Apps"
+          ]
+        },
+        {
+          "courseName": "Computer Vision Essentials",
+          "completedVideos": [
+            "Face Recognition",
+            "Image Filtering"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Ishaan",
+      "lastName": "Gupta",
+      "email": "ishaan.gupta@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=IG",
+      "additionalDetails": {
+        "about": "Working on backend technologies",
+        "contactNumber": "+919182469391"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Complete MERN Stack Bootcamp",
+          "completedVideos": [
+            "React Fundamentals",
+            "Building Responsive UI",
+            "REST API Development"
+          ]
+        },
+        {
+          "courseName": "Advanced Algorithms and Data Structures",
+          "completedVideos": [
+            "Trees and Graphs",
+            "Graph Algorithms"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Tanya",
+      "lastName": "Singh",
+      "email": "tanya.singh@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=TS",
+      "additionalDetails": {
+        "about": "Building full-stack applications",
+        "contactNumber": "+919216954631"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Python for Automation",
+          "completedVideos": [
+            "Python Scripting",
+            "Working with Files"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Vikram",
+      "lastName": "Singh",
+      "email": "vikram.singh@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=VS",
+      "additionalDetails": {
+        "about": "Mastering algorithms",
+        "contactNumber": "+919450613579"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Competitive Programming Algorithms",
+          "completedVideos": [
+            "Competitive Programming Mindset",
+            "Bitmask DP",
+            "Sliding Window"
+          ]
+        },
+        {
+          "courseName": "Reinforcement Learning Fundamentals",
+          "completedVideos": [
+            "SARSA"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Anjali",
+      "lastName": "Shetty",
+      "email": "anjali.shetty@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=AS",
+      "additionalDetails": {
+        "about": "Building full-stack applications",
+        "contactNumber": "+919338132577"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Graph Algorithms Mastery",
+          "completedVideos": [
+            "Eulerian Paths"
+          ]
+        },
+        {
+          "courseName": "Advanced Algorithms and Data Structures",
+          "completedVideos": [
+            "Problem Solving Strategies"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Aditi",
+      "lastName": "Nair",
+      "email": "aditi.nair@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=AN",
+      "additionalDetails": {
+        "about": "Interested in frontend design",
+        "contactNumber": "+919410102473"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Python for Data Analysis",
+          "completedVideos": [
+            "Seaborn for Advanced Visuals",
+            "Data Cleaning Techniques"
+          ]
+        },
+        {
+          "courseName": "String Algorithms Specialist",
+          "completedVideos": [
+            "Rabin-Karp",
+            "Palindrome Algorithms",
+            "Tries and Suffix Trees"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Avani",
+      "lastName": "Singh",
+      "email": "avani.singh@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=AS",
+      "additionalDetails": {
+        "about": "Competitive programming enthusiast",
+        "contactNumber": "+919576113991"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Responsive Web Design with HTML5 & CSS3",
+          "completedVideos": [
+            "Introduction to HTML5 Structure",
+            "CSS Animations and Transitions",
+            "Media Queries for Adaptability"
+          ]
+        },
+        {
+          "courseName": "Dynamic Programming Deep Dive",
+          "completedVideos": [
+            "Digit DP",
+            "Longest Common Subsequence",
+            "Knapsack Problems"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Aditi",
+      "lastName": "Khan",
+      "email": "aditi.khan@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=AK",
+      "additionalDetails": {
+        "about": "Building full-stack applications",
+        "contactNumber": "+919839298509"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Frontend Development with React & Tailwind CSS",
+          "completedVideos": [
+            "Working with State",
+            "Tailwind CSS Fundamentals",
+            "Context API for Global State"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Saanvi",
+      "lastName": "Malhotra",
+      "email": "saanvi.malhotra@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=SM",
+      "additionalDetails": {
+        "about": "Keen on cloud computing",
+        "contactNumber": "+919733392929"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Backend Development with Node.js & Express",
+          "completedVideos": [
+            "Connecting to MongoDB with Mongoose",
+            "User Authentication with JWT"
+          ]
+        },
+        {
+          "courseName": "Python for Data Analysis",
+          "completedVideos": [
+            "Correlation and Regression"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Rohan",
+      "lastName": "Shetty",
+      "email": "rohan.shetty@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=RS",
+      "additionalDetails": {
+        "about": "Keen on cloud computing",
+        "contactNumber": "+919751492395"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Backend Development with Node.js & Express",
+          "completedVideos": [
+            "User Authentication with JWT",
+            "Introduction to Node.js",
+            "Connecting to MongoDB with Mongoose"
+          ]
+        },
+        {
+          "courseName": "Reinforcement Learning Fundamentals",
+          "completedVideos": [
+            "Policy Gradients"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Nikhil",
+      "lastName": "Rao",
+      "email": "nikhil.rao@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=NR",
+      "additionalDetails": {
+        "about": "Exploring AI and ML",
+        "contactNumber": "+919552795121"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Competitive Programming Algorithms",
+          "completedVideos": [
+            "Geometry Algorithms",
+            "Binary Search Applications",
+            "Number Theory for CP"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Nisha",
+      "lastName": "Kapoor",
+      "email": "nisha.kapoor@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=NK",
+      "additionalDetails": {
+        "about": "Learning web development",
+        "contactNumber": "+919677135752"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Python for Data Analysis",
+          "completedVideos": [
+            "Python for Data Analysis",
+            "Data Types and Structures"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Vivek",
+      "lastName": "Yadav",
+      "email": "vivek.yadav@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=VY",
+      "additionalDetails": {
+        "about": "Building full-stack applications",
+        "contactNumber": "+919761441187"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Frontend Development with React & Tailwind CSS",
+          "completedVideos": [
+            "React Basics and Setup",
+            "Context API for Global State"
+          ]
+        },
+        {
+          "courseName": "String Algorithms Specialist",
+          "completedVideos": [
+            "Tries and Suffix Trees"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Rahul",
+      "lastName": "Chaudhary",
+      "email": "rahul.chaudhary@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=RC",
+      "additionalDetails": {
+        "about": "Interested in frontend design",
+        "contactNumber": "+919800870939"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Python for Machine Learning",
+          "completedVideos": [
+            "Scikit-learn Introduction",
+            "Supervised vs Unsupervised Learning",
+            "Model Evaluation Metrics"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Gaurav",
+      "lastName": "Shetty",
+      "email": "gaurav.shetty@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=GS",
+      "additionalDetails": {
+        "about": "Building full-stack applications",
+        "contactNumber": "+919696809114"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Frontend Development Mastery",
+          "completedVideos": [
+            "ES6+ Features"
+          ]
+        },
+        {
+          "courseName": "Python for Data Analysis",
+          "completedVideos": [
+            "Hypothesis Testing"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Yash",
+      "lastName": "Kumar",
+      "email": "yash.kumar@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=YK",
+      "additionalDetails": {
+        "about": "Learning web development",
+        "contactNumber": "+919914140900"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Frontend Development Mastery",
+          "completedVideos": [
+            "React Hooks"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Manish",
+      "lastName": "Verma",
+      "email": "manish.verma@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=MV",
+      "additionalDetails": {
+        "about": "Competitive programming enthusiast",
+        "contactNumber": "+919435326519"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Advanced Python Programming",
+          "completedVideos": [
+            "Debugging Techniques",
+            "Structural Patterns"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Nisha",
+      "lastName": "Srivastava",
+      "email": "nisha.srivastava@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=NS",
+      "additionalDetails": {
+        "about": "Interested in frontend design",
+        "contactNumber": "+919734400147"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Reinforcement Learning Fundamentals",
+          "completedVideos": [
+            "RL Overview"
+          ]
+        },
+        {
+          "courseName": "Frontend Development Mastery",
+          "completedVideos": [
+            "State Management",
+            "ES6+ Features",
+            "React Hooks"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Gaurav",
+      "lastName": "Kumar",
+      "email": "gaurav.kumar@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=GK",
+      "additionalDetails": {
+        "about": "Building full-stack applications",
+        "contactNumber": "+919136274670"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Dynamic Programming Deep Dive",
+          "completedVideos": [
+            "DP on Trees",
+            "DP with Bitmasking"
+          ]
+        },
+        {
+          "courseName": "Computer Vision Essentials",
+          "completedVideos": [
+            "Image Classification"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Gaurav",
+      "lastName": "Desai",
+      "email": "gaurav.desai@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=GD",
+      "additionalDetails": {
+        "about": "Keen on cloud computing",
+        "contactNumber": "+919727911104"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Fullstack Web Development with Next.js and Firebase",
+          "completedVideos": [
+            "Next.js Core Concepts"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Aarav",
+      "lastName": "Nair",
+      "email": "aarav.nair@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=AN",
+      "additionalDetails": {
+        "about": "Exploring AI and ML",
+        "contactNumber": "+919888215743"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Frontend Development Mastery",
+          "completedVideos": [
+            "ES6+ Features",
+            "Asynchronous JavaScript"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Aditi",
+      "lastName": "Kumar",
+      "email": "aditi.kumar@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=AK",
+      "additionalDetails": {
+        "about": "Building full-stack applications",
+        "contactNumber": "+919998872248"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Dynamic Programming Deep Dive",
+          "completedVideos": [
+            "State Reduction",
+            "Memoization vs Tabulation"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Manish",
+      "lastName": "Desai",
+      "email": "manish.desai@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=MD",
+      "additionalDetails": {
+        "about": "Mastering algorithms",
+        "contactNumber": "+919625570046"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Deep Learning Specialization",
+          "completedVideos": [
+            "Generative Adversarial Networks"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Siddharth",
+      "lastName": "Shetty",
+      "email": "siddharth.shetty@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=SS",
+      "additionalDetails": {
+        "about": "Aspiring data scientist",
+        "contactNumber": "+919455365330"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Competitive Programming Algorithms",
+          "completedVideos": [
+            "Graph Competition Tricks",
+            "Competitive Programming Mindset",
+            "Number Theory for CP"
+          ]
+        },
+        {
+          "courseName": "Fullstack Web Development with Next.js and Firebase",
+          "completedVideos": [
+            "Introduction to Firebase"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Sneha",
+      "lastName": "Shetty",
+      "email": "sneha.shetty@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=SS",
+      "additionalDetails": {
+        "about": "Exploring AI and ML",
+        "contactNumber": "+919220087244"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Responsive Web Design with HTML5 & CSS3",
+          "completedVideos": [
+            "Introduction to HTML5 Structure"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Yash",
+      "lastName": "Malhotra",
+      "email": "yash.malhotra@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=YM",
+      "additionalDetails": {
+        "about": "Exploring AI and ML",
+        "contactNumber": "+919983285602"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Complete MERN Stack Bootcamp",
+          "completedVideos": [
+            "Course Overview",
+            "Data Modeling"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Yash",
+      "lastName": "Sharma",
+      "email": "yash.sharma@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=YS",
+      "additionalDetails": {
+        "about": "Working on backend technologies",
+        "contactNumber": "+919369929722"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Complete MERN Stack Bootcamp",
+          "completedVideos": [
+            "Course Overview"
+          ]
+        },
+        {
+          "courseName": "Computer Vision Essentials",
+          "completedVideos": [
+            "Computer Vision Overview",
+            "3D Vision",
+            "Image Formation"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Vivek",
+      "lastName": "Agarwal",
+      "email": "vivek.agarwal@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=VA",
+      "additionalDetails": {
+        "about": "Interested in frontend design",
+        "contactNumber": "+919168262631"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Competitive Programming Algorithms",
+          "completedVideos": [
+            "Bitmask DP",
+            "IO and Time Management"
+          ]
+        },
+        {
+          "courseName": "Complete MERN Stack Bootcamp",
+          "completedVideos": [
+            "Setting Up Development Environment",
+            "Data Modeling",
+            "Course Overview"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Riya",
+      "lastName": "Patel",
+      "email": "riya.patel@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=RP",
+      "additionalDetails": {
+        "about": "Building full-stack applications",
+        "contactNumber": "+919238742750"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Python for Automation",
+          "completedVideos": [
+            "Testing Automation"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Amit",
+      "lastName": "Kapoor",
+      "email": "amit.kapoor@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=AK",
+      "additionalDetails": {
+        "about": "Exploring AI and ML",
+        "contactNumber": "+919664632140"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Dynamic Programming Deep Dive",
+          "completedVideos": [
+            "Memoization vs Tabulation",
+            "Knapsack Problems",
+            "Edit Distance"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Nisha",
+      "lastName": "Jain",
+      "email": "nisha.jain@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=NJ",
+      "additionalDetails": {
+        "about": "Learning web development",
+        "contactNumber": "+919708012406"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "String Algorithms Specialist",
+          "completedVideos": [
+            "Rabin-Karp",
+            "Edit Distance Algorithms",
+            "Naive String Search"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Nisha",
+      "lastName": "Rathore",
+      "email": "nisha.rathore@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=NR",
+      "additionalDetails": {
+        "about": "Keen on cloud computing",
+        "contactNumber": "+919173398655"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Python Web Development",
+          "completedVideos": [
+            "REST API Development"
+          ]
+        },
+        {
+          "courseName": "Backend Development with Node.js & Express",
+          "completedVideos": [
+            "Setting Up an Express Server",
+            "User Authentication with JWT"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Aarav",
+      "lastName": "Chaudhary",
+      "email": "aarav.chaudhary@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=AC",
+      "additionalDetails": {
+        "about": "Mastering algorithms",
+        "contactNumber": "+919755710697"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Python for Data Analysis",
+          "completedVideos": [
+            "What is Data Analysis?"
+          ]
+        },
+        {
+          "courseName": "Python for Machine Learning",
+          "completedVideos": [
+            "Feature Engineering"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Diya",
+      "lastName": "Patel",
+      "email": "diya.patel@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=DP",
+      "additionalDetails": {
+        "about": "Building full-stack applications",
+        "contactNumber": "+919696060967"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Advanced Algorithms and Data Structures",
+          "completedVideos": [
+            "Problem Solving Strategies",
+            "Trees and Graphs"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Aarav",
+      "lastName": "Pandey",
+      "email": "aarav.pandey@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=AP",
+      "additionalDetails": {
+        "about": "Interested in frontend design",
+        "contactNumber": "+919138850288"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Dynamic Programming Deep Dive",
+          "completedVideos": [
+            "Knapsack Problems",
+            "Digit DP",
+            "Convex Hull Trick"
+          ]
+        },
+        {
+          "courseName": "Complete MERN Stack Bootcamp",
+          "completedVideos": [
+            "State Management with Redux"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Rohan",
+      "lastName": "Agarwal",
+      "email": "rohan.agarwal@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=RA",
+      "additionalDetails": {
+        "about": "Competitive programming enthusiast",
+        "contactNumber": "+919650583793"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Advanced Python Programming",
+          "completedVideos": [
+            "Task Automation",
+            "Web Scraping with BeautifulSoup"
+          ]
+        },
+        {
+          "courseName": "Python for Machine Learning",
+          "completedVideos": [
+            "Data Normalization",
+            "Scikit-learn Introduction",
+            "Machine Learning Basics"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Ananya",
+      "lastName": "Gupta",
+      "email": "ananya.gupta@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=AG",
+      "additionalDetails": {
+        "about": "Competitive programming enthusiast",
+        "contactNumber": "+919314586707"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Dynamic Programming Deep Dive",
+          "completedVideos": [
+            "DP with Bitmasking",
+            "Digit DP"
+          ]
+        },
+        {
+          "courseName": "Python for Machine Learning",
+          "completedVideos": [
+            "Classification Models"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Avani",
+      "lastName": "Mehta",
+      "email": "avani.mehta@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=AM",
+      "additionalDetails": {
+        "about": "Learning web development",
+        "contactNumber": "+919365580003"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Reinforcement Learning Fundamentals",
+          "completedVideos": [
+            "RL Overview"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Gaurav",
+      "lastName": "Jain",
+      "email": "gaurav.jain@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=GJ",
+      "additionalDetails": {
+        "about": "Mastering algorithms",
+        "contactNumber": "+919412066042"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Responsive Web Design with HTML5 & CSS3",
+          "completedVideos": [
+            "Flexbox for Flexible Layouts",
+            "CSS Animations and Transitions",
+            "Box Model and Positioning"
+          ]
+        },
+        {
+          "courseName": "Frontend Development Mastery",
+          "completedVideos": [
+            "React Hooks"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Vivek",
+      "lastName": "Rathore",
+      "email": "vivek.rathore@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=VR",
+      "additionalDetails": {
+        "about": "Interested in frontend design",
+        "contactNumber": "+919189780100"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Frontend Development Mastery",
+          "completedVideos": [
+            "ES6+ Features",
+            "React Hooks",
+            "State Management"
+          ]
+        },
+        {
+          "courseName": "Deep Learning Specialization",
+          "completedVideos": [
+            "LSTM and GRU",
+            "Image Classification"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Yash",
+      "lastName": "Nair",
+      "email": "yash.nair@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=YN",
+      "additionalDetails": {
+        "about": "Working on backend technologies",
+        "contactNumber": "+919685090077"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Responsive Web Design with HTML5 & CSS3",
+          "completedVideos": [
+            "CSS Grid for Two-Dimensional Layouts",
+            "Building a Complete Responsive Website",
+            "Box Model and Positioning"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Saanvi",
+      "lastName": "Yadav",
+      "email": "saanvi.yadav@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=SY",
+      "additionalDetails": {
+        "about": "Competitive programming enthusiast",
+        "contactNumber": "+919114991431"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Python for Data Analysis",
+          "completedVideos": [
+            "Descriptive Statistics"
+          ]
+        },
+        {
+          "courseName": "Complete MERN Stack Bootcamp",
+          "completedVideos": [
+            "Setting Up Development Environment",
+            "Building Responsive UI"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Diya",
+      "lastName": "Sharma",
+      "email": "diya.sharma@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=DS",
+      "additionalDetails": {
+        "about": "Competitive programming enthusiast",
+        "contactNumber": "+919389185130"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Computer Vision Essentials",
+          "completedVideos": [
+            "Computer Vision Overview",
+            "Image Segmentation"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Aarav",
+      "lastName": "Agarwal",
+      "email": "aarav.agarwal@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=AA",
+      "additionalDetails": {
+        "about": "Learning web development",
+        "contactNumber": "+919708710350"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Advanced Python Programming",
+          "completedVideos": [
+            "Context Managers",
+            "Structural Patterns",
+            "Object-Oriented Programming in Python"
+          ]
+        },
+        {
+          "courseName": "Frontend Development with React & Tailwind CSS",
+          "completedVideos": [
+            "Lifecycle Hooks (useEffect)",
+            "Tailwind CSS Fundamentals"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Rakesh",
+      "lastName": "Chaudhary",
+      "email": "rakesh.chaudhary@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=RC",
+      "additionalDetails": {
+        "about": "Aspiring data scientist",
+        "contactNumber": "+919678284511"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Graph Algorithms Mastery",
+          "completedVideos": [
+            "Eulerian Paths",
+            "Bipartite Graphs"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Sanjay",
+      "lastName": "Kumar",
+      "email": "sanjay.kumar@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=SK",
+      "additionalDetails": {
+        "about": "Data analysis enthusiast",
+        "contactNumber": "+919911711031"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Graph Algorithms Mastery",
+          "completedVideos": [
+            "Bipartite Graphs",
+            "Floyd-Warshall",
+            "Graph Representations"
+          ]
+        },
+        {
+          "courseName": "Responsive Web Design with HTML5 & CSS3",
+          "completedVideos": [
+            "Typography and Colors"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Shreya",
+      "lastName": "Joshi",
+      "email": "shreya.joshi@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=SJ",
+      "additionalDetails": {
+        "about": "Learning web development",
+        "contactNumber": "+919303558196"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Competitive Programming Algorithms",
+          "completedVideos": [
+            "Number Theory for CP"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Vikram",
+      "lastName": "Rathore",
+      "email": "vikram.rathore@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=VR",
+      "additionalDetails": {
+        "about": "Data analysis enthusiast",
+        "contactNumber": "+919786519186"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Advanced Python Programming",
+          "completedVideos": [
+            "Structural Patterns",
+            "Debugging Techniques"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Shreya",
+      "lastName": "Pandey",
+      "email": "shreya.pandey@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=SP",
+      "additionalDetails": {
+        "about": "Data analysis enthusiast",
+        "contactNumber": "+919627359508"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Dynamic Programming Deep Dive",
+          "completedVideos": [
+            "Digit DP",
+            "State Reduction"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Siddharth",
+      "lastName": "Bhat",
+      "email": "siddharth.bhat@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=SB",
+      "additionalDetails": {
+        "about": "Learning web development",
+        "contactNumber": "+919115756860"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Responsive Web Design with HTML5 & CSS3",
+          "completedVideos": [
+            "Typography and Colors",
+            "CSS Grid for Two-Dimensional Layouts"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Rahul",
+      "lastName": "Pandey",
+      "email": "rahul.pandey@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=RP",
+      "additionalDetails": {
+        "about": "Building full-stack applications",
+        "contactNumber": "+919894884057"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Python for Data Analysis",
+          "completedVideos": [
+            "Data Types and Structures"
+          ]
+        },
+        {
+          "courseName": "Natural Language Processing Masterclass",
+          "completedVideos": [
+            "NLP Overview",
+            "Machine Translation",
+            "Transformers"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Rohan",
+      "lastName": "Khan",
+      "email": "rohan.khan@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=RK",
+      "additionalDetails": {
+        "about": "Working on backend technologies",
+        "contactNumber": "+919331370936"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Complete MERN Stack Bootcamp",
+          "completedVideos": [
+            "Authentication & Authorization",
+            "MongoDB Fundamentals",
+            "React Fundamentals"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Deepak",
+      "lastName": "Gupta",
+      "email": "deepak.gupta@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=DG",
+      "additionalDetails": {
+        "about": "Aspiring data scientist",
+        "contactNumber": "+919301672093"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Reinforcement Learning Fundamentals",
+          "completedVideos": [
+            "Actor-Critic Methods"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Ishaan",
+      "lastName": "Verma",
+      "email": "ishaan.verma@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=IV",
+      "additionalDetails": {
+        "about": "Competitive programming enthusiast",
+        "contactNumber": "+919404846967"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Advanced Algorithms and Data Structures",
+          "completedVideos": [
+            "Problem Solving Strategies"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Priya",
+      "lastName": "Kumar",
+      "email": "priya.kumar@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=PK",
+      "additionalDetails": {
+        "about": "Working on backend technologies",
+        "contactNumber": "+919547314857"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Natural Language Processing Masterclass",
+          "completedVideos": [
+            "Topic Modeling",
+            "NLP Overview",
+            "Transformers"
+          ]
+        },
+        {
+          "courseName": "Python for Automation",
+          "completedVideos": [
+            "PyAutoGUI Basics",
+            "Working with Files",
+            "Automating Desktop Apps"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Pooja",
+      "lastName": "Khan",
+      "email": "pooja.khan@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=PK",
+      "additionalDetails": {
+        "about": "Interested in frontend design",
+        "contactNumber": "+919596083433"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Frontend Development with React & Tailwind CSS",
+          "completedVideos": [
+            "Client-Side Routing with React Router",
+            "Context API for Global State",
+            "Working with State"
+          ]
+        },
+        {
+          "courseName": "Natural Language Processing Masterclass",
+          "completedVideos": [
+            "Text Preprocessing",
+            "Machine Translation"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Arjun",
+      "lastName": "Pandey",
+      "email": "arjun.pandey@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=AP",
+      "additionalDetails": {
+        "about": "Interested in frontend design",
+        "contactNumber": "+919733441476"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Python for Machine Learning",
+          "completedVideos": [
+            "Supervised vs Unsupervised Learning",
+            "Data Normalization",
+            "Machine Learning Basics"
+          ]
+        },
+        {
+          "courseName": "Fullstack Web Development with Next.js and Firebase",
+          "completedVideos": [
+            "Introduction to Firebase"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Tanya",
+      "lastName": "Srivastava",
+      "email": "tanya.srivastava@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=TS",
+      "additionalDetails": {
+        "about": "Interested in frontend design",
+        "contactNumber": "+919732833060"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Frontend Development Mastery",
+          "completedVideos": [
+            "State Management"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Aditya",
+      "lastName": "Mehta",
+      "email": "aditya.mehta@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=AM",
+      "additionalDetails": {
+        "about": "Learning web development",
+        "contactNumber": "+919663389980"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Python for Data Analysis",
+          "completedVideos": [
+            "Data Cleaning Techniques"
+          ]
+        },
+        {
+          "courseName": "Dynamic Programming Deep Dive",
+          "completedVideos": [
+            "Memoization vs Tabulation",
+            "Longest Common Subsequence"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Nisha",
+      "lastName": "Mishra",
+      "email": "nisha.mishra@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=NM",
+      "additionalDetails": {
+        "about": "Interested in frontend design",
+        "contactNumber": "+919512645514"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Deep Learning Specialization",
+          "completedVideos": [
+            "CNN Basics",
+            "Image Classification"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Ananya",
+      "lastName": "Singh",
+      "email": "ananya.singh@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=AS",
+      "additionalDetails": {
+        "about": "Aspiring data scientist",
+        "contactNumber": "+919774879302"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Natural Language Processing Masterclass",
+          "completedVideos": [
+            "NLP Overview",
+            "Sentiment Analysis"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Tanya",
+      "lastName": "Sharma",
+      "email": "tanya.sharma@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=TS",
+      "additionalDetails": {
+        "about": "Aspiring data scientist",
+        "contactNumber": "+919925140866"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Dynamic Programming Deep Dive",
+          "completedVideos": [
+            "State Reduction"
+          ]
+        },
+        {
+          "courseName": "Python Web Development",
+          "completedVideos": [
+            "Scaling Applications"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Sneha",
+      "lastName": "Nair",
+      "email": "sneha.nair@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=SN",
+      "additionalDetails": {
+        "about": "Working on backend technologies",
+        "contactNumber": "+919221510839"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Frontend Development with React & Tailwind CSS",
+          "completedVideos": [
+            "Responsive Design with Tailwind",
+            "Working with State"
+          ]
+        },
+        {
+          "courseName": "Graph Algorithms Mastery",
+          "completedVideos": [
+            "Graph Representations",
+            "Minimum Spanning Trees",
+            "Network Flow"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Neha",
+      "lastName": "Rao",
+      "email": "neha.rao@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=NR",
+      "additionalDetails": {
+        "about": "Mastering algorithms",
+        "contactNumber": "+919116788357"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Natural Language Processing Masterclass",
+          "completedVideos": [
+            "Topic Modeling"
+          ]
+        },
+        {
+          "courseName": "Backend Development with Node.js & Express",
+          "completedVideos": [
+            "CRUD Operations with MongoDB"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Nisha",
+      "lastName": "Agarwal",
+      "email": "nisha.agarwal@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=NA",
+      "additionalDetails": {
+        "about": "Aspiring data scientist",
+        "contactNumber": "+919548081634"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Python Web Development",
+          "completedVideos": [
+            "Flask Basics",
+            "Routing and Templates",
+            "Scaling Applications"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Nisha",
+      "lastName": "Kumar",
+      "email": "nisha.kumar@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=NK",
+      "additionalDetails": {
+        "about": "Competitive programming enthusiast",
+        "contactNumber": "+919128964815"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Competitive Programming Algorithms",
+          "completedVideos": [
+            "Binary Search Applications",
+            "Sliding Window",
+            "Number Theory for CP"
+          ]
+        },
+        {
+          "courseName": "Python Web Development",
+          "completedVideos": [
+            "Deploying Web Apps",
+            "Django Basics"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Rohan",
+      "lastName": "Nair",
+      "email": "rohan.nair@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=RN",
+      "additionalDetails": {
+        "about": "Exploring AI and ML",
+        "contactNumber": "+919105076175"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Fullstack Web Development with Next.js and Firebase",
+          "completedVideos": [
+            "Introduction to Firebase"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Sneha",
+      "lastName": "Mehta",
+      "email": "sneha.mehta@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=SM",
+      "additionalDetails": {
+        "about": "Mastering algorithms",
+        "contactNumber": "+919218977393"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Python for Automation",
+          "completedVideos": [
+            "Python Scripting",
+            "Requests Library"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Rahul",
+      "lastName": "Reddy",
+      "email": "rahul.reddy@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=RR",
+      "additionalDetails": {
+        "about": "Data analysis enthusiast",
+        "contactNumber": "+919269453681"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Complete MERN Stack Bootcamp",
+          "completedVideos": [
+            "Building Responsive UI",
+            "REST API Development",
+            "MongoDB Fundamentals"
+          ]
+        },
+        {
+          "courseName": "Python for Machine Learning",
+          "completedVideos": [
+            "Model Evaluation Metrics",
+            "Model Deployment",
+            "Machine Learning Basics"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Diya",
+      "lastName": "Rathore",
+      "email": "diya.rathore@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=DR",
+      "additionalDetails": {
+        "about": "Interested in frontend design",
+        "contactNumber": "+919818848331"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Advanced Algorithms and Data Structures",
+          "completedVideos": [
+            "Problem Solving Strategies"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Priya",
+      "lastName": "Reddy",
+      "email": "priya.reddy@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=PR",
+      "additionalDetails": {
+        "about": "Learning web development",
+        "contactNumber": "+919738585323"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Responsive Web Design with HTML5 & CSS3",
+          "completedVideos": [
+            "CSS Animations and Transitions",
+            "CSS Grid for Two-Dimensional Layouts"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Gaurav",
+      "lastName": "Malhotra",
+      "email": "gaurav.malhotra@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=GM",
+      "additionalDetails": {
+        "about": "Working on backend technologies",
+        "contactNumber": "+919992626295"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Dynamic Programming Deep Dive",
+          "completedVideos": [
+            "State Reduction",
+            "Knapsack Problems"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Amit",
+      "lastName": "Joshi",
+      "email": "amit.joshi@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=AJ",
+      "additionalDetails": {
+        "about": "Competitive programming enthusiast",
+        "contactNumber": "+919755770593"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Complete MERN Stack Bootcamp",
+          "completedVideos": [
+            "Node.js Basics",
+            "Authentication & Authorization",
+            "Setting Up Development Environment"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Neha",
+      "lastName": "Reddy",
+      "email": "neha.reddy@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=NR",
+      "additionalDetails": {
+        "about": "Exploring AI and ML",
+        "contactNumber": "+919910899717"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Competitive Programming Algorithms",
+          "completedVideos": [
+            "Bitmask DP",
+            "Meet-in-the-Middle"
+          ]
+        },
+        {
+          "courseName": "AI & Machine Learning Bootcamp",
+          "completedVideos": [
+            "Data Visualization",
+            "Neural Networks Basics",
+            "Python Basics for AI"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Tanya",
+      "lastName": "Kapoor",
+      "email": "tanya.kapoor@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=TK",
+      "additionalDetails": {
+        "about": "Exploring AI and ML",
+        "contactNumber": "+919356964384"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Computer Vision Essentials",
+          "completedVideos": [
+            "Image Classification",
+            "Image Formation"
+          ]
+        },
+        {
+          "courseName": "Python for Machine Learning",
+          "completedVideos": [
+            "Hyperparameter Tuning",
+            "Regression Models"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Harsh",
+      "lastName": "Reddy",
+      "email": "harsh.reddy@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=HR",
+      "additionalDetails": {
+        "about": "Data analysis enthusiast",
+        "contactNumber": "+919131139083"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Complete MERN Stack Bootcamp",
+          "completedVideos": [
+            "Setting Up Development Environment",
+            "Course Overview"
+          ]
+        },
+        {
+          "courseName": "Frontend Development with React & Tailwind CSS",
+          "completedVideos": [
+            "Client-Side Routing with React Router",
+            "Tailwind CSS Fundamentals",
+            "Customizing Tailwind CSS"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Saanvi",
+      "lastName": "Kumar",
+      "email": "saanvi.kumar@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=SK",
+      "additionalDetails": {
+        "about": "Data analysis enthusiast",
+        "contactNumber": "+919801483710"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Complete MERN Stack Bootcamp",
+          "completedVideos": [
+            "Course Overview"
+          ]
+        },
+        {
+          "courseName": "Python for Automation",
+          "completedVideos": [
+            "PyAutoGUI Basics",
+            "Automation Basics",
+            "Working with Files"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Kavya",
+      "lastName": "Kumar",
+      "email": "kavya.kumar@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=KK",
+      "additionalDetails": {
+        "about": "Interested in frontend design",
+        "contactNumber": "+919703440327"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Graph Algorithms Mastery",
+          "completedVideos": [
+            "Dijkstra's Algorithm",
+            "Minimum Spanning Trees",
+            "Graph Representations"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Meera",
+      "lastName": "Kumar",
+      "email": "meera.kumar@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=MK",
+      "additionalDetails": {
+        "about": "Competitive programming enthusiast",
+        "contactNumber": "+919461593620"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Advanced Algorithms and Data Structures",
+          "completedVideos": [
+            "Classic DP Problems",
+            "Hash Tables and Sets"
+          ]
+        },
+        {
+          "courseName": "Computer Vision Essentials",
+          "completedVideos": [
+            "Image Formation"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Nisha",
+      "lastName": "Verma",
+      "email": "nisha.verma@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=NV",
+      "additionalDetails": {
+        "about": "Data analysis enthusiast",
+        "contactNumber": "+919440296397"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Python for Data Analysis",
+          "completedVideos": [
+            "Matplotlib Basics",
+            "Seaborn for Advanced Visuals",
+            "Hypothesis Testing"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Harsh",
+      "lastName": "Nair",
+      "email": "harsh.nair@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=HN",
+      "additionalDetails": {
+        "about": "Competitive programming enthusiast",
+        "contactNumber": "+919411637101"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Dynamic Programming Deep Dive",
+          "completedVideos": [
+            "Digit DP"
+          ]
+        },
+        {
+          "courseName": "Python Web Development",
+          "completedVideos": [
+            "Models and ORM"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Manish",
+      "lastName": "Kapoor",
+      "email": "manish.kapoor@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=MK",
+      "additionalDetails": {
+        "about": "Exploring AI and ML",
+        "contactNumber": "+919718275213"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "String Algorithms Specialist",
+          "completedVideos": [
+            "Edit Distance Algorithms"
+          ]
+        },
+        {
+          "courseName": "Advanced Python Programming",
+          "completedVideos": [
+            "Web Scraping with BeautifulSoup",
+            "Task Automation",
+            "Selenium Automation"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Anjali",
+      "lastName": "Jain",
+      "email": "anjali.jain@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=AJ",
+      "additionalDetails": {
+        "about": "Interested in frontend design",
+        "contactNumber": "+919653531276"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "String Algorithms Specialist",
+          "completedVideos": [
+            "Burrows-Wheeler Transform"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Manish",
+      "lastName": "Singh",
+      "email": "manish.singh@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=MS",
+      "additionalDetails": {
+        "about": "Aspiring data scientist",
+        "contactNumber": "+919921026764"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Natural Language Processing Masterclass",
+          "completedVideos": [
+            "Transformers",
+            "NLP Overview"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Kunal",
+      "lastName": "Pandey",
+      "email": "kunal.pandey@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=KP",
+      "additionalDetails": {
+        "about": "Aspiring data scientist",
+        "contactNumber": "+919449654197"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Backend Development with Node.js & Express",
+          "completedVideos": [
+            "Setting Up an Express Server",
+            "Handling HTTP Requests",
+            "CRUD Operations with MongoDB"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Shreya",
+      "lastName": "Gupta",
+      "email": "shreya.gupta@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=SG",
+      "additionalDetails": {
+        "about": "Working on backend technologies",
+        "contactNumber": "+919428109038"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Graph Algorithms Mastery",
+          "completedVideos": [
+            "Bipartite Graphs",
+            "Floyd-Warshall"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Vikram",
+      "lastName": "Kumar",
+      "email": "vikram.kumar@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=VK",
+      "additionalDetails": {
+        "about": "Learning web development",
+        "contactNumber": "+919507471402"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Advanced Python Programming",
+          "completedVideos": [
+            "Object-Oriented Programming in Python",
+            "Decorators and Generators",
+            "Context Managers"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Deepak",
+      "lastName": "Reddy",
+      "email": "deepak.reddy@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=DR",
+      "additionalDetails": {
+        "about": "Competitive programming enthusiast",
+        "contactNumber": "+919515929482"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Advanced Algorithms and Data Structures",
+          "completedVideos": [
+            "Hash Tables and Sets",
+            "Graph Algorithms",
+            "Problem Solving Strategies"
+          ]
+        },
+        {
+          "courseName": "Frontend Development with React & Tailwind CSS",
+          "completedVideos": [
+            "Lifecycle Hooks (useEffect)"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Rakesh",
+      "lastName": "Jain",
+      "email": "rakesh.jain@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=RJ",
+      "additionalDetails": {
+        "about": "Keen on cloud computing",
+        "contactNumber": "+919931376344"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "AI & Machine Learning Bootcamp",
+          "completedVideos": [
+            "Language Models"
+          ]
+        },
+        {
+          "courseName": "String Algorithms Specialist",
+          "completedVideos": [
+            "Boyer-Moore",
+            "Suffix Automata"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Meera",
+      "lastName": "Yadav",
+      "email": "meera.yadav@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=MY",
+      "additionalDetails": {
+        "about": "Building full-stack applications",
+        "contactNumber": "+919354575039"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Advanced Python Programming",
+          "completedVideos": [
+            "Task Automation",
+            "Unit Testing with PyTest",
+            "Structural Patterns"
+          ]
+        },
+        {
+          "courseName": "Computer Vision Essentials",
+          "completedVideos": [
+            "Edge Detection"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Meera",
+      "lastName": "Kapoor",
+      "email": "meera.kapoor@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=MK",
+      "additionalDetails": {
+        "about": "Exploring AI and ML",
+        "contactNumber": "+919763601386"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Frontend Development Mastery",
+          "completedVideos": [
+            "React Hooks"
+          ]
+        },
+        {
+          "courseName": "Python for Machine Learning",
+          "completedVideos": [
+            "Regression Models",
+            "Model Evaluation Metrics"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Avani",
+      "lastName": "Mishra",
+      "email": "avani.mishra@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=AM",
+      "additionalDetails": {
+        "about": "Exploring AI and ML",
+        "contactNumber": "+919930020704"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Responsive Web Design with HTML5 & CSS3",
+          "completedVideos": [
+            "Semantic HTML and Forms",
+            "Typography and Colors"
+          ]
+        },
+        {
+          "courseName": "Natural Language Processing Masterclass",
+          "completedVideos": [
+            "Chatbot Development",
+            "Sentiment Analysis"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Aditi",
+      "lastName": "Patel",
+      "email": "aditi.patel@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=AP",
+      "additionalDetails": {
+        "about": "Interested in frontend design",
+        "contactNumber": "+919853568056"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Python Web Development",
+          "completedVideos": [
+            "Models and ORM",
+            "Deploying Web Apps",
+            "Flask Basics"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Riya",
+      "lastName": "Mishra",
+      "email": "riya.mishra@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=RM",
+      "additionalDetails": {
+        "about": "Data analysis enthusiast",
+        "contactNumber": "+919756974989"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Frontend Development with React & Tailwind CSS",
+          "completedVideos": [
+            "Lifecycle Hooks (useEffect)",
+            "Working with State",
+            "React Basics and Setup"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Avani",
+      "lastName": "Patel",
+      "email": "avani.patel@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=AP",
+      "additionalDetails": {
+        "about": "Mastering algorithms",
+        "contactNumber": "+919339730683"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Deep Learning Specialization",
+          "completedVideos": [
+            "Variational Autoencoders"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Arjun",
+      "lastName": "Sharma",
+      "email": "arjun.sharma@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=AS",
+      "additionalDetails": {
+        "about": "Working on backend technologies",
+        "contactNumber": "+919649466729"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Competitive Programming Algorithms",
+          "completedVideos": [
+            "Geometry Algorithms"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Yash",
+      "lastName": "Kapoor",
+      "email": "yash.kapoor@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=YK",
+      "additionalDetails": {
+        "about": "Interested in frontend design",
+        "contactNumber": "+919252042717"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Frontend Development with React & Tailwind CSS",
+          "completedVideos": [
+            "Client-Side Routing with React Router",
+            "Components and Props"
+          ]
+        },
+        {
+          "courseName": "Python for Automation",
+          "completedVideos": [
+            "Cron Jobs with Python"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Priya",
+      "lastName": "Jain",
+      "email": "priya.jain@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=PJ",
+      "additionalDetails": {
+        "about": "Building full-stack applications",
+        "contactNumber": "+919339605250"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Dynamic Programming Deep Dive",
+          "completedVideos": [
+            "DP Thinking Process"
+          ]
+        },
+        {
+          "courseName": "Python for Machine Learning",
+          "completedVideos": [
+            "Model Evaluation Metrics"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Rohan",
+      "lastName": "Gupta",
+      "email": "rohan.gupta@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=RG",
+      "additionalDetails": {
+        "about": "Mastering algorithms",
+        "contactNumber": "+919250059455"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Graph Algorithms Mastery",
+          "completedVideos": [
+            "Dijkstra's Algorithm",
+            "Minimum Spanning Trees",
+            "Bellman-Ford"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Riya",
+      "lastName": "Gupta",
+      "email": "riya.gupta@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=RG",
+      "additionalDetails": {
+        "about": "Learning web development",
+        "contactNumber": "+919780163522"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Python Web Development",
+          "completedVideos": [
+            "REST API Development",
+            "HTTP and APIs",
+            "Setting Up Environment"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Rohan",
+      "lastName": "Desai",
+      "email": "rohan.desai@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=RD",
+      "additionalDetails": {
+        "about": "Keen on cloud computing",
+        "contactNumber": "+919228373257"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Deep Learning Specialization",
+          "completedVideos": [
+            "Generative Adversarial Networks",
+            "LSTM and GRU",
+            "Neural Network Fundamentals"
+          ]
+        },
+        {
+          "courseName": "Responsive Web Design with HTML5 & CSS3",
+          "completedVideos": [
+            "Box Model and Positioning",
+            "Flexbox for Flexible Layouts",
+            "Typography and Colors"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Sanjay",
+      "lastName": "Yadav",
+      "email": "sanjay.yadav@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=SY",
+      "additionalDetails": {
+        "about": "Aspiring data scientist",
+        "contactNumber": "+919978099199"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Python for Machine Learning",
+          "completedVideos": [
+            "Machine Learning Basics",
+            "Feature Engineering",
+            "Regression Models"
+          ]
+        },
+        {
+          "courseName": "Complete MERN Stack Bootcamp",
+          "completedVideos": [
+            "React Fundamentals"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Rohan",
+      "lastName": "Malhotra",
+      "email": "rohan.malhotra@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=RM",
+      "additionalDetails": {
+        "about": "Keen on cloud computing",
+        "contactNumber": "+919771503589"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Advanced Algorithms and Data Structures",
+          "completedVideos": [
+            "Advanced Problem Solving",
+            "Trees and Graphs",
+            "String Algorithms"
+          ]
+        },
+        {
+          "courseName": "Advanced Python Programming",
+          "completedVideos": [
+            "Web Scraping with BeautifulSoup",
+            "Context Managers",
+            "Creational Patterns"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Manish",
+      "lastName": "Sharma",
+      "email": "manish.sharma@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=MS",
+      "additionalDetails": {
+        "about": "Aspiring data scientist",
+        "contactNumber": "+919759778710"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Backend Development with Node.js & Express",
+          "completedVideos": [
+            "Modules and NPM",
+            "Setting Up an Express Server",
+            "Introduction to Node.js"
+          ]
+        },
+        {
+          "courseName": "Python for Machine Learning",
+          "completedVideos": [
+            "Hyperparameter Tuning",
+            "Machine Learning Basics"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Aditya",
+      "lastName": "Yadav",
+      "email": "aditya.yadav@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=AY",
+      "additionalDetails": {
+        "about": "Competitive programming enthusiast",
+        "contactNumber": "+919935927257"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "String Algorithms Specialist",
+          "completedVideos": [
+            "Knuth-Morris-Pratt",
+            "String Basics"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Aditya",
+      "lastName": "Rao",
+      "email": "aditya.rao@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=AR",
+      "additionalDetails": {
+        "about": "Mastering algorithms",
+        "contactNumber": "+919427664678"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Python for Data Analysis",
+          "completedVideos": [
+            "Python for Data Analysis",
+            "Data Cleaning Techniques"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Avani",
+      "lastName": "Pandey",
+      "email": "avani.pandey@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=AP",
+      "additionalDetails": {
+        "about": "Working on backend technologies",
+        "contactNumber": "+919644772996"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Python for Data Analysis",
+          "completedVideos": [
+            "Seaborn for Advanced Visuals",
+            "Data Cleaning Techniques"
+          ]
+        },
+        {
+          "courseName": "Responsive Web Design with HTML5 & CSS3",
+          "completedVideos": [
+            "CSS Selectors and Properties"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Tanya",
+      "lastName": "Mehta",
+      "email": "tanya.mehta@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=TM",
+      "additionalDetails": {
+        "about": "Mastering algorithms",
+        "contactNumber": "+919664862854"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Fullstack Web Development with Next.js and Firebase",
+          "completedVideos": [
+            "Firebase Authentication"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Anjali",
+      "lastName": "Malhotra",
+      "email": "anjali.malhotra@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=AM",
+      "additionalDetails": {
+        "about": "Building full-stack applications",
+        "contactNumber": "+919913448428"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Reinforcement Learning Fundamentals",
+          "completedVideos": [
+            "Deep Q-Networks",
+            "SARSA",
+            "Multi-Agent RL"
+          ]
+        },
+        {
+          "courseName": "Python Web Development",
+          "completedVideos": [
+            "Models and ORM",
+            "Web Development Overview",
+            "Django Basics"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Anjali",
+      "lastName": "Sharma",
+      "email": "anjali.sharma@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=AS",
+      "additionalDetails": {
+        "about": "Keen on cloud computing",
+        "contactNumber": "+919132288255"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Frontend Development Mastery",
+          "completedVideos": [
+            "State Management",
+            "Asynchronous JavaScript"
+          ]
+        },
+        {
+          "courseName": "Python Web Development",
+          "completedVideos": [
+            "HTTP and APIs",
+            "Django Basics",
+            "Web Development Overview"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Pooja",
+      "lastName": "Singh",
+      "email": "pooja.singh@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=PS",
+      "additionalDetails": {
+        "about": "Aspiring data scientist",
+        "contactNumber": "+919715360265"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Python for Data Analysis",
+          "completedVideos": [
+            "What is Data Analysis?"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Gaurav",
+      "lastName": "Khan",
+      "email": "gaurav.khan@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=GK",
+      "additionalDetails": {
+        "about": "Learning web development",
+        "contactNumber": "+919403114749"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Advanced Algorithms and Data Structures",
+          "completedVideos": [
+            "Algorithm Analysis and Big O Notation",
+            "Hash Tables and Sets",
+            "String Algorithms"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Saanvi",
+      "lastName": "Agarwal",
+      "email": "saanvi.agarwal@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=SA",
+      "additionalDetails": {
+        "about": "Exploring AI and ML",
+        "contactNumber": "+919872864187"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Reinforcement Learning Fundamentals",
+          "completedVideos": [
+            "Q-Learning",
+            "SARSA",
+            "Policy Gradients"
+          ]
+        },
+        {
+          "courseName": "Python for Machine Learning",
+          "completedVideos": [
+            "Regression Models",
+            "Supervised vs Unsupervised Learning"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Kavya",
+      "lastName": "Rao",
+      "email": "kavya.rao@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=KR",
+      "additionalDetails": {
+        "about": "Learning web development",
+        "contactNumber": "+919376871081"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "String Algorithms Specialist",
+          "completedVideos": [
+            "Boyer-Moore"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Neha",
+      "lastName": "Desai",
+      "email": "neha.desai@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=ND",
+      "additionalDetails": {
+        "about": "Working on backend technologies",
+        "contactNumber": "+919935125047"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Complete MERN Stack Bootcamp",
+          "completedVideos": [
+            "Course Overview",
+            "MongoDB Fundamentals",
+            "Authentication & Authorization"
+          ]
+        },
+        {
+          "courseName": "Python Web Development",
+          "completedVideos": [
+            "Models and ORM",
+            "Routing and Templates",
+            "Django Basics"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Priya",
+      "lastName": "Mehta",
+      "email": "priya.mehta@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=PM",
+      "additionalDetails": {
+        "about": "Building full-stack applications",
+        "contactNumber": "+919645411998"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Frontend Development with React & Tailwind CSS",
+          "completedVideos": [
+            "Responsive Design with Tailwind",
+            "Working with State",
+            "Lifecycle Hooks (useEffect)"
+          ]
+        },
+        {
+          "courseName": "Python for Automation",
+          "completedVideos": [
+            "Automating Desktop Apps"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Gaurav",
+      "lastName": "Chaudhary",
+      "email": "gaurav.chaudhary@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=GC",
+      "additionalDetails": {
+        "about": "Exploring AI and ML",
+        "contactNumber": "+919987739500"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Responsive Web Design with HTML5 & CSS3",
+          "completedVideos": [
+            "Semantic HTML and Forms",
+            "Introduction to HTML5 Structure",
+            "CSS Selectors and Properties"
+          ]
+        },
+        {
+          "courseName": "Advanced Algorithms and Data Structures",
+          "completedVideos": [
+            "String Algorithms",
+            "Trees and Graphs",
+            "Classic DP Problems"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Amit",
+      "lastName": "Shetty",
+      "email": "amit.shetty@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=AS",
+      "additionalDetails": {
+        "about": "Exploring AI and ML",
+        "contactNumber": "+919488637339"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Complete MERN Stack Bootcamp",
+          "completedVideos": [
+            "Authentication & Authorization"
+          ]
+        },
+        {
+          "courseName": "Frontend Development Mastery",
+          "completedVideos": [
+            "Asynchronous JavaScript",
+            "ES6+ Features"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Diya",
+      "lastName": "Chaudhary",
+      "email": "diya.chaudhary@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=DC",
+      "additionalDetails": {
+        "about": "Exploring AI and ML",
+        "contactNumber": "+919383956830"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Python Web Development",
+          "completedVideos": [
+            "Web Development Overview",
+            "REST API Development",
+            "Django Basics"
+          ]
+        },
+        {
+          "courseName": "Python for Data Analysis",
+          "completedVideos": [
+            "Descriptive Statistics",
+            "What is Data Analysis?"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Meera",
+      "lastName": "Khan",
+      "email": "meera.khan@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=MK",
+      "additionalDetails": {
+        "about": "Aspiring data scientist",
+        "contactNumber": "+919981638185"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Python for Automation",
+          "completedVideos": [
+            "Automating Desktop Apps"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Manish",
+      "lastName": "Nair",
+      "email": "manish.nair@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=MN",
+      "additionalDetails": {
+        "about": "Competitive programming enthusiast",
+        "contactNumber": "+919226842917"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "String Algorithms Specialist",
+          "completedVideos": [
+            "Tries and Suffix Trees",
+            "Palindrome Algorithms"
+          ]
+        },
+        {
+          "courseName": "Python Web Development",
+          "completedVideos": [
+            "Setting Up Environment"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Nikhil",
+      "lastName": "Pandey",
+      "email": "nikhil.pandey@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=NP",
+      "additionalDetails": {
+        "about": "Mastering algorithms",
+        "contactNumber": "+919346952269"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Complete MERN Stack Bootcamp",
+          "completedVideos": [
+            "Authentication & Authorization",
+            "Node.js Basics"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Priya",
+      "lastName": "Rao",
+      "email": "priya.rao@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=PR",
+      "additionalDetails": {
+        "about": "Building full-stack applications",
+        "contactNumber": "+919716708796"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Deep Learning Specialization",
+          "completedVideos": [
+            "RNN Basics",
+            "Deep Learning Overview",
+            "Image Classification"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Aarav",
+      "lastName": "Joshi",
+      "email": "aarav.joshi@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=AJ",
+      "additionalDetails": {
+        "about": "Mastering algorithms",
+        "contactNumber": "+919912550829"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Python for Automation",
+          "completedVideos": [
+            "PyAutoGUI Basics"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Manish",
+      "lastName": "Jain",
+      "email": "manish.jain@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=MJ",
+      "additionalDetails": {
+        "about": "Working on backend technologies",
+        "contactNumber": "+919400344238"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Natural Language Processing Masterclass",
+          "completedVideos": [
+            "Named Entity Recognition",
+            "Topic Modeling",
+            "Text Preprocessing"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Tanya",
+      "lastName": "Patel",
+      "email": "tanya.patel@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=TP",
+      "additionalDetails": {
+        "about": "Learning web development",
+        "contactNumber": "+919990009304"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Responsive Web Design with HTML5 & CSS3",
+          "completedVideos": [
+            "Typography and Colors"
+          ]
+        },
+        {
+          "courseName": "Python Web Development",
+          "completedVideos": [
+            "Routing and Templates",
+            "Scaling Applications"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Ananya",
+      "lastName": "Patel",
+      "email": "ananya.patel@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=AP",
+      "additionalDetails": {
+        "about": "Aspiring data scientist",
+        "contactNumber": "+919239907485"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Python for Data Analysis",
+          "completedVideos": [
+            "What is Data Analysis?",
+            "Pandas Basics"
+          ]
+        },
+        {
+          "courseName": "Advanced Algorithms and Data Structures",
+          "completedVideos": [
+            "String Algorithms",
+            "Introduction to DP",
+            "Advanced Array Techniques"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Nisha",
+      "lastName": "Malhotra",
+      "email": "nisha.malhotra@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=NM",
+      "additionalDetails": {
+        "about": "Data analysis enthusiast",
+        "contactNumber": "+919590746476"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Reinforcement Learning Fundamentals",
+          "completedVideos": [
+            "Multi-Agent RL",
+            "Markov Decision Processes"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Meera",
+      "lastName": "Shetty",
+      "email": "meera.shetty@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=MS",
+      "additionalDetails": {
+        "about": "Aspiring data scientist",
+        "contactNumber": "+919693447489"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Fullstack Web Development with Next.js and Firebase",
+          "completedVideos": [
+            "Deploying Next.js and Firebase Apps",
+            "Cloud Firestore Database"
+          ]
+        },
+        {
+          "courseName": "Deep Learning Specialization",
+          "completedVideos": [
+            "Image Classification",
+            "Variational Autoencoders",
+            "Neural Network Fundamentals"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Rohan",
+      "lastName": "Srivastava",
+      "email": "rohan.srivastava@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=RS",
+      "additionalDetails": {
+        "about": "Competitive programming enthusiast",
+        "contactNumber": "+919783164219"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Advanced Python Programming",
+          "completedVideos": [
+            "Unit Testing with PyTest"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Nisha",
+      "lastName": "Pandey",
+      "email": "nisha.pandey@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=NP",
+      "additionalDetails": {
+        "about": "Working on backend technologies",
+        "contactNumber": "+919302776304"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Complete MERN Stack Bootcamp",
+          "completedVideos": [
+            "Setting Up Development Environment",
+            "State Management with Redux",
+            "Node.js Basics"
+          ]
+        },
+        {
+          "courseName": "Frontend Development with React & Tailwind CSS",
+          "completedVideos": [
+            "Customizing Tailwind CSS",
+            "Deploying React Applications",
+            "Components and Props"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Deepak",
+      "lastName": "Joshi",
+      "email": "deepak.joshi@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=DJ",
+      "additionalDetails": {
+        "about": "Interested in frontend design",
+        "contactNumber": "+919849822449"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "String Algorithms Specialist",
+          "completedVideos": [
+            "Tries and Suffix Trees"
+          ]
+        },
+        {
+          "courseName": "Graph Algorithms Mastery",
+          "completedVideos": [
+            "BFS and DFS",
+            "Bipartite Graphs",
+            "Dijkstra's Algorithm"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Rakesh",
+      "lastName": "Pandey",
+      "email": "rakesh.pandey@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=RP",
+      "additionalDetails": {
+        "about": "Exploring AI and ML",
+        "contactNumber": "+919419913535"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Frontend Development Mastery",
+          "completedVideos": [
+            "ES6+ Features"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Neha",
+      "lastName": "Malhotra",
+      "email": "neha.malhotra@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=NM",
+      "additionalDetails": {
+        "about": "Keen on cloud computing",
+        "contactNumber": "+919446934612"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Backend Development with Node.js & Express",
+          "completedVideos": [
+            "Introduction to Node.js"
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Riya",
+      "lastName": "Jain",
+      "email": "riya.jain@example.com",
+      "password": "password123",
+      "accountType": "Student",
+      "image": "https://api.dicebear.com/5.x/initials/svg?seed=RJ",
+      "additionalDetails": {
+        "about": "Competitive programming enthusiast",
+        "contactNumber": "+919317788019"
+      },
+      "enrolledCourses": [
+        {
+          "courseName": "Python for Data Analysis",
+          "completedVideos": [
+            "Seaborn for Advanced Visuals",
+            "Data Types and Structures",
+            "Matplotlib Basics"
+          ]
+        }
+      ]
+    }
   ]
 };
