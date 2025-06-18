@@ -53,7 +53,9 @@ exports.updateSubSection=async (req,res)=>{
        let updateObject={}; 
        if(video){
         const videoUploaded=await videoUpload(video,process.env.FOLDERNAME);
-        updateObject.videoUrl=videoUploaded.secure_url;
+        if(!videoUploaded || !videoUploaded.secure_url) 
+            throw new Error("video not uploaded");
+        updateObject.videoUrl=videoUploaded?.secure_url;
         updateObject.timeDuration=timeDuration;
        }
        if(description){

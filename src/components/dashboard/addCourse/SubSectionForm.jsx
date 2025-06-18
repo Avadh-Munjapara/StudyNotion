@@ -178,7 +178,7 @@ const SubSectionForm = ({
                 className="rounded-lg font-medium cursor-pointer self-end h-fit w-fit py-3 px-6 items-center flex gap-1 my-1 bg-[#C5C7D4]"
                 type="button"
               >
-                <label htmlFor="video">Select other lecture video</label>
+                <label className="cursor-pointer" htmlFor="video">Select other lecture video</label>
               </button>
             ) : null}
             <input

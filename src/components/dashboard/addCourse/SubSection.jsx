@@ -35,7 +35,7 @@ const SubSection = ({ ref, subSections, sectionIndex }) => {
                 index < subSections.length - 1 ? "border-b" : null
               } border-richblack-600 ml-10`}
             >
-              <summary className="flex  justify-between">
+              <summary className="flex cursor-pointer justify-between">
                 <div
                   onClick={() => {
                     setViewSub(true);

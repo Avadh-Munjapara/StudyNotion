@@ -14,6 +14,6 @@ const conncetToDatabase = async () => {
     console.log("error while connecting with database", error);
     process.exit(1);
   }
-};
+}; 
 
 module.exports = conncetToDatabase;

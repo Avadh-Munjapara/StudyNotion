@@ -21,8 +21,7 @@ const Publish = () => {
     const formData=new FormData();
     formData.append("courseId",courseInfo._id);
     formData.append("status",data.publish?data.publish:'draft');
-    const step=1;
-    dispatch(editCourseDetails(token,formData,courseInfo,step));
+    dispatch(editCourseDetails(token,formData,courseInfo,1));
     dispatch(deleteCourseInfo);
     dispatch(setEditCourse(false));
     dispatch(setStep(1));

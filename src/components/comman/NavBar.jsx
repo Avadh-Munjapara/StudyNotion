@@ -106,7 +106,7 @@ const NavBar = () => {
                       <div ref={catalogRef}  className=" invisible opacity-0 
                       transition-all z-30  duration-[250] 
                       absolute px-2 -translate-x-5  top-12 rounded-xl py-3 text-richblack-800 bg-richblack-25">
-                        <div className="z-10  flex flex-col gap-1 relative ">
+                        <div className="z-10 min-w-[15em] min-h-[5em] flex flex-col gap-1 justify-center relative ">
                           {categories.length === 0
                             ? "No Categroies have been created"
                             : categories.map((category, index) => {
