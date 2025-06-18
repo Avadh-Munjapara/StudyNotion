@@ -27,7 +27,9 @@ const EnrolledCoursesTable = () => {
   useEffect(() => {
     fetchEntolledCourses();
   }, []);
-
+const trimDes=(des)=>{
+    return des.substring(0,50)+'...';
+  }
   const showDuration = (duration) => {
     const courseDuration = formatDuration(duration);
     return courseDuration.hours === 0
@@ -63,7 +65,7 @@ const EnrolledCoursesTable = () => {
                               {item.name}
                             </h3>
                             <p className="text-richblack-300">
-                              {item.description}
+                              {trimDes(item.description)}
                             </p>
                           </div>
                         </div>
