@@ -16,7 +16,6 @@ import { ACCOUNT_TYPE } from "../utils/constants";
 import { useNavigate } from "react-router-dom";
 import ReviewSlider from "../components/comman/ReviewSlider";
 import { getCourseReviews } from "../services/operations/courseApi";
-
 const CourseInfoPage = () => {
   const [course, setCourse] = useState(null);
   const [reviews, setReviews] = useState(null);
@@ -24,6 +23,7 @@ const CourseInfoPage = () => {
   const loacation = useLocation();
   const courseId = loacation.pathname.split("/").at(-1);
   const loading = useSelector((state) => state.course.loading);
+  const authLoading = useSelector((state) => state.auth.loading);
   const user = useSelector((state) => state.profile.user);
     const { token } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
@@ -77,7 +77,7 @@ const CourseInfoPage = () => {
       toast.error("Instructors cannot buy courses");
       return;
     }
-    await buyCourse(token,user?._id,[courseId]);
+    await buyCourse(token,user?._id,[courseId],dispatch);
   };
 
   const isStudentEnrolled = () => {
@@ -87,7 +87,7 @@ const CourseInfoPage = () => {
   return (
     <div>
       <NavBar />
-      {loading ? (
+      {loading || authLoading ? (
         <Spinner />
       ) : (
         <div className=" flex mx-auto">

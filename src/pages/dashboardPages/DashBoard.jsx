@@ -2,21 +2,25 @@ import React, { createContext, useState } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import Sidebar from "../../components/dashboard/Sidebar";
 import NavBar from "../../components/comman/NavBar";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Spinner from "../../components/comman/Spinner";
+import { setLoading } from "../../slices/authSlice";
 export  const LoadingContext = createContext();
 const DashBoard = () => {
+  const dispatch=useDispatch();
+  dispatch(setLoading(false));
   const location = useLocation();
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoadingg] = useState(false);
+    const authLoading = useSelector((state) => state.auth.loading);   
   const contextValue = {
     loading,
-    setLoading,
+    setLoadingg,
   };
   return (
     <LoadingContext.Provider value={contextValue}>
       <div className="w-full  relative mx-auto ">
         <NavBar />
-        {loading ? (
+        {loading || authLoading ? (
           <Spinner />
         ) : (
           <div className="bg-richblack-800">

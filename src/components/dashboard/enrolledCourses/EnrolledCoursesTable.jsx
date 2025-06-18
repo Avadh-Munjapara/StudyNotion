@@ -14,6 +14,7 @@ const EnrolledCoursesTable = () => {
   const { token } = useSelector((state) => state.auth);
   const [enrolledCourses, setEnrolledCourses] = useState(null);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
+  
   const courseDeleteHandler = () => {};
   const fetchEntolledCourses = async () => {
     try {

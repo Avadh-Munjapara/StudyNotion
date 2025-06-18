@@ -6,7 +6,7 @@ const initialState={
     loading:false,
 }
 const authSclie=createSlice({
-    name:'auth',    
+    name:'auth',     
     initialState,
     reducers:{
         setSignupData(state,action){

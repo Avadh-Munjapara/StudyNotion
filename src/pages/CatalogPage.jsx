@@ -13,7 +13,7 @@ import NavBar from "../components/comman/NavBar";
 import SliderCourses from "../components/catalog/SliderCourses";
 import GridCourses from "../components/catalog/GridCourses";
 import Footer from "../components/comman/Footer";
-import { setLoading } from "../slices/authSlice";
+
 const CatalogPage = () => {
   const [courses, setCourses] = useState([]);
   const [categories, setCategories] = useState([]);
