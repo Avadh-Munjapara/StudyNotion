@@ -17,7 +17,7 @@ trimReview('Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere prov
       {
         general && <p className="text-richblack-25 text-sm">Enrolled in <span className="font-semibold">{review?.course?.name}</span></p>
       }
-      <p className="text-richblack-25 text-sm">{trimReview(review?.review)}</p>
+      <p className="text-richblack-25 text-center sm:text-start text-sm">{trimReview(review?.review)}</p>
       <div className="text-richblack-5 flex gap-1 items-center"><span className="text-yellow-50 font-semibold ">{review?.rating}</span><Stars rating={review?.rating}/></div>
     </div>
   );
