@@ -26,8 +26,6 @@ const Sidebar = () => {
     return location.pathname === path;
   };
 
-
-
   const clickHandler = (e) => {
     dispatch(logout(navigate));
   };

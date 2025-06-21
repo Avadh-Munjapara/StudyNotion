@@ -99,7 +99,7 @@ const NavBar = () => {
                 <li key={index}>
                   {item.title === "Catalog" ? (
                     <div className="text-richblack-200 relative  cursor-pointer">
-                      <div onClick={()=>toggleMenu()} className="flex gap-1 items-center">
+                      <div onClick={()=>toggleMenu()} className={`${location.pathname.split('/').at(1)==='catalog'?"text-[#FFD60A] font-bold" :"text-richblack-200"} flex gap-1 items-center`}>
                         Catalog
                         <IoIosArrowDropdown />
                       </div>
