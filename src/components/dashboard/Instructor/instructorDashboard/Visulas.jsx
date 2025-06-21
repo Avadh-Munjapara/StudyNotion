@@ -39,7 +39,7 @@ const Visulas = ({courses,type}) => {
     return (
         <div className='h-fit'>
             <Pie options={{
-                offset:10,
+           
                 maintainAspectRatio:false,
             }} height={'300'} data={data}/>
         </div>

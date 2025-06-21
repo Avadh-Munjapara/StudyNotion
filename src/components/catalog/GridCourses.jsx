@@ -15,7 +15,7 @@ const GridCourses = ({ courses }) => {
   return (
     <div className="flex flex-col gap-5">
       <h2 className="text-richblack-5 text-3xl font-semibold">
-        Different Category courses
+        Frequently bought together
       </h2>
       {!courses || courses?.length<=0 ? (
         <p className="text-red-500 relative -top-5 font-semibold text-3xl">
