@@ -12,22 +12,34 @@ const WishList = () => {
   const { token } = useSelector((state) => state.auth);
 
   const [avgRating, setAvgRating] = useState({});
-  useEffect(() => {
-    totalItems > 0 &&
-      items &&
-      items.forEach(async (element) => {
-        try {
-          const ratingResponse = await getAverageRating(token,{courseId:element._id});
-          setAvgRating({
-            ...avgRating,
-            [element._id]:ratingResponse.avgRating.toFixed(1)
-          });
-          console.log(avgRating);
-        } catch (error) {
-          console.log("error while getting average rating", error);
-        }
+ useEffect(() => {
+  const fetchAverageRating = async () => {
+    try {
+      const promises = items.map(async (element) => {
+        const ratingResponse = await getAverageRating(token, { courseId: element._id });
+        return {
+          id: element._id,
+          rating: ratingResponse && ratingResponse.averageRating
+            ? ratingResponse.averageRating.toFixed(1)
+            : "0.0"
+        };
       });
-  }, [totalItems]);
+
+      const results = await Promise.all(promises);
+
+      const avgRatingObj = {};
+      results.forEach(({ id, rating }) => {
+        avgRatingObj[id] = rating;
+      });
+
+      setAvgRating(avgRatingObj);
+    } catch (error) {
+      console.log("error while getting average rating", error);
+    }
+  };
+
+  if (totalItems > 0 && items) fetchAverageRating();
+}, [items, token, totalItems]);
   return (
     <div className="pl-6 pt-6 ">
       <LocationBar />

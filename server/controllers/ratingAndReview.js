@@ -65,20 +65,28 @@ exports.getAverageRating = async (req, res) => {
     const { courseId } = req.body;
     const cId=new mongoose.Types.ObjectId(courseId);
     const result = await RAR.aggregate([
-      {
-        $group: {
-          _id: cId,
-          avgRating: {
-            $avg: "$rating",
-          },
-        },
-      },
+     [
+  {
+    $match: {
+      course: cId
+    }
+  },
+  {
+    $group: {
+      _id: "$course",
+      course:{$first:"$course"},
+      avgRating: {
+        $avg: "$rating"
+      }
+    }
+  }
+]
     ]);
     console.log(result);
     if (result.length > 0) {
       return res.status(200).json({
         success: true,
-        avgRating: result[0].avgRating,
+        averageRating: result[0].avgRating,
       });
     }
     return res.status(200).json({
