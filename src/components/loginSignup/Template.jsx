@@ -39,7 +39,7 @@ const Template = ({
           <div className="py-12 max-w-maxContent text-white w-[85vw] mx-auto flex sm:flex-row flex-col gap-10 justify-between">
             <div className="flex flex-col gap-4 sm:w-[40%]">
               <div className="relative">
-                <Link className="absolute flex gap-1 items-center text-richblack-200 -left-14 -top-9" to={"/"}>
+                <Link className="absolute flex gap-1 items-center text-richblack-200 -left-[5%]   -top-9" to={"/"}>
                   <IoChevronBackCircle className="text-4xl " />
                   <span>Back to Home</span>
                 </Link>
