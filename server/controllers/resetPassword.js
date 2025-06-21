@@ -30,7 +30,7 @@ exports.resetPasswordToken=async(req,res)=>{
                     {new:true})
         
                 //create link
-                const url=`http://localhost:3000/forgot-password/${resetToken}`;
+                const url=`https://studynotion-frontend-dun.vercel.app/forgot-password/${resetToken}`;
         
                 //send link to email
                 const resetPasswordMail=await mailSender(email,"link for reseting password",
