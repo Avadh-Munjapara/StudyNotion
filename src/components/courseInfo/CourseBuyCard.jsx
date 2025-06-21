@@ -27,9 +27,10 @@ const CourseBuyCard = ({
   }
   return (
     <div className="bg-richblack-700 pt-6 md:pt-0  rounded-lg">
-      <div className="mx-auto w-fit"><img src={thumbnail} className="h-[200px]" alt="thumbnail of course"/></div>
-      <div className="p-6 gap-3 flex flex-col">
-      <p className="text-3xl font-bold text-center md:text-start text-richblack-5">Rs. {price}</p>
+      <div className="mx-auto w-fit"><img src={thumbnail} className="max-h-[230px]" alt="thumbnail of course"/></div>
+      <div className="">
+        <div  className="p-6 gap-3 flex flex-col">
+<p className="text-3xl font-bold text-center md:text-start text-richblack-5">Rs. {price}</p>
       {isBought ? (
         <YellowBtn clickHandler={goToCourseHandler} text={"Go To Course"} />
       ) : (
@@ -51,6 +52,8 @@ const CourseBuyCard = ({
         }
       </ul>
             <p onClick={shareHandler} className="text-yellow-100 cursor-pointer flex gap-1 items-center justify-center"><FaShareFromSquare/> Share</p>
+        </div>
+      
       </div>
 
     </div>
