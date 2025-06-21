@@ -95,58 +95,62 @@ exports.deleteAccount = async (req, res) => {
 
     session = await mongoose.startSession({
       defaultTransactionOptions: {
-        readConcern: { level: 'snapshot' },
-        writeConcern: { w: 'majority' },
-        maxTimeMS: 30000 
-      }
+        readConcern: { level: "snapshot" },
+        writeConcern: { w: "majority" },
+        maxTimeMS: 30000,
+      },
     });
 
-    const result = await session.withTransaction(async () => {
-      const coursesToUpdate = await Course.find({
-        studentsEnrolled: userIdObjectId
-      }).session(session);
+    const result = await session.withTransaction(
+      async () => {
+        const coursesToUpdate = await Course.find({
+          studentsEnrolled: userIdObjectId,
+        }).session(session);
 
-      if (coursesToUpdate.length > 0) {
-        await Course.bulkWrite(
-          coursesToUpdate.map(course => ({
-            updateOne: {
-              filter: { _id: course._id },
-              update: { $pull: { studentsEnrolled: userIdObjectId } }
-            }
-          })),
-          { session }
-        );
+        if (coursesToUpdate.length > 0) {
+          await Course.bulkWrite(
+            coursesToUpdate.map((course) => ({
+              updateOne: {
+                filter: { _id: course._id },
+                update: { $pull: { studentsEnrolled: userIdObjectId } },
+              },
+            })),
+            { session }
+          );
+        }
+
+        await Promise.all([
+          CourseProgress.deleteMany({ userId: userIdObjectId }, { session }),
+          Profile.findByIdAndDelete(
+            (
+              await User.findById(userId).select("additionalDetails")
+            ).additionalDetails,
+            { session }
+          ),
+          User.findByIdAndDelete(userId, { session }),
+        ]);
+
+        return true;
+      },
+      {
+        maxTimeMS: 30000,
       }
-
-      await Promise.all([
-        CourseProgress.deleteMany({ userId: userIdObjectId }, { session }),
-        Profile.findByIdAndDelete(
-          (await User.findById(userId).select('additionalDetails')).additionalDetails,
-          { session }
-        ),
-        User.findByIdAndDelete(userId, { session })
-      ]);
-
-      return true;
-    }, {
-      maxTimeMS: 30000
-    });
+    );
 
     if (result) {
       return res.status(200).json({
         success: true,
-        message: "Account and related data deleted successfully"
+        message: "Account and related data deleted successfully",
       });
     } else {
       throw new Error("Transaction failed");
     }
-
   } catch (error) {
     console.log("Error while deleting profile:", error);
     return res.status(500).json({
       success: false,
       message: "Failed to delete account",
-      error: error.message
+      error: error.message,
     });
   } finally {
     if (session) {
@@ -298,24 +302,34 @@ exports.getEnrolledCourses = async (req, res) => {
           from: "sections",
           localField: "result.courseContent",
           foreignField: "_id",
-          as: "result",
+          as: "resultSections",
+        },
+      },
+      {
+        $unwind: {
+          path: "$resultSections",
+        },
+      },
+      {
+        $group: {
+          _id: "$courseId",
+          courseId: { $first: "$courseId" },
+          completedVideos: { $first: "$completedVideos" },
+          totalVideos: {
+            $sum: { $size: "$resultSections.subSections" },
+          },
         },
       },
       {
         $project: {
-          completedVideos: {
-            $size: "$completedVideos",
-          },
-          totalVideos: {
-            $size: "$result.subSections",
-          },
           courseId: 1,
-          _id: 0,
+          completedVideos: { $size: "$completedVideos" },
+          totalVideos: 1,
         },
       },
     ]);
-    // console.log(enrlCourses);
-    // console.log(courseProgress);
+    console.log(enrlCourses);
+    console.log(courseProgress);
     // const courses=enrlCourses.map((course)=>{
     //     const cp=courseProgress.filter((courseP)=>courseP.courseId==course.course._id)[0];
     // })
@@ -339,7 +353,7 @@ exports.getEnrolledCourses = async (req, res) => {
       };
     });
 
-    // console.log(newCourses);
+    console.log(newCourses);
 
     if (!enrlCourses) {
       return res.status(404).json({
@@ -379,10 +393,10 @@ exports.getInstructorDashInfo = async (req, res) => {
         return {
           name: course.name,
           thumbnail: course.thumbnail,
-          price:course.price,
+          price: course.price,
           noOfStudents: stdEnrolled,
           courseIncome: income,
-        };  
+        };
       });
       return res.status(200).json({
         success: true,

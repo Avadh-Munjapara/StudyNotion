@@ -49,7 +49,7 @@ const PersonalDetails = ({ userDetails }) => {
             <ShowInfo
               label="First Name"
               info={userDetails?.firstName}
-              text="Enter firstName"
+              text="Add firstName"
             />
           </div>
 
@@ -57,14 +57,14 @@ const PersonalDetails = ({ userDetails }) => {
             <ShowInfo
               label="Last Name"
               info={userDetails?.lastName}
-              text="Enter lastName"
+              text="Add lastName"
             />
           </div>
           <div>
             <ShowInfo
               label="Email"
               info={userDetails?.email}
-              text="Enter email"
+              text="Add email"
             />
           </div>
           <div>
@@ -75,7 +75,7 @@ const PersonalDetails = ({ userDetails }) => {
                   ? `${userDetails?.additionalDetails?.countryCode} ${userDetails?.additionalDetails?.phoneNumber}`
                   : null
               }
-              text="Enter Phone Number"
+              text="Add Phone Number"
             />
           </div>
           <div>
@@ -88,14 +88,14 @@ const PersonalDetails = ({ userDetails }) => {
                 .split("-")
                 .reverse()
                 .join("-")}
-              text="Enter your Birthdate"
+              text="Add your Birthdate"
             />
           </div>
           <div>
             <ShowInfo
               label="Gender"
               info={userDetails?.additionalDetails?.gender}
-              text="Enter your gender"
+              text="Add your gender"
             />
           </div>
         </div>
